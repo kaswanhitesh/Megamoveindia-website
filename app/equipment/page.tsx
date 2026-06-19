@@ -12,6 +12,7 @@ const equipment = [
 ];
 
 return (
+  <main className="bg-[#f7f7f7]">
   {/* HERO IMAGE */}
   <section className="relative h-[450px] overflow-hidden">
     <img
