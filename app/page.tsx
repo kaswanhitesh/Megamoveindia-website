@@ -50,9 +50,41 @@ export default function Home() {
   </div>
 </div>
 
-        <button className="text-4xl text-gray-500 hover:text-black transition">
-         ☰
-        </button>
+        <button className="text-3xl text-gray-500 hover:text-black transition">
+  ☰
+</button>
+
+<div className="fixed top-0 right-0 h-full w-[420px] bg-gray-700 text-white p-12">
+  <div className="space-y-8">
+
+    <div>
+      <h3 className="text-xl font-semibold mb-4">
+        SERVICES
+      </h3>
+
+      <div className="space-y-3 text-gray-200">
+        <p>Air Freight</p>
+        <p>Overland Transport</p>
+        <p>Project Forwarding Services</p>
+        <p>Logistics & Supply Chain Solutions</p>
+        <p>Factory Relocation</p>
+        <p>Transshipment</p>
+        <p>Transport Engineering Capabilities</p>
+        <p>Tailored Ocean Freight Solutions</p>
+      </div>
+    </div>
+
+    <div className="space-y-5 text-lg">
+      <p>Project Logistics</p>
+      <p>Heavy Lift & ODC</p>
+      <p>Rentals & Warehousing</p>
+      <p>Fleet</p>
+      <p>Case Studies</p>
+      <p>Contact Us</p>
+    </div>
+
+  </div>
+</div>
       </header>
 
       {/* Content */}
