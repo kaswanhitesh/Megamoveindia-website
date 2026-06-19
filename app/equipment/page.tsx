@@ -1,14 +1,14 @@
 export default function Equipment() {
 const equipment = [
-{ name: “Hydraulic Axle Lines”, value: “40”, unit: “Axle Lines” },
-{ name: “Heavy Duty Pullers”, value: “4”, unit: “Units” },
-{ name: “Lowbed Trailers”, value: “18”, unit: “Units” },
-{ name: “Truck Mounted Manlifts / Aerial Lifts”, value: “2”, unit: “Units” },
-{ name: “Flatbed Trailers”, value: “10”, unit: “Units” },
-{ name: “Heavy Duty Spacer HAV 15 Mtr”, value: “2”, unit: “Units” },
-{ name: “Lashing Equipment”, value: “In-house”, unit: “Inventory” },
-{ name: “Warehousing Space”, value: “Available”, unit: “” },
-{ name: “Project Handling Tools”, value: “Various”, unit: “” },
+{ name: "Hydraulic Axle Lines", value: "40", unit: "Axle Lines" },
+{ name: "Heavy Duty Pullers", value: "4", unit: "Units" },
+{ name: "Lowbed Trailers", value: "18", unit: "Units" },
+{ name: "Truck Mounted Manlifts / Aerial Lifts", value: "2", unit: "Units" },
+{ name: "Flatbed Trailers", value: "10", unit: "Units" },
+{ name: "Heavy Duty Spacer HAV 15 Mtr", value: "2", unit: "Units" },
+{ name: "Lashing Equipment", value: "In-house", unit: "Inventory" },
+{ name: "Warehousing Space", value: "Available", unit: "" },
+{ name: "Project Handling Tools", value: "Various", unit: "" },
 ];
 
 return (
