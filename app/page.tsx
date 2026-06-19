@@ -179,7 +179,13 @@ export default function Home() {
       className="w-full flex items-center justify-between py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300"
     >
       <span>Services</span>
-      <span>{servicesOpen ? "−" : "+"}</span>
+      <span
+  className={`transition-transform duration-300 ${
+    servicesOpen ? "rotate-180" : ""
+  }`}
+>
+  ▼
+</span>
     </button>
 
     {servicesOpen && (
