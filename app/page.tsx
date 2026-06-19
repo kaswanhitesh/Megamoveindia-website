@@ -59,7 +59,7 @@ export default function Home() {
       <section className="h-[calc(100vh-90px)] flex items-center px-16 pt-12 pb-16 gap-8">
 
         {/* Left Side */}
-        <div className="w-[34%] flex flex-col justify-center pl-8">
+        <div className="w-[40%] flex flex-col justify-center">
           <h1 className="text-[56px] leading-tight font-light">
             Welcome to
             <br />
@@ -86,7 +86,7 @@ export default function Home() {
         </div>
 
         {/* Right Side */}
-        <div className="w-[66%] flex gap-[4px] h-[660px]">
+        <div className="w-[60%] flex gap-[4px] h-[500px]">
 
           {cards.map((card) => (
             <a
@@ -121,7 +121,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-black/40" />
 
               <div className="absolute bottom-10 left-6 text-white">
-                <h2 className="text-4xl font-bold">
+                <h2 className="text-[22px] font-bold leading-tight">
                   {card.title}
                 </h2>
 
