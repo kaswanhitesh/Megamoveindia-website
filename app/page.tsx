@@ -55,7 +55,12 @@ export default function Home() {
 </div>
 
         <button
-  onClick={() => setMenuOpen(true)}
+  <button
+  onClick={() => setMenuOpen(!menuOpen)}
+  className="cursor-pointer text-3xl text-gray-500 hover:text-black transition-all duration-300"
+>
+  ☰
+</button>
   className="cursor-pointer text-3xl text-gray-500 hover:text-black transition"
 >
   ☰
@@ -142,18 +147,26 @@ export default function Home() {
 
         </div>
       </section>
-    {menuOpen && (
   <>
     <div
-      className="fixed inset-0 bg-black/30 z-40"
-      onClick={() => setMenuOpen(false)}
-    />
+  className={`fixed inset-0 bg-black/30 z-40 transition-opacity duration-700 ${
+    menuOpen
+      ? "opacity-100 pointer-events-auto"
+      : "opacity-0 pointer-events-none"
+  }`}
+  onClick={() => setMenuOpen(false)}
+/>
 
-    <div className="fixed top-0 right-0 h-full w-[420px] bg-gray-700 text-white z-50 p-12 overflow-y-auto transition-transform duration-500 ease-out translate-x-0">
-
+    <div
+  className={`fixed top-0 right-0 h-full w-[420px] bg-gray-700 text-white z-50 p-12 overflow-y-auto transition-transform duration-700 ease-out ${
+    menuOpen
+      ? "translate-x-0"
+      : "translate-x-full"
+  }`}
+>
       <button
         onClick={() => setMenuOpen(false)}
-          className="absolute top-8 right-8 text-3xl cursor-pointer hover:opacity-70 transition"
+          className="absolute top-8 right-8 text-3xl cursor-pointer hover:rotate-90 hover:opacity-70 transition-all duration-300"
       >
         ✕
       </button>
@@ -162,7 +175,7 @@ export default function Home() {
         SERVICES
       </h2>
 
-      <div className="space-y-4 text-lg">
+      <div className="space-y-5 text-lg text-gray-200">
         <p>Air Freight</p>
         <p>Overland Transport</p>
         <p>Project Forwarding Services</p>
@@ -184,7 +197,6 @@ export default function Home() {
 
     </div>
   </>
-)}
       <footer className="absolute bottom-0 left-0 right-0 border-t border-gray-300 bg-[#f7f7f7] px-16 py-2 text-sm text-gray-600 flex justify-between">
   <div>
     © Copyright 2026, Mega Move India Private Limited. All rights reserved.
