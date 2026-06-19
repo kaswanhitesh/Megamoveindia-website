@@ -29,9 +29,7 @@ export default function Home() {
   return (
     <main className="bg-[#f7f7f7]">
 
-      {/* Content */}
-
-      <section className="flex items-start px-16 pt-10 pb-10 gap-8">
+      <section className="min-h-[calc(100vh-170px)] flex items-start px-16 pt-10 pb-10 gap-8">
 
         {/* Left Side */}
 
@@ -112,41 +110,9 @@ export default function Home() {
 
             </a>
           ))}
-
         </div>
 
       </section>
-
-      {/* Footer */}
-
-      <footer className="border-t border-gray-300 bg-[#f7f7f7] px-16 py-2 text-sm text-gray-600 flex justify-between">
-
-        <div>
-          © Copyright 2026, Mega Move India Private Limited.
-          All rights reserved.
-        </div>
-
-        <div className="space-x-4">
-
-          <a href="#">
-            Site Map
-          </a>
-
-          <span>|</span>
-
-          <a href="#">
-            Terms & Conditions
-          </a>
-
-          <span>|</span>
-
-          <a href="/privacy-policy">
-            Privacy Policy
-          </a>
-
-        </div>
-
-      </footer>
 
     </main>
   );
