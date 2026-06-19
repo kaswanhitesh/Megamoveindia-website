@@ -102,9 +102,12 @@ export default function Header() {
             {servicesOpen && (
               <div className="bg-gray-800 text-base">
 
-                <p className="py-3 px-16">
+                <a
+                  href="/services/air-freight"
+                  className="block py-3 px-16 hover:bg-white hover:text-gray-700 transition-all duration-300"
+                >
                   Air Freight
-                </p>
+                </a>
 
                 <p className="py-3 px-16">
                   Overland Transport
