@@ -1,25 +1,36 @@
 const cards = [
   {
     title: "AIR",
-    subtitle: "Global Air Cargo Solutions",
+    subtitle: ,
+    description:
+      "Specialized air freight solutions for urgent, high-value and time-critical cargo movements. Through our global airline partnerships and logistics network, we provide reliable import, export, charter and door-to-door transportation services to major destinations worldwide.",
     image:
       "https://images.unsplash.com/photo-1436491865332-7a61a109cc05",
   },
+
   {
     title: "OCEAN",
-    subtitle: "FCL | LCL | Breakbulk",
+    subtitle: ,
+    description:
+      "Comprehensive ocean freight services covering FCL, LCL, breakbulk and project cargo shipments. Our experienced team manages international freight movements through strategic carrier partnerships, ensuring efficient, secure and cost-effective transportation across global trade routes.",
     image:
       "https://images.unsplash.com/photo-1494412651409-8963ce7935a7",
   },
+
   {
     title: "LAND",
-    subtitle: "ODC | Heavy Lift | Trailers",
+    subtitle:,
+    description:
+      "Heavy haulage, over-dimensional cargo transportation and project logistics supported by hydraulic axle trailers, lowbed trailers and specialized equipment. We execute complex cargo movements safely and efficiently across India for industrial, infrastructure and energy projects.",
     image:
       "https://images.unsplash.com/photo-1506521781263-d8422e82f27a",
   },
+
   {
     title: "RENTALS",
-    subtitle: "Warehousing & Equipment",
+    subtitle: ,
+    description:
+      "Equipment rental and warehousing solutions designed to support project logistics and industrial operations. Our capabilities include manlifts, heavy-duty pullers, storage facilities, cargo handling support and customized solutions for temporary and long-term project requirements.",
     image:
       "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
   },
@@ -96,16 +107,39 @@ export default function Home() {
 
               <div className="absolute inset-0 bg-black/40" />
 
-              <div className="absolute bottom-10 left-6 text-white">
+              <div className="absolute bottom-10 left-6 right-6 text-white">
 
-                <h2 className="text-[22px] font-bold leading-tight">
-                  {card.title}
-                </h2>
+  <h2 className="text-[22px] font-bold leading-tight">
+    {card.title}
+  </h2>
 
-                <p className="mt-3 text-sm tracking-wider">
-                  {card.subtitle}
-                </p>
+  <p className="mt-2 text-sm tracking-wider">
+    {card.subtitle}
+  </p>
 
+  <div
+    className="
+      max-h-0
+      opacity-0
+      overflow-hidden
+      group-hover:max-h-[300px]
+      group-hover:opacity-100
+      transition-all
+      duration-700
+    "
+  >
+
+    <p className="mt-4 text-[13px] leading-6 text-gray-100">
+      {card.description}
+    </p>
+
+    <div className="mt-4 text-sm font-medium">
+      Explore Services →
+    </div>
+
+  </div>
+
+</div>
               </div>
 
             </a>
