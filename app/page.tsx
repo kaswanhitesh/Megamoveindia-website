@@ -55,16 +55,11 @@ export default function Home() {
 </div>
 
         <button
-  <button
-  onClick={() => setMenuOpen(!menuOpen)}
-  className="cursor-pointer text-3xl text-gray-500 hover:text-black transition-all duration-300"
->
-  ☰
-</button>
-  className="cursor-pointer text-3xl text-gray-500 hover:text-black transition"
->
-  ☰
-</button>
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="cursor-pointer text-3xl text-gray-500 hover:text-black transition-all duration-300"
+        >
+          ☰
+        </button>
 
       </header>
 
