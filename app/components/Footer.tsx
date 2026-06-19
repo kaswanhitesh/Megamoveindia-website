@@ -6,12 +6,22 @@ export default function Footer() {
       </div>
 
       <div className="space-x-4">
-        <a href="#">Site Map</a>
+        <a href="#">
+          Site Map
+        </a>
+
         <span>|</span>
-        <a href="/terms-and-conditions">
+
+        <a
+          href="/documents/MegaMoveIndia%20Terms%20and%20Conditions.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Terms & Conditions
         </a>
+
         <span>|</span>
+
         <a href="/privacy-policy">
           Privacy Policy
         </a>
