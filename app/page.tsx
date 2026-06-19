@@ -227,9 +227,12 @@ export default function Home() {
     )}
   </div>
 
-  <p className="cursor-pointer py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
-    Case Studies
-  </p>
+  <a
+  href="/case-studies"
+  className="block cursor-pointer py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300"
+>
+  Case Studies
+</a>
 
   <p className="cursor-pointer py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
     Equipment
