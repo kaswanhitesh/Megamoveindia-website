@@ -32,12 +32,23 @@ export default function Home() {
     <main className="h-screen overflow-hidden bg-[#f7f7f7]">
       {/* Header */}
       <header className="h-[110px] border-b border-gray-300 flex items-center justify-between px-16">
-        <Image
-          src="/images/mega-move-logo.svg"
-          alt="Mega Move India"
-          width={120}
-          height={60}
-        />
+        <div className="flex items-center gap-5">
+  <Image
+    src="/images/mega-move-logo.svg"
+    alt="Mega Move India"
+    width={120}
+    height={60}
+  />
+
+  <div>
+    <p className="text-xl font-semibold tracking-wide text-gray-800">
+      Moving The Immovable
+    </p>
+    <p className="text-xl font-semibold tracking-wide text-gray-800">
+      Delivering The Impossible
+    </p>
+  </div>
+</div>
 
         <button className="text-4xl text-gray-500 hover:text-black transition">
          ☰
@@ -57,25 +68,21 @@ export default function Home() {
             </span>
           </h1>
 
-          <p className="mt-10 text-xl leading-10 text-gray-700">
-            Founded in 2025, Mega Move India specializes in
-            project logistics, heavy lift transportation,
-            freight forwarding and equipment rentals.
+          <p className="mt-10 text-[20px] leading-10 text-gray-700">
+          With a legacy in heavy haulage and over-dimensional cargo
+          transportation dating back to 2005, Mega Move India was
+          incorporated in 2025 to expand its expertise into global
+          project logistics, freight forwarding, heavy lift
+          transportation and equipment rentals.
           </p>
 
-          <p className="mt-8 text-xl leading-10 text-gray-700">
-            Backed by 18 lowbed trailers, 40 hydraulic axle lines,
-            2 manlifts and 4 pullers.
+          <p className="mt-8 text-[20px] leading-10 text-gray-700">
+          Driven by specialized equipment, experienced personnel and
+          a commitment to operational excellence, we provide
+          end-to-end logistics solutions for the world's most
+          challenging cargo movements.
           </p>
 
-          <div className="mt-12">
-            <p className="text-3xl font-bold">
-              Moving The Immovable.
-            </p>
-            <p className="text-3xl font-bold">
-              Delivering The Impossible.
-            </p>
-          </div>
         </div>
 
         {/* Right Side */}
