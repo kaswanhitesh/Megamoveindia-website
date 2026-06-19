@@ -56,7 +56,7 @@ export default function Home() {
       </header>
 
       {/* Content */}
-      <section className="h-[calc(100vh-90px)] flex items-center px-16 pt-12 pb-16 gap-8">
+      <section className="h-[calc(100vh-90px)] flex items-start px-16 pt-10 pb-10 gap-8">
 
         {/* Left Side */}
         <div className="w-[40%] flex flex-col justify-center">
