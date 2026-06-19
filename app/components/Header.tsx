@@ -146,9 +146,12 @@ export default function Header() {
             Case Studies
           </a>
 
-          <p className="cursor-pointer py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+          <a
+           href="/equipment"
+           className="block cursor-pointer py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300"
+           >
             Equipment
-          </p>
+          </a>
 
           <p className="cursor-pointer py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
             Facilities
