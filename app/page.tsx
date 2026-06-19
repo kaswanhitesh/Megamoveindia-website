@@ -176,14 +176,30 @@ export default function Home() {
       </h2>
 
       <div className="space-y-5 text-lg text-gray-200">
-        <p>Air Freight</p>
-        <p>Overland Transport</p>
-        <p>Project Forwarding Services</p>
-        <p>Logistics & Supply Chain Solutions</p>
-        <p>Factory Relocation</p>
-        <p>Transshipment</p>
-        <p>Transport Engineering Capabilities</p>
-        <p>Tailored Ocean Freight Solutions</p>
+        <p className="cursor-pointer hover:text-white transition">
+          Air Freight
+        </p>
+        <p className="cursor-pointer hover:text-white transition">
+        Overland Transport
+        </p>
+        <p className="cursor-pointer hover:text-white transition">
+        Project Forwarding Services
+        </p>
+        <p className="cursor-pointer hover:text-white transition">
+        Logistics & Supply Chain Solutions
+        </p>
+        <p className="cursor-pointer hover:text-white transition">
+        Factory Relocation
+        </p>
+        <p className="cursor-pointer hover:text-white transition">
+        Transshipment
+        </p>
+        <p className="cursor-pointer hover:text-white transition">
+        Transport Engineering Capabilities
+        </p>
+        <p className="cursor-pointer hover:text-white transition">
+        Tailored Ocean Freight Solutions
+        </p>
 
         <hr className="my-8 border-gray-500" />
 
