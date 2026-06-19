@@ -32,15 +32,15 @@ export default function Home() {
     <main className="h-screen overflow-hidden bg-[#f7f7f7]">
       {/* Header */}
       <header className="h-[90px] border-b border-gray-300 flex items-center justify-between px-16">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-5">
   <Image
     src="/images/mega-move-logo.svg"
     alt="Mega Move India"
-    width={105}
-    height={52}
+    width={90}
+    height={45}
   />
 
-  <div>
+  <div className="ml-2">
     <p className="text-sm font-medium tracking-wide text-gray-600">
       Moving The Immovable
     </p>
@@ -63,7 +63,7 @@ export default function Home() {
           <h1 className="text-[52px] leading-[1.2] font-light tracking-wide">
             Welcome to
             <br />
-            <span className="font-normal">
+            <span className="font-semibold">
               Mega Move India
             </span>
           </h1>
