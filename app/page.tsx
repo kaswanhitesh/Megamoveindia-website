@@ -36,12 +36,12 @@ export default function Home() {
   <Image
     src="/images/mega-move-logo.svg"
     alt="Mega Move India"
-    width={120}
-    height={60}
+    width={105}
+    height={52}
   />
 
   <div>
-    <p className="text-lg font-semibold tracking-wide text-gray-800">
+    <p className="text-sm font-medium tracking-wide text-gray-600">
       Moving The Immovable
     </p>
     <p className="text-lg font-semibold tracking-wide text-gray-800">
@@ -59,16 +59,16 @@ export default function Home() {
       <section className="h-[calc(100vh-90px)] flex items-start px-16 pt-10 pb-10 gap-8">
 
         {/* Left Side */}
-        <div className="w-[40%] flex flex-col justify-center">
-          <h1 className="text-[56px] leading-tight font-light">
+        <div className="w-[40%] flex flex-col justify-start pt-12">
+          <h1 className="text-[52px] leading-[1.2] font-light tracking-wide">
             Welcome to
             <br />
-            <span className="font-medium">
+            <span className="font-normal">
               Mega Move India
             </span>
           </h1>
 
-          <p className="mt-14 text-[16px] leading-8 text-gray-700">
+          <p className="mt-14 text-[15px] leading-2.2 text-gray-700">
           With a legacy in heavy haulage and over-dimensional cargo
           transportation dating back to 2005, Mega Move India was
           incorporated in 2025 to expand its expertise into global
@@ -76,7 +76,7 @@ export default function Home() {
           transportation and equipment rentals.
           </p>
 
-          <p className="mt-8 text-[20px] leading-10 text-gray-700">
+          <p className="mt-14 text-[15px] leading-2.2 text-gray-700">
           Driven by specialized equipment, experienced personnel and
           a commitment to operational excellence, we provide
           end-to-end logistics solutions for the world's most
