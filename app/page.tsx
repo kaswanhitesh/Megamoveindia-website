@@ -27,12 +27,12 @@ const cards = [
 },
 
   {
-    title: "RENTALS",
-    link: "/services/equipment-rentals",
-    description:
-      "Equipment rental and warehousing solutions designed to support project logistics and industrial operations. Our capabilities include manlifts, heavy-duty pullers, storage facilities, cargo handling support and customized solutions for temporary and long-term project requirements.",
-    image:
-      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
+  title: "RENTALS",
+  link: "/services/rentals-warehousing",
+  description:
+    "Comprehensive equipment rental, warehousing and cargo handling solutions including truck mounted manlifts, aerial work platforms, storage facilities, loading and unloading services, project logistics support and specialized equipment for industrial and infrastructure projects.",
+  image:
+    "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
   },
 ];
 
