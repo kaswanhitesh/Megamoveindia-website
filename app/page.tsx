@@ -32,6 +32,7 @@ const cards = [
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   return (
     <main className="h-screen overflow-hidden bg-[#f7f7f7]">
       {/* Header */}
@@ -166,58 +167,85 @@ export default function Home() {
         ✕
       </button>
 
-      <h2 className="text-3xl font-semibold px-12 pt-12 mb-8">
-       SERVICES
-      </h2>
+      <div className="text-lg text-gray-200 pt-10">
 
-      <div className="text-lg text-gray-200">
-          <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+  <p className="cursor-pointer py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+    Home
+  </p>
+
+  <div>
+    <button
+      onClick={() => setServicesOpen(!servicesOpen)}
+      className="w-full flex items-center justify-between py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300"
+    >
+      <span>Services</span>
+      <span>{servicesOpen ? "−" : "+"}</span>
+    </button>
+
+    {servicesOpen && (
+      <div className="bg-gray-800 text-base">
+
+        <p className="cursor-pointer py-3 px-16 hover:bg-white hover:text-gray-700 transition-all duration-300">
           Air Freight
         </p>
-          <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
-        Overland Transport
-        </p>
-          <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
-        Project Forwarding Services
-        </p>
-          <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
-        Logistics & Supply Chain Solutions
-        </p>
-          <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
-        Factory Relocation
-        </p>
-          <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
-        Transshipment
-        </p>
-          <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
-        Transport Engineering Capabilities
-        </p>
-          <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
-        Tailored Ocean Freight Solutions
+
+        <p className="cursor-pointer py-3 px-16 hover:bg-white hover:text-gray-700 transition-all duration-300">
+          Overland Transport
         </p>
 
-        <hr className="my-8 border-gray-500" />
+        <p className="cursor-pointer py-3 px-16 hover:bg-white hover:text-gray-700 transition-all duration-300">
+          Project Forwarding Services
+        </p>
 
-        <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
-          Project Logistics
+        <p className="cursor-pointer py-3 px-16 hover:bg-white hover:text-gray-700 transition-all duration-300">
+          Logistics & Supply Chain Solutions
         </p>
-        <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
-          Heavy Lift & ODC
+
+        <p className="cursor-pointer py-3 px-16 hover:bg-white hover:text-gray-700 transition-all duration-300">
+          Factory Relocation
         </p>
-        <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
-          Rentals & Warehousing
+
+        <p className="cursor-pointer py-3 px-16 hover:bg-white hover:text-gray-700 transition-all duration-300">
+          Transshipment
         </p>
-        <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
-          Fleet
+
+        <p className="cursor-pointer py-3 px-16 hover:bg-white hover:text-gray-700 transition-all duration-300">
+          Transport Engineering Capabilities
         </p>
-        <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
-          Case Studies
+
+        <p className="cursor-pointer py-3 px-16 hover:bg-white hover:text-gray-700 transition-all duration-300">
+          Tailored Ocean Freight Solutions
         </p>
-        <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
-          Contact Us
-        </p>
+
       </div>
+    )}
+  </div>
 
+  <p className="cursor-pointer py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+    Case Studies
+  </p>
+
+  <p className="cursor-pointer py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+    Equipment
+  </p>
+
+  <p className="cursor-pointer py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+    Facilities
+  </p>
+
+  <p className="cursor-pointer py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+    Conditions
+  </p>
+
+  <p className="cursor-pointer py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+    Careers
+  </p>
+
+  <p className="cursor-pointer py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+    Contact Us
+  </p>
+
+</div>
     </div>
   </>
       <footer className="absolute bottom-0 left-0 right-0 border-t border-gray-300 bg-[#f7f7f7] px-16 py-2 text-sm text-gray-600 flex justify-between">
