@@ -70,9 +70,20 @@ return (
             </h3>
           </div>
           <div className="w-[40%] text-right">
-            <div className="text-[28px] font-semibold text-gray-700 leading-none">
-              {item.value}
-            </div>
+            <div
+  className={`
+    ${
+      item.value.length > 8
+        ? "text-[20px]"
+        : "text-[28px]"
+    }
+    font-semibold
+    text-gray-700
+    leading-tight
+  `}
+>
+  {item.value}
+</div>
             {item.unit && (
               <div className="text-sm text-gray-500 mt-1">
                 {item.unit}
