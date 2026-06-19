@@ -174,25 +174,25 @@ export default function Home() {
           <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
           Air Freight
         </p>
-          <p className="cursor-pointer px-4 py-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+          <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
         Overland Transport
         </p>
-          <p className="cursor-pointer px-4 py-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+          <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
         Project Forwarding Services
         </p>
-          <p className="cursor-pointer px-4 py-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+          <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
         Logistics & Supply Chain Solutions
         </p>
-          <p className="cursor-pointer px-4 py-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+          <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
         Factory Relocation
         </p>
-          <p className="cursor-pointer px-4 py-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+          <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
         Transshipment
         </p>
-          <p className="cursor-pointer px-4 py-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+          <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
         Transport Engineering Capabilities
         </p>
-          <p className="cursor-pointer px-4 py-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+          <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
         Tailored Ocean Freight Solutions
         </p>
 
