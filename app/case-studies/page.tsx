@@ -32,25 +32,126 @@ export default function CaseStudies() {
     },
   ];
 
-  const networks = [
-    "WCA",
-    "GPLN",
-    "PCN",
-    "OOG",
-    "XLP",
-    "MTO",
-    "SLA",
-  ];
+  {/* NETWORKS */}
 
-  const customers = [
-    "Adani",
-    "Reliance",
-    "Tata",
-    "JSW",
-    "L&T",
-    "Siemens",
-    "ABB",
-  ];
+<div className="mt-24">
+
+  <h2 className="text-center text-[42px] font-light mb-10">
+
+    Our Networks
+
+  </h2>
+
+  <div className="flex gap-6 overflow-x-auto pb-4">
+
+    {networks.map((network, i) => (
+
+      <div
+
+        key={i}
+
+        className="
+
+          min-w-[220px]
+
+          h-[120px]
+
+          bg-white
+
+          rounded-xl
+
+          flex
+
+          items-center
+
+          justify-center
+
+          shadow-sm
+
+          overflow-hidden
+
+          cursor-pointer
+
+        "
+
+      >
+
+        <img
+
+          src={`/networks/${network.toLowerCase()}.png`}
+
+          alt={network}
+
+          className="
+
+            max-h-[70px]
+
+            object-contain
+
+            grayscale
+
+            hover:grayscale-0
+
+            transition-all
+
+            duration-700
+
+          "
+
+        />
+
+      </div>
+
+    ))}
+
+  </div>
+
+</div>
+
+  {/* CUSTOMERS */}
+
+<div className="mt-20 mb-20">
+
+  <h2 className="text-center text-[42px] font-light mb-10">
+    Our Customers
+  </h2>
+
+  <div className="flex gap-6 overflow-x-auto pb-4">
+
+    {customers.map((customer, i) => (
+      <div
+        key={i}
+        className="
+          min-w-[220px]
+          h-[120px]
+          bg-white
+          rounded-xl
+          flex
+          items-center
+          justify-center
+          shadow-sm
+          overflow-hidden
+          cursor-pointer
+        "
+      >
+        <img
+          src={`/customers/${customer.toLowerCase()}.png`}
+          alt={customer}
+          className="
+            max-h-[70px]
+            object-contain
+            grayscale
+            hover:grayscale-0
+            transition-all
+            duration-700
+          "
+        />
+      </div>
+    ))}
+
+  </div>
+
+</div>
 
   return (
     <main className="min-h-screen bg-[#f7f7f7]">
