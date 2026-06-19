@@ -130,10 +130,13 @@ export default function Header() {
                   Logistics & Supply Chain Solutions
                 </a>
 
-                <p className="py-3 px-16">
+                <a
+                  href="/services/factory-relocation"
+                  className="block py-3 px-16 hover:bg-white hover:text-gray-700 transition-all duration-300"
+                >
                   Factory Relocation
-                </p>
-
+                </a>
+                
                 <p className="py-3 px-16">
                   Transshipment
                 </p>
