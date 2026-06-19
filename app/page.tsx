@@ -31,8 +31,8 @@ export default function Home() {
   return (
     <main className="h-screen overflow-hidden bg-[#f7f7f7]">
       {/* Header */}
-      <header className="h-[110px] border-b border-gray-300 flex items-center justify-between px-16">
-        <div className="flex items-center gap-5">
+      <header className="h-[90px] border-b border-gray-300 flex items-center justify-between px-16">
+        <div className="flex items-center gap-3">
   <Image
     src="/images/mega-move-logo.svg"
     alt="Mega Move India"
@@ -41,10 +41,10 @@ export default function Home() {
   />
 
   <div>
-    <p className="text-xl font-semibold tracking-wide text-gray-800">
+    <p className="text-lg font-semibold tracking-wide text-gray-800">
       Moving The Immovable
     </p>
-    <p className="text-xl font-semibold tracking-wide text-gray-800">
+    <p className="text-lg font-semibold tracking-wide text-gray-800">
       Delivering The Impossible
     </p>
   </div>
@@ -56,19 +56,19 @@ export default function Home() {
       </header>
 
       {/* Content */}
-      <section className="h-[calc(100vh-110px)] flex px-16 py-10 gap-10">
+      <section className="h-[calc(100vh-90px)] flex items-center px-16 pt-12 pb-16 gap-8">
 
         {/* Left Side */}
-        <div className="w-[38%] flex flex-col justify-center">
+        <div className="w-[34%] flex flex-col justify-center pl-8">
           <h1 className="text-[56px] leading-tight font-light">
             Welcome to
             <br />
-            <span className="font-semibold">
+            <span className="font-medium">
               Mega Move India
             </span>
           </h1>
 
-          <p className="mt-10 text-[20px] leading-10 text-gray-700">
+          <p className="mt-14 text-[16px] leading-8 text-gray-700">
           With a legacy in heavy haulage and over-dimensional cargo
           transportation dating back to 2005, Mega Move India was
           incorporated in 2025 to expand its expertise into global
@@ -86,7 +86,7 @@ export default function Home() {
         </div>
 
         {/* Right Side */}
-        <div className="w-[62%] flex gap-[4px]">
+        <div className="w-[66%] flex gap-[4px] h-[660px]">
 
           {cards.map((card) => (
             <a
@@ -134,7 +134,7 @@ export default function Home() {
 
         </div>
       </section>
-      <footer className="absolute bottom-0 left-0 right-0 border-t border-gray-300 bg-[#f7f7f7] px-16 py-4 text-sm text-gray-600 flex justify-between">
+      <footer className="absolute bottom-0 left-0 right-0 border-t border-gray-300 bg-[#f7f7f7] px-16 py-2 text-sm text-gray-600 flex justify-between">
   <div>
     © Copyright 2026, Mega Move India Private Limited. All rights reserved.
   </div>
