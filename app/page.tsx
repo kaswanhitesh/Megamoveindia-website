@@ -29,18 +29,18 @@ const cards = [
 
 export default function Home() {
   return (
-    <main className="h-screen overflow-hidden bg-[#f3f3f3]">
+    <main className="h-screen overflow-hidden bg-[#f7f7f7]">
       {/* Header */}
       <header className="h-[110px] border-b border-gray-300 flex items-center justify-between px-16">
         <Image
           src="/images/mega-move-logo.svg"
           alt="Mega Move India"
-          width={160}
-          height={80}
+          width={120}
+          height={60}
         />
 
-        <button className="text-4xl text-gray-600">
-          ☰
+        <button className="text-4xl text-gray-500 hover:text-black transition">
+         ☰
         </button>
       </header>
 
@@ -49,10 +49,10 @@ export default function Home() {
 
         {/* Left Side */}
         <div className="w-[38%] flex flex-col justify-center">
-          <h1 className="text-6xl leading-tight font-light">
+          <h1 className="text-[56px] leading-tight font-light">
             Welcome to
             <br />
-            <span className="font-bold">
+            <span className="font-semibold">
               Mega Move India
             </span>
           </h1>
@@ -79,7 +79,7 @@ export default function Home() {
         </div>
 
         {/* Right Side */}
-        <div className="w-[62%] flex gap-3">
+        <div className="w-[62%] flex gap-[4px]">
 
           {cards.map((card) => (
             <a
@@ -127,6 +127,19 @@ export default function Home() {
 
         </div>
       </section>
+      <footer className="absolute bottom-0 left-0 right-0 border-t border-gray-300 bg-[#f7f7f7] px-16 py-4 text-sm text-gray-600 flex justify-between">
+  <div>
+    © Copyright 2026, Mega Move India Private Limited. All rights reserved.
+  </div>
+
+  <div className="space-x-4">
+    <a href="#">Site Map</a>
+    <span>|</span>
+    <a href="#">Terms & Conditions</a>
+    <span>|</span>
+    <a href="#">Privacy Policy</a>
+  </div>
+</footer>
     </main>
   );
 }
