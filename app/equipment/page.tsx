@@ -1,18 +1,17 @@
 export default function Equipment() {
 const equipment = [
-{ name: "Hydraulic Axle Lines", value: "40", unit: "Axle Lines" },
-{ name: "Heavy Duty Pullers", value: "4", unit: "Units" },
-{ name: "Lowbed Trailers", value: "18", unit: "Units" },
-{ name: "Truck Mounted Manlifts / Aerial Lifts", value: "2", unit: "Units" },
-{ name: "Flatbed Trailers", value: "10", unit: "Units" },
-{ name: "Heavy Duty Spacer HAV 15 Mtr", value: "2", unit: "Units" },
-{ name: "Lashing Equipment", value: "In-house", unit: "Inventory" },
-{ name: "Warehousing Space", value: "Available", unit: "" },
-{ name: "Project Handling Tools", value: "Various", unit: "" },
+{ name: “Hydraulic Axle Lines”, value: “40”, unit: “Axle Lines” },
+{ name: “Heavy Duty Pullers”, value: “4”, unit: “Units” },
+{ name: “Lowbed Trailers”, value: “18”, unit: “Units” },
+{ name: “Truck Mounted Manlifts / Aerial Lifts”, value: “2”, unit: “Units” },
+{ name: “Flatbed Trailers”, value: “10”, unit: “Units” },
+{ name: “Heavy Duty Spacer HAV 15 Mtr”, value: “2”, unit: “Units” },
+{ name: “Lashing Equipment”, value: “In-house”, unit: “Inventory” },
+{ name: “Warehousing Space”, value: “Available”, unit: “” },
+{ name: “Project Handling Tools”, value: “Various”, unit: “” },
 ];
 
 return (
-  <main className="bg-[#f7f7f7]">
   {/* HERO IMAGE */}
   <section className="relative h-[450px] overflow-hidden">
     <img
@@ -64,26 +63,15 @@ return (
             duration-300
           "
         >
-          <div className="w-[60%]">
+          <div className="w-[58%]">
             <h3 className="text-[18px] font-medium text-gray-700 leading-7">
               {item.name}
             </h3>
           </div>
-          <div className="w-[40%] text-right">
-            <div
-  className={`
-    ${
-      item.value.length > 8
-        ? "text-[20px]"
-        : "text-[28px]"
-    }
-    font-semibold
-    text-gray-700
-    leading-tight
-  `}
->
-  {item.value}
-</div>
+          <div className="w-[42%] text-right">
+            <div className="text-[24px] font-semibold text-gray-700">
+              {item.value}
+            </div>
             {item.unit && (
               <div className="text-sm text-gray-500 mt-1">
                 {item.unit}
