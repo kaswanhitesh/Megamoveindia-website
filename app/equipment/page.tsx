@@ -1,14 +1,11 @@
 export default function Equipment() {
   const equipment = [
     { name: "Hydraulic Axle Lines", qty: "40 Axle Lines" },
-    { name: "Lowbed Trailers", qty: "18 Units" },
-    { name: "Prime Movers", qty: "12 Units" },
-    { name: "Truck Mounted Manlifts", qty: "2 Units" },
     { name: "Heavy Duty Pullers", qty: "4 Units" },
+    { name: "Lowbed Trailers", qty: "18 Units" },
+    { name: "Truck Mounted Manlifts/Aerial Lifts", qty: "2 Units" },
     { name: "Flatbed Trailers", qty: "10 Units" },
-    { name: "Escort Vehicles", qty: "6 Units" },
-    { name: "Hydraulic Jacks", qty: "20 Sets" },
-    { name: "Spreader Beams", qty: "Multiple Sizes" },
+    { name: "Heavy Duty Spacer HAV 15mtr", qty: "2 Units" },
     { name: "Lashing Equipment", qty: "In-house Inventory" },
     { name: "Warehousing Space", qty: "Available" },
     { name: "Project Handling Tools", qty: "Various" },
