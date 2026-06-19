@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 
 const cards = [
   {
@@ -28,6 +31,7 @@ const cards = [
 ];
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <main className="h-screen overflow-hidden bg-[#f7f7f7]">
       {/* Header */}
@@ -50,41 +54,13 @@ export default function Home() {
   </div>
 </div>
 
-        <button className="text-3xl text-gray-500 hover:text-black transition">
+        <button
+  onClick={() => setMenuOpen(true)}
+  className="text-3xl text-gray-500 hover:text-black transition"
+>
   ☰
 </button>
 
-<div className="fixed top-0 right-0 h-full w-[420px] bg-gray-700 text-white p-12">
-  <div className="space-y-8">
-
-    <div>
-      <h3 className="text-xl font-semibold mb-4">
-        SERVICES
-      </h3>
-
-      <div className="space-y-3 text-gray-200">
-        <p>Air Freight</p>
-        <p>Overland Transport</p>
-        <p>Project Forwarding Services</p>
-        <p>Logistics & Supply Chain Solutions</p>
-        <p>Factory Relocation</p>
-        <p>Transshipment</p>
-        <p>Transport Engineering Capabilities</p>
-        <p>Tailored Ocean Freight Solutions</p>
-      </div>
-    </div>
-
-    <div className="space-y-5 text-lg">
-      <p>Project Logistics</p>
-      <p>Heavy Lift & ODC</p>
-      <p>Rentals & Warehousing</p>
-      <p>Fleet</p>
-      <p>Case Studies</p>
-      <p>Contact Us</p>
-    </div>
-
-  </div>
-</div>
       </header>
 
       {/* Content */}
@@ -166,6 +142,49 @@ export default function Home() {
 
         </div>
       </section>
+    {menuOpen && (
+  <>
+    <div
+      className="fixed inset-0 bg-black/30 z-40"
+      onClick={() => setMenuOpen(false)}
+    />
+
+    <div className="fixed top-0 right-0 h-full w-[420px] bg-gray-700 text-white z-50 p-12 overflow-y-auto">
+
+      <button
+        onClick={() => setMenuOpen(false)}
+        className="absolute top-8 right-8 text-3xl"
+      >
+        ✕
+      </button>
+
+      <h2 className="text-3xl font-semibold mb-10">
+        SERVICES
+      </h2>
+
+      <div className="space-y-4 text-lg">
+        <p>Air Freight</p>
+        <p>Overland Transport</p>
+        <p>Project Forwarding Services</p>
+        <p>Logistics & Supply Chain Solutions</p>
+        <p>Factory Relocation</p>
+        <p>Transshipment</p>
+        <p>Transport Engineering Capabilities</p>
+        <p>Tailored Ocean Freight Solutions</p>
+
+        <hr className="my-8 border-gray-500" />
+
+        <p>Project Logistics</p>
+        <p>Heavy Lift & ODC</p>
+        <p>Rentals & Warehousing</p>
+        <p>Fleet</p>
+        <p>Case Studies</p>
+        <p>Contact Us</p>
+      </div>
+
+    </div>
+  </>
+)}
       <footer className="absolute bottom-0 left-0 right-0 border-t border-gray-300 bg-[#f7f7f7] px-16 py-2 text-sm text-gray-600 flex justify-between">
   <div>
     © Copyright 2026, Mega Move India Private Limited. All rights reserved.
