@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -13,12 +14,15 @@ export default function Header() {
 
         <div className="flex items-center gap-5">
 
-          <Image
-            src="/images/mega-move-logo.svg"
-            alt="Mega Move India"
-            width={90}
-            height={45}
-          />
+          <Link href="/">
+  <Image
+    src="/images/mega-move-logo.svg"
+    alt="Mega Move India"
+    width={90}
+    height={45}
+    className="cursor-pointer"
+  />
+</Link>
 
           <div className="ml-2">
             <p className="text-sm font-medium tracking-wide text-gray-600">
