@@ -189,9 +189,12 @@ export default function Header() {
             Careers
           </p>
 
-          <p className="cursor-pointer py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+          <a
+            href="/contact-us"
+            className="block py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300"
+          >
             Contact Us
-          </p>
+          </a>
 
         </div>
 
