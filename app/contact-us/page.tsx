@@ -6,14 +6,12 @@ import {
   FaFacebookF,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-
 export const metadata: Metadata = {
   title:
     "Contact Mega Move India | Project Logistics & Freight Forwarding",
   description:
     "Contact Mega Move India for project logistics, freight forwarding, heavy lift transportation, ODC cargo movement, equipment rentals and supply chain solutions.",
 };
-
 export default function ContactUs() {
   const offices = [
     {
@@ -38,141 +36,89 @@ export default function ContactUs() {
       phone: "+91 9867099970",
     },
   ];
-
   return (
     <main className="bg-[#f7f7f7]">
-
-      {/* HERO */}
-
       <section className="bg-[#232323] py-12">
         <h1 className="text-center text-white text-[52px] tracking-[10px] font-light">
           CONTACT US
         </h1>
       </section>
-
-      {/* FORM */}
-
       <section className="max-w-7xl mx-auto px-12 py-20">
-
         <h2 className="text-center text-[42px] font-light text-[#173f74] mb-12">
           Send Us An Enquiry
         </h2>
-
         <form className="space-y-8">
-
           <div className="grid grid-cols-2 gap-8">
-
             <input
               required
               type="text"
               placeholder="Name *"
               className="border border-gray-300 p-5 text-lg bg-white"
             />
-
             <input
               required
               type="text"
               placeholder="Phone Number *"
               className="border border-gray-300 p-5 text-lg bg-white"
             />
-
           </div>
-
           <div className="grid grid-cols-2 gap-8">
-
             <input
               required
               type="email"
               placeholder="Email Address *"
               className="border border-gray-300 p-5 text-lg bg-white"
             />
-
             <input
               type="text"
               placeholder="Company Name"
               className="border border-gray-300 p-5 text-lg bg-white"
             />
-
           </div>
-
           <textarea
             required
             rows={8}
             placeholder="Remarks *"
             className="border border-gray-300 p-5 text-lg bg-white w-full"
           />
-
           <div className="text-center">
-
             <button
               type="submit"
-              className="
-                bg-[#c41e1e]
-                text-white
-                px-14
-                py-4
-                text-xl
-                font-semibold
-                rounded
-              "
+              className="bg-[#c41e1e] text-white px-14 py-4 text-xl font-semibold rounded"
             >
               Submit Enquiry
             </button>
-
           </div>
-
         </form>
-
       </section>
-
-      {/* OFFICES */}
-
       <section className="py-20">
-
         <div className="bg-[#232323] py-10 mb-20">
-
           <h2 className="text-center text-white text-[44px] tracking-[8px] font-light">
             KEY OFFICES
           </h2>
-
         </div>
-
         <div className="max-w-7xl mx-auto px-12">
-
           <div className="grid grid-cols-3 gap-16">
-
             {offices.map((office, index) => (
               <div key={index}>
-
                 <h3 className="text-[30px] text-[#0b8db2] mb-6">
                   {office.city}
                 </h3>
-
                 <p className="text-gray-700 leading-8">
                   {office.address}
                 </p>
-
                 <p className="mt-4">
                   <strong>Email:</strong> {office.email}
                 </p>
-
                 <p>
                   <strong>Mobile:</strong> {office.phone}
                 </p>
-
               </div>
             ))}
-
           </div>
-
         </div>
-
       </section>
-
-      {/* GOOGLE MAP */}
-
       <section className="max-w-[1800px] mx-auto px-6 pb-20">
-
         <iframe
           src="https://www.google.com/maps?q=Andheri%20East%20Mumbai&output=embed"
           width="100%"
@@ -180,59 +126,51 @@ export default function ContactUs() {
           loading="lazy"
           className="border-0"
         />
-
       </section>
-
-      {/* SOCIAL */}
-
       <section className="bg-[#2f3d57] py-12">
-
         <div className="max-w-7xl mx-auto flex justify-center gap-5">
-
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/megamoveindia/"
             target="_blank"
-            className="w-16 h-16 bg-white/10 flex items-center justify-center text-white text-2xl"
+            rel="noopener noreferrer"
+            className="w-16 h-16 bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center justify-center text-white text-2xl"
           >
             <FaInstagram />
           </a>
-
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/company/megamoveindia"
             target="_blank"
-            className="w-16 h-16 bg-white/10 flex items-center justify-center text-white text-2xl"
+            rel="noopener noreferrer"
+            className="w-16 h-16 bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center justify-center text-white text-2xl"
           >
             <FaLinkedinIn />
           </a>
-
           <a
             href="https://wa.me/919321499970"
             target="_blank"
-            className="w-16 h-16 bg-white/10 flex items-center justify-center text-white text-2xl"
+            rel="noopener noreferrer"
+            className="w-16 h-16 bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center justify-center text-white text-2xl"
           >
             <FaWhatsapp />
           </a>
-
           <a
             href="https://x.com"
             target="_blank"
-            className="w-16 h-16 bg-white/10 flex items-center justify-center text-white text-2xl"
+            rel="noopener noreferrer"
+            className="w-16 h-16 bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center justify-center text-white text-2xl"
           >
             <FaXTwitter />
           </a>
-
           <a
             href="https://facebook.com"
             target="_blank"
-            className="w-16 h-16 bg-white/10 flex items-center justify-center text-white text-2xl"
+            rel="noopener noreferrer"
+            className="w-16 h-16 bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center justify-center text-white text-2xl"
           >
             <FaFacebookF />
           </a>
-
         </div>
-
       </section>
-
     </main>
   );
 }
