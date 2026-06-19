@@ -98,7 +98,7 @@ export default function Home() {
                   FCL | LCL | Breakbulk
                 </p>
               </div>
-            </div>
+            </a>
 
             <a
               href="#"
