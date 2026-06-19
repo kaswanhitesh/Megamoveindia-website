@@ -116,9 +116,12 @@ export default function Header() {
                   Overland Transport
                 </a>
 
-                <p className="py-3 px-16">
+                <a
+                  href="/services/project-forwarding"
+                  className="block py-3 px-16 hover:bg-white hover:text-gray-700 transition-all duration-300"
+                >
                   Project Forwarding Services
-                </p>
+                </a>
 
                 <p className="py-3 px-16">
                   Logistics & Supply Chain Solutions
