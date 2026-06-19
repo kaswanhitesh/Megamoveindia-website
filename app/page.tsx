@@ -76,7 +76,7 @@ export default function Home() {
             </span>
           </h1>
 
-          <p className="mt-14 text-[15px] leading-2.2 text-gray-700">
+          <p className="mt-14 text-[15px] leading-[2.2] text-gray-700">
           With a legacy in heavy haulage and over-dimensional cargo
           transportation dating back to 2005, Mega Move India was
           incorporated in 2025 to expand its expertise into global
@@ -84,7 +84,7 @@ export default function Home() {
           transportation and equipment rentals.
           </p>
 
-          <p className="mt-14 text-[15px] leading-2.2 text-gray-700">
+          <p className="mt-14 text-[15px] leading-[2.2] text-gray-700">
           Driven by specialized equipment, experienced personnel and
           a commitment to operational excellence, we provide
           end-to-end logistics solutions for the world's most
@@ -153,7 +153,7 @@ export default function Home() {
 />
 
     <div
-  className={`fixed top-0 right-0 h-full w-[420px] bg-gray-700 text-white z-50 p-12 overflow-y-auto transition-transform duration-700 ease-out ${
+  className={`fixed top-0 right-0 h-full w-[420px] bg-gray-700 text-white z-50 overflow-y-auto transition-transform duration-700 ease-out ${
     menuOpen
       ? "translate-x-0"
       : "translate-x-full"
@@ -166,11 +166,11 @@ export default function Home() {
         ✕
       </button>
 
-      <h2 className="text-3xl font-semibold mb-10">
-        SERVICES
+      <h2 className="text-3xl font-semibold px-12 pt-12 mb-8">
+       SERVICES
       </h2>
 
-      <div className="space-y-5 text-lg text-gray-200">
+      <div className="text-lg text-gray-200">
           <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
           Air Freight
         </p>
@@ -198,12 +198,24 @@ export default function Home() {
 
         <hr className="my-8 border-gray-500" />
 
-        <p>Project Logistics</p>
-        <p>Heavy Lift & ODC</p>
-        <p>Rentals & Warehousing</p>
-        <p>Fleet</p>
-        <p>Case Studies</p>
-        <p>Contact Us</p>
+        <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+          Project Logistics
+        </p>
+        <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+          Heavy Lift & ODC
+        </p>
+        <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+          Rentals & Warehousing
+        </p>
+        <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+          Fleet
+        </p>
+        <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+          Case Studies
+        </p>
+        <p className="cursor-pointer py-4 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+          Contact Us
+        </p>
       </div>
 
     </div>
