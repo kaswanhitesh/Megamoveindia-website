@@ -1,160 +1,56 @@
+"use client";
+
 export default function CaseStudies() {
+
   const projects = [
     {
       title: "250 MT Transformer Transportation",
-      image:
-        "https://images.unsplash.com/photo-1504307651254-35680f356dfd",
+      image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd",
     },
     {
       title: "Breakbulk Shipment – China to India",
-      image:
-        "https://images.unsplash.com/photo-1494412651409-8963ce7935a7",
+      image: "https://images.unsplash.com/photo-1494412651409-8963ce7935a7",
     },
     {
       title: "Factory Relocation Project",
-      image:
-        "https://images.unsplash.com/photo-1517048676732-d65bc937f952",
+      image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952",
     },
     {
       title: "Heavy Lift Equipment Movement",
-      image:
-        "https://images.unsplash.com/photo-1519003722824-194d4455a60c",
+      image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c",
     },
     {
       title: "Wind Energy Logistics",
-      image:
-        "https://images.unsplash.com/photo-1466611653911-95081537e5b7",
+      image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7",
     },
     {
       title: "Warehouse & Equipment Rental Support",
-      image:
-        "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
+      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
     },
   ];
 
-  {/* NETWORKS */}
+  const networks = [
+    "WCA",
+    "GPLN",
+    "PCN",
+    "OOG",
+    "XLP",
+    "MTO",
+    "SLA",
+  ];
 
-<div className="mt-24">
-
-  <h2 className="text-center text-[42px] font-light mb-10">
-
-    Our Networks
-
-  </h2>
-
-  <div className="flex gap-6 overflow-x-auto pb-4">
-
-    {networks.map((network, i) => (
-
-      <div
-
-        key={i}
-
-        className="
-
-          min-w-[220px]
-
-          h-[120px]
-
-          bg-white
-
-          rounded-xl
-
-          flex
-
-          items-center
-
-          justify-center
-
-          shadow-sm
-
-          overflow-hidden
-
-          cursor-pointer
-
-        "
-
-      >
-
-        <img
-
-          src={`/networks/${network.toLowerCase()}.png`}
-
-          alt={network}
-
-          className="
-
-            max-h-[70px]
-
-            object-contain
-
-            grayscale
-
-            hover:grayscale-0
-
-            transition-all
-
-            duration-700
-
-          "
-
-        />
-
-      </div>
-
-    ))}
-
-  </div>
-
-</div>
-
-  {/* CUSTOMERS */}
-
-<div className="mt-20 mb-20">
-
-  <h2 className="text-center text-[42px] font-light mb-10">
-    Our Customers
-  </h2>
-
-  <div className="flex gap-6 overflow-x-auto pb-4">
-
-    {customers.map((customer, i) => (
-      <div
-        key={i}
-        className="
-          min-w-[220px]
-          h-[120px]
-          bg-white
-          rounded-xl
-          flex
-          items-center
-          justify-center
-          shadow-sm
-          overflow-hidden
-          cursor-pointer
-        "
-      >
-        <img
-          src={`/customers/${customer.toLowerCase()}.png`}
-          alt={customer}
-          className="
-            max-h-[70px]
-            object-contain
-            grayscale
-            hover:grayscale-0
-            transition-all
-            duration-700
-          "
-        />
-      </div>
-    ))}
-
-  </div>
-
-</div>
+  const customers = [
+    "ADANI",
+    "TATA",
+    "JSW",
+    "ABB",
+    "SIEMENS",
+    "L&T",
+    "RELIANCE",
+  ];
 
   return (
-    <main className="min-h-screen bg-[#f7f7f7]">
+    <main className="min-h-screen bg-[#f7f7f7] overflow-hidden">
 
       <div className="max-w-7xl mx-auto px-16 py-16">
 
@@ -216,28 +112,36 @@ export default function CaseStudies() {
             Our Networks
           </h2>
 
-          <div className="flex gap-6 overflow-x-auto pb-4">
+          <div className="overflow-hidden">
 
-            {networks.map((network, i) => (
-              <div
-                key={i}
-                className="
-                  min-w-[220px]
-                  h-[120px]
-                  bg-white
-                  rounded-xl
-                  flex
-                  items-center
-                  justify-center
-                  shadow-sm
-                  text-3xl
-                  font-bold
-                  text-gray-600
-                "
-              >
-                {network}
-              </div>
-            ))}
+            <div className="flex gap-6 animate-marquee w-max">
+
+              {[...networks, ...networks].map((network, i) => (
+                <div
+                  key={i}
+                  className="
+                    w-[220px]
+                    h-[120px]
+                    bg-white
+                    rounded-xl
+                    flex
+                    items-center
+                    justify-center
+                    shadow-sm
+                    text-3xl
+                    font-bold
+                    text-gray-600
+                    grayscale
+                    hover:grayscale-0
+                    transition-all
+                    duration-700
+                  "
+                >
+                  {network}
+                </div>
+              ))}
+
+            </div>
 
           </div>
 
@@ -245,34 +149,42 @@ export default function CaseStudies() {
 
         {/* CUSTOMERS */}
 
-        <div className="mt-20 mb-20">
+        <div className="mt-24 mb-24">
 
           <h2 className="text-center text-[42px] font-light mb-10">
             Our Customers
           </h2>
 
-          <div className="flex gap-6 overflow-x-auto pb-4">
+          <div className="overflow-hidden">
 
-            {customers.map((customer, i) => (
-              <div
-                key={i}
-                className="
-                  min-w-[220px]
-                  h-[120px]
-                  bg-white
-                  rounded-xl
-                  flex
-                  items-center
-                  justify-center
-                  shadow-sm
-                  text-3xl
-                  font-bold
-                  text-gray-600
-                "
-              >
-                {customer}
-              </div>
-            ))}
+            <div className="flex gap-6 animate-marquee-reverse w-max">
+
+              {[...customers, ...customers].map((customer, i) => (
+                <div
+                  key={i}
+                  className="
+                    w-[220px]
+                    h-[120px]
+                    bg-white
+                    rounded-xl
+                    flex
+                    items-center
+                    justify-center
+                    shadow-sm
+                    text-3xl
+                    font-bold
+                    text-gray-600
+                    grayscale
+                    hover:grayscale-0
+                    transition-all
+                    duration-700
+                  "
+                >
+                  {customer}
+                </div>
+              ))}
+
+            </div>
 
           </div>
 
