@@ -56,7 +56,7 @@ export default function Home() {
 
         <button
   onClick={() => setMenuOpen(true)}
-  className="text-3xl text-gray-500 hover:text-black transition"
+  className="cursor-pointer text-3xl text-gray-500 hover:text-black transition"
 >
   ☰
 </button>
@@ -149,11 +149,11 @@ export default function Home() {
       onClick={() => setMenuOpen(false)}
     />
 
-    <div className="fixed top-0 right-0 h-full w-[420px] bg-gray-700 text-white z-50 p-12 overflow-y-auto">
+    <div className="fixed top-0 right-0 h-full w-[420px] bg-gray-700 text-white z-50 p-12 overflow-y-auto transition-transform duration-500 ease-out translate-x-0">
 
       <button
         onClick={() => setMenuOpen(false)}
-        className="absolute top-8 right-8 text-3xl"
+          className="absolute top-8 right-8 text-3xl cursor-pointer hover:opacity-70 transition"
       >
         ✕
       </button>
