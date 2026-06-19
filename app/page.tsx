@@ -1,147 +1,130 @@
 import Image from "next/image";
 
+const cards = [
+  {
+    title: "AIR",
+    subtitle: "Global Air Cargo Solutions",
+    image:
+      "https://images.unsplash.com/photo-1436491865332-7a61a109cc05",
+  },
+  {
+    title: "OCEAN",
+    subtitle: "FCL | LCL | Breakbulk",
+    image:
+      "https://images.unsplash.com/photo-1494412651409-8963ce7935a7",
+  },
+  {
+    title: "LAND",
+    subtitle: "ODC | Heavy Lift | Trailers",
+    image:
+      "https://images.unsplash.com/photo-1506521781263-d8422e82f27a",
+  },
+  {
+    title: "RENTALS",
+    subtitle: "Warehousing & Equipment",
+    image:
+      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
+  },
+];
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#f5f5f5]">
+    <main className="h-screen overflow-hidden bg-[#f3f3f3]">
       {/* Header */}
-      <header className="flex items-center justify-between px-16 py-10 border-b border-gray-300">
+      <header className="h-[110px] border-b border-gray-300 flex items-center justify-between px-16">
         <Image
           src="/images/mega-move-logo.svg"
           alt="Mega Move India"
-          width={180}
-          height={90}
+          width={160}
+          height={80}
         />
 
-        <button className="text-4xl text-gray-700">
+        <button className="text-4xl text-gray-600">
           ☰
         </button>
       </header>
 
-      {/* Main Section */}
-      <section className="max-w-[1400px] mx-auto px-12 py-12">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+      {/* Content */}
+      <section className="h-[calc(100vh-110px)] flex px-16 py-10 gap-10">
 
-          {/* Left Content */}
-          <div className="pt-6">
-            <h1 className="text-6xl font-light mb-8">
-              Welcome to
-              <br />
-              <span className="font-semibold">
-                Mega Move India
-              </span>
-            </h1>
+        {/* Left Side */}
+        <div className="w-[38%] flex flex-col justify-center">
+          <h1 className="text-6xl leading-tight font-light">
+            Welcome to
+            <br />
+            <span className="font-bold">
+              Mega Move India
+            </span>
+          </h1>
 
-            <p className="text-xl text-gray-700 leading-10">
-              Founded in 2025, Mega Move India Private Limited
-              specializes in project logistics, heavy lift
-              transportation, over-dimensional cargo movement,
-              freight forwarding and equipment rentals.
-            </p>
+          <p className="mt-10 text-xl leading-10 text-gray-700">
+            Founded in 2025, Mega Move India specializes in
+            project logistics, heavy lift transportation,
+            freight forwarding and equipment rentals.
+          </p>
 
-            <p className="mt-8 text-xl text-gray-700 leading-10">
-              Backed by an in-house fleet of 18 lowbed trailers,
-              40 lines of hydraulic axles, 2 manlifts and 4 pullers,
-              we provide reliable logistics solutions across India
-              and international markets.
-            </p>
+          <p className="mt-8 text-xl leading-10 text-gray-700">
+            Backed by 18 lowbed trailers, 40 hydraulic axle lines,
+            2 manlifts and 4 pullers.
+          </p>
 
-            <p className="mt-10 text-2xl font-semibold">
+          <div className="mt-12">
+            <p className="text-3xl font-bold">
               Moving The Immovable.
-              <br />
+            </p>
+            <p className="text-3xl font-bold">
               Delivering The Impossible.
             </p>
-
-            <div className="mt-12 space-y-3">
-              <p><strong>Phone:</strong> +91 93214 99970</p>
-              <p><strong>Email:</strong> info@megamoveindia.com</p>
-            </div>
           </div>
+        </div>
 
-          {/* Right Cards */}
-          <div className="grid grid-cols-2 gap-4">
+        {/* Right Side */}
+        <div className="w-[62%] flex gap-3">
 
+          {cards.map((card) => (
             <a
+              key={card.title}
               href="#"
-              className="relative h-[520px] overflow-hidden group"
+              className="
+                group
+                relative
+                flex-1
+                overflow-hidden
+                transition-all
+                duration-700
+                hover:flex-[2]
+              "
             >
               <img
-                src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05"
-                alt="Air Freight"
-                className="h-full w-full object-cover group-hover:scale-110 transition duration-500"
+                src={card.image}
+                alt={card.title}
+                className="
+                  absolute
+                  inset-0
+                  h-full
+                  w-full
+                  object-cover
+                  grayscale
+                  group-hover:grayscale-0
+                  transition-all
+                  duration-700
+                "
               />
-              <div className="absolute inset-0 bg-black/40"></div>
-              <div className="absolute bottom-8 left-6 text-white">
-                <h2 className="text-3xl font-bold">
-                  AIR FREIGHT
+
+              <div className="absolute inset-0 bg-black/40" />
+
+              <div className="absolute bottom-10 left-6 text-white">
+                <h2 className="text-4xl font-bold">
+                  {card.title}
                 </h2>
-                <p className="mt-3">
-                  Global Air Cargo Solutions
+
+                <p className="mt-3 text-sm tracking-wider">
+                  {card.subtitle}
                 </p>
               </div>
             </a>
+          ))}
 
-            <a
-              href="#"
-              className="relative h-[520px] overflow-hidden group"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1565891741441-64926e441838"
-                alt="Ocean Freight"
-                className="h-full w-full object-cover group-hover:scale-110 transition duration-500"
-              />
-              <div className="absolute inset-0 bg-black/40"></div>
-              <div className="absolute bottom-8 left-6 text-white">
-                <h2 className="text-3xl font-bold">
-                  OCEAN FREIGHT
-                </h2>
-                <p className="mt-3">
-                  FCL | LCL | Breakbulk
-                </p>
-              </div>
-            </a>
-
-            <a
-              href="#"
-              className="relative h-[520px] overflow-hidden group"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d"
-                alt="Land Transport"
-                className="h-full w-full object-cover group-hover:scale-110 transition duration-500"
-              />
-              <div className="absolute inset-0 bg-black/40"></div>
-              <div className="absolute bottom-8 left-6 text-white">
-                <h2 className="text-3xl font-bold">
-                  LAND
-                </h2>
-                <p className="mt-3">
-                  ODC | Heavy Lift | Trailers
-                </p>
-              </div>
-            </a>
-
-            <a
-              href="#"
-              className="relative h-[520px] overflow-hidden group"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1586528116493-5e6e6a3d6e35"
-                alt="Rentals"
-                className="h-full w-full object-cover group-hover:scale-110 transition duration-500"
-              />
-              <div className="absolute inset-0 bg-black/40"></div>
-              <div className="absolute bottom-8 left-6 text-white">
-                <h2 className="text-3xl font-bold">
-                  RENTALS &
-                  WAREHOUSING
-                </h2>
-                <p className="mt-3">
-                  Equipment & Storage Solutions
-                </p>
-              </div>
-            </a>
-
-          </div>
         </div>
       </section>
     </main>
