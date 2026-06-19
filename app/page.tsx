@@ -264,7 +264,9 @@ export default function Home() {
     <span>|</span>
     <a href="#">Terms & Conditions</a>
     <span>|</span>
-    <a href="#">Privacy Policy</a>
+    <a href="/privacy-policy">
+  Privacy Policy
+</a>
   </div>
 </footer>
     </main>
