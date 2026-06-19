@@ -1,7 +1,6 @@
 const cards = [
   {
     title: "AIR",
-    subtitle: ,
     description:
       "Specialized air freight solutions for urgent, high-value and time-critical cargo movements. Through our global airline partnerships and logistics network, we provide reliable import, export, charter and door-to-door transportation services to major destinations worldwide.",
     image:
@@ -10,7 +9,6 @@ const cards = [
 
   {
     title: "OCEAN",
-    subtitle: ,
     description:
       "Comprehensive ocean freight services covering FCL, LCL, breakbulk and project cargo shipments. Our experienced team manages international freight movements through strategic carrier partnerships, ensuring efficient, secure and cost-effective transportation across global trade routes.",
     image:
@@ -19,7 +17,6 @@ const cards = [
 
   {
     title: "LAND",
-    subtitle:,
     description:
       "Heavy haulage, over-dimensional cargo transportation and project logistics supported by hydraulic axle trailers, lowbed trailers and specialized equipment. We execute complex cargo movements safely and efficiently across India for industrial, infrastructure and energy projects.",
     image:
@@ -28,7 +25,6 @@ const cards = [
 
   {
     title: "RENTALS",
-    subtitle: ,
     description:
       "Equipment rental and warehousing solutions designed to support project logistics and industrial operations. Our capabilities include manlifts, heavy-duty pullers, storage facilities, cargo handling support and customized solutions for temporary and long-term project requirements.",
     image:
@@ -112,10 +108,6 @@ export default function Home() {
   <h2 className="text-[22px] font-bold leading-tight">
     {card.title}
   </h2>
-
-  <p className="mt-2 text-sm tracking-wider">
-    {card.subtitle}
-  </p>
 
   <div
     className="
