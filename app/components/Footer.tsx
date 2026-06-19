@@ -8,7 +8,9 @@ export default function Footer() {
       <div className="space-x-4">
         <a href="#">Site Map</a>
         <span>|</span>
-        <a href="#">Terms & Conditions</a>
+        <a href="/terms-and-conditions">
+          Terms & Conditions
+        </a>
         <span>|</span>
         <a href="/privacy-policy">
           Privacy Policy
