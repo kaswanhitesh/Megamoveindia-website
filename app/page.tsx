@@ -152,45 +152,24 @@ export default function Home() {
 
       {[
         {
-          icon: "/images/icons/oil-gas.png",
-          title: "Oil & Gas",
+          icon: "/images/icons/icon_industrialplants.jpeg",
+          title: "Industrial Plants and Projects",
         },
         {
-          icon: "/images/icons/infrastructure.png",
+          icon: "/images/icons/icon_infrastructure.jpeg",
           title: "Infrastructure",
         },
         {
-          icon: "/images/icons/power-energy.png",
-          title: "Power & Energy",
-        },
-        {
-          icon: "/images/icons/mining.png",
+          icon: "/images/icons/icon_metalandmining.jpeg",
           title: "Metal & Mining",
         },
         {
-          icon: "/images/icons/industrial.png",
-          title: "Industrial Plants & Projects",
-        },
-
-        {
-          icon: "/images/icons/oil-gas.png",
-          title: "Oil & Gas",
+          icon: "/images/icons/icon_oilandgas.png",
+          title: "Oil and Gas",
         },
         {
-          icon: "/images/icons/infrastructure.png",
-          title: "Infrastructure",
-        },
-        {
-          icon: "/images/icons/power-energy.png",
-          title: "Power & Energy",
-        },
-        {
-          icon: "/images/icons/mining.png",
-          title: "Metal & Mining",
-        },
-        {
-          icon: "/images/icons/industrial.png",
-          title: "Industrial Plants & Projects",
+          icon: "/images/icons/icon_power and energy.jpeg",
+          title: "Power and Energy",
         },
       ].map((item, index) => (
         <div
