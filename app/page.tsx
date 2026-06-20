@@ -23,7 +23,7 @@ const cards = [
   description:
     "Heavy haulage, over-dimensional cargo transportation and project logistics supported by hydraulic axle trailers, lowbed trailers and specialized equipment. We execute complex cargo movements safely and efficiently across India for industrial, infrastructure and energy projects.",
   image:
-    "https://images.unsplash.com/photo-1506521781263-d8422e82f27a",
+    "images/LandTransportCardHeroImage.png",
 },
 
   {
