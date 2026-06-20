@@ -144,6 +144,76 @@ export default function Home() {
 
       </section>
 
+      <section className="py-10 bg-[#f7f7f7] border-t border-gray-200 overflow-hidden">
+
+  <div className="marquee">
+
+    <div className="marquee-content">
+
+      {[
+        {
+          icon: "/images/icons/oil-gas.png",
+          title: "Oil & Gas",
+        },
+        {
+          icon: "/images/icons/infrastructure.png",
+          title: "Infrastructure",
+        },
+        {
+          icon: "/images/icons/power-energy.png",
+          title: "Power & Energy",
+        },
+        {
+          icon: "/images/icons/mining.png",
+          title: "Metal & Mining",
+        },
+        {
+          icon: "/images/icons/industrial.png",
+          title: "Industrial Plants & Projects",
+        },
+
+        {
+          icon: "/images/icons/oil-gas.png",
+          title: "Oil & Gas",
+        },
+        {
+          icon: "/images/icons/infrastructure.png",
+          title: "Infrastructure",
+        },
+        {
+          icon: "/images/icons/power-energy.png",
+          title: "Power & Energy",
+        },
+        {
+          icon: "/images/icons/mining.png",
+          title: "Metal & Mining",
+        },
+        {
+          icon: "/images/icons/industrial.png",
+          title: "Industrial Plants & Projects",
+        },
+      ].map((item, index) => (
+        <div
+          key={index}
+          className="industry-card"
+        >
+          <img
+            src={item.icon}
+            alt={item.title}
+            className="w-16 h-16 mx-auto mb-4 object-contain"
+          />
+
+          <h3 className="text-xl font-medium text-center">
+            {item.title}
+          </h3>
+        </div>
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
     </main>
   );
 }
