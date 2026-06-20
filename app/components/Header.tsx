@@ -110,6 +110,13 @@ export default function Header() {
                 </a>
 
                 <a
+                  href="/services/ocean-freight"
+                  className="block py-3 px-16 hover:bg-white hover:text-gray-700 transition-all duration-300"
+                >
+                  Ocean Freight
+               </a>
+
+                <a
                   href="/services/land-transport"
                   className="block py-3 px-16 hover:bg-white hover:text-gray-700 transition-all duration-300"
                 >
@@ -150,13 +157,6 @@ export default function Header() {
                  >
                   Transport Engineering Capabilities
                  </a>
-                
-                <a
-                  href="/services/ocean-freight"
-                  className="block py-3 px-16 hover:bg-white hover:text-gray-700 transition-all duration-300"
-                >
-                  Ocean Freight
-               </a>
 
               </div>
             )}
@@ -174,7 +174,7 @@ export default function Header() {
            href="/equipment"
            className="block cursor-pointer py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300"
            >
-            Equipment
+            In-House Equipments
           </a>
 
           <p className="cursor-pointer py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
@@ -182,7 +182,11 @@ export default function Header() {
           </p>
 
           <p className="cursor-pointer py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
-            Conditions
+            Company News
+          </p>
+
+           <p className="cursor-pointer py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+            Our History
           </p>
 
           <p className="cursor-pointer py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
