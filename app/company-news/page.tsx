@@ -32,32 +32,27 @@ export default function CompanyNews() {
 
   return (
     <main>
-
       {/* HERO */}
 
       <section className="relative h-[500px]">
-
         <img
           src="/images/company-news-banner.jpg"
+          alt="Company News"
           className="w-full h-full object-cover"
         />
 
         <div className="absolute inset-0 bg-black/40" />
 
         <div className="absolute inset-0 flex items-center justify-center">
-
           <h1 className="text-white text-6xl font-light">
             Company News
           </h1>
-
         </div>
-
       </section>
 
       {/* NEWS SLIDER */}
 
       <section className="py-16 overflow-hidden bg-[#f7f7f7]">
-
         <div className="news-marquee">
 
           <div className="news-marquee-content animate-news">
@@ -89,18 +84,16 @@ export default function CompanyNews() {
                     {item.excerpt}
                   </p>
 
-               </a>
+                </div>
 
-              </div>
+              </a>
 
             ))}
 
           </div>
 
         </div>
-
       </section>
-
     </main>
   );
 }
