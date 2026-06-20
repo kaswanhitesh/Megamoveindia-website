@@ -64,9 +64,10 @@ export default function CompanyNews() {
 
             {[...news, ...news].map((item, index) => (
 
-              <div
+              <a
                 key={index}
-                className="news-card"
+                href={`/company-news/${index + 1}`}
+                className="news-card block"
               >
                 <img
                   src={item.image}
@@ -88,7 +89,7 @@ export default function CompanyNews() {
                     {item.excerpt}
                   </p>
 
-                </div>
+               </a>
 
               </div>
 
