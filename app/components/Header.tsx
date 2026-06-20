@@ -188,13 +188,19 @@ export default function Header() {
             Company News
           </a>
 
-           <p className="cursor-pointer py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
-            Our History
-          </p>
+           <a
+             href="/history"
+             className="block py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300"
+           >
+             Our History
+           </a>
 
-          <p className="cursor-pointer py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
-            Careers
-          </p>
+          <a
+             href="/careers"
+             className="block py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300"
+          >
+             Careers
+          </a>
 
           <a
             href="/contact-us"
