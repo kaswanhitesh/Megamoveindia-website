@@ -44,9 +44,9 @@ export default function Home() {
 
         {/* Left Side */}
 
-        <div className="w-[40%] flex flex-col justify-start pt-12">
+        <div className="w-[38%] flex flex-col justify-start pt-6">
 
-          <h1 className="text-[52px] leading-[1.2] font-light tracking-wide">
+          <h1 className="text-[42px] leading-[1.1.15] font-light tracking-wide">
             Welcome to
             <br />
             <span className="font-semibold">
@@ -54,7 +54,7 @@ export default function Home() {
             </span>
           </h1>
 
-          <p className="mt-14 text-[15px] leading-[2.2] text-gray-700">
+          <p className="mt-8 text-[15px] leading-[1.9] text-gray-700">
             With a legacy in heavy haulage and over-dimensional cargo
             transportation dating back to 2005, Mega Move India was
             incorporated in 2025 to expand its expertise into global
@@ -62,7 +62,7 @@ export default function Home() {
             transportation and equipment rentals.
           </p>
 
-          <p className="mt-4 text-[15px] leading-[2.2] text-gray-700">
+          <p className="mt-3 text-[15px] leading-[1.9] text-gray-700">
             Driven by specialized equipment, experienced personnel and
             a commitment to operational excellence, we provide
             end-to-end logistics solutions for the world's most
