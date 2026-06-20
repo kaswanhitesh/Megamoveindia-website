@@ -4,27 +4,42 @@ export default function CaseStudies() {
 
   const projects = [
     {
-      title: "250 MT Transformer Transportation",
+      title: "National Defence Project",
       image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd",
     },
     {
-      title: "Breakbulk Shipment – China to India",
+      title: "225MT Used Machinery Import",
       image: "https://images.unsplash.com/photo-1494412651409-8963ce7935a7",
     },
     {
-      title: "Factory Relocation Project",
+      title: "Factory Relocation: Germany To India",
       image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952",
     },
     {
-      title: "Heavy Lift Equipment Movement",
+      title: "70MT Heat Condenser Export: Ex Kattupalli to Santos Brazil ",
       image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c",
     },
     {
-      title: "Wind Energy Logistics",
+      title: "In-Land Transportation: 100MT Heat Exchanger",
       image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7",
     },
     {
-      title: "Warehouse & Equipment Rental Support",
+      title: "Chemical Storage Tanks: Ex-Mumbai To Italy",
+      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
+    },
+
+    {
+      title: "8nos Used Oil X-Ray Mahines Import: Ex-Hamburg to Mumbai Port ",
+      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
+    },
+
+    {
+      title: "35M EOT Crane Export: Ex-NSA to Houston,USA",
+      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
+    },
+
+    {
+      title: "Chemical Storage Tanks: Ex-Mumbai To Italy",
       image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
     },
   ];
