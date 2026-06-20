@@ -41,3 +41,25 @@ body {
 .animate-marquee-reverse {
   animation: marquee 25s linear infinite reverse;
 }
+.marquee {
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee-content {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+
+.industry-card {
+  width: 260px;
+  min-width: 260px;
+  background: white;
+  padding: 30px 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
