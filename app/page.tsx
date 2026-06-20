@@ -148,7 +148,7 @@ export default function Home() {
 
   <div className="marquee">
 
-    <div className="marquee-content">
+    <div className="marquee-content animate-marquee">
 
       {[
         {
