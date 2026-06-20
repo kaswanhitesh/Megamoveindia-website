@@ -113,17 +113,14 @@ export default function ContactUs() {
             KEY OFFICES
           </h2>
         </div>
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="grid grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto px-12">
+          <div className="grid grid-cols-3 gap-16">
             {offices.map((office, index) => (
-              <div
-                key={index}
-                className="bg-white p-8 shadow-sm"
-              >
-                <h3 className="text-[24px] text-[#0b8db2] mb-4">
+              <div key={index}>
+                <h3 className="text-[30px] text-[#0b8db2] mb-6">
                   {office.city}
                 </h3>
-                <p className="text-gray-700 text-[15px] leading-7">
+                <p className="text-gray-700 leading-8">
                   {office.address}
                 </p>
                 <p className="mt-4">
