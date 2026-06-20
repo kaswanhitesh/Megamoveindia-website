@@ -108,8 +108,8 @@ export default function ContactUs() {
       </section>
       {/* KEY OFFICES */}
       <section className="py-6">
-        <div className="bg-[#232323] py-6 mb-8">
-          <h2 className="text-center text-white text-[44px] tracking-[8px] font-light">
+        <div className="bg-[#232323] py-4 mb-10">
+          <h2 className="text-center text-white text-[36px] tracking-[6px] font-light">
             KEY OFFICES
           </h2>
         </div>
