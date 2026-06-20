@@ -73,7 +73,7 @@ export default function Home() {
 
         {/* Right Side */}
 
-        <div className="w-[60%] flex gap-[4px] h-[500px]">
+        <div className="w-[60%] flex gap-[4px] h-[400px]">
 
           {cards.map((card) => (
             <a
@@ -145,14 +145,6 @@ export default function Home() {
       </section>
 
       <section className="pt-0 pb-8 bg-[#f7f7f7] border-t border-gray-200 overflow-hidden">
-
-  <div className="text-center mb-6">
-
-    <h2 className="text-[42px] font-light text-[#173f74]">
-      Industries We Serve
-    </h2>
-
-  </div>
 
   <div className="text-center mb-8">
 
