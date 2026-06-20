@@ -45,7 +45,7 @@ export default function ContactUs() {
         </h1>
       </section>
       {/* MAP + ENQUIRY */}
-      <section className="max-w-7xl mx-auto px-12 py-20">
+      <section className="max-w-7xl mx-auto px-12 py-6">
         <div className="flex gap-8 items-stretch">
           {/* MAP */}
           <div className="w-[55%] flex flex-col">
@@ -107,8 +107,8 @@ export default function ContactUs() {
         </div>
       </section>
       {/* KEY OFFICES */}
-      <section className="py-20">
-        <div className="bg-[#232323] py-10 mb-20">
+      <section className="py-6">
+        <div className="bg-[#232323] py-6 mb-8">
           <h2 className="text-center text-white text-[44px] tracking-[8px] font-light">
             KEY OFFICES
           </h2>
