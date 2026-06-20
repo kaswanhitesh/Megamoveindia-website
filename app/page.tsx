@@ -14,7 +14,7 @@ const cards = [
     description:
       "Comprehensive ocean freight services covering FCL, LCL, breakbulk and project cargo shipments. Our experienced team manages international freight movements through strategic carrier partnerships, ensuring efficient, secure and cost-effective transportation across global trade routes.",
     image:
-      "https://images.unsplash.com/photo-1494412651409-8963ce7935a7",
+      "images/OceanfreightHeroCardImage.png",
   },
 
   {
