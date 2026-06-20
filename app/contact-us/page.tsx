@@ -45,21 +45,21 @@ export default function ContactUs() {
         </h1>
       </section>
       {/* MAP + ENQUIRY */}
-      <section className="max-w-[1800px] mx-auto px-12 py-20">
-        <div className="flex gap-12 items-stretch">
+      <section className="max-w-7xl mx-auto px-12 py-20">
+        <div className="flex gap-8 items-start">
           {/* MAP */}
-          <div className="w-1/2">
+          <div className="w-[55%]">
             <iframe
               src="https://www.google.com/maps?q=Andheri%20East%20Mumbai&output=embed"
               width="100%"
               height="100%"
               loading="lazy"
-              className="border-0 min-h-[760px]"
+              className="border-0 h-[500px]"
             />
           </div>
           {/* ENQUIRY FORM */}
-          <div className="w-1/2">
-            <h2 className="text-center text-[42px] font-light text-[#173f74] mb-12">
+          <div className="w-[45%]">
+            <h2 className="text-center text-[34px] font-light text-[#173f74] mb-8">
               Send Us An Enquiry
             </h2>
             <form className="space-y-8">
@@ -92,7 +92,7 @@ export default function ContactUs() {
               </div>
               <textarea
                 required
-                rows={14}
+                rows={8}
                 placeholder="Remarks *"
                 className="border border-gray-300 p-5 text-lg bg-white w-full"
               />
