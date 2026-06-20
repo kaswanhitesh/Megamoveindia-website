@@ -56,45 +56,45 @@ export default function ContactUs() {
             />
           </div>
           {/* ENQUIRY FORM */}
-          <div className="w-[45%] flex">
-            <h2 className="text-center text-[34px] font-light text-[#173f74] mb-8">
+          <div className="w-[45%]">
+            <h2 className="text-center text-[28px] font-medium text-[#173f74] mb-8">
               Send Us An Enquiry
             </h2>
-            <form className="space-y-8">
-              <div className="grid grid-cols-2 gap-8">
+            <form className="space-y-6 max-w-[620px] mx-auto">
+              <div className="grid grid-cols-2 gap-4">
                 <input
                   required
                   type="text"
                   placeholder="Name *"
-                  className="border border-gray-300 p-5 text-lg bg-white"
+                  className="border border-gray-300 p-3.5 text-base bg-white"
                 />
                 <input
                   required
                   type="text"
                   placeholder="Phone Number *"
-                  className="border border-gray-300 p-5 text-lg bg-white"
+                  className="border border-gray-300 p-3.5 text-base bg-white"
                 />
               </div>
-              <div className="grid grid-cols-2 gap-8">
+              <div className="grid grid-cols-2 gap-4">
                 <input
                   required
                   type="email"
                   placeholder="Email Address *"
-                  className="border border-gray-300 p-5 text-lg bg-white"
+                  className="border border-gray-300 p-3.5 text-base bg-white"
                 />
                 <input
                   type="text"
                   placeholder="Company Name"
-                  className="border border-gray-300 p-5 text-lg bg-white"
+                  className="border border-gray-300 p-3.5 text-base bg-white"
                 />
               </div>
               <textarea
                 required
-                rows={6}
+                rows={5}
                 placeholder="Remarks *"
-                className="border border-gray-300 p-5 text-lg bg-white w-full"
+                className="border border-gray-300 p-3.5 text-base bg-white w-full"
               />
-              <div className="text-center">
+              <div className="flex justify-center pt-2">
                 <button
                   type="submit"
                   className="bg-[#c41e1e] text-white px-14 py-4 text-xl font-semibold rounded"
