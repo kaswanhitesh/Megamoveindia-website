@@ -146,32 +146,61 @@ export default function Home() {
 
       <section className="py-10 bg-[#f7f7f7] border-t border-gray-200 overflow-hidden">
 
+  <div className="text-center mb-8">
+
+    <h2 className="text-[42px] font-light text-[#173f74]">
+      Industries We Serve
+    </h2>
+
+  </div>
+
   <div className="marquee">
 
     <div className="marquee-content animate-marquee">
 
       {[
-        {
-          icon: "/images/icons/icon_industrialplants.jpeg",
-          title: "Industrial Plants and Projects",
-        },
-        {
-          icon: "/images/icons/icon_infrastructure.jpeg",
-          title: "Infrastructure",
-        },
-        {
-          icon: "/images/icons/icon_metalandmining.jpeg",
-          title: "Metal & Mining",
-        },
-        {
-          icon: "/images/icons/icon_oilandgas.png",
-          title: "Oil and Gas",
-        },
-        {
-          icon: "/images/icons/icon_power and energy.jpeg",
-          title: "Power and Energy",
-        },
-      ].map((item, index) => (
+  {
+    icon: "/images/icons/icon_industrialplants.jpeg",
+    title: "Industrial Plants and Projects",
+  },
+  {
+    icon: "/images/icons/icon_infrastructure.jpeg",
+    title: "Infrastructure",
+  },
+  {
+    icon: "/images/icons/icon_metalandmining.jpeg",
+    title: "Metal & Mining",
+  },
+  {
+    icon: "/images/icons/icon_oilandgas.png",
+    title: "Oil and Gas",
+  },
+  {
+    icon: "/images/icons/icon_power and energy.jpeg",
+    title: "Power and Energy",
+  },
+
+  {
+    icon: "/images/icons/icon_industrialplants.jpeg",
+    title: "Industrial Plants and Projects",
+  },
+  {
+    icon: "/images/icons/icon_infrastructure.jpeg",
+    title: "Infrastructure",
+  },
+  {
+    icon: "/images/icons/icon_metalandmining.jpeg",
+    title: "Metal & Mining",
+  },
+  {
+    icon: "/images/icons/icon_oilandgas.png",
+    title: "Oil and Gas",
+  },
+  {
+    icon: "/images/icons/icon_power and energy.jpeg",
+    title: "Power and Energy",
+  },
+].map((item, index) => (
         <div
           key={index}
           className="industry-card"
@@ -179,10 +208,10 @@ export default function Home() {
           <img
             src={item.icon}
             alt={item.title}
-            className="w-16 h-16 mx-auto mb-4 object-contain"
+            className="w-12 h-12 mx-auto mb-0.5 object-contain"
           />
 
-          <h3 className="text-xl font-medium text-center">
+          <h3 className="text-lg font-medium text-center">
             {item.title}
           </h3>
         </div>
