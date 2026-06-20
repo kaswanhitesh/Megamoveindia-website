@@ -85,3 +85,40 @@ body {
 .industry-card:hover {
   background: #fafafa;
 }
+@keyframes news-scroll {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+
+}
+
+.animate-news {
+  animation: news-scroll 30s linear infinite;
+}
+
+.news-marquee {
+  overflow: hidden;
+  width: 100%;
+}
+
+.news-marquee-content {
+  display: flex;
+  width: max-content;
+}
+
+.news-card {
+  width: 420px;
+  min-width: 420px;
+  background: white;
+  margin-right: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.08);
+}
+
+.news-marquee-content:hover {
+  animation-play-state: paused;
+}
