@@ -43,7 +43,7 @@ export default function LandTransport() {
       <section className="relative h-[500px] overflow-hidden">
 
         <img
-          src="https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=1800&q=80"
+          src="images/LandTransportPageHeroImage.jpeg"
           alt="Heavy Lift Transportation"
           className="w-full h-full object-cover"
         />
@@ -230,7 +230,7 @@ export default function LandTransport() {
             href="mailto:landtransport@megamoveindia.com"
             className="text-2xl font-medium text-[#173f74] hover:underline"
           >
-            landtransport@megamoveindia.com
+            projects@megamoveindia.com
           </a>
 
         </div>
