@@ -40,7 +40,7 @@ export default function Home() {
   return (
     <main className="bg-[#f7f7f7]">
 
-      <section className="min-h-[calc(100vh-170px)] flex items-start px-16 pt-10 pb-10 gap-8">
+      <section className="min-h-[calc(100vh-170px)] flex items-start px-16 pt-2 pb-10 gap-8">
 
         {/* Left Side */}
 
@@ -62,7 +62,7 @@ export default function Home() {
             transportation and equipment rentals.
           </p>
 
-          <p className="mt-14 text-[15px] leading-[2.2] text-gray-700">
+          <p className="mt-4 text-[15px] leading-[2.2] text-gray-700">
             Driven by specialized equipment, experienced personnel and
             a commitment to operational excellence, we provide
             end-to-end logistics solutions for the world's most
