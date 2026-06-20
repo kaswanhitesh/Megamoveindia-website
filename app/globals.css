@@ -59,7 +59,7 @@ body {
 
 .marquee-content {
   display: flex;
-  gap: 0;
+  gap: 20px;
   width: max-content;
 }
 
