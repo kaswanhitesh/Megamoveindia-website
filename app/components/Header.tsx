@@ -29,7 +29,7 @@ export default function Header() {
               Moving The Immovable
             </p>
 
-            <p className="text-lg font-semibold tracking-wide text-gray-650">
+            <p className="text-sm font-semibold tracking-wide text-gray-650">
               Delivering The Impossible
             </p>
           </div>
