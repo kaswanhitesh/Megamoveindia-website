@@ -148,7 +148,7 @@ export default function Home() {
 
   <div className="text-center mb-8">
 
-    <h2 className="text-[42px] font-light text-[#173f74]">
+    <h2 className="text-[22px] font-light text-[#173f74]">
       Industries We Serve
     </h2>
 
