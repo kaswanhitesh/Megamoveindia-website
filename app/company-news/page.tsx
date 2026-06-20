@@ -2,15 +2,15 @@ export default function CompanyNews() {
   const news = [
     {
       image: "/images/news/news1.jpg",
-      title: "Mega Move India at CTL-BHP Exhibition 2026",
-      date: "Mar 3, 2026",
+      title: "Mega Move India at IICS 2025 Exhibition",
+      date: "Dec 3, 2025",
       excerpt:
         "Meet our team and explore our project logistics and heavy haulage capabilities.",
     },
     {
       image: "/images/news/news2.jpg",
-      title: "Precision in Motion: Heavy Lift Transportation",
-      date: "Nov 3, 2025",
+      title: "Mega Move India Featured on MMI Network",
+      date: "Jan 31, 2026",
       excerpt:
         "Successful transportation of specialized industrial equipment.",
     },
