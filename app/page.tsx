@@ -49,8 +49,8 @@ export default function Home() {
           <h1 className="text-[52px] leading-[1.2] font-light tracking-wide">
             Welcome to
             <br />
-            <span className="font-semibold">
-              Mega Move India
+            <span className="font-light tracking-wide">
+              MEGA MOVE INDIA
             </span>
           </h1>
 
