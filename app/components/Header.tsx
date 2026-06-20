@@ -181,9 +181,12 @@ export default function Header() {
             Facilities
           </p>
 
-          <p className="cursor-pointer py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
+          <a
+            href="/company-news"
+            className="block py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300"
+          >
             Company News
-          </p>
+          </a>
 
            <p className="cursor-pointer py-5 px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
             Our History
