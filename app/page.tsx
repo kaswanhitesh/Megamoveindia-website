@@ -32,7 +32,7 @@ const cards = [
   description:
     "Comprehensive equipment rental, warehousing and cargo handling solutions including truck mounted manlifts, aerial work platforms, storage facilities, loading and unloading services, project logistics support and specialized equipment for industrial and infrastructure projects.",
   image:
-    "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
+    "images/RentalsCardHeroImage.png",
   },
 ];
 
