@@ -29,7 +29,7 @@ export default function CaseStudies() {
     },
 
     {
-      title: "8nos Used Oil X-Ray Mahines Import: Ex-Hamburg to Mumbai Port ",
+      title: "8nos Used Oil X-Ray Machines Import: Ex-Hamburg to Mumbai Port ",
       image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
     },
 
