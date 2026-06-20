@@ -40,7 +40,7 @@ export default function Home() {
   return (
     <main className="bg-[#f7f7f7]">
 
-      <section className="min-h-[calc(100vh-170px)] flex items-start px-16 pt-2 pb-10 gap-8">
+      <section className="flex items-start px-16 pt-2 pb-0 gap-8">
 
         {/* Left Side */}
 
