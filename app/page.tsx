@@ -208,7 +208,7 @@ export default function Home() {
           <img
             src={item.icon}
             alt={item.title}
-            className="w-12 h-12 mx-auto mb-0.5 object-contain"
+            className="w-16 h-16 mx-auto mb-0.5 object-contain"
           />
 
           <h3 className="text-lg font-medium text-center">
