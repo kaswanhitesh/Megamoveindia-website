@@ -144,7 +144,15 @@ export default function Home() {
 
       </section>
 
-      <section className="py-10 bg-[#f7f7f7] border-t border-gray-200 overflow-hidden">
+      <section className="pt-0 pb-8 bg-[#f7f7f7] border-t border-gray-200 overflow-hidden">
+
+  <div className="text-center mb-6">
+
+    <h2 className="text-[42px] font-light text-[#173f74]">
+      Industries We Serve
+    </h2>
+
+  </div>
 
   <div className="text-center mb-8">
 
