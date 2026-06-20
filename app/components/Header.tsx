@@ -25,11 +25,11 @@ export default function Header() {
 </Link>
 
           <div className="ml-2">
-            <p className="text-sm font-medium tracking-wide text-gray-600">
+            <p className="text-sm font-semibold tracking-wide text-gray-650">
               Moving The Immovable
             </p>
 
-            <p className="text-lg font-semibold tracking-wide text-gray-800">
+            <p className="text-lg font-semibold tracking-wide text-gray-650">
               Delivering The Impossible
             </p>
           </div>
