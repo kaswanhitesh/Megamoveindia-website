@@ -73,7 +73,7 @@ export default function Home() {
 
         {/* Right Side */}
 
-        <div className="w-[60%] flex gap-[4px] h-[400px]">
+        <div className="w-[60%] flex gap-[4px] h-[450px]">
 
           {cards.map((card) => (
             <a
