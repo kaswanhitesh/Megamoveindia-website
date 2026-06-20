@@ -5,7 +5,7 @@ const cards = [
     description:
       "Specialized air freight solutions for urgent, high-value and time-critical cargo movements. Through our global airline partnerships and logistics network, we provide reliable import, export, charter and door-to-door transportation services to major destinations worldwide.",
     image:
-      "https://images.unsplash.com/photo-1436491865332-7a61a109cc05",
+      "images/AirFreightHeroImage.jpeg",
   },
 
   {
