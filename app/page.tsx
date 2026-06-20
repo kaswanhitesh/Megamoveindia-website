@@ -146,9 +146,9 @@ export default function Home() {
 
       <section className="pt-0 pb-8 bg-[#f7f7f7] border-t border-gray-200 overflow-hidden">
 
-  <div className="text-center mb-8">
+  <div className="text-center mt-6 mb-6">
 
-    <h2 className="text-[22px] font-light text-[#173f74]">
+    <h2 className="text-[26px] font-bold text-black text-center">
       Industries We Serve
     </h2>
 
