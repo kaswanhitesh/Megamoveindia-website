@@ -38,59 +38,77 @@ export default function ContactUs() {
   ];
   return (
     <main className="bg-[#f7f7f7]">
+      {/* PAGE TITLE */}
       <section className="bg-[#232323] py-12">
         <h1 className="text-center text-white text-[52px] tracking-[10px] font-light">
           CONTACT US
         </h1>
       </section>
-      <section className="max-w-7xl mx-auto px-12 py-20">
-        <h2 className="text-center text-[42px] font-light text-[#173f74] mb-12">
-          Send Us An Enquiry
-        </h2>
-        <form className="space-y-8">
-          <div className="grid grid-cols-2 gap-8">
-            <input
-              required
-              type="text"
-              placeholder="Name *"
-              className="border border-gray-300 p-5 text-lg bg-white"
-            />
-            <input
-              required
-              type="text"
-              placeholder="Phone Number *"
-              className="border border-gray-300 p-5 text-lg bg-white"
+      {/* MAP + ENQUIRY */}
+      <section className="max-w-[1800px] mx-auto px-12 py-20">
+        <div className="flex gap-12 items-stretch">
+          {/* MAP */}
+          <div className="w-1/2">
+            <iframe
+              src="https://www.google.com/maps?q=Andheri%20East%20Mumbai&output=embed"
+              width="100%"
+              height="100%"
+              loading="lazy"
+              className="border-0 min-h-[760px]"
             />
           </div>
-          <div className="grid grid-cols-2 gap-8">
-            <input
-              required
-              type="email"
-              placeholder="Email Address *"
-              className="border border-gray-300 p-5 text-lg bg-white"
-            />
-            <input
-              type="text"
-              placeholder="Company Name"
-              className="border border-gray-300 p-5 text-lg bg-white"
-            />
+          {/* ENQUIRY FORM */}
+          <div className="w-1/2">
+            <h2 className="text-center text-[42px] font-light text-[#173f74] mb-12">
+              Send Us An Enquiry
+            </h2>
+            <form className="space-y-8">
+              <div className="grid grid-cols-2 gap-8">
+                <input
+                  required
+                  type="text"
+                  placeholder="Name *"
+                  className="border border-gray-300 p-5 text-lg bg-white"
+                />
+                <input
+                  required
+                  type="text"
+                  placeholder="Phone Number *"
+                  className="border border-gray-300 p-5 text-lg bg-white"
+                />
+              </div>
+              <div className="grid grid-cols-2 gap-8">
+                <input
+                  required
+                  type="email"
+                  placeholder="Email Address *"
+                  className="border border-gray-300 p-5 text-lg bg-white"
+                />
+                <input
+                  type="text"
+                  placeholder="Company Name"
+                  className="border border-gray-300 p-5 text-lg bg-white"
+                />
+              </div>
+              <textarea
+                required
+                rows={14}
+                placeholder="Remarks *"
+                className="border border-gray-300 p-5 text-lg bg-white w-full"
+              />
+              <div className="text-center">
+                <button
+                  type="submit"
+                  className="bg-[#c41e1e] text-white px-14 py-4 text-xl font-semibold rounded"
+                >
+                  Submit Enquiry
+                </button>
+              </div>
+            </form>
           </div>
-          <textarea
-            required
-            rows={8}
-            placeholder="Remarks *"
-            className="border border-gray-300 p-5 text-lg bg-white w-full"
-          />
-          <div className="text-center">
-            <button
-              type="submit"
-              className="bg-[#c41e1e] text-white px-14 py-4 text-xl font-semibold rounded"
-            >
-              Submit Enquiry
-            </button>
-          </div>
-        </form>
+        </div>
       </section>
+      {/* KEY OFFICES */}
       <section className="py-20">
         <div className="bg-[#232323] py-10 mb-20">
           <h2 className="text-center text-white text-[44px] tracking-[8px] font-light">
@@ -118,15 +136,7 @@ export default function ContactUs() {
           </div>
         </div>
       </section>
-      <section className="max-w-[1800px] mx-auto px-6 pb-20">
-        <iframe
-          src="https://www.google.com/maps?q=Andheri%20East%20Mumbai&output=embed"
-          width="100%"
-          height="650"
-          loading="lazy"
-          className="border-0"
-        />
-      </section>
+      {/* SOCIAL MEDIA */}
       <section className="bg-[#2f3d57] py-12">
         <div className="max-w-7xl mx-auto flex justify-center gap-5">
           <a
