@@ -44,7 +44,7 @@ export default function ContactUs() {
 
          <section>
          <img
-          src="/images/contact-us-banner.jpg"
+          src="images/ContactUsHeroImage.png"
           alt="Mega Move India Office"
           className="w-full h-[500px] object-cover"
          />
