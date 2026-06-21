@@ -167,3 +167,23 @@ body {
 .animate-projects-slider:hover {
   animation-play-state: paused;
 }
+
+@media (max-width: 768px) {
+
+  .industry-card {
+    width: 160px;
+    min-width: 160px;
+    height: 120px;
+  }
+
+  .industry-card h3 {
+    font-size: 14px;
+    padding: 0 8px;
+  }
+
+  .news-card {
+    width: 300px;
+    min-width: 300px;
+  }
+
+}
