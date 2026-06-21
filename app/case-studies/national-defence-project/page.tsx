@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Gallery from "./Gallery";
 
 export const metadata: Metadata = {
   title: "National Defence Project | Mega Move India",
@@ -91,39 +92,9 @@ export default function NationalDefenceProject() {
           </div>
         </div>
       </section>
-
-      {/* Gallery */}
-
-      <section className="max-w-7xl mx-auto px-8 py-20">
-
-        <h2 className="text-4xl text-[#173f74] mb-12">
-          Project Gallery
-        </h2>
-
-        <div className="grid grid-cols-3 gap-6">
-
-          <img
-            src="/images/projects/defence-1.jpg"
-            alt=""
-            className="w-full h-[280px] object-cover"
-          />
-
-          <img
-            src="/images/projects/defence-2.jpg"
-            alt=""
-            className="w-full h-[280px] object-cover"
-          />
-
-          <img
-            src="/images/projects/defence-3.jpg"
-            alt=""
-            className="w-full h-[280px] object-cover"
-          />
-
-        </div>
-
-      </section>
-
+     
+      <Gallery />
+      
       {/* Challenges */}
 
       <section className="bg-[#f7f7f7] py-20">
