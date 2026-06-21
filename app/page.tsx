@@ -128,7 +128,7 @@ export default function Home() {
                   w-full
                   object-cover
                   grayscale
-                  group-hover:grayscale-0
+                  lg:grayscale lg:group-hover:grayscale-0
                   transition-all
                   duration-700
                 "
@@ -138,7 +138,7 @@ export default function Home() {
 
               <div className="absolute bottom-10 left-6 right-6 text-white">
 
-  <h2 className="text-[22px] font-bold leading-tight">
+  <h2 className="text-[16px] md:text-[18px] lg:text-[22px] font-bold leading-tight">
     {card.title}
   </h2>
 
