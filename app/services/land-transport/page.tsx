@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title:
@@ -6,6 +7,36 @@ export const metadata: Metadata = {
   description:
     "Specialized heavy lift transportation, ODC cargo movement, hydraulic axle trailer services, project logistics, route surveys and heavy haulage solutions across India.",
 };
+ const recentProjects = [
+  {
+    title: "National Defence Project",
+    image: "/images/Casestudies/DefenceCargo/DefenceCargoHeroImage.JPG",
+    description: "Transportation of BMP-II Armoured Vehicles to Nyoma, Ladakh.",
+    link: "/case-studies/national-defence-project",
+  },
+
+  {
+    title: "225MT Used Machinery Import",
+    image: "/images/Casestudies/225MT/225MTHeroImage.jpg",
+    description: "Heavy machinery import handling and transportation.",
+    link: "/case-studies/225mt-used-machinery-import",
+  },
+
+  {
+    title: "Factory Relocation",
+    image: "/images/Casestudies/FactoryRelocation/FactoryRelocationHeroImage.jpg",
+    description: "Factory relocation project from Germany to India.",
+    link: "/case-studies/factory-relocation-germany-to-india",
+  },
+
+  {
+    title: "70MT Heat Condenser Export",
+    image: "/images/Casestudies/HeatCondenser/HeatCondenserHeroImage.jpg",
+    description: "Heavy lift export movement from Kattupalli to Brazil.",
+    link: "/case-studies/70mt-heat-condenser-export",
+  },
+];
+
 
 export default function LandTransport() {
   const services = [
@@ -120,6 +151,72 @@ export default function LandTransport() {
         </div>
 
       </section>
+
+     
+      <section className="py-24 bg-white overflow-hidden">
+
+  <div className="max-w-7xl mx-auto px-8">
+
+    <h2 className="text-center text-5xl text-[#173f74] mb-4">
+      Recent Transportation Projects
+    </h2>
+
+    <p className="text-center text-gray-600 mb-14">
+      Explore some of our recent project logistics and heavy haulage assignments.
+    </p>
+
+    <div className="overflow-hidden">
+
+      <div className="flex gap-8 animate-projects-slider w-max">
+
+        {[...recentProjects, ...recentProjects].map((project, index) => (
+
+          <Link
+            key={index}
+            href={project.link}
+            className="
+            w-[380px]
+            bg-white
+            rounded-xl
+            overflow-hidden
+            shadow-md
+            hover:shadow-2xl
+            hover:-translate-y-2
+            transition-all
+            duration-500
+            shrink-0
+          "
+          >
+
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-[240px] object-cover"
+            />
+
+            <div className="p-6">
+
+              <h3 className="text-2xl text-[#173f74] mb-3">
+                {project.title}
+              </h3>
+
+              <p className="text-gray-600">
+                {project.description}
+              </p>
+
+            </div>
+
+          </Link>
+
+        ))}
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
       {/* SEO CONTENT */}
 
