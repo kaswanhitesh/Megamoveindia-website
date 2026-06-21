@@ -78,7 +78,7 @@ export default function HeatCondenserExportProject() {
       </h2>
 
       <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-        Mega Move India successfully executed a complex factory relocation project involving the dismantling, packing, international transportation and delivery of industrial machinery from Germany to Navi Mumbai, India. The project required detailed planning, export packing, multimodal transportation, customs clearance and coordinated delivery to the client's new facility. Our project team managed every stage of the relocation process, ensuring safe handling of sensitive equipment and timely execution while minimizing disruption to the client's operations.
+        Mega Move India successfully executed the export of a Heat Condenser and associated accessories from Chennai, India, to Santos, Brazil, under Ex-Works (EXW) terms. The project involved specialized in-land transportation from the manufacturing facility to Chennai Port, export customs clearance, breakbulk cargo handling, and ocean freight coordination. Our team meticulously managed every stage of the logistics chain, ensuring secure transportation, regulatory compliance, and timely vessel loading, delivering a seamless end-to-end project cargo solution for the client.
       </p>
      </section>
 
@@ -182,7 +182,7 @@ export default function HeatCondenserExportProject() {
           </h2>
 
           <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-            The project involved coordinating the relocation of multiple industrial machines from an operational facility in Germany to a new manufacturing site in India. Challenges included export packing, handling oversized machinery, international shipping schedules, customs compliance and final positioning at the destination facility. Through detailed planning, close coordination with overseas partners and experienced project management, Mega Move India ensured the safe and efficient relocation of all equipment.
+            The project involved the transportation of a Heat Condenser and associated accessories from the manufacturer’s facility in Bangalore to Santos, Brazil, via Chennai Port. Key challenges included the excessive cargo height, uneven weight distribution, and ensuring safe movement through multiple jurisdictions. Mega Move India conducted a thorough route survey to identify and mitigate transportation constraints, enabling smooth execution of the in-land haulage. Through meticulous planning, specialized handling, export customs clearance, breakbulk cargo coordination, and close stakeholder collaboration, the project was executed safely, efficiently, and within the planned schedule.
           </p>
 
         </div>
