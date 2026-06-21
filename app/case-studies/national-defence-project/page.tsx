@@ -50,10 +50,10 @@ export default function NationalDefenceProject() {
             Project Details
           </h2>
 
-          <div className="grid grid-cols-2 gap-10">
+          <div className="grid grid-cols-2 gap-16 max-w-5xl mx-auto">
 
-            <div>
-              <h3 className="font-semibold text-xl mb-3">
+            <div className="text-center">
+             <h3 className="font-semibold text-xl mb-3">
                 Cargo Description
               </h3>
               <p className="text-gray-700">
@@ -61,7 +61,7 @@ export default function NationalDefenceProject() {
               </p>
             </div>
 
-            <div>
+            <div className="text-center">
               <h3 className="font-semibold text-xl mb-3">
                 Mode of Transport
               </h3>
@@ -70,7 +70,7 @@ export default function NationalDefenceProject() {
               </p>
             </div>
 
-            <div>
+            <div className="text-center">
               <h3 className="font-semibold text-xl mb-3">
                 Scope
               </h3>
@@ -80,7 +80,7 @@ export default function NationalDefenceProject() {
               </p>
             </div>
 
-            <div>
+            <div className="text-center">
               <h3 className="font-semibold text-xl mb-3">
                 Service Type
               </h3>
