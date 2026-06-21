@@ -63,7 +63,7 @@ export default function ContactUs() {
       {/* KEY OFFICES */}
       <section className="py-3">
         <h2 className="text-center text-[36px] text-[#173f74] font-Bold mb-10">
-         Key Offices
+         KEY OFFICES
          </h2>
         <div className="max-w-7xl mx-auto px-12">
           <div className="grid grid-cols-3 gap-16">
