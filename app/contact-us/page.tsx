@@ -38,25 +38,17 @@ export default function ContactUs() {
   ];
   return (
     <main className="bg-[#f7f7f7]">
-      {/* PAGE TITLE */}
-      <section className="bg-[#232323] py-2">
-        {/* HERO IMAGE */}
-
-         {/* HERO IMAGE */}
+      {/* HERO IMAGE */}
 
 <section className="relative h-[500px]">
 
   <img
-    src="/images/contact-us-banner.jpg"
+    src="images/ContactUsHeroImage.png"
     alt="Contact Us"
     className="w-full h-full object-cover"
   />
 
-  {/* Dark Overlay */}
-
   <div className="absolute inset-0 bg-black/35" />
-
-  {/* Contact Us Text */}
 
   <div className="absolute inset-0 flex items-center justify-center">
 
