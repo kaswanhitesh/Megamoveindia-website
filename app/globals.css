@@ -149,3 +149,21 @@ body {
 .gallery-track:hover {
   animation-play-state: paused;
 }
+
+@keyframes projects-slider {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-projects-slider {
+  animation: projects-slider 35s linear infinite;
+}
+
+.animate-projects-slider:hover {
+  animation-play-state: paused;
+}
