@@ -4,13 +4,13 @@ import { useState } from "react";
 
 export default function Gallery() {
   const images = [
-    "/images/Casestudies/Project-5/Project4_Gallery1.webp",
-    "/images/Casestudies/Project-5/Project4_Gallery2.webp",
-    "/images/Casestudies/Project-5/Project4_Gallery3.webp",
-    "/images/Casestudies/Project-5/Project4_Gallery4.webp",
-    "/images/Casestudies/Project-5/Project4_Gallery5.webp",
-    "/images/Casestudies/Project-5/Project4_Gallery6.webp",
-    "/images/Casestudies/Project-5/Project4_Gallery7.webp",
+    "/images/Casestudies/Project-4/Project4_Gallery1.webp",
+    "/images/Casestudies/Project-4/Project4_Gallery2.webp",
+    "/images/Casestudies/Project-4/Project4_Gallery3.webp",
+    "/images/Casestudies/Project-4/Project4_Gallery4.webp",
+    "/images/Casestudies/Project-4/Project4_Gallery5.webp",
+    "/images/Casestudies/Project-4/Project4_Gallery6.webp",
+    "/images/Casestudies/Project-4/Project4_Gallery7.webp",
   ];
 
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
