@@ -32,7 +32,7 @@ export default function NationalDefenceProject() {
       {/* Project Overview */}
 
       <section className="max-w-7xl mx-auto px-8 py-20">
-        <h2 className="text-4xl text-[#173f74] mb-8">
+        <h2 className="text-5xl font-light text-[#173f74] text-center mb-12">
           Project Overview
         </h2>
 
@@ -46,14 +46,14 @@ export default function NationalDefenceProject() {
       <section className="bg-[#f7f7f7] py-20">
         <div className="max-w-7xl mx-auto px-8">
 
-          <h2 className="text-4xl text-[#173f74] mb-12">
+          <h2 className="text-5xl font-light text-[#173f74] text-center mb-12">
             Project Details
           </h2>
 
           <div className="grid grid-cols-2 gap-10">
 
             <div>
-              <h3 className="font-semibold text-xl mb-3">
+              <h2 className="text-5xl font-light text-[#173f74] text-center mb-12">
                 Cargo Description
               </h3>
               <p className="text-gray-700">
@@ -101,7 +101,7 @@ export default function NationalDefenceProject() {
 
         <div className="max-w-7xl mx-auto px-8">
 
-          <h2 className="text-4xl text-[#173f74] mb-8">
+          <h2 className="text-5xl font-light text-[#173f74] text-center mb-12">
             Challenges & Solutions
           </h2>
 
@@ -117,7 +117,7 @@ export default function NationalDefenceProject() {
 
       <section className="max-w-7xl mx-auto px-8 py-20">
 
-        <h2 className="text-4xl text-[#173f74] mb-8">
+        <h2 className="text-5xl font-light text-[#173f74] text-center mb-12">
           Project Outcome
         </h2>
 
