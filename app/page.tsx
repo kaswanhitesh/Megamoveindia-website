@@ -1,3 +1,10 @@
+"use client";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+
+import "swiper/css";
+
 const cards = [
   {
     title: "AIR",
@@ -133,45 +140,91 @@ export default function Home() {
       </section>
 
       {/* INDUSTRIES SECTION */}
-      <section className="pt-4 pb-8 bg-[#f7f7f7] border-t border-gray-200 overflow-hidden">
 
-        <div className="text-center mt-6 mb-6">
-          <h2 className="text-[22px] lg:text-[26px] font-bold text-black">
-            Industries We Serve
-          </h2>
-        </div>
+<section className="pt-4 pb-8 bg-[#f7f7f7] border-t border-gray-200">
 
-        <div className="marquee">
-          <div className="marquee-content animate-marquee">
+  <div className="text-center mt-6 mb-8">
+    <h2 className="text-[22px] lg:text-[26px] font-bold text-black">
+      Industries We Serve
+    </h2>
+  </div>
 
-            {[
-              { icon: "/images/icons/icon_industrialplants.jpeg", title: "Industrial Plants and Projects" },
-              { icon: "/images/icons/icon_infrastructure.jpeg", title: "Infrastructure" },
-              { icon: "/images/icons/icon_metalandmining.jpeg", title: "Metal & Mining" },
-              { icon: "/images/icons/icon_oilandgas.png", title: "Oil and Gas" },
-              { icon: "/images/icons/icon_power and energy.jpeg", title: "Power and Energy" },
-              { icon: "/images/icons/icon_industrialplants.jpeg", title: "Industrial Plants and Projects" },
-              { icon: "/images/icons/icon_infrastructure.jpeg", title: "Infrastructure" },
-              { icon: "/images/icons/icon_metalandmining.jpeg", title: "Metal & Mining" },
-              { icon: "/images/icons/icon_oilandgas.png", title: "Oil and Gas" },
-              { icon: "/images/icons/icon_power and energy.jpeg", title: "Power and Energy" },
-            ].map((item, index) => (
-              <div key={index} className="industry-card">
-                <img
-                  src={item.icon}
-                  alt={item.title}
-                  className="w-12 h-12 lg:w-16 lg:h-16 mx-auto mb-2 object-contain"
-                />
-                <h3 className="text-sm lg:text-lg font-medium text-center px-2">
-                  {item.title}
-                </h3>
-              </div>
-            ))}
+  <div className="max-w-7xl mx-auto px-4">
+
+    <Swiper
+      modules={[Autoplay]}
+      slidesPerView={5}
+      spaceBetween={20}
+      loop={true}
+      grabCursor={true}
+      allowTouchMove={true}
+      speed={4000}
+      autoplay={{
+        delay: 0,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      }}
+      breakpoints={{
+        320: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 3,
+        },
+        1024: {
+          slidesPerView: 5,
+        },
+      }}
+    >
+
+      {[
+        {
+          icon: "/images/icons/icon_industrialplants.jpeg",
+          title: "Industrial Plants and Projects",
+        },
+        {
+          icon: "/images/icons/icon_infrastructure.jpeg",
+          title: "Infrastructure",
+        },
+        {
+          icon: "/images/icons/icon_metalandmining.jpeg",
+          title: "Metal & Mining",
+        },
+        {
+          icon: "/images/icons/icon_oilandgas.png",
+          title: "Oil and Gas",
+        },
+        {
+          icon: "/images/icons/icon_power and energy.jpeg",
+          title: "Power and Energy",
+        },
+      ].map((item, index) => (
+
+        <SwiperSlide key={index}>
+
+          <div className="industry-card">
+
+            <img
+              src={item.icon}
+              alt={item.title}
+              className="w-12 h-12 lg:w-16 lg:h-16 mx-auto mb-3 object-contain"
+            />
+
+            <h3 className="text-sm lg:text-lg font-medium text-center px-2">
+              {item.title}
+            </h3>
 
           </div>
-        </div>
 
-      </section>
+        </SwiperSlide>
+
+      ))}
+
+    </Swiper>
+
+  </div>
+
+</section>
 
     </main>
   );
