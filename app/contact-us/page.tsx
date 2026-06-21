@@ -61,26 +61,34 @@ export default function ContactUs() {
 </section>
         
       {/* KEY OFFICES */}
-      <section className="py-3">
+      <section className="pt-16 pb-6">
         <h2 className="text-center text-[36px] text-[#173f74] font-xl Bold mb-10">
          KEY OFFICES
          </h2>
         <div className="max-w-7xl mx-auto px-12">
-          <div className="grid grid-cols-3 gap-16">
+          <div className="grid grid-cols-3 gap-16 text-center">
             {offices.map((office, index) => (
-              <div key={index}>
-                <h3 className="text-[30px] text-[#0b8db2] mb-6">
+              <div
+                key={index}
+                className="flex flex-col h-full"
+              >
+                <h3 className="text-[34px] font-bold text-black mb-8">
                   {office.city}
                 </h3>
-                <p className="text-gray-700 leading-8">
-                  {office.address}
+                <p className="text-gray-700 leading-8 text-center min-h-[140px]">
+                   {office.address}
                 </p>
-                <p className="mt-4">
-                  <strong>Email:</strong> {office.email}
+                <div className="mt-auto">
+
+                <p className="mt-4 text-center">
+                <strong>Email:</strong> {office.email}
                 </p>
-                <p>
-                  <strong>Mobile:</strong> {office.phone}
+
+                <p className="text-center">
+                <strong>Mobile:</strong> {office.phone}
                 </p>
+
+              </div>
               </div>
             ))}
           </div>
