@@ -24,6 +24,11 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -32,7 +37,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* INDUSTRIES SLIDER */
+/* ==========================================
+   INDUSTRIES SLIDER
+========================================== */
 
 @keyframes marquee {
   from {
@@ -85,8 +92,12 @@ body {
 .industry-card:hover {
   background: #fafafa;
 }
-@keyframes news-scroll {
 
+/* ==========================================
+   COMPANY NEWS
+========================================== */
+
+@keyframes news-scroll {
   0% {
     transform: translateX(0);
   }
@@ -94,7 +105,6 @@ body {
   100% {
     transform: translateX(-50%);
   }
-
 }
 
 .animate-news {
@@ -116,12 +126,17 @@ body {
   min-width: 420px;
   background: white;
   margin-right: 24px;
-  box-shadow: 0 2px 12px rgba(0,0,0,.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 .news-marquee-content:hover {
   animation-play-state: paused;
 }
+
+/* ==========================================
+   PROJECT GALLERY
+========================================== */
+
 @keyframes galleryScroll {
   0% {
     transform: translateX(0);
@@ -150,6 +165,10 @@ body {
   animation-play-state: paused;
 }
 
+/* ==========================================
+   PROJECTS SLIDER
+========================================== */
+
 @keyframes projects-slider {
   from {
     transform: translateX(0);
@@ -168,22 +187,112 @@ body {
   animation-play-state: paused;
 }
 
+/* ==========================================
+   MOBILE OPTIMIZATION
+========================================== */
+
 @media (max-width: 768px) {
 
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  /* INDUSTRIES */
+
   .industry-card {
-    width: 160px;
-    min-width: 160px;
+    width: 150px;
+    min-width: 150px;
     height: 120px;
+    padding: 10px;
   }
 
   .industry-card h3 {
-    font-size: 14px;
-    padding: 0 8px;
+    font-size: 13px;
+    line-height: 1.3;
+    padding: 0 4px;
+    text-align: center;
+  }
+
+  .industry-card img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .marquee-content {
+    gap: 12px;
+  }
+
+  /* NEWS */
+
+  .news-card {
+    width: 280px;
+    min-width: 280px;
+    margin-right: 16px;
+  }
+
+  .news-card img {
+    height: 180px;
+  }
+
+  .news-card h2 {
+    font-size: 20px;
+    line-height: 1.3;
+  }
+
+  /* GALLERY */
+
+  .gallery-track {
+    gap: 0;
+  }
+
+  .gallery-track img {
+    width: 260px !important;
+    height: 180px !important;
+  }
+
+  /* SMOOTHER MOBILE ANIMATIONS */
+
+  .animate-gallery {
+    animation-duration: 55s;
+  }
+
+  .animate-news {
+    animation-duration: 40s;
+  }
+
+  .animate-marquee {
+    animation-duration: 25s;
+  }
+
+  .animate-projects-slider {
+    animation-duration: 45s;
+  }
+}
+
+/* ==========================================
+   SMALL PHONES (iPhone SE / Mini)
+========================================== */
+
+@media (max-width: 480px) {
+
+  .industry-card {
+    width: 140px;
+    min-width: 140px;
+    height: 115px;
+  }
+
+  .industry-card h3 {
+    font-size: 12px;
   }
 
   .news-card {
-    width: 300px;
-    min-width: 300px;
+    width: 260px;
+    min-width: 260px;
   }
 
+  .gallery-track img {
+    width: 220px !important;
+    height: 150px !important;
+  }
 }
