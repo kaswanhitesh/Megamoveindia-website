@@ -36,12 +36,7 @@ export default function NationalDefenceProject() {
         </h2>
 
         <p className="text-lg text-gray-700 leading-9">
-          Mega Move India successfully executed a strategic National Defence
-          logistics project involving transportation of critical equipment
-          from manufacturing facilities to designated defence locations
-          across India. The project required specialized transportation,
-          route surveys, permit management, escort arrangements and
-          precise delivery scheduling.
+          Mega Move India successfully executed a strategic National Defence logistics project involving the transportation of critical defence equipment from the manufacturing facility to Nyoma, Ladakh, near the India–China border. Selected from four approved vendors, Mega Move India was awarded the government contract based on its proven expertise in heavy-haul and over-dimensional cargo (ODC) transportation. The project required meticulous planning, route surveys, permit management, escort coordination, and specialized transportation solutions. Covering approximately 3,700 kilometers, the mission was completed within an exceptional timeline of 21 days, establishing a national benchmark for the fastest delivery of defence ODC cargo over such a distance..
         </p>
       </section>
 
