@@ -29,21 +29,28 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-      <body className="min-h-screen flex flex-col bg-[#f7f7f7]">
-
+      <body
+        className="
+          min-h-screen
+          flex
+          flex-col
+          bg-[#f7f7f7]
+          overflow-x-hidden
+        "
+      >
         {/* Global Header */}
         <Header />
 
         {/* Page Content */}
-        <main className="flex-1">
+        <main className="flex-1 w-full overflow-x-hidden">
           {children}
         </main>
 
         {/* Global Footer */}
         <Footer />
-
       </body>
     </html>
   );
