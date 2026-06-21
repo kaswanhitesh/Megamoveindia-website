@@ -54,47 +54,83 @@ export default function NationalDefenceProject() {
             Project Details
           </h2>
 
-          <div className="grid grid-cols-2 gap-16 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 gap-y-12 gap-x-20 max-w-6xl mx-auto">
 
-            <div className="text-center">
-             <h3 className="font-semibold text-xl mb-3">
-                Cargo Description
-              </h3>
-              <p className="text-gray-700">
-                Defence Equipment & Strategic Components
-              </p>
-            </div>
+  <div className="text-center">
+    <h3 className="font-semibold text-xl mb-3">
+      Industry Sector
+    </h3>
+    <p className="text-gray-700">
+      Defence Logistics & Military Transportation
+    </p>
+  </div>
 
-            <div className="text-center">
-              <h3 className="font-semibold text-xl mb-3">
-                Mode of Transport
-              </h3>
-              <p className="text-gray-700">
-                Multi-Axle Hydraulic Trailer Fleet
-              </p>
-            </div>
+  <div className="text-center">
+    <h3 className="font-semibold text-xl mb-3">
+      Cargo Description
+    </h3>
+    <p className="text-gray-700">
+      BMP-II Armoured Vehicles & Defence Equipment
+    </p>
+  </div>
 
-            <div className="text-center">
-              <h3 className="font-semibold text-xl mb-3">
-                Scope
-              </h3>
-              <p className="text-gray-700">
-                Route Survey, Permits, Transportation,
-                Escort Services & Delivery
-              </p>
-            </div>
+  <div className="text-center">
+    <h3 className="font-semibold text-xl mb-3">
+      Origin & Destination
+    </h3>
+    <p className="text-gray-700">
+      Manufacturing Facility, India → Nyoma, Ladakh
+    </p>
+  </div>
 
-            <div className="text-center">
-              <h3 className="font-semibold text-xl mb-3">
-                Service Type
-              </h3>
-              <p className="text-gray-700">
-                End-to-End Project Logistics
-              </p>
-            </div>
+  <div className="text-center">
+    <h3 className="font-semibold text-xl mb-3">
+      Distance Covered
+    </h3>
+    <p className="text-gray-700">
+      3,700 KM
+    </p>
+  </div>
 
-          </div>
-        </div>
+  <div className="text-center">
+    <h3 className="font-semibold text-xl mb-3">
+      Project Scope
+    </h3>
+    <p className="text-gray-700">
+      Project Logistics, ODC Transportation,
+      Route Survey, Permits & Escorts
+    </p>
+  </div>
+
+  <div className="text-center">
+    <h3 className="font-semibold text-xl mb-3">
+      Equipment Deployed
+    </h3>
+    <p className="text-gray-700">
+      Hydraulic Modular Trailers, Prime Movers &
+      Escort Vehicles
+    </p>
+  </div>
+
+  <div className="text-center">
+    <h3 className="font-semibold text-xl mb-3">
+      Transit Time
+    </h3>
+    <p className="text-gray-700">
+      21 Days
+    </p>
+  </div>
+
+  <div className="text-center">
+    <h3 className="font-semibold text-xl mb-3">
+      Key Achievement
+    </h3>
+    <p className="text-gray-700">
+      National Benchmark for Fastest Defence ODC Delivery
+    </p>
+  </div>
+
+</div>        </div>
       </section>
      
       <Gallery />
