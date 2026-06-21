@@ -15,21 +15,21 @@ export const metadata: Metadata = {
 export default function ContactUs() {
   const offices = [
     {
-      city: "Mumbai (Head Office)",
+      city: "Mumbai",
       address:
         "A-wing, Office No 905, Pranik Chambers, Sakivihar Road, Sakinaka, Andheri East, Mumbai, MH-400072, India.",
       email: "info@megamoveindia.com",
       phone: "+91 9321499970",
     },
     {
-      city: "Gujarat (Branch Office)",
+      city: "Gujarat",
       address:
         "Office No-304, Sainath Complex, Nr Suman Chambers, Salvav, Vapi, GJ-396191, India.",
       email: "gj@megamoveindia.com",
       phone: "+91 9574899970",
     },
     {
-      city: "Haryana (Backend Office)",
+      city: "Haryana",
       address:
         "22/3, Tilak Bazar, Shastri Nagar, Hisar, HR-125001, India.",
       email: "hsr@megamoveindia.com",
