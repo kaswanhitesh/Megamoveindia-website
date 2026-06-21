@@ -5,7 +5,7 @@ export default function CaseStudies() {
   const projects = [
     {
       title: "National Defence Project",
-      image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd",
+      image: "images/NationalDefenceProjectCardImage.JPG",
     },
     {
       title: "225MT Used Machinery Import",
