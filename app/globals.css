@@ -38,42 +38,12 @@ body {
 }
 
 /* ==========================================
-   INDUSTRIES SLIDER
+   INDUSTRIES SLIDER (SWIPER)
 ========================================== */
 
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-marquee {
-  animation: marquee 20s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
-}
-
-.marquee {
-  width: 100%;
-  overflow: hidden;
-}
-
-.marquee-content {
-  display: flex;
-  gap: 20px;
-  width: max-content;
-}
-
 .industry-card {
-  width: 220px;
-  min-width: 220px;
-  height: 150px;
+  width: 100%;
+  height: 170px;
 
   display: flex;
   flex-direction: column;
@@ -82,17 +52,17 @@ body {
 
   background: #ffffff;
 
-  border-right: 1px solid #eeeeee;
+  border: 1px solid #eeeeee;
 
-  flex-shrink: 0;
+  border-radius: 12px;
 
   transition: all 0.3s ease;
 }
 
 .industry-card:hover {
-  background: #fafafa;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
-
 /* ==========================================
    COMPANY NEWS
 ========================================== */
@@ -200,12 +170,10 @@ body {
 
   /* INDUSTRIES */
 
-  .industry-card {
-    width: 150px;
-    min-width: 150px;
-    height: 120px;
-    padding: 10px;
-  }
+.industry-card {
+  height: 140px;
+  padding: 10px;
+}
 
   .industry-card h3 {
     font-size: 13px;
@@ -277,10 +245,8 @@ body {
 @media (max-width: 480px) {
 
   .industry-card {
-    width: 140px;
-    min-width: 140px;
-    height: 115px;
-  }
+  height: 130px;
+}
 
   .industry-card h3 {
     font-size: 12px;
