@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Gallery from "./Gallery";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "National Defence Project | Mega Move India",
@@ -14,10 +15,13 @@ export default function NationalDefenceProject() {
       {/* Hero */}
 
       <section className="relative h-[500px]">
-        <img
-          src="/images/Casestudies/DefenceCargo/DefenceCargoHeroImage.JPG"
+        <Image
+          src="/images/Casestudies/DefenceCargo/DefenceCargoHeroImage.webp"
           alt="National Defence Project"
-          className="w-full h-full object-cover"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
         />
 
         <div className="absolute inset-0 bg-black/50" />
