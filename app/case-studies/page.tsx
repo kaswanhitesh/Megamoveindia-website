@@ -1,48 +1,50 @@
 "use client";
-
+import Link from "next/link";
 export default function CaseStudies() {
 
   const projects = [
-    {
-      title: "National Defence Project: In-Land Transportation of BMP-II Tanks to China Border",
-      image: "images/NationalDefenceProjectCardImage.JPG",
-    },
-    {
-      title: "225MT Used Machinery Import",
-      image: "images/225MTUsedMachineryImportCardImage.jpeg",
-    },
-    {
-      title: "Factory Relocation: Germany To India",
-      image: "images/FactoryRelocationGermanyToIndiaCardImage.jpeg",
-    },
-    {
-      title: "70MT Heat Condenser Export: Ex Kattupalli to Santos Brazil ",
-      image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c",
-    },
-    {
-      title: "In-Land Transportation: 100MT Heat Exchanger",
-      image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7",
-    },
-    {
-      title: "Chemical Storage Tanks: Ex-Mumbai To Italy",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
-    },
-
-    {
-      title: "8nos Used Oil X-Ray Machines Import: Ex-Hamburg to Mumbai Port ",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
-    },
-
-    {
-      title: "35M EOT Crane Export: Ex-NSA to Houston,USA",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
-    },
-
-    {
-      title: "Chemical Storage Tanks: Ex-Mumbai To Italy",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
-    },
-  ];
+  {
+    slug: "national-defence-project",
+    title:
+      "National Defence Project: In-Land Transportation of BMP-II Tanks to China Border",
+    image: "images/NationalDefenceProjectCardImage.JPG",
+  },
+  {
+    slug: "225mt-used-machinery-import",
+    title: "225MT Used Machinery Import",
+    image: "images/225MTUsedMachineryImportCardImage.jpeg",
+  },
+  {
+    slug: "factory-relocation-germany-india",
+    title: "Factory Relocation: Germany To India",
+    image: "images/FactoryRelocationGermanyToIndiaCardImage.jpeg",
+  },
+  {
+    slug: "70mt-heat-condenser-export",
+    title: "70MT Heat Condenser Export: Ex Kattupalli to Santos Brazil",
+    image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c",
+  },
+  {
+    slug: "100mt-heat-exchanger",
+    title: "In-Land Transportation: 100MT Heat Exchanger",
+    image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7",
+  },
+  {
+    slug: "chemical-storage-tanks-italy",
+    title: "Chemical Storage Tanks: Ex-Mumbai To Italy",
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
+  },
+  {
+    slug: "used-oil-xray-machines-import",
+    title: "8nos Used Oil X-Ray Machines Import: Ex-Hamburg to Mumbai Port",
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
+  },
+  {
+    slug: "35m-eot-crane-export",
+    title: "35M EOT Crane Export: Ex-NSA to Houston, USA",
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
+  },
+];
 
   const networks = [
     "WCA",
@@ -83,18 +85,20 @@ export default function CaseStudies() {
         <div className="grid grid-cols-3 gap-8">
 
           {projects.map((project, index) => (
-            <div
-              key={index}
+            <Link
+             key={index}
+             href={`/case-studies/${project.slug}`}
               className="
-                bg-white
-                rounded-lg
-                overflow-hidden
-                shadow-sm
-                hover:shadow-2xl
-                transition-all
-                duration-500
-              "
-            >
+             bg-white
+             rounded-lg
+             overflow-hidden
+             shadow-sm
+             hover:shadow-2xl
+             transition-all
+             duration-500
+             block
+           "
+           >
               <img
                 src={project.image}
                 alt={project.title}
@@ -114,7 +118,7 @@ export default function CaseStudies() {
                   {project.title}
                 </h2>
               </div>
-            </div>
+           </Link>
           ))}
 
         </div>
