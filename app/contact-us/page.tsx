@@ -40,9 +40,46 @@ export default function ContactUs() {
     <main className="bg-[#f7f7f7]">
       {/* PAGE TITLE */}
       <section className="bg-[#232323] py-2">
+        {/* HERO IMAGE */}
+
+         <section>
+         <img
+          src="/images/contact-us-banner.jpg"
+          alt="Mega Move India Office"
+          className="w-full h-[500px] object-cover"
+         />
+      </section>
         <h1 className="text-center text-white text-[32px] tracking-[10px] font-semibold">
           CONTACT US
         </h1>
+      </section>
+      {/* KEY OFFICES */}
+      <section className="py-3">
+        <div className="bg-[#232323] py-4 mb-10">
+          <h2 className="text-center text-white text-[20px] tracking-[6px] font-semibold">
+            KEY OFFICES
+          </h2>
+        </div>
+        <div className="max-w-7xl mx-auto px-12">
+          <div className="grid grid-cols-3 gap-16">
+            {offices.map((office, index) => (
+              <div key={index}>
+                <h3 className="text-[30px] text-[#0b8db2] mb-6">
+                  {office.city}
+                </h3>
+                <p className="text-gray-700 leading-8">
+                  {office.address}
+                </p>
+                <p className="mt-4">
+                  <strong>Email:</strong> {office.email}
+                </p>
+                <p>
+                  <strong>Mobile:</strong> {office.phone}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
       {/* MAP + ENQUIRY */}
       <section className="max-w-7xl mx-auto px-12 py-6">
@@ -106,34 +143,7 @@ export default function ContactUs() {
           </div>
         </div>
       </section>
-      {/* KEY OFFICES */}
-      <section className="py-3">
-        <div className="bg-[#232323] py-4 mb-10">
-          <h2 className="text-center text-white text-[20px] tracking-[6px] font-semibold">
-            KEY OFFICES
-          </h2>
-        </div>
-        <div className="max-w-7xl mx-auto px-12">
-          <div className="grid grid-cols-3 gap-16">
-            {offices.map((office, index) => (
-              <div key={index}>
-                <h3 className="text-[30px] text-[#0b8db2] mb-6">
-                  {office.city}
-                </h3>
-                <p className="text-gray-700 leading-8">
-                  {office.address}
-                </p>
-                <p className="mt-4">
-                  <strong>Email:</strong> {office.email}
-                </p>
-                <p>
-                  <strong>Mobile:</strong> {office.phone}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
       {/* SOCIAL MEDIA */}
       <section className="bg-[#2f3d57] py-6">
 
