@@ -1,12 +1,39 @@
 import type { Metadata } from "next";
 import Gallery from "./Gallery";
 import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "National Defence Project | Mega Move India",
   description:
     "Mega Move India's successful execution of a National Defence Project involving specialized transportation, heavy lift handling, route surveys and end-to-end project logistics.",
 };
+
+const otherProjects = [
+  {
+    title: "225MT Used Machinery Import",
+    image: "/images/Casestudies/225MT/225MTHeroImage.jpg",
+    link: "/case-studies/225mt-used-machinery-import",
+  },
+
+  {
+    title: "Factory Relocation",
+    image: "/images/Casestudies/FactoryRelocation/FactoryRelocationHeroImage.jpg",
+    link: "/case-studies/factory-relocation-germany-to-india",
+  },
+
+  {
+    title: "70MT Heat Condenser Export",
+    image: "/images/Casestudies/HeatCondenser/HeatCondenserHeroImage.jpg",
+    link: "/case-studies/70mt-heat-condenser-export",
+  },
+
+  {
+    title: "100MT Heat Exchanger",
+    image: "/images/Casestudies/HeatExchanger/HeatExchangerHeroImage.jpg",
+    link: "/case-studies/100mt-heat-exchanger",
+  },
+];
 
 export default function NationalDefenceProject() {
   return (
@@ -164,6 +191,64 @@ export default function NationalDefenceProject() {
         <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
           Despite the extreme operating conditions and logistical complexities, the project was completed successfully within the planned 21-day timeline. During transit, one of the heavy-haul vehicles experienced a mechanical breakdown in a remote high-altitude region. Through close coordination with the Indian Army, the BMP-II armoured vehicle was safely transferred to an Army transport platform and secured at a military facility in Kargil, ensuring zero risk to the equipment. Following repairs, Mega Move India reloaded the cargo and completed the final delivery to Nyoma, Ladakh, without incident, reinforcing its capability in executing mission-critical defence logistics under demanding conditions.
         </p>
+
+        {/* OTHER PROJECTS */}
+
+<section className="mt-20">
+
+  <h2 className="text-3xl lg:text-5xl font-light text-[#173f74] text-center mb-4">
+    Our Other Projects
+  </h2>
+
+  <p className="text-center text-gray-600 mb-12">
+    Explore more successful project logistics assignments executed by Mega Move India.
+  </p>
+
+  <div className="overflow-hidden">
+
+    <div className="flex gap-8 animate-projects-slider w-max">
+
+      {[...otherProjects, ...otherProjects].map((project, index) => (
+
+        <Link
+          key={index}
+          href={project.link}
+          className="
+            w-[320px]
+            bg-white
+            rounded-xl
+            overflow-hidden
+            shadow-md
+            hover:shadow-xl
+            transition-all
+            duration-500
+            shrink-0
+          "
+        >
+
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-[220px] object-cover"
+          />
+
+          <div className="p-5">
+
+            <h3 className="text-xl text-[#173f74]">
+              {project.title}
+            </h3>
+
+          </div>
+
+        </Link>
+
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
 
         <div className="mt-12 border-t pt-8 text-center">
 
