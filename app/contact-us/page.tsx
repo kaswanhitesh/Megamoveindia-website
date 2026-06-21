@@ -59,10 +59,7 @@ export default function ContactUs() {
   </div>
 
 </section>
-        <h1 className="text-center text-white text-[32px] tracking-[10px] font-semibold">
-          CONTACT US
-        </h1>
-      </section>
+        
       {/* KEY OFFICES */}
       <section className="py-3">
         <div className="bg-[#232323] py-4 mb-10">
