@@ -48,7 +48,7 @@ export default function ContactUs() {
       <section className="max-w-7xl mx-auto px-12 py-6">
         <div className="flex gap-8 items-stretch">
           {/* MAP */}
-          <div className="w-[55%] flex flex-col">
+          <div className="w-[45%] flex flex-col">
             <iframe
                 src="https://www.google.com/maps?q=Andheri%20East%20Mumbai&output=embed"
                 loading="lazy"
