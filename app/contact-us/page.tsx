@@ -42,13 +42,31 @@ export default function ContactUs() {
       <section className="bg-[#232323] py-2">
         {/* HERO IMAGE */}
 
-         <section>
-         <img
-          src="images/ContactUsHeroImage.png"
-          alt="Mega Move India Office"
-          className="w-full h-[500px] object-cover"
-         />
-      </section>
+         {/* HERO IMAGE */}
+
+<section className="relative h-[500px]">
+
+  <img
+    src="/images/contact-us-banner.jpg"
+    alt="Contact Us"
+    className="w-full h-full object-cover"
+  />
+
+  {/* Dark Overlay */}
+
+  <div className="absolute inset-0 bg-black/35" />
+
+  {/* Contact Us Text */}
+
+  <div className="absolute inset-0 flex items-center justify-center">
+
+    <h1 className="text-white text-[70px] tracking-[12px] font-light">
+      CONTACT US
+    </h1>
+
+  </div>
+
+</section>
         <h1 className="text-center text-white text-[32px] tracking-[10px] font-semibold">
           CONTACT US
         </h1>
