@@ -57,16 +57,16 @@ export default function ContactUs() {
           </div>
           {/* ENQUIRY FORM */}
           <div className="w-[45%]">
-            <h2 className="text-center text-[28px] font-medium text-[#173f74] mb-8">
+            <h2 className="text-center text-[20px] font-medium text-[#173f74] mb-8">
               Send Us An Enquiry
             </h2>
-            <form className="space-y-6 max-w-[620px] mx-auto">
+            <form className="space-y-6 max-w-[520px] mx-auto">
               <div className="grid grid-cols-2 gap-4">
                 <input
                   required
                   type="text"
                   placeholder="Name *"
-                  className="border border-gray-300 p-3.5 text-base bg-white"
+                  className="border border-gray-300 p-3 text-base bg-white"
                 />
                 <input
                   required
