@@ -13,7 +13,6 @@ return (
       text-center
     "
   >
-
     <a
       href="#"
       className="hover:text-black transition-colors"
