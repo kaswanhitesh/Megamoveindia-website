@@ -4,18 +4,18 @@ import { useState } from "react";
 
 export default function Gallery() {
   const images = [
-    "/images/Casestudies/DefenceCargo/DefenceCargo_Gallery1.JPG",
-    "/images/Casestudies/DefenceCargo/DefenceCargo_Gallery2.JPG",
-    "/images/Casestudies/DefenceCargo/DefenceCargo_Gallery3.JPG",
-    "/images/Casestudies/DefenceCargo/DefenceCargo_Gallery4.JPG",
-    "/images/Casestudies/DefenceCargo/DefenceCargo_Gallery5.JPG",
-    "/images/Casestudies/DefenceCargo/DefenceCargo_Gallery6.JPG",
-    "/images/Casestudies/DefenceCargo/DefenceCargo_Gallery7.JPG",
-    "/images/Casestudies/DefenceCargo/DefenceCargo_Gallery8.JPG",
-    "/images/Casestudies/DefenceCargo/DefenceCargo_Gallery9.JPG",
-    "/images/Casestudies/DefenceCargo/DefenceCargo_Gallery10.JPG",
-    "/images/Casestudies/DefenceCargo/DefenceCargo_Gallery11.JPG",
-    "/images/Casestudies/DefenceCargo/DefenceCargo_Gallery12.JPG",
+    "/images/Casestudies/defenceCargo/DefenceCargo_Gallery1.JPG",
+    "/images/Casestudies/defenceCargo/DefenceCargo_Gallery2.JPG",
+    "/images/Casestudies/defenceCargo/DefenceCargo_Gallery3.JPG",
+    "/images/Casestudies/defenceCargo/DefenceCargo_Gallery4.JPG",
+    "/images/Casestudies/defenceCargo/DefenceCargo_Gallery5.JPG",
+    "/images/Casestudies/defenceCargo/DefenceCargo_Gallery6.JPG",
+    "/images/Casestudies/defenceCargo/DefenceCargo_Gallery7.JPG",
+    "/images/Casestudies/defenceCargo/DefenceCargo_Gallery8.JPG",
+    "/images/Casestudies/defenceCargo/DefenceCargo_Gallery9.JPG",
+    "/images/Casestudies/defenceCargo/DefenceCargo_Gallery10.JPG",
+    "/images/Casestudies/defenceCargo/DefenceCargo_Gallery11.JPG",
+    "/images/Casestudies/defenceCargo/DefenceCargo_Gallery12.JPG",
   ];
 
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
