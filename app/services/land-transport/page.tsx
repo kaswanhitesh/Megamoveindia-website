@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const recentProjects = [
   {
     title: "National Defence Project",
-    image: "/images/Casestudies/DefenceCargo/DefenceCargoHeroImage.JPG",
+    image: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3",
     description: "Transportation of BMP-II Armoured Vehicles to Nyoma, Ladakh.",
     link: "/case-studies/national-defence-project",
   },
