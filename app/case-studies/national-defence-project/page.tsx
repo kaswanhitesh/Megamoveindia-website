@@ -53,7 +53,7 @@ export default function NationalDefenceProject() {
           <div className="grid grid-cols-2 gap-10">
 
             <div>
-              <h2 className="text-5xl font-light text-[#173f74] text-center mb-12">
+              <h3 className="font-semibold text-xl mb-3">
                 Cargo Description
               </h3>
               <p className="text-gray-700">
