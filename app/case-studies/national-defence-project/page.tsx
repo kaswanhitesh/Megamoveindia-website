@@ -125,6 +125,23 @@ export default function NationalDefenceProject() {
           Despite the extreme operating conditions and logistical complexities, the project was completed successfully within the planned 21-day timeline. During transit, one of the heavy-haul vehicles experienced a mechanical breakdown in a remote high-altitude region. Through close coordination with the Indian Army, the BMP-II armoured vehicle was safely transferred to an Army transport platform and secured at a military facility in Kargil, ensuring zero risk to the equipment. Following repairs, Mega Move India reloaded the cargo and completed the final delivery to Nyoma, Ladakh, without incident, reinforcing its capability in executing mission-critical defence logistics under demanding conditions.
         </p>
 
+        <div className="mt-12 border-t pt-8 text-center">
+  <h3 className="text-2xl font-semibold text-[#173f74] mb-3">
+    Discuss Your Project Logistics Requirement
+  </h3>
+
+  <p className="text-gray-600 mb-4">
+    For heavy lift transportation, project logistics, freight forwarding and ODC movements, contact our project team.
+  </p>
+
+  <a
+    href="mailto:projects@megamoveindia.com"
+    className="text-[#173f74] text-2xl font-semibold hover:underline"
+  >
+    projects@megamoveindia.com
+  </a>
+</div>
+
       </section>
 
     </main>
