@@ -62,11 +62,9 @@ export default function ContactUs() {
         
       {/* KEY OFFICES */}
       <section className="py-3">
-        <div className="bg-[#232323] py-4 mb-10">
-          <h2 className="text-center text-white text-[20px] tracking-[6px] font-semibold">
-            KEY OFFICES
-          </h2>
-        </div>
+        <h2 className="text-center text-[36px] text-[#173f74] font-Bold mb-10">
+         Key Offices
+         </h2>
         <div className="max-w-7xl mx-auto px-12">
           <div className="grid grid-cols-3 gap-16">
             {offices.map((office, index) => (
