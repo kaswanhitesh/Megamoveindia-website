@@ -12,44 +12,44 @@ export default function CaseStudies() {
   },
 
   {
-    slug: "project-2",
+    slug: "Project-2",
     title: "225MT Used Machinery Import",
     image: "/images/225MTUsedMachineryImportCardImage.jpeg",
   },
 
   {
-    slug: "project-3",
+    slug: "Project-3",
     title: "Factory Relocation: Germany To India",
     image: "/images/FactoryRelocationGermanyToIndiaCardImage.jpeg",
   },
 
   {
-    slug: "project-4",
+    slug: "Project-4",
     title: "70MT Heat Condenser Export: Ex Kattupalli to Santos Brazil",
     image: "/images/70MTHeatCondenserCardImage.jpeg",
   },
 
   {
-    slug: "project-5",
+    slug: "Project-5",
     title: "In-Land Transportation: 100MT Heat Exchanger",
     image: "/images/100MTHeatExchangerCardImage.jpeg",
   },
 
   {
-    slug: "project-6",
+    slug: "Project-6",
     title: "Chemical Storage Tanks: Ex-Mumbai To Italy",
     image: "/images/ChemicalStorageTankCardImage.jpeg",
   },
 
   {
-    slug: "project-7",
+    slug: "Project-7",
     title:
       "8 Nos Used Oil X-Ray Machines Import: Ex-Hamburg to Mumbai Port",
     image: "/images/XrayMachineCardImage.jpeg",
   },
 
   {
-    slug: "project-8",
+    slug: "Project-8",
     title: "35M EOT Crane Export: Ex-NSA to Houston, USA",
     image: "/images/EOTCraneCardImage.jpeg",
   },
