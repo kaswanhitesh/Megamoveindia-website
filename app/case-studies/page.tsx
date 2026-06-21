@@ -26,7 +26,7 @@ export default function CaseStudies() {
   {
     slug: "Project-4",
     title: "70MT Heat Condenser Export: Ex Kattupalli to Santos Brazil",
-    image: "/images/70MTHeatCondenserCardImage.jpeg",
+    image: "/images/Casestudies/Project-4/Project4_HeroImage.webp",
   },
 
   {
