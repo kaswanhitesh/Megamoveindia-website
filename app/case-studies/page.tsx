@@ -4,7 +4,7 @@ export default function CaseStudies() {
 
   const projects = [
     {
-      title: "National Defence Project",
+      title: "National Defence Project: In-Land Transportation of BMP-II Tanks to China Border",
       image: "images/NationalDefenceProjectCardImage.JPG",
     },
     {
