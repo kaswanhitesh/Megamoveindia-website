@@ -33,68 +33,51 @@ export default function Home() {
   return (
     <main className="bg-[#f7f7f7]">
 
+      {/* HERO + SERVICES SECTION */}
       <section
         className="
-          flex
-          flex-col
-          lg:flex-row
+          flex flex-col lg:flex-row
           items-start
-          px-4
-          lg:px-16
-          pt-4
-          lg:pt-2
-          gap-8
+          px-4 lg:px-16
+          pt-4 lg:pt-2
+          gap-6 lg:gap-8
         "
       >
-        {/* Left Side */}
-
+        {/* LEFT SIDE */}
         <div className="w-full lg:w-[38%] flex flex-col justify-start pt-2 lg:pt-6">
 
-          <h1
-            className="
-              text-[26px]
-              md:text-[38px]
-              lg:text-[42px]
-              leading-tight
-              font-light
-              tracking-wide
-            "
-          >
+          <h1 className="text-[26px] md:text-[38px] lg:text-[42px] leading-tight font-light tracking-wide">
             Welcome to
             <br />
-            <span className="font-semibold">
-              MEGA MOVE INDIA
-            </span>
+            <span className="font-semibold">MEGA MOVE INDIA</span>
           </h1>
 
           <p className="mt-6 lg:mt-8 text-[15px] leading-[1.9] text-gray-700">
             With a legacy in heavy haulage and over-dimensional cargo
             transportation dating back to 2005, Mega Move India was
             incorporated in 2025 to expand its expertise into global
-            project logistics, freight forwarding, heavy lift
-            transportation and equipment rentals.
+            project logistics, freight forwarding, heavy lift transportation
+            and equipment rentals.
           </p>
 
           <p className="mt-3 text-[15px] leading-[1.9] text-gray-700">
-            Driven by specialized equipment, experienced personnel and
-            a commitment to operational excellence, we provide
-            end-to-end logistics solutions for the world's most
-            challenging cargo movements.
+            Driven by specialized equipment, experienced personnel and a
+            commitment to operational excellence, we provide end-to-end
+            logistics solutions for the world's most challenging cargo movements.
           </p>
-
         </div>
 
-        {/* Right Side */}
-
+        {/* RIGHT SIDE - RESPONSIVE FIX */}
         <div
           className="
-            w-full
-            lg:w-[60%]
-            flex
-            gap-[3px]
-            lg:gap-[4px]
-            h-[300px]
-            lg:h-[450px]
+            w-full lg:w-[60%]
+
+            /* MOBILE: 2x2 GRID (NEW FIX) */
+            grid grid-cols-2 gap-[6px]
+            h-[320px]
+
+            /* DESKTOP: original horizontal layout preserved */
+            lg:flex lg:gap-[4px] lg:h-[450px]
           "
         >
           {cards.map((card) => (
@@ -102,53 +85,38 @@ export default function Home() {
               key={card.title}
               href={card.link}
               className="
-                group
-                relative
-                flex-1
-                overflow-hidden
-                transition-all
-                duration-700
-                lg:hover:flex-[2]
+                group relative overflow-hidden
+                rounded-md
+
+                /* MOBILE: fixed equal cards */
+                h-[160px]
+
+                /* DESKTOP: flex expanding cards */
+                lg:flex-1 lg:h-auto lg:rounded-none lg:transition-all lg:duration-700 lg:hover:flex-[2]
               "
             >
               <img
                 src={card.image}
                 alt={card.title}
                 className="
-                  absolute
-                  inset-0
-                  h-full
-                  w-full
-                  object-cover
-                  grayscale
-                  lg:grayscale
+                  absolute inset-0 w-full h-full object-cover
+                  grayscale lg:grayscale
                   lg:group-hover:grayscale-0
-                  transition-all
-                  duration-700
+                  transition-all duration-700
                 "
               />
 
               <div className="absolute inset-0 bg-black/45" />
 
-              <div className="absolute bottom-4 lg:bottom-10 left-2 lg:left-6 right-2 lg:right-6 text-white">
+              {/* TEXT */}
+              <div className="absolute inset-0 flex flex-col justify-end p-3 lg:p-6 text-white">
 
-                <h2 className="text-[14px] md:text-[18px] lg:text-[22px] font-bold leading-tight text-center lg:text-left">
+                <h2 className="text-[14px] lg:text-[22px] font-bold text-center lg:text-left">
                   {card.title}
                 </h2>
 
-                <div
-                  className="
-                    hidden
-                    lg:block
-                    max-h-0
-                    opacity-0
-                    overflow-hidden
-                    group-hover:max-h-[300px]
-                    group-hover:opacity-100
-                    transition-all
-                    duration-700
-                  "
-                >
+                {/* Desktop hover description only */}
+                <div className="hidden lg:block max-h-0 opacity-0 overflow-hidden group-hover:max-h-[300px] group-hover:opacity-100 transition-all duration-700">
                   <p className="mt-4 text-[13px] leading-6 text-gray-100">
                     {card.description}
                   </p>
@@ -159,81 +127,41 @@ export default function Home() {
                 </div>
 
               </div>
-
             </a>
           ))}
         </div>
-
       </section>
 
-      {/* INDUSTRIES */}
+      {/* INDUSTRIES SECTION */}
+      <section className="pt-4 pb-8 bg-[#f7f7f7] border-t border-gray-200 overflow-hidden">
 
-      <section className="pt-2 lg:pt-0 pb-8 bg-[#f7f7f7] border-t border-gray-200 overflow-hidden">
-
-        <div className="text-center mt-8 lg:mt-6 mb-6">
-
-          <h2 className="text-[22px] lg:text-[26px] font-bold text-black text-center">
+        <div className="text-center mt-6 mb-6">
+          <h2 className="text-[22px] lg:text-[26px] font-bold text-black">
             Industries We Serve
           </h2>
-
         </div>
 
         <div className="marquee">
-
           <div className="marquee-content animate-marquee">
 
             {[
-              {
-                icon: "/images/icons/icon_industrialplants.jpeg",
-                title: "Industrial Plants and Projects",
-              },
-              {
-                icon: "/images/icons/icon_infrastructure.jpeg",
-                title: "Infrastructure",
-              },
-              {
-                icon: "/images/icons/icon_metalandmining.jpeg",
-                title: "Metal & Mining",
-              },
-              {
-                icon: "/images/icons/icon_oilandgas.png",
-                title: "Oil and Gas",
-              },
-              {
-                icon: "/images/icons/icon_power and energy.jpeg",
-                title: "Power and Energy",
-              },
-              {
-                icon: "/images/icons/icon_industrialplants.jpeg",
-                title: "Industrial Plants and Projects",
-              },
-              {
-                icon: "/images/icons/icon_infrastructure.jpeg",
-                title: "Infrastructure",
-              },
-              {
-                icon: "/images/icons/icon_metalandmining.jpeg",
-                title: "Metal & Mining",
-              },
-              {
-                icon: "/images/icons/icon_oilandgas.png",
-                title: "Oil and Gas",
-              },
-              {
-                icon: "/images/icons/icon_power and energy.jpeg",
-                title: "Power and Energy",
-              },
+              { icon: "/images/icons/icon_industrialplants.jpeg", title: "Industrial Plants and Projects" },
+              { icon: "/images/icons/icon_infrastructure.jpeg", title: "Infrastructure" },
+              { icon: "/images/icons/icon_metalandmining.jpeg", title: "Metal & Mining" },
+              { icon: "/images/icons/icon_oilandgas.png", title: "Oil and Gas" },
+              { icon: "/images/icons/icon_power and energy.jpeg", title: "Power and Energy" },
+              { icon: "/images/icons/icon_industrialplants.jpeg", title: "Industrial Plants and Projects" },
+              { icon: "/images/icons/icon_infrastructure.jpeg", title: "Infrastructure" },
+              { icon: "/images/icons/icon_metalandmining.jpeg", title: "Metal & Mining" },
+              { icon: "/images/icons/icon_oilandgas.png", title: "Oil and Gas" },
+              { icon: "/images/icons/icon_power and energy.jpeg", title: "Power and Energy" },
             ].map((item, index) => (
-              <div
-                key={index}
-                className="industry-card"
-              >
+              <div key={index} className="industry-card">
                 <img
                   src={item.icon}
                   alt={item.title}
                   className="w-12 h-12 lg:w-16 lg:h-16 mx-auto mb-2 object-contain"
                 />
-
                 <h3 className="text-sm lg:text-lg font-medium text-center px-2">
                   {item.title}
                 </h3>
@@ -241,7 +169,6 @@ export default function Home() {
             ))}
 
           </div>
-
         </div>
 
       </section>
