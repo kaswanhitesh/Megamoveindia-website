@@ -7,17 +7,17 @@ export default function CaseStudies() {
     slug: "national-defence-project",
     title:
       "National Defence Project: In-Land Transportation of BMP-II Tanks to China Border",
-    image: "images/NationalDefenceProjectCardImage.JPG",
+    image: "/images/NationalDefenceProjectCardImage.JPG",
   },
   {
     slug: "225mt-used-machinery-import",
     title: "225MT Used Machinery Import",
-    image: "images/225MTUsedMachineryImportCardImage.jpeg",
+    image: "/images/225MTUsedMachineryImportCardImage.jpeg",
   },
   {
     slug: "factory-relocation-germany-india",
     title: "Factory Relocation: Germany To India",
-    image: "images/FactoryRelocationGermanyToIndiaCardImage.jpeg",
+    image: "/images/FactoryRelocationGermanyToIndiaCardImage.jpeg",
   },
   {
     slug: "70mt-heat-condenser-export",
