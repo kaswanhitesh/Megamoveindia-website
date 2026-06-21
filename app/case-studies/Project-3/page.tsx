@@ -43,7 +43,7 @@ export default function FactoryRelocationProject() {
 
       <section className="relative h-[280px] lg:h-[500px]">
         <Image
-          src="/images/Casestudies/FactoryRelocation/FactoryRelocationHeroImage.jpg"
+          src="/images/Casestudies/Project-3/Project3_HeroImage.webp"
           alt="Factory Relocation Germany to India"
           fill
           priority
