@@ -54,9 +54,19 @@ export default function FactoryRelocationProject() {
         <div className="absolute inset-0 bg-black/50" />
 
         <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-white text-3xl lg:text-6xl font-light tracking-[2px] lg:tracking-[6px] text-center px-4">
-            FACTORY RELOCATION EX-GERMANY TO INDIA
-          </h1>
+          <div className="text-center px-4">
+
+  <h1 className="text-white text-4xl lg:text-7xl font-light tracking-[2px] lg:tracking-[5px]">
+    FACTORY RELOCATION
+  </h1>
+
+  <div className="w-24 h-[1px] bg-white/70 mx-auto my-4"></div>
+
+  <p className="text-white text-base lg:text-2xl tracking-[4px] uppercase">
+    Ex-Germany to India
+  </p>
+
+</div>
         </div>
       </section>
 
