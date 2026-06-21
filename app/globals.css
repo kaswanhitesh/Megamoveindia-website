@@ -122,3 +122,30 @@ body {
 .news-marquee-content:hover {
   animation-play-state: paused;
 }
+@keyframes galleryScroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-gallery {
+  animation: galleryScroll 40s linear infinite;
+}
+
+.gallery-marquee {
+  overflow: hidden;
+  width: 100%;
+}
+
+.gallery-track {
+  display: flex;
+  width: max-content;
+}
+
+.gallery-track:hover {
+  animation-play-state: paused;
+}
