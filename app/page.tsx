@@ -40,13 +40,33 @@ export default function Home() {
   return (
     <main className="bg-[#f7f7f7]">
 
-      <section className="flex items-start px-16 pt-2 pb-0 gap-8">
+      <section
+        className="
+        flex
+        flex-col
+        lg:flex-row
+        items-start
+        px-6
+        lg:px-16
+        pt-2
+        gap-8
+        "
+        >
 
         {/* Left Side */}
 
-        <div className="w-[38%] flex flex-col justify-start pt-6">
+        <div className="w-full lg:w-[38%] flex flex-col justify-start pt-6">
 
-          <h1 className="text-[42px] leading-[1.1.15] font-light tracking-wide">
+          <h1
+             className="
+             text-[32px]
+             md:text-[38px]
+             lg:text-[42px]
+             leading-tight
+             font-light
+             tracking-wide
+            "
+            >
             Welcome to
             <br />
             <span className="font-semibold">
@@ -73,7 +93,16 @@ export default function Home() {
 
         {/* Right Side */}
 
-        <div className="w-[60%] flex gap-[4px] h-[450px]">
+        <div
+          className="
+          w-full
+          lg:w-[60%]
+          flex
+          gap-[4px]
+          h-[250px]
+          lg:h-[450px]
+          "
+        >
 
           {cards.map((card) => (
             <a
@@ -86,7 +115,7 @@ export default function Home() {
                 overflow-hidden
                 transition-all
                 duration-700
-                hover:flex-[2]
+                lg:hover:flex-[2]
               "
             >
               <img
@@ -114,7 +143,9 @@ export default function Home() {
   </h2>
 
   <div
-    className="
+      className="
+      hidden
+      lg:block
       max-h-0
       opacity-0
       overflow-hidden
@@ -122,8 +153,8 @@ export default function Home() {
       group-hover:opacity-100
       transition-all
       duration-700
-    "
-  >
+     "
+     >
 
     <p className="mt-4 text-[13px] leading-6 text-gray-100">
       {card.description}
