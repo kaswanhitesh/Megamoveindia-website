@@ -39,8 +39,7 @@ export default function AirFreight() {
     <main className="bg-[#f7f7f7]">
 
       {/* HERO */}
-
-      <section className="relative h-[500px] overflow-hidden">
+      <section className="relative h-[320px] md:h-[400px] lg:h-[500px] overflow-hidden">
 
         <img
           src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1800&q=80"
@@ -50,15 +49,15 @@ export default function AirFreight() {
 
         <div className="absolute inset-0 bg-black/45" />
 
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center px-4">
 
           <div className="text-center text-white">
 
-            <h1 className="text-6xl font-light mb-4">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-light mb-3 lg:mb-4">
               Air Freight Services
             </h1>
 
-            <p className="text-lg tracking-[3px] uppercase">
+            <p className="text-xs md:text-sm lg:text-lg tracking-[2px] lg:tracking-[3px] uppercase">
               Global Air Cargo • Charter Solutions • Time Critical Shipments
             </p>
 
@@ -69,14 +68,13 @@ export default function AirFreight() {
       </section>
 
       {/* INTRO */}
+      <section className="max-w-7xl mx-auto px-4 lg:px-16 py-12 lg:py-20">
 
-      <section className="max-w-7xl mx-auto px-16 py-20">
-
-        <h2 className="text-center text-[42px] font-light text-[#173f74] mb-8">
+        <h2 className="text-center text-[26px] md:text-[34px] lg:text-[42px] font-light text-[#173f74] mb-6 lg:mb-8">
           Global Air Freight Solutions
         </h2>
 
-        <p className="text-center text-lg text-gray-600 leading-8 max-w-5xl mx-auto">
+        <p className="text-center text-sm md:text-base lg:text-lg text-gray-600 leading-7 lg:leading-8 max-w-5xl mx-auto">
           Mega Move India provides international air freight services,
           air cargo transportation, project cargo airlift solutions,
           heavy lift air freight, oversized cargo transportation,
@@ -88,28 +86,27 @@ export default function AirFreight() {
       </section>
 
       {/* SERVICES */}
+      <section className="max-w-7xl mx-auto px-4 lg:px-16 pb-12 lg:pb-20">
 
-      <section className="max-w-7xl mx-auto px-16 pb-20">
-
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-8">
 
           {services.map((item, index) => (
             <div
               key={index}
               className="
                 bg-white
-                p-8
+                p-5 lg:p-8
                 shadow-sm
                 hover:shadow-lg
                 transition-all
                 duration-300
               "
             >
-              <h3 className="text-2xl font-medium text-[#173f74] mb-4">
+              <h3 className="text-lg md:text-xl lg:text-2xl font-medium text-[#173f74] mb-3 lg:mb-4">
                 {item.title}
               </h3>
 
-              <p className="text-gray-600 leading-7">
+              <p className="text-sm md:text-base text-gray-600 leading-6 lg:leading-7">
                 {item.text}
               </p>
 
@@ -121,14 +118,13 @@ export default function AirFreight() {
       </section>
 
       {/* SEO CONTENT */}
+      <section className="max-w-6xl mx-auto px-4 lg:px-16 pb-12 lg:pb-20">
 
-      <section className="max-w-6xl mx-auto px-16 pb-20">
-
-        <h2 className="text-[42px] font-light text-[#173f74] mb-10 text-center">
+        <h2 className="text-[26px] md:text-[34px] lg:text-[42px] font-light text-[#173f74] mb-8 lg:mb-10 text-center">
           Why Choose Mega Move India For Air Freight?
         </h2>
 
-        <div className="text-gray-600 leading-9 space-y-8 text-[16px]">
+        <div className="text-gray-600 leading-7 lg:leading-9 space-y-6 lg:space-y-8 text-sm md:text-base">
 
           <p>
             Mega Move India delivers reliable international air freight
@@ -169,14 +165,13 @@ export default function AirFreight() {
       </section>
 
       {/* INDUSTRIES */}
+      <section className="max-w-7xl mx-auto px-4 lg:px-16 pb-16 lg:pb-20">
 
-      <section className="max-w-7xl mx-auto px-16 pb-20">
-
-        <h2 className="text-center text-[42px] font-light text-[#173f74] mb-10">
+        <h2 className="text-center text-[26px] md:text-[34px] lg:text-[42px] font-light text-[#173f74] mb-8 lg:mb-10">
           Industries We Serve
         </h2>
 
-        <div className="grid grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6">
 
           {[
             "Power & Energy",
@@ -192,14 +187,14 @@ export default function AirFreight() {
               key={industry}
               className="
                 bg-white
-                py-8
+                py-5 lg:py-8
                 text-center
                 shadow-sm
                 border
                 border-gray-100
               "
             >
-              <span className="text-gray-700 text-lg">
+              <span className="text-sm md:text-base lg:text-lg text-gray-700">
                 {industry}
               </span>
             </div>
@@ -209,23 +204,22 @@ export default function AirFreight() {
 
       </section>
 
-      {/* CONTACT CTA */}
+      {/* CTA */}
+      <section className="max-w-7xl mx-auto px-4 lg:px-16 pb-20 lg:pb-24">
 
-      <section className="max-w-7xl mx-auto px-16 pb-24">
+        <div className="bg-white border border-gray-200 py-8 lg:py-12 px-6 lg:px-10 text-center">
 
-        <div className="bg-white border border-gray-200 py-12 px-10 text-center">
-
-          <h2 className="text-[36px] font-light text-[#173f74] mb-6">
+          <h2 className="text-[24px] md:text-[30px] lg:text-[36px] font-light text-[#173f74] mb-4 lg:mb-6">
             Request an Air Freight Quote
           </h2>
 
-          <p className="text-gray-600 text-lg mb-6">
+          <p className="text-sm md:text-base lg:text-lg text-gray-600 mb-4 lg:mb-6">
             Send your enquiries to
           </p>
 
           <a
             href="mailto:airfreight@megamoveindia.com"
-            className="text-2xl font-medium text-[#173f74] hover:underline"
+            className="text-lg md:text-xl lg:text-2xl font-medium text-[#173f74] hover:underline"
           >
             airfreight@megamoveindia.com
           </a>
