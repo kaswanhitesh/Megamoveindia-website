@@ -54,83 +54,84 @@ export default function NationalDefenceProject() {
             Project Details
           </h2>
 
-          <div className="grid grid-cols-2 gap-y-12 gap-x-20 max-w-6xl mx-auto">
+          <div className="grid grid-cols-4 gap-y-12 gap-x-10 max-w-7xl mx-auto">
 
   <div className="text-center">
-    <h3 className="font-semibold text-xl mb-3">
+    <h3 className="font-bold text-[22px] text-[#173f74] mb-3">
       Industry Sector
     </h3>
-    <p className="text-gray-700">
+    <p className="text-gray-600 leading-7">
       Defence Logistics & Military Transportation
     </p>
   </div>
 
   <div className="text-center">
-    <h3 className="font-semibold text-xl mb-3">
+    <h3 className="font-bold text-[22px] text-[#173f74] mb-3">
       Cargo Description
     </h3>
-    <p className="text-gray-700">
+    <p className="text-gray-600 leading-7">
       BMP-II Armoured Vehicles & Defence Equipment
     </p>
   </div>
 
   <div className="text-center">
-    <h3 className="font-semibold text-xl mb-3">
+    <h3 className="font-bold text-[22px] text-[#173f74] mb-3">
       Origin & Destination
     </h3>
-    <p className="text-gray-700">
+    <p className="text-gray-600 leading-7">
       Manufacturing Facility, India → Nyoma, Ladakh
     </p>
   </div>
 
   <div className="text-center">
-    <h3 className="font-semibold text-xl mb-3">
+    <h3 className="font-bold text-[22px] text-[#173f74] mb-3">
       Distance Covered
     </h3>
-    <p className="text-gray-700">
+    <p className="text-gray-600 leading-7">
       3,700 KM
     </p>
   </div>
 
   <div className="text-center">
-    <h3 className="font-semibold text-xl mb-3">
+    <h3 className="font-bold text-[22px] text-[#173f74] mb-3">
       Project Scope
     </h3>
-    <p className="text-gray-700">
+    <p className="text-gray-600 leading-7">
       Project Logistics, ODC Transportation,
       Route Survey, Permits & Escorts
     </p>
   </div>
 
   <div className="text-center">
-    <h3 className="font-semibold text-xl mb-3">
+    <h3 className="font-bold text-[22px] text-[#173f74] mb-3">
       Equipment Deployed
     </h3>
-    <p className="text-gray-700">
-      Hydraulic Modular Trailers, Prime Movers &
-      Escort Vehicles
+    <p className="text-gray-600 leading-7">
+      Hydraulic Modular Trailers,
+      Prime Movers & Escort Vehicles
     </p>
   </div>
 
   <div className="text-center">
-    <h3 className="font-semibold text-xl mb-3">
+    <h3 className="font-bold text-[22px] text-[#173f74] mb-3">
       Transit Time
     </h3>
-    <p className="text-gray-700">
+    <p className="text-gray-600 leading-7">
       21 Days
     </p>
   </div>
 
   <div className="text-center">
-    <h3 className="font-semibold text-xl mb-3">
+    <h3 className="font-bold text-[22px] text-[#173f74] mb-3">
       Key Achievement
     </h3>
-    <p className="text-gray-700">
+    <p className="text-gray-600 leading-7">
       National Benchmark for Fastest Defence ODC Delivery
     </p>
   </div>
 
-</div>        </div>
+</div>
+        </div>
       </section>
      
       <Gallery />
