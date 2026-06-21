@@ -95,7 +95,7 @@ export default function ContactUs() {
         </div>
       </section>
       {/* MAP + ENQUIRY */}
-      <section className="max-w-7xl mx-auto px-12 py-6">
+      <section className="max-w-7xl mx-auto px-12 py-16">
         <div className="flex gap-8 items-stretch">
           {/* MAP */}
           <div className="w-[45%] flex flex-col">
