@@ -135,50 +135,82 @@ export default function ContactUs() {
         </div>
       </section>
       {/* SOCIAL MEDIA */}
-      <section className="bg-[#2f3d57] py-12">
-        <div className="max-w-7xl mx-auto flex justify-center gap-5">
-          <a
-            href="https://www.instagram.com/megamoveindia/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-16 h-16 bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center justify-center text-white text-2xl"
-          >
-            <FaInstagram />
-          </a>
-          <a
-            href="https://www.linkedin.com/company/megamoveindia"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-16 h-16 bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center justify-center text-white text-2xl"
-          >
-            <FaLinkedinIn />
-          </a>
-          <a
-            href="https://wa.me/919321499970"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-16 h-16 bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center justify-center text-white text-2xl"
-          >
-            <FaWhatsapp />
-          </a>
-          <a
-            href="https://x.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-16 h-16 bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center justify-center text-white text-2xl"
-          >
-            <FaXTwitter />
-          </a>
-          <a
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-16 h-16 bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center justify-center text-white text-2xl"
-          >
-            <FaFacebookF />
-          </a>
-        </div>
-      </section>
+      <section className="bg-[#2f3d57] py-6">
+
+  <div className="max-w-7xl mx-auto px-12 flex items-center justify-between">
+
+    {/* Company Information */}
+
+    <div className="text-white text-sm leading-7">
+
+      <p>
+        <strong>Mega Move India Private Limited</strong>
+      </p>
+
+      <p>
+        CIN: U52219MH2025PTC447919
+      </p>
+
+      <p>
+        GSTIN: 27AATCM3537A1ZF
+      </p>
+
+    </div>
+
+    {/* Social Media */}
+
+    <div className="flex gap-4">
+
+      <a
+        href="https://www.instagram.com/megamoveindia/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-14 h-14 bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center justify-center text-white text-2xl"
+      >
+        <FaInstagram />
+      </a>
+
+      <a
+        href="https://www.linkedin.com/company/megamoveindia"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-14 h-14 bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center justify-center text-white text-2xl"
+      >
+        <FaLinkedinIn />
+      </a>
+
+      <a
+        href="https://wa.me/919321499970"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-14 h-14 bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center justify-center text-white text-2xl"
+      >
+        <FaWhatsapp />
+      </a>
+
+      <a
+        href="https://x.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-14 h-14 bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center justify-center text-white text-2xl"
+      >
+        <FaXTwitter />
+      </a>
+
+      <a
+        href="https://facebook.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-14 h-14 bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center justify-center text-white text-2xl"
+      >
+        <FaFacebookF />
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
     </main>
   );
 }
