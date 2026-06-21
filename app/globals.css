@@ -296,3 +296,17 @@ body {
     height: 150px !important;
   }
 }
+
+@keyframes projectsSlider {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-projects-slider {
+  animation: projectsSlider 35s linear infinite;
+}
