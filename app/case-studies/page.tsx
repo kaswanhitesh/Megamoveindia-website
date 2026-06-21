@@ -4,55 +4,57 @@ import Link from "next/link";
 
 export default function CaseStudies() {
   const projects = [
-    {
-      slug: "national-defence-project",
-      title:
-        "National Defence Project: In-Land Transportation of BMP-II Tanks to China Border",
-      image: "/images/NationalDefenceProjectCardImage.JPG",
-    },
-    {
-      slug: "225mt-used-machinery-import",
-      title: "225MT Used Machinery Import",
-      image: "/images/225MTUsedMachineryImportCardImage.jpeg",
-    },
-    {
-      slug: "factory-relocation-germany-india",
-      title: "Factory Relocation: Germany To India",
-      image: "/images/FactoryRelocationGermanyToIndiaCardImage.jpeg",
-    },
-    {
-      slug: "70mt-heat-condenser-export",
-      title: "70MT Heat Condenser Export: Ex Kattupalli to Santos Brazil",
-      image:
-        "https://images.unsplash.com/photo-1519003722824-194d4455a60c",
-    },
-    {
-      slug: "100mt-heat-exchanger",
-      title: "In-Land Transportation: 100MT Heat Exchanger",
-      image:
-        "https://images.unsplash.com/photo-1466611653911-95081537e5b7",
-    },
-    {
-      slug: "chemical-storage-tanks-italy",
-      title: "Chemical Storage Tanks: Ex-Mumbai To Italy",
-      image:
-        "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
-    },
-    {
-      slug: "used-oil-xray-machines-import",
-      title:
-        "8nos Used Oil X-Ray Machines Import: Ex-Hamburg to Mumbai Port",
-      image:
-        "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
-    },
-    {
-      slug: "35m-eot-crane-export",
-      title: "35M EOT Crane Export: Ex-NSA to Houston, USA",
-      image:
-        "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
-    },
-  ];
+  {
+    slug: "national-defence-project",
+    title:
+      "National Defence Project: In-Land Transportation of BMP-II Tanks to China Border",
+    image: "/images/NationalDefenceProjectCardImage.JPG",
+  },
 
+  {
+    slug: "project-2",
+    title: "225MT Used Machinery Import",
+    image: "/images/225MTUsedMachineryImportCardImage.jpeg",
+  },
+
+  {
+    slug: "project-3",
+    title: "Factory Relocation: Germany To India",
+    image: "/images/FactoryRelocationGermanyToIndiaCardImage.jpeg",
+  },
+
+  {
+    slug: "project-4",
+    title: "70MT Heat Condenser Export: Ex Kattupalli to Santos Brazil",
+    image: "/images/70MTHeatCondenserCardImage.jpeg",
+  },
+
+  {
+    slug: "project-5",
+    title: "In-Land Transportation: 100MT Heat Exchanger",
+    image: "/images/100MTHeatExchangerCardImage.jpeg",
+  },
+
+  {
+    slug: "project-6",
+    title: "Chemical Storage Tanks: Ex-Mumbai To Italy",
+    image: "/images/ChemicalStorageTankCardImage.jpeg",
+  },
+
+  {
+    slug: "project-7",
+    title:
+      "8 Nos Used Oil X-Ray Machines Import: Ex-Hamburg to Mumbai Port",
+    image: "/images/XrayMachineCardImage.jpeg",
+  },
+
+  {
+    slug: "project-8",
+    title: "35M EOT Crane Export: Ex-NSA to Houston, USA",
+    image: "/images/EOTCraneCardImage.jpeg",
+  },
+];
+  
   const networks = [
     "WCA",
     "GPLN",
