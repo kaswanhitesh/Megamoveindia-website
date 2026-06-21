@@ -14,7 +14,7 @@ export default function NationalDefenceProject() {
 
       <section className="relative h-[500px]">
         <img
-          src="/images/projects/national-defence-banner.jpg"
+          src="images/Casestudies/DefenceCargo/DefenceCargoHeroImage.JPG"
           alt="National Defence Project"
           className="w-full h-full object-cover"
         />
