@@ -135,11 +135,7 @@ export default function NationalDefenceProject() {
           </h2>
 
           <p className="text-lg text-gray-700 leading-9">
-            The project involved movement through multiple states with
-            strict timelines and security protocols. Mega Move India
-            coordinated with relevant authorities, conducted route
-            assessments, arranged escorts and ensured seamless execution
-            without operational delays.
+            The project presented extraordinary operational challenges, including the transportation of critical defence cargo through remote high-altitude terrain with limited road infrastructure en route to Nyoma, Ladakh. Amid heightened security sensitivities along strategic border regions, convoy safety remained paramount. Mega Move India's Managing Director personally accompanied the movement alongside Indian Army escort vehicles, ensuring continuous coordination and risk management. Despite harsh weather, low oxygen levels, difficult terrain, and complex convoy logistics involving multiple heavy-haul vehicles, the team successfully maintained operational integrity and achieved timely, safe delivery through meticulous planning, military coordination, and disciplined execution.
           </p>
 
         </div>
