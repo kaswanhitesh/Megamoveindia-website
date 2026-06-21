@@ -9,11 +9,11 @@ export default function CaseStudies() {
     },
     {
       title: "225MT Used Machinery Import",
-      image: "https://images.unsplash.com/photo-1494412651409-8963ce7935a7",
+      image: "images/225MTUsedMachineryImportCardImage.jpeg",
     },
     {
       title: "Factory Relocation: Germany To India",
-      image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952",
+      image: "images/FactoryRelocationGermanyToIndiaCardImage.jpeg",
     },
     {
       title: "70MT Heat Condenser Export: Ex Kattupalli to Santos Brazil ",
