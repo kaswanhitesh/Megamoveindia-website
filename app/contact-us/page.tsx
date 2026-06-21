@@ -39,7 +39,7 @@ export default function ContactUs() {
   return (
     <main className="bg-[#f7f7f7]">
       {/* PAGE TITLE */}
-      <section className="bg-[#232323] py-4">
+      <section className="bg-[#232323] py-2">
         <h1 className="text-center text-white text-[42px] tracking-[10px] font-medium">
           CONTACT US
         </h1>
