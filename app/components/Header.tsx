@@ -26,7 +26,6 @@ return (
       ☰
     </button>
   </header>
-  {/* Overlay */}
   <div
     className={`fixed inset-0 bg-black/30 z-40 transition-opacity duration-700 ${
       menuOpen
@@ -35,7 +34,6 @@ return (
     }`}
     onClick={() => setMenuOpen(false)}
   />
-  {/* Sidebar */}
   <div
     className={`fixed top-0 right-0 h-full w-full sm:w-[420px] bg-gray-700 text-white z-50 overflow-y-auto transition-transform duration-700 ease-out ${
       menuOpen
@@ -50,10 +48,7 @@ return (
       ✕
     </button>
     <div className="text-lg text-gray-200 pt-10">
-      <a
-        href="/"
-        className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300"
-      >
+      <a href="/" className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
         Home
       </a>
       <div>
@@ -62,104 +57,58 @@ return (
           className="w-full flex items-center justify-between py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300"
         >
           <span>Services</span>
-          <span
-            className={`transition-transform duration-300 ${
-              servicesOpen ? "rotate-180" : ""
-            }`}
-          >
+          <span className={`transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`}>
             ▼
           </span>
         </button>
         {servicesOpen && (
           <div className="bg-gray-800 text-base">
-            <a
-              href="/services/air-freight"
-              className="block py-3 px-8 lg:px-16 hover:bg-white hover:text-gray-700 transition-all duration-300"
-            >
+            <a href="/services/air-freight" className="block py-3 px-8 lg:px-16 hover:bg-white hover:text-gray-700 transition-all duration-300">
               Air Freight
             </a>
-            <a
-              href="/services/ocean-freight"
-              className="block py-3 px-8 lg:px-16 hover:bg-white hover:text-gray-700 transition-all duration-300"
-            >
+            <a href="/services/ocean-freight" className="block py-3 px-8 lg:px-16 hover:bg-white hover:text-gray-700 transition-all duration-300">
               Ocean Freight
             </a>
-            <a
-              href="/services/land-transport"
-              className="block py-3 px-8 lg:px-16 hover:bg-white hover:text-gray-700 transition-all duration-300"
-            >
+            <a href="/services/land-transport" className="block py-3 px-8 lg:px-16 hover:bg-white hover:text-gray-700 transition-all duration-300">
               Overland Transport
             </a>
-            <a
-              href="/services/project-forwarding"
-              className="block py-3 px-8 lg:px-16 hover:bg-white hover:text-gray-700 transition-all duration-300"
-            >
+            <a href="/services/project-forwarding" className="block py-3 px-8 lg:px-16 hover:bg-white hover:text-gray-700 transition-all duration-300">
               Project Forwarding Services
             </a>
-            <a
-              href="/services/logistics-supply-chain"
-              className="block py-3 px-8 lg:px-16 hover:bg-white hover:text-gray-700 transition-all duration-300"
-            >
+            <a href="/services/logistics-supply-chain" className="block py-3 px-8 lg:px-16 hover:bg-white hover:text-gray-700 transition-all duration-300">
               Logistics & Supply Chain Solutions
             </a>
-            <a
-              href="/services/factory-relocation"
-              className="block py-3 px-8 lg:px-16 hover:bg-white hover:text-gray-700 transition-all duration-300"
-            >
+            <a href="/services/factory-relocation" className="block py-3 px-8 lg:px-16 hover:bg-white hover:text-gray-700 transition-all duration-300">
               Factory Relocation
             </a>
-            <a
-              href="/services/transshipment"
-              className="block py-3 px-8 lg:px-16 hover:bg-white hover:text-gray-700 transition-all duration-300"
-            >
+            <a href="/services/transshipment" className="block py-3 px-8 lg:px-16 hover:bg-white hover:text-gray-700 transition-all duration-300">
               Transshipment
             </a>
-            <a
-              href="/services/transport-engineering"
-              className="block py-3 px-8 lg:px-16 hover:bg-white hover:text-gray-700 transition-all duration-300"
-            >
+            <a href="/services/transport-engineering" className="block py-3 px-8 lg:px-16 hover:bg-white hover:text-gray-700 transition-all duration-300">
               Transport Engineering Capabilities
             </a>
           </div>
         )}
       </div>
-      <a
-        href="/case-studies"
-        className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300"
-      >
+      <a href="/case-studies" className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
         Case Studies
       </a>
-      <a
-        href="/equipment"
-        className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300"
-      >
+      <a href="/equipment" className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
         In-House Equipments
       </a>
       <p className="cursor-pointer py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
         Facilities
       </p>
-      <a
-        href="/company-news"
-        className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300"
-      >
+      <a href="/company-news" className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
         Company News
       </a>
-      <a
-        href="/history"
-        className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300"
-      >
+      <a href="/history" className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
         Our History
       </a>
-      <a
-        href="/careers"
-        className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300"
-      >
+      <a href="/careers" className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
         Careers
       </a>
-      <a
-        href="/contact-us"
-        className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300"
-      >
+      <a href="/contact-us" className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300">
         Contact Us
       </a>
     </div>
