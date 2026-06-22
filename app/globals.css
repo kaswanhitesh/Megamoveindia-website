@@ -276,3 +276,15 @@ body {
 .animate-projects-slider {
   animation: projectsSlider 35s linear infinite;
 }
+
+.gallery-track {
+  transform: translateX(0);
+}
+
+@media (min-width: 1024px) {
+
+  section:has(.gallery-track) {
+    position: relative;
+  }
+
+}
