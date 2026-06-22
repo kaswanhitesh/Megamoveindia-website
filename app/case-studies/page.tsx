@@ -85,7 +85,7 @@ export default function CaseStudies() {
     <main className="min-h-screen bg-[#f7f7f7] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 lg:px-16 py-10 lg:py-16">
         <h1 className="text-center text-[34px] lg:text-[52px] font-light text-gray-900">
-          Our Projects
+          OUR SUCCESS STORIES
         </h1>
 
         <p className="text-center text-sm lg:text-xl text-gray-500 mt-4 mb-10 lg:mb-14">
