@@ -269,6 +269,8 @@ export default function NationalDefenceProject() {
             projects@megamoveindia.com
           </a>
 
+          </div>
+
         </div>
 
       </section>
