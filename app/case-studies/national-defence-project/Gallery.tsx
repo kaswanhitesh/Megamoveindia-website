@@ -68,25 +68,36 @@ useEffect(() => {
       {/* DESKTOP */}
 
       <section
-        ref={sectionRef}
-        className="
-          hidden lg:block
-          relative z-10
-          bg-white
-          h-[400vh]
-        "
-      >
-        <div className="sticky top-0 h-screen overflow-hidden flex items-center">
+  ref={sectionRef}
+  className="
+    hidden lg:block
+    relative
+    h-[600vh]
+    bg-white
+    overflow-hidden
+  "
+>
+        <div
+  className="
+    sticky
+    top-0
+    h-screen
+    overflow-hidden
+    flex
+    items-center
+    bg-white
+  "
+>
 
           <div
   ref={trackRef}
   className="
     flex
-    gap-10
-    px-20
+    gap-20
+    pl-[15vw]
+    pr-[15vw]
     w-max
-    transition-transform
-    duration-75
+    will-change-transform
   "
 >
             {images.map((image, index) => (
