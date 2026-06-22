@@ -43,7 +43,7 @@ export default function NationalDefenceProject() {
 
       <section className="relative h-[280px] lg:h-[500px]">
         <Image
-          src="/images/Casestudies/DefenceCargo/DefenceCargoHeroImage.webp"
+          src="/images/Casestudies/Project-2/Project2_Galleryheroimage.webp"
           alt="National Defence Project"
           fill
           priority
@@ -55,7 +55,7 @@ export default function NationalDefenceProject() {
 
         <div className="absolute inset-0 flex items-center justify-center">
           <h1 className="text-white text-3xl lg:text-6xl font-light tracking-[2px] lg:tracking-[6px] text-center px-4">
-            NATIONAL DEFENCE PROJECT
+            225MT USED MACHINERY IMPORT
           </h1>
         </div>
       </section>
