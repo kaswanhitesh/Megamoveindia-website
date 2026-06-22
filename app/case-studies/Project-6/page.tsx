@@ -11,27 +11,45 @@ export const metadata: Metadata = {
 
 const otherProjects = [
   {
-    title: "225MT Used Machinery Import",
+    title: "Defence Logistics: BMP-II Tank Artillery Transportation",
+    image: "/images/NationalDefenceProjectCardImage.JPG",
+    link: "/case-studies/national-defence-project",
+  },
+
+  {
+    title: "Project Cargo Import: Industrial Machinery",
     image: "/images/Casestudies/Project-2/Project2_Gallery1.webp",
     link: "/case-studies/Project-2",
   },
 
   {
-    title: "Factory Relocation",
+    title: "Factory Relocation: Manufacturing Plant Transfer",
     image: "/images/Casestudies/Project-3/Project3_Gallery1.webp",
     link: "/case-studies/Project-3",
   },
 
   {
-    title: "70MT Heat Condenser Export",
+    title: "Breakbulk Exports: Heat Condenser Shipment",
     image: "/images/Casestudies/Project-4/Project4_Gallery2.webp",
     link: "/case-studies/Project-4",
   },
 
   {
-    title: "100MT Heat Exchanger",
+    title: "In-Land Heavy Haul: Heat Exchanger Transportation",
     image: "/images/Casestudies/Project-5/Project5_Gallery2.webp",
     link: "/case-studies/Project-5",
+  },
+
+  {
+    title: "Industrial Earth Moving Machinery Imports: X-Ray Equipment,
+    image: "/images/Casestudies/Project-7/Project7_Gallery1.webp",
+    link: "/case-studies/Project-7",
+  },
+
+  {
+    title: "    Heavy Lift Exports: EOT Crane Shipment",
+    image: "/images/Casestudies/Project-8/Project8_Gallery1.webp",
+    link: "/case-studies/Project-8",
   },
 ];
 
