@@ -25,7 +25,7 @@ export default function CompanyNews() {
     link: "/company-news/breakbulk-Dubai",
   },
   {
-    image: "/images/news/news4.jpg",
+    image: "/images/Companynews/IMG_0983.jpeg",
     title: "Mega Move India Expands Equipment Fleet",
     date: "Nov 3, 2025",
     excerpt:
