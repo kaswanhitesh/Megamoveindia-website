@@ -89,9 +89,10 @@ export default function CaseStudies() {
     logo: "/images/Networks/icons/FFFAI.png",
   },
   {
-    name: "FIATA",
-    logo: "/images/Networks/icons/FIATA.png",
-  },
+  name: "FIATA",
+  logo: "/images/Networks/icons/FIATA.png",
+  size: "small",
+},
 ];
 
   const customers = [
@@ -201,7 +202,7 @@ export default function CaseStudies() {
   <Swiper
     modules={[Autoplay]}
     loop={true}
-    speed={10000}
+    speed={5000}
     autoplay={{
       delay: 0,
       disableOnInteraction: false,
@@ -211,11 +212,11 @@ export default function CaseStudies() {
     grabCursor={true}
     breakpoints={{
       320: {
-        slidesPerView: 2,
+        slidesPerView: 2.2,
         spaceBetween: 15,
       },
       768: {
-        slidesPerView: 4,
+        slidesPerView: 4.5,
         spaceBetween: 20,
       },
       1024: {
@@ -227,33 +228,38 @@ export default function CaseStudies() {
 
     {networks.map((network, index) => (
 
-      <SwiperSlide key={index}>
+   <SwiperSlide key={index}>
 
-        <div
-  className="
-    h-[100px]
-    lg:h-[140px]
-    flex
-    items-center
-    justify-center
-    px-4
-  "
->
+  <div
+    className="
+      h-[120px]
+      lg:h-[140px]
+      w-[220px]
+      flex
+      items-center
+      justify-center
+      mx-auto
+    "
+  >
 
-          <img
-  src={network.logo}
-  alt={network.name}
-  className="
-    max-h-[70px]
-    lg:max-h-[100px]
-    w-auto
-    object-contain
-    drop-shadow-[0_2px_6px_rgba(0,0,0,0.05)]
-  "
-/>
-        </div>
+    <img
+      src={network.logo}
+      alt={network.name}
+      className={`
+       object-contain
+       w-auto
+       h-auto
+       drop-shadow-[0_2px_6px_rgba(0,0,0,0.05)]
+       ${network.size === "small"
+       ? "max-w-[140px] max-h-[65px]"
+       : "max-w-[180px] max-h-[80px]"
+    }
+`}
+    />
 
-      </SwiperSlide>
+  </div>
+
+</SwiperSlide>
 
     ))}
 
