@@ -53,10 +53,10 @@ export default function Home() {
         {/* LEFT SIDE */}
         <div className="w-full lg:w-[38%] flex flex-col justify-start pt-2 lg:pt-6">
 
-          <h1 className="text-[26px] md:text-[38px] lg:text-[42px] leading-tight font-light tracking-wide">
+          <h1 className="text-black text-[26px] md:text-[38px] lg:text-[42px] leading-tight font-light tracking-wide">
             Welcome to
             <br />
-            <span className="font-semibold">MEGA MOVE INDIA</span>
+            <span className="font-semibold text-black">MEGA MOVE INDIA</span>
           </h1>
 
           <p className="mt-6 lg:mt-8 text-[15px] leading-[1.9] text-gray-700">
@@ -92,25 +92,25 @@ export default function Home() {
               key={card.title}
               href={card.link}
               className="
-                group relative overflow-hidden
-                rounded-md
+  group relative overflow-hidden
+  rounded-md
 
-                /* MOBILE: fixed equal cards */
-                h-[160px]
+  h-[160px]
 
-                /* DESKTOP: flex expanding cards */
-                lg:flex-1 lg:h-auto lg:rounded-none lg:transition-all lg:duration-700 lg:hover:flex-[2]
-              "
+  lg:flex-1 lg:h-auto lg:rounded-none
+  lg:transition-all lg:duration-700
+  lg:hover:flex-[2]
+"
             >
               <img
                 src={card.image}
                 alt={card.title}
                 className="
-                  absolute inset-0 w-full h-full object-cover
-                  grayscale lg:grayscale
-                  lg:group-hover:grayscale-0
-                  transition-all duration-700
-                "
+  absolute inset-0 w-full h-full object-cover
+  lg:grayscale
+  lg:group-hover:grayscale-0
+  transition-all duration-700
+"
               />
 
               <div className="absolute inset-0 bg-black/45" />
@@ -144,7 +144,7 @@ export default function Home() {
 <section className="pt-4 pb-8 bg-[#f7f7f7] border-t border-gray-200">
 
   <div className="text-center mt-6 mb-8">
-    <h2 className="text-[22px] lg:text-[26px] font-bold text-black">
+    <h2 className="text-[22px] lg:text-[26px] font-bold text-black !text-black">
       Industries We Serve
     </h2>
   </div>
@@ -210,7 +210,7 @@ export default function Home() {
               className="w-12 h-12 lg:w-16 lg:h-16 mx-auto mb-3 object-contain"
             />
 
-            <h3 className="text-sm lg:text-lg font-medium text-center px-2">
+            <h3 className="text-sm lg:text-lg font-medium text-center px-2 text-black">
               {item.title}
             </h3>
 
