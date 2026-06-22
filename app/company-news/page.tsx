@@ -17,12 +17,12 @@ export default function CompanyNews() {
     link: "/company-news/mmi-network",
   },
   {
-    image: "/images/news/news3.jpg",
-    title: "Breakbulk Shipment Successfully Delivered",
-    date: "Nov 3, 2025",
+    image: "/images/Companynews/Breakbulkdubai2025/IMG_0980.png",
+    title: "Mega Move India at BreakBulk Dubai 2026",
+    date: "Feb 4, 2026",
     excerpt:
-      "Complex cargo movement executed safely and efficiently.",
-    link: "/company-news/breakbulk-delivery",
+      "Networking at Breakbulk Event Dubai.",
+    link: "/company-news/breakbulk-Dubai",
   },
   {
     image: "/images/news/news4.jpg",
