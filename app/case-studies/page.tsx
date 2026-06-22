@@ -196,7 +196,7 @@ export default function CaseStudies() {
         <div className="mt-16 lg:mt-24">
 
   <h2 className="text-center text-[30px] lg:text-[42px] font-light mb-8 lg:mb-10">
-    Our Networks
+    OUR NETWORKS
   </h2>
 
   <Swiper
@@ -271,7 +271,7 @@ export default function CaseStudies() {
 
         <div className="mt-16 lg:mt-24 mb-16 lg:mb-24">
           <h2 className="text-center text-[30px] lg:text-[42px] font-light mb-8 lg:mb-10">
-            Our Customers
+            OUR CUSTOMERS
           </h2>
 
           <div className="overflow-hidden">
