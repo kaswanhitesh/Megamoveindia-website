@@ -43,7 +43,7 @@ export default function NationalDefenceProject() {
 
       <section className="relative h-[280px] lg:h-[500px]">
         <Image
-          src="/images/Casestudies/DefenceCargo/DefenceCargoHeroImage.webp"
+          src="/images/Casestudies/Project-8/Project8_Gallery1.webp",
           alt="National Defence Project"
           fill
           priority
