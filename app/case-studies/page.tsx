@@ -70,7 +70,7 @@ export default function CaseStudies() {
   },
   {
     name: "MMA",
-    logo: "/images/Networks/icons/MMA.jpg",
+    logo: "/images/Networks/icons/MMA.png",
   },
   {
     name: "HTOA",
