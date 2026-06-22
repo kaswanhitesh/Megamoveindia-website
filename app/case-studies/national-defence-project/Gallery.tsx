@@ -1,155 +1,81 @@
 "use client";
 
-import { useState } from "react";
+import { useRef } from "react";
+
+const images = [
+  "/images/Casestudies/DefenceCargo/Gallery1.webp",
+  "/images/Casestudies/DefenceCargo/Gallery2.webp",
+  "/images/Casestudies/DefenceCargo/Gallery3.webp",
+  "/images/Casestudies/DefenceCargo/Gallery4.webp",
+  "/images/Casestudies/DefenceCargo/Gallery5.webp",
+  "/images/Casestudies/DefenceCargo/Gallery6.webp",
+  "/images/Casestudies/DefenceCargo/Gallery7.webp",
+  "/images/Casestudies/DefenceCargo/Gallery8.webp",
+];
 
 export default function Gallery() {
-  const images = [
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery1.webp",
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery2.webp",
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery3.webp",
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery4.webp",
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery5.webp",
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery6.webp",
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery7.webp",
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery8.webp",
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery9.webp",
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery10.webp",
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery11.webp",
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery12.webp",
-  ];
-
-  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   return (
     <>
-      <section className="py-12 lg:py-20 overflow-hidden">
+      {/* MOBILE */}
 
-        <div className="max-w-7xl mx-auto px-4 lg:px-8">
-
-          <h2 className="text-3xl lg:text-5xl font-light text-[#173f74] text-center mb-8 lg:mb-12">
-            Project Gallery
-          </h2>
-
-        </div>
-
-        <div className="gallery-marquee">
-
-          <div className="gallery-track animate-gallery">
-
-            {[...images, ...images].map((image, index) => (
-
-              <div
+      <section className="lg:hidden relative z-10 bg-white py-10">
+        <div className="overflow-x-auto">
+          <div className="flex gap-4 px-4 w-max">
+            {images.map((image, index) => (
+              <img
                 key={index}
-                className="mx-2 lg:mx-3 cursor-pointer"
-                onClick={() =>
-                  setSelectedImage(index % images.length)
-                }
-              >
-
-                <img
-                  src={image}
-                  alt=""
-                  className="
-                    w-[280px]
-                    h-[190px]
-                    lg:w-[420px]
-                    lg:h-[280px]
-                    object-cover
-                    rounded-lg
-                    hover:scale-105
-                    transition-all
-                    duration-500
-                  "
-                />
-
-              </div>
-
+                src={image}
+                alt={`Gallery ${index + 1}`}
+                className="w-[300px] h-[220px] object-cover rounded-xl"
+              />
             ))}
+          </div>
+        </div>
+      </section>
 
+      {/* DESKTOP */}
+
+      <section
+        ref={sectionRef}
+        className="
+          hidden lg:block
+          relative z-10
+          bg-white
+          h-[400vh]
+        "
+      >
+        <div className="sticky top-0 h-screen overflow-hidden flex items-center">
+
+          <div
+            className="
+              flex
+              gap-10
+              px-20
+              w-max
+              gallery-track
+            "
+          >
+            {images.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                alt={`Gallery ${index + 1}`}
+                className="
+                  w-[750px]
+                  h-[500px]
+                  object-cover
+                  rounded-3xl
+                  shadow-xl
+                  shrink-0
+                "
+              />
+            ))}
           </div>
 
         </div>
-
       </section>
-
-      {selectedImage !== null && (
-
-        <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center">
-
-          <button
-            onClick={() => setSelectedImage(null)}
-            className="
-              absolute
-              top-4
-              right-4
-              lg:top-8
-              lg:right-10
-              text-white
-              text-4xl
-              lg:text-5xl
-              z-50
-            "
-          >
-            ×
-          </button>
-
-          <button
-            onClick={() =>
-              setSelectedImage(
-                selectedImage === 0
-                  ? images.length - 1
-                  : selectedImage - 1
-              )
-            }
-            className="
-              absolute
-              left-2
-              lg:left-8
-              text-white
-              text-5xl
-              lg:text-7xl
-              z-50
-            "
-          >
-            ‹
-          </button>
-
-          <img
-            src={images[selectedImage]}
-            alt=""
-            className="
-              max-w-[95vw]
-              max-h-[80vh]
-              lg:max-w-[90vw]
-              lg:max-h-[85vh]
-              object-contain
-            "
-          />
-
-          <button
-            onClick={() =>
-              setSelectedImage(
-                selectedImage === images.length - 1
-                  ? 0
-                  : selectedImage + 1
-              )
-            }
-            className="
-              absolute
-              right-2
-              lg:right-8
-              text-white
-              text-5xl
-              lg:text-7xl
-              z-50
-            "
-          >
-            ›
-          </button>
-
-        </div>
-
-      )}
     </>
   );
 }
