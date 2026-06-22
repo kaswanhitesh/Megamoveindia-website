@@ -135,7 +135,7 @@ export default function IICSPage() {
 
         <div className="mt-12 text-center">
           <p className="text-2xl lg:text-4xl text-[#173f74] font-light italic">
-            Moving the Immovable. Moving the Impossible.
+            Moving the Immovable. Delivering the Impossible.
           </p>
         </div>
 
