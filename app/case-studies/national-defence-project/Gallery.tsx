@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { useRef } from "react";
 
 const images = [
@@ -15,7 +16,38 @@ const images = [
 
 export default function Gallery() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+const sectionRef = useRef<HTMLDivElement>(null);
 
+useEffect(() => {
+  const handleScroll = () => {
+    if (!sectionRef.current || !trackRef.current) return;
+
+    const section = sectionRef.current;
+
+    const rect = section.getBoundingClientRect();
+
+    const scrollProgress =
+      Math.min(
+        Math.max(-rect.top / (section.offsetHeight - window.innerHeight), 0),
+        1
+      );
+
+    const maxTranslate =
+      trackRef.current.scrollWidth - window.innerWidth;
+
+    trackRef.current.style.transform =
+      `translateX(-${scrollProgress * maxTranslate}px)`;
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  handleScroll();
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, []);
   return (
     <>
       {/* MOBILE */}
@@ -49,14 +81,16 @@ export default function Gallery() {
         <div className="sticky top-0 h-screen overflow-hidden flex items-center">
 
           <div
-            className="
-              flex
-              gap-10
-              px-20
-              w-max
-              gallery-track
-            "
-          >
+  ref={trackRef}
+  className="
+    flex
+    gap-10
+    px-20
+    w-max
+    transition-transform
+    duration-75
+  "
+>
             {images.map((image, index) => (
               <img
                 key={index}
