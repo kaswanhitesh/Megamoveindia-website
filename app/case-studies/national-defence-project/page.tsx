@@ -62,7 +62,7 @@ const otherProjects = [
 ];
 export default function NationalDefenceProject() {
   return (
-    <main className="bg-white">
+    <main>
 
       <Hero />
 
@@ -183,7 +183,8 @@ export default function NationalDefenceProject() {
 
       {/* Results */}
 
-      <section className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8 py-12 lg:py-20 bg-white">
+      <section className="relative z-10 bg-white w-full py-12 lg:py-20">
+  <div className="max-w-7xl mx-auto px-4 lg:px-8">
 
         <h2 className="text-3xl lg:text-5xl font-light text-[#173f74] text-center mb-8 lg:mb-12">
           Project Outcome
