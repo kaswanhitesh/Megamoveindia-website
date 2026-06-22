@@ -35,8 +35,9 @@ useEffect(() => {
     );
 
     const maxTranslate =
-      track.scrollWidth - window.innerWidth;
-
+  track.scrollWidth -
+  window.innerWidth +
+  400;
     track.style.transform =
       `translate3d(-${progress * maxTranslate}px,0,0)`;
   };
@@ -79,29 +80,30 @@ useEffect(() => {
     hidden lg:block
     relative
     z-20
-    h-[1200vh]
+    h-[600vw]
     overflow-hidden
   "
 >
   <div
-    className="
-  sticky
-  top-0
-  h-screen
-  flex
-  items-center
-  overflow-hidden
-  bg-white/60
-  backdrop-blur-xl
-"
-  >
+  className="
+    sticky
+    top-0
+    h-screen
+    overflow-hidden
+    flex
+    items-center
+    justify-start
+    bg-white/70
+    backdrop-blur-xl
+  "
+>
     <div
       ref={trackRef}
       className="
         flex
         gap-8
-        pl-[25vw]
-        pr-[25vw]
+        pl-[40vw]
+        pr-[40vw]
         w-max
         will-change-transform
       "
@@ -112,8 +114,8 @@ useEffect(() => {
           src={image}
           alt={`Gallery ${index + 1}`}
           className="
-            w-[650px]
-            h-[430px]
+            w-[550px]
+            h-[380px]
             object-cover
             rounded-3xl
             shadow-2xl
