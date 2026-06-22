@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "70MT Heat Condenser Export | Mega Move India",
+  title: "Heat Exchanger | Mega Move India",
   description:
     "Successful breakbulk export shipment involving transportation and ocean freight movement of a 70MT Heat Condenser from Chennai, India to Santos, Brazil.",
 };
@@ -43,8 +43,8 @@ export default function HeatCondenserExportProject() {
 
       <section className="relative h-[280px] lg:h-[500px]">
         <Image
-          src="/images/Casestudies/Project-5/Project5_HeroImage.webp"
-          alt="Breakbulk Export Ex-Chennai India to Santos Brazil"
+          src="/images/Casestudies/Project-5/Project5_Heroimage.webp"
+          alt="ODC In-Land Transportation Heat Exchanger & Accessories"
           fill
           priority
           sizes="100vw"
@@ -57,13 +57,13 @@ export default function HeatCondenserExportProject() {
           <div className="text-center px-4">
 
   <h1 className="text-white text-4xl lg:text-7xl font-light tracking-[2px] lg:tracking-[5px]">
-  BREAKBULK EXPORT
+  ODC IN-LAND TRANSPORTATION
 </h1>
 
 <div className="w-24 h-[1px] bg-white/70 mx-auto my-4"></div>
 
 <p className="text-white text-base lg:text-2xl tracking-[4px] uppercase">
-  Ex-Chennai, India to Santos, Brazil
+  Heat Exchanger & Accessories
 </p>
 
 </div>
@@ -78,7 +78,7 @@ export default function HeatCondenserExportProject() {
       </h2>
 
       <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-        Mega Move India successfully executed a complex factory relocation project involving the dismantling, packing, international transportation and delivery of industrial machinery from Germany to Navi Mumbai, India. The project required detailed planning, export packing, multimodal transportation, customs clearance and coordinated delivery to the client's new facility. Our project team managed every stage of the relocation process, ensuring safe handling of sensitive equipment and timely execution while minimizing disruption to the client's operations.
+        Mega Move India successfully transported 2 x 100 MT Heat Exchangers and accessories for Godrej from Mumbai to IOCL Panipat, delivering specialized heavy haulage, route engineering, permissions, escort arrangements, and safe project cargo execution.
       </p>
      </section>
 
@@ -107,7 +107,7 @@ export default function HeatCondenserExportProject() {
                 Cargo Description
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Factory Machinery & Production Equipment
+                Heat Exchanger & Accessories
               </p>
             </div>
 
@@ -116,7 +116,7 @@ export default function HeatCondenserExportProject() {
                 Origin & Destination
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Ex-Germany → Navi Mumbai, India
+                Ex-Mumbai → IOCL, Panipat
               </p>
             </div>
 
@@ -125,7 +125,7 @@ export default function HeatCondenserExportProject() {
                 Distance Covered
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                7,000+ KM
+                1,600 KM
               </p>
             </div>
 
@@ -134,7 +134,7 @@ export default function HeatCondenserExportProject() {
                 Project Scope
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Dismantling, Loading-Unloading, Tranportation, Packaging, Freight Forwarding & Delivery
+                Route Survey & Road Transportation
               </p>
             </div>
 
@@ -143,7 +143,7 @@ export default function HeatCondenserExportProject() {
                 Equipment Deployed
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Forklifts, Cranes & Specialized Transport Equipment
+                2 x Puller+8 Axle Line Hydraulic Trailer
               </p>
             </div>
 
@@ -152,7 +152,7 @@ export default function HeatCondenserExportProject() {
                 Transit Time
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                As Per Project Schedule
+                22 Days
               </p>
             </div>
 
@@ -161,7 +161,7 @@ export default function HeatCondenserExportProject() {
                 Key Achievement
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Successful International Factory Relocation
+                Successful Safe Delivery
               </p>
             </div>
 
@@ -182,7 +182,7 @@ export default function HeatCondenserExportProject() {
           </h2>
 
           <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-            The project involved coordinating the relocation of multiple industrial machines from an operational facility in Germany to a new manufacturing site in India. Challenges included export packing, handling oversized machinery, international shipping schedules, customs compliance and final positioning at the destination facility. Through detailed planning, close coordination with overseas partners and experienced project management, Mega Move India ensured the safe and efficient relocation of all equipment.
+            The project involved transporting 2 x 100 MT Heat Exchangers and accessories for Godrej from Mumbai to IOCL Panipat. Challenges included oversized dimensions, axle load distribution, route restrictions, permits, and safe delivery within project timelines. Through detailed route planning, engineering assessments, and specialized heavy-haul transportation, Mega Move India ensured seamless execution and secure delivery of the critical equipment.
           </p>
 
         </div>
@@ -198,7 +198,7 @@ export default function HeatCondenserExportProject() {
         </h2>
 
         <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-          Mega Move India successfully completed the factory relocation project from Germany to India, ensuring the safe transportation and delivery of all machinery and production equipment. Through coordinated logistics planning, export packing, international freight management and destination handling, the project was executed efficiently and without cargo damage. The successful completion of the relocation enabled the client to establish operations at the new facility while minimizing downtime and operational disruption.
+          Mega Move India successfully delivered 2 x 100 MT Heat Exchangers and accessories for Godrej from Mumbai to IOCL Panipat, ensuring safe transportation, regulatory compliance, timely execution, and damage-free delivery of critical project cargo.
         </p>
 
         {/* OTHER PROJECTS */}
