@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "National Defence Project | Mega Move India",
+  title: "India International Cargo Show | Mega Move India",
   description:
     "Mega Move India's successful execution of a National Defence Project involving specialized transportation, heavy lift handling, route surveys and end-to-end project logistics.",
 };
@@ -43,7 +43,7 @@ export default function NationalDefenceProject() {
 
       <section className="relative h-[280px] lg:h-[500px]">
         <Image
-          src="/images/Casestudies/DefenceCargo/DefenceCargoHeroImage.webp"
+          src="/images/Companynews/IICS/GalleryHeroimage.png"
           alt="National Defence Project"
           fill
           priority
