@@ -45,7 +45,7 @@ export default function ContactUs() {
 
       <section className="relative h-[280px] lg:h-[500px]">
         <img
-          src="images/ContactUsHeroImage.png"
+          src="images/ContactUsHeroImage.webp"
           alt="Contact Us"
           className="w-full h-full object-cover"
         />
