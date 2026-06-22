@@ -6,49 +6,57 @@ export default function CaseStudies() {
   const projects = [
   {
   slug: "national-defence-project",
-  title: "Defence Logistics: BMP-II Vehicle Transportation",
+  category: "DEFENCE CARGO PROJECT",
+  title: "BMP-II Vehicle Transportation",
   image: "/images/NationalDefenceProjectCardImage.JPG",
 },
 
 {
   slug: "Project-2",
-  title: "Project Cargo Import: Industrial Machinery",
+  category: "PROJECT CARGO IMPORT",
+  title: "Industrial Machinery",
   image: "/images/225MTUsedMachineryImportCardImage.jpeg",
 },
 
 {
   slug: "Project-3",
-  title: "Factory Relocation: Manufacturing Plant Transfer",
+  category: "FACTORY RELOCATION",
+  title: "Manufacturing Plant Transfer",
   image: "/images/FactoryRelocationGermanyToIndiaCardImage.jpeg",
 },
 
 {
   slug: "Project-4",
-  title: "Breakbulk Exports: Heat Condenser Shipment",
+  category: "BREAKBULK EXPORTS",
+  title: "Heat Condenser Shipment",
   image: "/images/Casestudies/Project-4/Project4_HeroImage.webp",
 },
 
 {
   slug: "Project-5",
-  title: "Heavy Haul Transportation: Heat Exchanger",
+  category: "HEAVY HAUL TRANSPORTATION",
+  title: "2x100MT Heat Exchanger",
   image: "/images/Casestudies/Project-5/Project5_Cardheroimage.webp",
 },
 
 {
   slug: "Project-6",
-  title: "Project Cargo Export: Chemical Storage Tanks",
+  category: "PROJECT CARGO EXPORT",
+  title: "Chemical Storage Tanks",
   image: "/images/Casestudies/Project-6/Project6_Gallery10.webp",
 },
 
 {
   slug: "Project-7",
-  title: "Specialized Equipment Import: X-Ray Systems",
+  category: "SPECIALIZED EQUIPMENT IMPORT",
+  title: "X-Ray Systems",
   image: "/images/Casestudies/Project-7/Project7_Gallery3.webp",
 },
 
 {
   slug: "Project-8",
-  title: "Heavy Lift Exports: EOT Crane Shipment",
+  category: "HEAVY LIFT EXPORTS",
+  title: "EOT Crane Shipment",
   image: "/images/Casestudies/Project-8/Project8_Gallery1.webp",
 },
 ];
@@ -119,11 +127,17 @@ export default function CaseStudies() {
                 "
               />
 
-              <div className="p-3 lg:p-6">
-                <h2 className="text-[13px] md:text-lg lg:text-[17px] font-semibold leading-6">
-                  {project.title}
-                </h2>
-              </div>
+              <div className="p-4 lg:p-5 text-center">
+
+  <h2 className="font-bold text-[#173f74] text-[14px] lg:text-[18px] leading-6">
+    {project.category}
+  </h2>
+
+  <p className="mt-2 text-gray-600 text-[13px] lg:text-[15px] leading-6">
+    {project.title}
+  </p>
+
+</div>
             </Link>
           ))}
         </div>
