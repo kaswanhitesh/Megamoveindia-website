@@ -1,34 +1,38 @@
 export default function CompanyNews() {
   const news = [
-    {
-      image: "/images/Companynews/IICS/IICS_Newscardimage.png",
-      title: "Mega Move India at IICS 2025 Exhibition",
-      date: "Dec 3, 2025",
-      excerpt:
-        "Meet our team and explore our project logistics and heavy haulage capabilities.",
-    },
-    {
-      image: "/images/news/news2.jpg",
-      title: "Mega Move India Featured on MMI Network",
-      date: "Jan 31, 2026",
-      excerpt:
-        "Successful transportation of specialized industrial equipment.",
-    },
-    {
-      image: "/images/news/news3.jpg",
-      title: "Breakbulk Shipment Successfully Delivered",
-      date: "Nov 3, 2025",
-      excerpt:
-        "Complex cargo movement executed safely and efficiently.",
-    },
-    {
-      image: "/images/news/news4.jpg",
-      title: "Mega Move India Expands Equipment Fleet",
-      date: "Nov 3, 2025",
-      excerpt:
-        "New hydraulic axle trailers added to support project cargo operations.",
-    },
-  ];
+  {
+    image: "/images/Companynews/IICS/IICS_Newscardimage.png",
+    title: "Mega Move India at IICS 2025 Exhibition",
+    date: "Dec 3, 2025",
+    excerpt:
+      "Meet our team and explore our project logistics and heavy haulage capabilities.",
+    link: "/company-news/IICS",
+  },
+  {
+    image: "/images/news/news2.jpg",
+    title: "Mega Move India Featured on MMI Network",
+    date: "Jan 31, 2026",
+    excerpt:
+      "Successful transportation of specialized industrial equipment.",
+    link: "/company-news/mmi-network",
+  },
+  {
+    image: "/images/news/news3.jpg",
+    title: "Breakbulk Shipment Successfully Delivered",
+    date: "Nov 3, 2025",
+    excerpt:
+      "Complex cargo movement executed safely and efficiently.",
+    link: "/company-news/breakbulk-delivery",
+  },
+  {
+    image: "/images/news/news4.jpg",
+    title: "Mega Move India Expands Equipment Fleet",
+    date: "Nov 3, 2025",
+    excerpt:
+      "New hydraulic axle trailers added to support project cargo operations.",
+    link: "/company-news/fleet-expansion",
+  },
+];
 
   return (
     <main>
