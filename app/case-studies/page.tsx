@@ -201,7 +201,7 @@ export default function CaseStudies() {
   <Swiper
     modules={[Autoplay]}
     loop={true}
-    speed={5000}
+    speed={10000}
     autoplay={{
       delay: 0,
       disableOnInteraction: false,
@@ -230,30 +230,27 @@ export default function CaseStudies() {
       <SwiperSlide key={index}>
 
         <div
-          className="
-            h-[100px]
-            lg:h-[140px]
-            bg-white
-            rounded-xl
-            shadow-sm
-            flex
-            items-center
-            justify-center
-            p-4
-          "
-        >
+  className="
+    h-[100px]
+    lg:h-[140px]
+    flex
+    items-center
+    justify-center
+    px-4
+  "
+>
 
           <img
-            src={network.logo}
-            alt={network.name}
-            className="
-              max-h-[60px]
-              lg:max-h-[90px]
-              w-auto
-              object-contain
-            "
-          />
-
+  src={network.logo}
+  alt={network.name}
+  className="
+    max-h-[70px]
+    lg:max-h-[100px]
+    w-auto
+    object-contain
+    drop-shadow-[0_2px_6px_rgba(0,0,0,0.05)]
+  "
+/>
         </div>
 
       </SwiperSlide>
