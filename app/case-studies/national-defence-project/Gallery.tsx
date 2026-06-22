@@ -36,8 +36,7 @@ useEffect(() => {
 
     const maxTranslate =
   track.scrollWidth -
-  window.innerWidth +
-  400;
+  window.innerWidth;
     track.style.transform =
       `translate3d(-${progress * maxTranslate}px,0,0)`;
   };
@@ -77,9 +76,11 @@ useEffect(() => {
 <section
   ref={sectionRef}
   className="
-    hidden lg:block
+    hidden
+    lg:block
     relative
-    h-[5000px]
+    z-30
+    h-[8000px]
   "
 >
   <div
@@ -111,8 +112,8 @@ useEffect(() => {
           src={image}
           alt={`Gallery ${index + 1}`}
           className="
-            w-[550px]
-            h-[380px]
+            w-[500px]
+            h-[340px]
             object-cover
             rounded-3xl
             shadow-2xl
