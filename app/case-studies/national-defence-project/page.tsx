@@ -65,28 +65,41 @@ export default function NationalDefenceProject() {
 
       {/* Hero */}
 
-      <section className="relative h-[280px] lg:h-[500px]">
-        <Image
-          src="/images/Casestudies/DefenceCargo/DefenceCargoHeroImage.webp"
-          alt="National Defence Project"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
+      <section className="sticky top-0 h-screen -z-10">
 
-        <div className="absolute inset-0 bg-black/50" />
+    <Image
+      src="/images/Casestudies/DefenceCargo/DefenceCargoHeroImage.webp"
+      alt="National Defence Project"
+      fill
+      priority
+      sizes="100vw"
+      className="object-cover"
+    />
 
-        <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-white text-3xl lg:text-6xl font-light tracking-[2px] lg:tracking-[6px] text-center px-4">
-            NATIONAL DEFENCE PROJECT
-          </h1>
-        </div>
-      </section>
+    <div className="absolute inset-0 bg-black/50" />
+
+    <div className="absolute inset-0 flex items-center justify-center">
+      <h1 className="text-white text-3xl lg:text-6xl font-light tracking-[2px] lg:tracking-[6px] text-center px-4">
+        NATIONAL DEFENCE PROJECT
+      </h1>
+    </div>
+
+</section>
 
       {/* Project Overview */}
 
-      <section className="max-w-7xl mx-auto px-4 lg:px-8 py-12 lg:py-20">
+      <section
+  className="
+    relative
+    z-20
+    bg-white
+    -mt-[120px]
+    rounded-t-[40px]
+    max-w-full
+    py-16 lg:py-24
+  "
+>
+  <div className="max-w-7xl mx-auto px-4 lg:px-8">
         <h2 className="text-3xl lg:text-5xl font-light text-[#173f74] text-center mb-8 lg:mb-12">
           Project Overview
         </h2>
@@ -94,6 +107,7 @@ export default function NationalDefenceProject() {
         <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
           Mega Move India successfully executed a strategic National Defence logistics project involving the transportation of critical defence equipment from the manufacturing facility to Nyoma, Ladakh, near the India–China border. Selected from four approved vendors, Mega Move India was awarded the government contract based on its proven expertise in heavy-haul and over-dimensional cargo (ODC) transportation. The project required meticulous planning, route surveys, permit management, escort coordination, and specialized transportation solutions. Covering approximately 3,700 kilometers, the mission was completed within an exceptional timeline of 21 days, establishing a national benchmark for the fastest delivery of defence ODC cargo over such a distance.
         </p>
+    </div>
       </section>
 
       {/* Project Details */}
