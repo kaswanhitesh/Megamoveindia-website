@@ -62,19 +62,19 @@ export default function CompanyNews() {
             {[...news, ...news].map((item, index) => (
               <a
                 key={index}
-                href="/company-news/IICS"
+                href={item.link}
                 className="
-                  block
-                  bg-white
-                  shadow-sm
-                  mr-4
-                  lg:mr-6
-                  w-[280px]
-                  lg:w-[420px]
-                  min-w-[280px]
-                  lg:min-w-[420px]
-                "
-              >
+                block
+                bg-white
+                shadow-sm
+                mr-4
+                lg:mr-6
+                w-[280px]
+                lg:w-[420px]
+                min-w-[280px]
+                lg:min-w-[420px]
+               "
+>
                 <img
                   src={item.image}
                   alt={item.title}
