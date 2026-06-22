@@ -65,7 +65,7 @@ export default function NationalDefenceProject() {
 
       {/* Hero */}
 
-      <section className="sticky top-0 h-screen -z-10">
+      <section className="relative h-screen">
 
     <Image
       src="/images/Casestudies/DefenceCargo/DefenceCargoHeroImage.webp"
