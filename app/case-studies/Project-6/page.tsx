@@ -261,9 +261,13 @@ export default function ChemicalStorageTankExportProject() {
 
           <div className="p-5">
 
-            <h3 className="text-xl text-[#173f74]">
-              {project.title}
-            </h3>
+            <div className="p-5">
+
+  <h3 className="text-[18px] leading-7 font-medium text-[#173f74]">
+    {project.title}
+  </h3>
+
+</div>
 
           </div>
 
