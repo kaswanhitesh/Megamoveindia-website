@@ -3,14 +3,14 @@
 import { useEffect, useRef } from "react";
 
 const images = [
-  "/images/Casestudies/DefenceCargo/Gallery1.webp",
-  "/images/Casestudies/DefenceCargo/Gallery2.webp",
-  "/images/Casestudies/DefenceCargo/Gallery3.webp",
-  "/images/Casestudies/DefenceCargo/Gallery4.webp",
-  "/images/Casestudies/DefenceCargo/Gallery5.webp",
-  "/images/Casestudies/DefenceCargo/Gallery6.webp",
-  "/images/Casestudies/DefenceCargo/Gallery7.webp",
-  "/images/Casestudies/DefenceCargo/Gallery8.webp",
+  "/images/Casestudies/DefenceCargo/defencecargo_Gallery1.webp",
+  "/images/Casestudies/DefenceCargo/defencecargo_Gallery2.webp",
+  "/images/Casestudies/DefenceCargo/defencecargo_Gallery3.webp",
+  "/images/Casestudies/DefenceCargo/defencecargo_Gallery4.webp",
+  "/images/Casestudies/DefenceCargo/defencecargo_Gallery5.webp",
+  "/images/Casestudies/DefenceCargo/defencecargo_Gallery6.webp",
+  "/images/Casestudies/DefenceCargo/defencecargo_Gallery7.webp",
+  "/images/Casestudies/DefenceCargo/defencecargo_Gallery8.webp",
 ];
 
 export default function Gallery() {
