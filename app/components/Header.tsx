@@ -10,7 +10,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="h-[90px] border-b border-gray-300 flex items-center justify-between px-6 lg:px-16 bg-[#f7f7f7]">
+      <header className="relative z-[100] h-[90px] border-b border-gray-300 flex items-center justify-between px-6 lg:px-16 bg-[#f7f7f7]">
         <div className="flex items-center gap-3 lg:gap-5">
           <Link href="/">
             <Image
@@ -41,8 +41,9 @@ export default function Header() {
         </button>
       </header>
 
-      <div
-        className={`fixed inset-0 bg-black/30 z-40 transition-opacity duration-700 ${
+        <div
+  className={`fixed inset-0 bg-black/30 z-[200]
+        transition-opacity duration-700 ${
           menuOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -51,7 +52,7 @@ export default function Header() {
       />
 
       <div
-        className={`fixed top-0 right-0 h-full w-full sm:w-[420px] bg-gray-700 text-white z-50 overflow-y-auto transition-transform duration-700 ease-out ${
+        className={`fixed top-0 right-0 h-full z-[300] w-full sm:w-[420px] bg-gray-700 text-white z-50 overflow-y-auto transition-transform duration-700 ease-out ${
           menuOpen
             ? "translate-x-0"
             : "translate-x-full"
