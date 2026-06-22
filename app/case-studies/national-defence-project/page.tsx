@@ -186,24 +186,6 @@ export default function NationalDefenceProject() {
 
       <Gallery />
 
-      {/* Challenges */}
-
-      <section className="bg-[#f7f7f7] py-12 lg:py-20">
-
-        <div className="max-w-7xl mx-auto px-4 lg:px-8">
-
-          <h2 className="text-3xl lg:text-5xl font-light text-[#173f74] text-center mb-8 lg:mb-12">
-            Challenges & Solutions
-          </h2>
-
-          <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-            The project presented extraordinary operational challenges, including the transportation of critical defence cargo through remote high-altitude terrain with limited road infrastructure en route to Nyoma, Ladakh. Amid heightened security sensitivities along strategic border regions, convoy safety remained paramount. Mega Move India's Managing Director personally accompanied the movement alongside Indian Army escort vehicles, ensuring continuous coordination and risk management. Despite harsh weather, low oxygen levels, difficult terrain, and complex convoy logistics involving multiple heavy-haul vehicles, the team successfully maintained operational integrity and achieved timely, safe delivery through meticulous planning, military coordination, and disciplined execution.
-          </p>
-
-        </div>
-
-      </section>
-
       {/* Results */}
 
       <section className="max-w-7xl mx-auto px-4 lg:px-8 py-12 lg:py-20">
@@ -213,7 +195,7 @@ export default function NationalDefenceProject() {
         </h2>
 
         <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-          Despite the extreme operating conditions and logistical complexities, the project was completed successfully within the planned 21-day timeline. During transit, one of the heavy-haul vehicles experienced a mechanical breakdown in a remote high-altitude region. Through close coordination with the Indian Army, the BMP-II armoured vehicle was safely transferred to an Army transport platform and secured at a military facility in Kargil, ensuring zero risk to the equipment. Following repairs, Mega Move India reloaded the cargo and completed the final delivery to Nyoma, Ladakh, without incident, reinforcing its capability in executing mission-critical defence logistics under demanding conditions.
+          Mega Move India successfully delivered critical defence cargo to Nyoma, Ladakh, within the planned 21-day schedule despite challenging high-altitude terrain, harsh weather, limited infrastructure, and stringent security requirements. During transit, a heavy-haul vehicle experienced a mechanical breakdown; however, through close coordination with the Indian Army, the BMP-II armoured vehicle was safely secured at a military facility in Kargil and reloaded after repairs. The project was completed without incident, demonstrating exceptional operational resilience and execution capability.
         </p>
 
         {/* OTHER PROJECTS */}
