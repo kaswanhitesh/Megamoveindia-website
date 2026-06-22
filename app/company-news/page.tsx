@@ -14,7 +14,7 @@ export default function CompanyNews() {
     date: "Jan 31, 2026",
     excerpt:
       "Successful transportation of specialized industrial equipment.",
-    link: "/company-news/mmi-network",
+    link: "https://lnkd.in/gYm8q29D",
   },
   {
     image: "/images/Companynews/Breakbulkdubai2025/IMG_0980.png",
