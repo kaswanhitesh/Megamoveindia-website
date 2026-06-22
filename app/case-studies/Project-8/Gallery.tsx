@@ -7,6 +7,8 @@ export default function Gallery() {
     "/images/Casestudies/Project-8/Project8_Gallery1.webp",
     "/images/Casestudies/Project-8/Project8_Gallery2.webp",
     "/images/Casestudies/Project-8/Project8_Gallery3.webp",
+    "/images/Casestudies/Project-8/Project8_Gallery4.webp",
+    "/images/Casestudies/Project-8/Project8_Gallery5.webp",
   ];
 
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
