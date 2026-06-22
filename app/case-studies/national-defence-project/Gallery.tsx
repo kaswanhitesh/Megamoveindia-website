@@ -78,8 +78,8 @@ useEffect(() => {
   className="
     hidden lg:block
     relative
-    z-10
-    h-1200vh]
+    z-20
+    h-[1200vh]
     overflow-hidden
   "
 >
@@ -99,7 +99,7 @@ useEffect(() => {
       ref={trackRef}
       className="
         flex
-        gap-12
+        gap-8
         pl-[25vw]
         pr-[25vw]
         w-max
@@ -112,8 +112,8 @@ useEffect(() => {
           src={image}
           alt={`Gallery ${index + 1}`}
           className="
-            w-[900px]
-            h-[600px]
+            w-[650px]
+            h-[430px]
             object-cover
             rounded-3xl
             shadow-2xl
