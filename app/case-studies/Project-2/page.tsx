@@ -68,7 +68,7 @@ export default function NationalDefenceProject() {
         </h2>
 
         <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-          Mega Move India successfully executed a strategic National Defence logistics project involving the transportation of critical defence equipment from the manufacturing facility to Nyoma, Ladakh, near the India–China border. Selected from four approved vendors, Mega Move India was awarded the government contract based on its proven expertise in heavy-haul and over-dimensional cargo (ODC) transportation. The project required meticulous planning, route surveys, permit management, escort coordination, and specialized transportation solutions. Covering approximately 3,700 kilometers, the mission was completed within an exceptional timeline of 21 days, establishing a national benchmark for the fastest delivery of defence ODC cargo over such a distance.
+          Mega Move India successfully managed the import clearance and in-land transportation of 225 MT used machinery for WIS Germany, ensuring seamless customs compliance, port handling, and delivery from JNPT to Chakan, Pune.
         </p>
       </section>
 
@@ -88,7 +88,7 @@ export default function NationalDefenceProject() {
                 Industry Sector
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Defence Logistics & Military Transportation
+                Manufacturing Machinery 
               </p>
             </div>
 
@@ -97,7 +97,7 @@ export default function NationalDefenceProject() {
                 Cargo Description
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                BMP-II Armoured Vehicles & Defence Equipment
+                Turnkey Bottling Line.
               </p>
             </div>
 
@@ -106,16 +106,16 @@ export default function NationalDefenceProject() {
                 Origin & Destination
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Manufacturing Facility, India → Nyoma, Ladakh
+                Rotterdam, Germany → Chakan, Pune
               </p>
             </div>
 
             <div className="text-center">
               <h3 className="font-bold text-[16px] lg:text-[22px] text-[#173f74] mb-3">
-                Distance Covered
+                Scope Of Work
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                3,700 KM
+                Destination Clearance & In-Land Transportation
               </p>
             </div>
 
@@ -134,7 +134,7 @@ export default function NationalDefenceProject() {
                 Equipment Deployed
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Hydraulic Modular Trailers, Prime Movers & Escort Vehicles
+                Hydraulic Modular Trailers
               </p>
             </div>
 
@@ -143,7 +143,7 @@ export default function NationalDefenceProject() {
                 Transit Time
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                21 Days
+                12 Days
               </p>
             </div>
 
@@ -152,7 +152,7 @@ export default function NationalDefenceProject() {
                 Key Achievement
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                National Benchmark for Fastest Defence ODC Delivery
+                Swift Import Clearance and Timely Delivery
               </p>
             </div>
 
@@ -173,7 +173,7 @@ export default function NationalDefenceProject() {
           </h2>
 
           <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-            The project presented extraordinary operational challenges, including the transportation of critical defence cargo through remote high-altitude terrain with limited road infrastructure en route to Nyoma, Ladakh. Amid heightened security sensitivities along strategic border regions, convoy safety remained paramount. Mega Move India's Managing Director personally accompanied the movement alongside Indian Army escort vehicles, ensuring continuous coordination and risk management. Despite harsh weather, low oxygen levels, difficult terrain, and complex convoy logistics involving multiple heavy-haul vehicles, the team successfully maintained operational integrity and achieved timely, safe delivery through meticulous planning, military coordination, and disciplined execution.
+            The project involved complex import customs clearance, documentation compliance, heavy cargo handling, and specialized transportation of 225 MT used machinery from JNPT Port to Chakan, Pune, ensuring safe delivery.
           </p>
 
         </div>
@@ -189,7 +189,7 @@ export default function NationalDefenceProject() {
         </h2>
 
         <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-          Despite the extreme operating conditions and logistical complexities, the project was completed successfully within the planned 21-day timeline. During transit, one of the heavy-haul vehicles experienced a mechanical breakdown in a remote high-altitude region. Through close coordination with the Indian Army, the BMP-II armoured vehicle was safely transferred to an Army transport platform and secured at a military facility in Kargil, ensuring zero risk to the equipment. Following repairs, Mega Move India reloaded the cargo and completed the final delivery to Nyoma, Ladakh, without incident, reinforcing its capability in executing mission-critical defence logistics under demanding conditions.
+          Despite the complexity of handling 225 MT of imported machinery, Mega Move India successfully completed customs clearance and transportation from JNPT to Chakan, Pune, ensuring timely, damage-free delivery through efficient coordination and specialized logistics management.
         </p>
 
         {/* OTHER PROJECTS */}
