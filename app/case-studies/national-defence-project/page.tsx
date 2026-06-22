@@ -13,25 +13,25 @@ const otherProjects = [
   {
     title: "225MT Used Machinery Import",
     image: "/images/Casestudies/225MT/225MTHeroImage.jpg",
-    link: "/case-studies/225mt-used-machinery-import",
+    link: "/case-studies/Project-2",
   },
 
   {
     title: "Factory Relocation",
     image: "/images/Casestudies/FactoryRelocation/FactoryRelocationHeroImage.jpg",
-    link: "/case-studies/factory-relocation-germany-to-india",
+    link: "/case-studies/Project-3",
   },
 
   {
     title: "70MT Heat Condenser Export",
     image: "/images/Casestudies/HeatCondenser/HeatCondenserHeroImage.jpg",
-    link: "/case-studies/70mt-heat-condenser-export",
+    link: "/case-studies/Project-4",
   },
 
   {
     title: "100MT Heat Exchanger",
     image: "/images/Casestudies/HeatExchanger/HeatExchangerHeroImage.jpg",
-    link: "/case-studies/100mt-heat-exchanger",
+    link: "/case-studies/Project-5",
   },
 ];
 
