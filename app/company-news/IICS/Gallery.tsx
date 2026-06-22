@@ -35,7 +35,7 @@ export default function Gallery() {
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
 
           <h2 className="text-3xl lg:text-5xl font-light text-[#173f74] text-center mb-8 lg:mb-12">
-            Project Gallery
+            Event Gallery
           </h2>
 
         </div>
