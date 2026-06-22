@@ -15,8 +15,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="fixed inset-0 z-0">
-
+    <section className="fixed inset-0 z-[-1]">
       <Image
         src="/images/Casestudies/DefenceCargo/DefenceCargoHeroImage.webp"
         alt="National Defence Project"
