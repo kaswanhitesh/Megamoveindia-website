@@ -4,9 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "National Defence Project | Mega Move India",
+  title: "Chemical Storage Tanks Export | Mega Move India",
   description:
-    "Mega Move India's successful execution of a National Defence Project involving specialized transportation, heavy lift handling, route surveys and end-to-end project logistics.",
+    "Successful FOB shipment of 3 Chemical Storage Tanks from Mundra, India to Dar-Es-Salaam, Tanzania involving specialized handling, export documentation and ocean freight logistics.",
 };
 
 const otherProjects = [
@@ -35,7 +35,7 @@ const otherProjects = [
   },
 ];
 
-export default function NationalDefenceProject() {
+export default function ChemicalStorageTankExportProject() {
   return (
     <main className="bg-white">
 
@@ -44,7 +44,7 @@ export default function NationalDefenceProject() {
       <section className="relative h-[280px] lg:h-[500px]">
         <Image
           src="/images/Casestudies/Project-6/Project6_Gallery6.webp"
-          alt="National Defence Project"
+          alt="Chemical Storage Tanks Export"
           fill
           priority
           sizes="100vw"
@@ -54,9 +54,19 @@ export default function NationalDefenceProject() {
         <div className="absolute inset-0 bg-black/50" />
 
         <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-white text-3xl lg:text-6xl font-light tracking-[2px] lg:tracking-[6px] text-center px-4">
-            NATIONAL DEFENCE PROJECT
-          </h1>
+          <div className="text-center px-4">
+
+  <h1 className="text-white text-4xl lg:text-7xl font-light tracking-[2px] lg:tracking-[5px]">
+    CHEMICAL STORAGE TANKS
+  </h1>
+
+  <div className="w-24 h-[1px] bg-white/70 mx-auto my-4"></div>
+
+  <p className="text-white text-base lg:text-2xl tracking-[4px] uppercase">
+    Ex-Mundra, India to Dar-Es-Salaam, Tanzania
+  </p>
+
+</div>
         </div>
       </section>
 
@@ -68,8 +78,8 @@ export default function NationalDefenceProject() {
         </h2>
 
         <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-          Mega Move India successfully executed a strategic National Defence logistics project involving the transportation of critical defence equipment from the manufacturing facility to Nyoma, Ladakh, near the India–China border. Selected from four approved vendors, Mega Move India was awarded the government contract based on its proven expertise in heavy-haul and over-dimensional cargo (ODC) transportation. The project required meticulous planning, route surveys, permit management, escort coordination, and specialized transportation solutions. Covering approximately 3,700 kilometers, the mission was completed within an exceptional timeline of 21 days, establishing a national benchmark for the fastest delivery of defence ODC cargo over such a distance.
-        </p>
+  Mega Move India successfully executed an FOB shipment of three Chemical Storage Tanks from Mundra Port, India to Dar-Es-Salaam, Tanzania, including transportation, export handling, documentation and ocean freight coordination.
+</p>
       </section>
 
       {/* Project Details */}
@@ -88,7 +98,7 @@ export default function NationalDefenceProject() {
                 Industry Sector
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Defence Logistics & Military Transportation
+                Oil & Gas
               </p>
             </div>
 
@@ -97,7 +107,7 @@ export default function NationalDefenceProject() {
                 Cargo Description
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                BMP-II Armoured Vehicles & Defence Equipment
+                3 x Chemical Storage Tanks
               </p>
             </div>
 
@@ -106,16 +116,16 @@ export default function NationalDefenceProject() {
                 Origin & Destination
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Manufacturing Facility, India → Nyoma, Ladakh
+                Mundra, India → Dar-Es-Salaam, Tanzania
               </p>
             </div>
 
             <div className="text-center">
               <h3 className="font-bold text-[16px] lg:text-[22px] text-[#173f74] mb-3">
-                Distance Covered
+                Incoterms
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                3,700 KM
+                FOB+In-Land Transportation
               </p>
             </div>
 
@@ -124,8 +134,7 @@ export default function NationalDefenceProject() {
                 Project Scope
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Project Logistics, ODC Transportation, Route Survey, Permits &
-                Escorts
+                Transportation, Port Handling, Export Documentation & Ocean Freight
               </p>
             </div>
 
@@ -134,7 +143,7 @@ export default function NationalDefenceProject() {
                 Equipment Deployed
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Hydraulic Modular Trailers, Prime Movers & Escort Vehicles
+                Lowbed Mechanical Trailers, Cranes & Lifting Equipment
               </p>
             </div>
 
@@ -143,7 +152,7 @@ export default function NationalDefenceProject() {
                 Transit Time
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                21 Days
+                As per Vessel Schedule
               </p>
             </div>
 
@@ -152,7 +161,7 @@ export default function NationalDefenceProject() {
                 Key Achievement
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                National Benchmark for Fastest Defence ODC Delivery
+                Successful Export Delivery to Tanzania
               </p>
             </div>
 
@@ -173,8 +182,8 @@ export default function NationalDefenceProject() {
           </h2>
 
           <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-            The project presented extraordinary operational challenges, including the transportation of critical defence cargo through remote high-altitude terrain with limited road infrastructure en route to Nyoma, Ladakh. Amid heightened security sensitivities along strategic border regions, convoy safety remained paramount. Mega Move India's Managing Director personally accompanied the movement alongside Indian Army escort vehicles, ensuring continuous coordination and risk management. Despite harsh weather, low oxygen levels, difficult terrain, and complex convoy logistics involving multiple heavy-haul vehicles, the team successfully maintained operational integrity and achieved timely, safe delivery through meticulous planning, military coordination, and disciplined execution.
-          </p>
+  The project required careful handling of oversized storage tanks, port coordination and export compliance. Through detailed planning and execution, Mega Move India ensured safe loading and vessel departure without delays.
+</p>
 
         </div>
 
@@ -189,8 +198,8 @@ export default function NationalDefenceProject() {
         </h2>
 
         <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-          Despite the extreme operating conditions and logistical complexities, the project was completed successfully within the planned 21-day timeline. During transit, one of the heavy-haul vehicles experienced a mechanical breakdown in a remote high-altitude region. Through close coordination with the Indian Army, the BMP-II armoured vehicle was safely transferred to an Army transport platform and secured at a military facility in Kargil, ensuring zero risk to the equipment. Following repairs, Mega Move India reloaded the cargo and completed the final delivery to Nyoma, Ladakh, without incident, reinforcing its capability in executing mission-critical defence logistics under demanding conditions.
-        </p>
+  All three storage tanks were successfully exported and delivered without damage, demonstrating Mega Move India's expertise in handling oversized industrial cargo and international project logistics.
+</p>
 
         {/* OTHER PROJECTS */}
 
