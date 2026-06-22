@@ -69,7 +69,7 @@ export default function LandTransport() {
       {/* HERO */}
       <section className="relative h-[320px] lg:h-[500px] overflow-hidden">
         <img
-          src="/images/LandTransportPageHeroImage.jpeg"
+          src="/images/LandTransportPageHeroImage.webp"
           alt="Heavy Lift Transportation"
           className="w-full h-full object-cover"
         />
