@@ -120,7 +120,7 @@ export default function CaseStudies() {
               />
 
               <div className="p-3 lg:p-6">
-                <h2 className="text-[13px] md:text-lg lg:text-xl font-semibold leading-6">
+                <h2 className="text-[13px] md:text-lg lg:text-[17px] font-semibold leading-6">
                   {project.title}
                 </h2>
               </div>
