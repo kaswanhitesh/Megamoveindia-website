@@ -4,18 +4,26 @@ import { useState } from "react";
 
 export default function Gallery() {
   const images = [
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery1.webp",
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery2.webp",
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery3.webp",
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery4.webp",
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery5.webp",
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery6.webp",
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery7.webp",
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery8.webp",
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery9.webp",
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery10.webp",
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery11.webp",
-    "/images/Casestudies/DefenceCargo/defencecargo_Gallery12.webp",
+    "/images/Companynews/IICS/IICS_Gallery1.png",
+    "/images/Companynews/IICS/IICS_Gallery2.png",
+    "/images/Companynews/IICS/IICS_Gallery3.png",
+    "/images/Companynews/IICS/IICS_Gallery4.png",
+    "/images/Companynews/IICS/IICS_Gallery5.png",
+    "/images/Companynews/IICS/IICS_Gallery6.png",
+    "/images/Companynews/IICS/IICS_Gallery7.png",
+    "/images/Companynews/IICS/IICS_Gallery8.png",
+    "/images/Companynews/IICS/IICS_Gallery9.png",
+    "/images/Companynews/IICS/IICS_Gallery10.png",
+    "/images/Companynews/IICS/IICS_Gallery11.png",
+    "/images/Companynews/IICS/IICS_Gallery12.png",
+    "/images/Companynews/IICS/IICS_Gallery13.png",
+    "/images/Companynews/IICS/IICS_Gallery14.png",
+    "/images/Companynews/IICS/IICS_Gallery15.png",
+    "/images/Companynews/IICS/IICS_Gallery16.png",
+    "/images/Companynews/IICS/IICS_Gallery17.png",
+    "/images/Companynews/IICS/IICS_Gallery18.png",
+    "/images/Companynews/IICS/IICS_Gallery19.png",
+    "/images/Companynews/IICS/IICS_Gallery20.png",
   ];
 
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
