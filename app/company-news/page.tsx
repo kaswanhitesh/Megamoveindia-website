@@ -40,7 +40,7 @@ export default function CompanyNews() {
 
       <section className="relative h-[280px] lg:h-[500px]">
         <img
-          src="/images/company-news-banner.jpg"
+          src="/images/Companynews/IMG_0981.jpeg"
           alt="Company News"
           className="w-full h-full object-cover"
         />
