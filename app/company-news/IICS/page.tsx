@@ -41,9 +41,7 @@ export default function IICSPage() {
         </h2>
 
         <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-          25-word summary:
-
-Mega Move India will exhibit at IICS 2025, showcasing project logistics, heavy lift, breakbulk, freight forwarding, and engineered cargo solutions for complex transportation projects.
+          Mega Move India will exhibit at IICS 2025, showcasing project logistics, heavy lift, breakbulk, freight forwarding, and engineered cargo solutions for complex transportation projects.
         </p>
 
       </section>
