@@ -62,7 +62,7 @@ export default function CompanyNews() {
             {[...news, ...news].map((item, index) => (
               <a
                 key={index}
-                href={`/company-news/${index + 1}`}
+                href="/company-news/IICS"
                 className="
                   block
                   bg-white
