@@ -14,7 +14,7 @@ export default function CompanyNews() {
     date: "Jan 31, 2026",
     excerpt:
       "Successful transportation of specialized industrial equipment.",
-    link: "https://lnkd.in/gYm8q29D",
+    link: "https://megamovealliance.com/mega-move-india-executes-break-bulk-shipment-from-bangalore-to-brazil/",
   },
   {
     image: "/images/Companynews/Breakbulkdubai2025/IMG_0980.png",
