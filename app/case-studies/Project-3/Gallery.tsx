@@ -12,6 +12,13 @@ export default function Gallery() {
     "/images/Casestudies/Project-3/Project3_Gallery6.webp",
     "/images/Casestudies/Project-3/Project3_Gallery7.webp",
     "/images/Casestudies/Project-3/Project3_Gallery8.webp",
+    "/images/Casestudies/Project-3/Project3_Gallery9.webp",
+    "/images/Casestudies/Project-3/Project3_Gallery10.webp",
+    "/images/Casestudies/Project-3/Project3_Gallery11.webp",
+    "/images/Casestudies/Project-3/Project3_Gallery12.webp",
+    "/images/Casestudies/Project-3/Project3_Gallery13.webp",
+    "/images/Casestudies/Project-3/Project3_Gallery14.webp",
+    "/images/Casestudies/Project-3/Project3_Gallery15.webp",
   ];
 
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
