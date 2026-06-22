@@ -65,10 +65,35 @@ export default function NationalDefenceProject() {
     <main className="bg-white">
 
       <Hero />
+
+       <section
+  className="
+    relative
+    z-10
+    bg-white
+    mt-[85vh]
+    rounded-t-[50px]
+    py-16 lg:py-24
+  "
+>
+
+  <div className="max-w-7xl mx-auto px-4 lg:px-8">
+
+    <h2 className="text-3xl lg:text-5xl font-light text-[#173f74] text-center mb-8 lg:mb-12">
+      Project Overview
+    </h2>
+
+    <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
+      Mega Move India successfully executed a strategic National Defence logistics project involving the transportation of critical defence equipment from the manufacturing facility to Nyoma, Ladakh, near the India–China border. Selected from four approved vendors, Mega Move India was awarded the government contract based on its proven expertise in heavy-haul and over-dimensional cargo (ODC) transportation. The project required meticulous planning, route surveys, permit management, escort coordination, and specialized transportation solutions. Covering approximately 3,700 kilometers, the mission was completed within an exceptional timeline of 21 days.
+    </p>
+
+  </div>
+
+</section>
       
       {/* Project Details */}
 
-      <section className="bg-[#f7f7f7] py-12 lg:py-20">
+      <section className="relative z-10 bg-[#f7f7f7] py-12 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
 
           <h2 className="text-3xl lg:text-5xl font-light text-[#173f74] text-center mb-8 lg:mb-12">
@@ -158,7 +183,7 @@ export default function NationalDefenceProject() {
 
       {/* Results */}
 
-      <section className="max-w-7xl mx-auto px-4 lg:px-8 py-12 lg:py-20">
+      <section className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8 py-12 lg:py-20 bg-white">
 
         <h2 className="text-3xl lg:text-5xl font-light text-[#173f74] text-center mb-8 lg:mb-12">
           Project Outcome
