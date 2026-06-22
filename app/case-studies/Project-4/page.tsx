@@ -12,26 +12,26 @@ export const metadata: Metadata = {
 const otherProjects = [
   {
     title: "225MT Used Machinery Import",
-    image: "/images/Casestudies/225MT/225MTHeroImage.jpg",
-    link: "/case-studies/225mt-used-machinery-import",
+    image: "/images/Casestudies/Project-2/Project2_Gallery1.webp",
+    link: "/case-studies/Project-2",
   },
 
   {
     title: "Factory Relocation",
-    image: "/images/Casestudies/FactoryRelocation/FactoryRelocationHeroImage.jpg",
-    link: "/case-studies/factory-relocation-germany-to-india",
+    image: "/images/Casestudies/Project-3/Project3_Gallery1.webp",
+    link: "/case-studies/Project-3",
   },
 
   {
     title: "70MT Heat Condenser Export",
-    image: "/images/Casestudies/HeatCondenser/HeatCondenserHeroImage.jpg",
-    link: "/case-studies/70mt-heat-condenser-export",
+    image: "/images/Casestudies/Project-4/Project4_Gallery2.webp",
+    link: "/case-studies/Project-4",
   },
 
   {
     title: "100MT Heat Exchanger",
-    image: "/images/Casestudies/HeatExchanger/HeatExchangerHeroImage.jpg",
-    link: "/case-studies/100mt-heat-exchanger",
+    image: "/images/Casestudies/Project-5/Project5_Gallery2.webp",
+    link: "/case-studies/Project-5",
   },
 ];
 
