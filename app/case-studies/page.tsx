@@ -98,19 +98,20 @@ export default function CaseStudies() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {projects.map((project, index) => (
             <Link
-              key={index}
-              href={`/case-studies/${project.slug}`}
-              className="
-                bg-white
-                rounded-lg
-                overflow-hidden
-                shadow-sm
-                hover:shadow-2xl
-                transition-all
-                duration-500
-                block
-              "
-            >
+  key={index}
+  href={`/case-studies/${project.slug}`}
+  className="
+    group
+    bg-white
+    rounded-lg
+    overflow-hidden
+    shadow-sm
+    hover:shadow-2xl
+    transition-all
+    duration-500
+    block
+  "
+>
               <img
                 src={project.image}
                 alt={project.title}
@@ -129,16 +130,36 @@ export default function CaseStudies() {
 
               <div className="p-4 lg:p-5 text-center">
 
-  <h2 className="font-bold text-[#173f74] text-[14px] lg:text-[18px] leading-6">
+  <div className="h-[110px] px-4 flex flex-col justify-center items-center text-center">
+
+  <h2 className="
+    font-bold
+    text-black
+    text-[14px]
+    lg:text-[18px]
+    leading-6
+    transition-colors
+    duration-300
+    group-hover:text-yellow-500
+  ">
     {project.category}
   </h2>
 
-  <p className="mt-2 text-gray-600 text-[13px] lg:text-[15px] leading-6">
+  <p className="
+    mt-2
+    text-gray-600
+    text-[13px]
+    lg:text-[15px]
+    leading-6
+    transition-colors
+    duration-300
+    group-hover:text-yellow-500
+  ">
     {project.title}
   </p>
 
 </div>
-            </Link>
+              </Link>
           ))}
         </div>
 
