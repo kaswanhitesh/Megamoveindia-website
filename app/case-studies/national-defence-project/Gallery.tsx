@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useRef } from "react";
 
 const images = [
   "/images/Casestudies/DefenceCargo/Gallery1.webp",
@@ -17,7 +16,6 @@ const images = [
 export default function Gallery() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-const sectionRef = useRef<HTMLDivElement>(null);
 
 useEffect(() => {
   const handleScroll = () => {
