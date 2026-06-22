@@ -243,7 +243,7 @@ export default function NationalDefenceProject() {
 
         <Link
           key={index}
-          href={project.link}
+          href={`/case-studies/${project.slug}`}
           className="
             w-[320px]
             bg-white
