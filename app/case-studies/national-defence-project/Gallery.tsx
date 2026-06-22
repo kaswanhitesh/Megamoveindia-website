@@ -49,6 +49,10 @@ useEffect(() => {
     window.removeEventListener("scroll", updateGallery);
   };
 }, []);
+  return (
+
+  <>
+
   
       {/* MOBILE */}
 
