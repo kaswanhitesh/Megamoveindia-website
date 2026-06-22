@@ -79,24 +79,21 @@ useEffect(() => {
   className="
     hidden lg:block
     relative
-    z-20
-    h-[600vw]
-    overflow-hidden
+    h-[5000px]
   "
 >
   <div
-  className="
-    sticky
-    top-0
-    h-screen
-    overflow-hidden
-    flex
-    items-center
-    justify-start
-    bg-white/70
-    backdrop-blur-xl
-  "
->
+    className="
+      sticky
+      top-0
+      h-screen
+      overflow-hidden
+      flex
+      items-center
+      bg-white/70
+      backdrop-blur-xl
+    "
+  >
     <div
       ref={trackRef}
       className="
@@ -125,7 +122,6 @@ useEffect(() => {
       ))}
     </div>
   </div>
-</section>
-    </>
+</section>    </>
   );
 }
