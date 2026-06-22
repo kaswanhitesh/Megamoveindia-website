@@ -5,54 +5,52 @@ import Link from "next/link";
 export default function CaseStudies() {
   const projects = [
   {
-    slug: "national-defence-project",
-    title:
-      "National Defence Project: In-Land Transportation of BMP-II Tanks to China Border",
-    image: "/images/NationalDefenceProjectCardImage.JPG",
-  },
+  slug: "national-defence-project",
+  title: "Defence Logistics: BMP-II Vehicle Transportation",
+  image: "/images/NationalDefenceProjectCardImage.JPG",
+},
 
-  {
-    slug: "Project-2",
-    title: "225MT Used Machinery Import",
-    image: "/images/225MTUsedMachineryImportCardImage.jpeg",
-  },
+{
+  slug: "Project-2",
+  title: "Project Cargo Import: Industrial Machinery",
+  image: "/images/225MTUsedMachineryImportCardImage.jpeg",
+},
 
-  {
-    slug: "Project-3",
-    title: "Factory Relocation: Germany To India",
-    image: "/images/FactoryRelocationGermanyToIndiaCardImage.jpeg",
-  },
+{
+  slug: "Project-3",
+  title: "Factory Relocation: Manufacturing Plant Transfer",
+  image: "/images/FactoryRelocationGermanyToIndiaCardImage.jpeg",
+},
 
-  {
-    slug: "Project-4",
-    title: "70MT Heat Condenser Export: Ex Kattupalli to Santos Brazil",
-    image: "/images/Casestudies/Project-4/Project4_HeroImage.webp",
-  },
+{
+  slug: "Project-4",
+  title: "Breakbulk Exports: Heat Condenser Shipment",
+  image: "/images/Casestudies/Project-4/Project4_HeroImage.webp",
+},
 
-  {
-    slug: "Project-5",
-    title: "In-Land Transportation: 100MT Heat Exchanger",
-    image: "/images/Casestudies/Project-5/Project5_Cardheroimage.webp",
-  },
+{
+  slug: "Project-5",
+  title: "Heavy Haul Transportation: Heat Exchanger",
+  image: "/images/Casestudies/Project-5/Project5_Cardheroimage.webp",
+},
 
-  {
-    slug: "Project-6",
-    title: "Chemical Storage Tanks: Ex-Mumbai To Italy",
-    image: "/images/Casestudies/Project-6/Project6_Gallery10.webp",
-  },
+{
+  slug: "Project-6",
+  title: "Project Cargo Export: Chemical Storage Tanks",
+  image: "/images/Casestudies/Project-6/Project6_Gallery10.webp",
+},
 
-  {
-    slug: "Project-7",
-    title:
-      "8 Nos Used Oil X-Ray Machines Import: Ex-Hamburg to Mumbai Port",
-    image: "/images/Casestudies/Project-7/Project7_Gallery3.webp",
-  },
+{
+  slug: "Project-7",
+  title: "Specialized Equipment Import: X-Ray Systems",
+  image: "/images/Casestudies/Project-7/Project7_Gallery3.webp",
+},
 
-  {
-    slug: "Project-8",
-    title: "35M EOT Crane Export: Ex-NSA to Houston, USA",
-    image: "/images/Casestudies/Project-8/Project8_Gallery1.webp",
-  },
+{
+  slug: "Project-8",
+  title: "Heavy Lift Exports: EOT Crane Shipment",
+  image: "/images/Casestudies/Project-8/Project8_Gallery1.webp",
+},
 ];
   
   const networks = [
@@ -89,7 +87,7 @@ export default function CaseStudies() {
 
         {/* PROJECTS */}
 
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {projects.map((project, index) => (
             <Link
               key={index}
@@ -109,20 +107,20 @@ export default function CaseStudies() {
                 src={project.image}
                 alt={project.title}
                 className="
-                  w-full
-                  h-[140px]
-                  md:h-[220px]
-                  lg:h-[260px]
-                  object-cover
-                  grayscale
-                  hover:grayscale-0
-                  transition-all
-                  duration-700
+                w-full
+                h-[140px]
+                md:h-[220px]
+                lg:h-[200px]
+                object-cover
+                grayscale
+                hover:grayscale-0
+                transition-all
+                duration-700
                 "
               />
 
               <div className="p-3 lg:p-6">
-                <h2 className="text-xs md:text-lg lg:text-xl font-semibold leading-tight">
+                <h2 className="text-[13px] md:text-lg lg:text-xl font-semibold leading-6">
                   {project.title}
                 </h2>
               </div>
