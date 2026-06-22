@@ -11,13 +11,6 @@ export const metadata: Metadata = {
 
 const otherProjects = [
   {
-  slug: "national-defence-project",
-  category: "DEFENCE CARGO PROJECT",
-  title: "BMP-II Vehicle Transportation",
-  image: "/images/NationalDefenceProjectCardImage.JPG",
-},
-
-{
   slug: "Project-2",
   category: "PROJECT CARGO IMPORT",
   title: "Industrial Machinery",
