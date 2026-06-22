@@ -1,5 +1,7 @@
 "use client";
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 import Link from "next/link";
 
 export default function CaseStudies() {
@@ -62,14 +64,35 @@ export default function CaseStudies() {
 ];
   
   const networks = [
-    "WCA",
-    "GPLN",
-    "PCN",
-    "OOG",
-    "XLP",
-    "MTO",
-    "SLA",
-  ];
+  {
+    name: "AITWA",
+    logo: "/images/Networks/icons/AITWA.png",
+  },
+  {
+    name: "MMA",
+    logo: "/images/Networks/icons/MMA.jpg",
+  },
+  {
+    name: "HTOA",
+    logo: "/images/Networks/icons/HTOA.png",
+  },
+  {
+    name: "JC Trans",
+    logo: "/images/Networks/icons/JCElite.png",
+  },
+  {
+    name: "JC Projects",
+    logo: "/images/Networks/icons/JCProjects.png",
+  },
+  {
+    name: "FFFAI",
+    logo: "/images/Networks/icons/FFFAI.png",
+  },
+  {
+    name: "FIATA",
+    logo: "/images/Networks/icons/FIATA.png",
+  },
+];
 
   const customers = [
     "ADANI",
@@ -170,42 +193,76 @@ export default function CaseStudies() {
         {/* NETWORKS */}
 
         <div className="mt-16 lg:mt-24">
-          <h2 className="text-center text-[30px] lg:text-[42px] font-light mb-8 lg:mb-10">
-            Our Networks
-          </h2>
 
-          <div className="overflow-hidden">
-            <div className="flex gap-4 lg:gap-6 animate-marquee w-max">
-              {[...networks, ...networks].map((network, i) => (
-                <div
-                  key={i}
-                  className="
-                    w-[140px]
-                    lg:w-[220px]
-                    h-[80px]
-                    lg:h-[120px]
-                    bg-white
-                    rounded-xl
-                    flex
-                    items-center
-                    justify-center
-                    shadow-sm
-                    text-lg
-                    lg:text-3xl
-                    font-bold
-                    text-gray-600
-                    grayscale
-                    hover:grayscale-0
-                    transition-all
-                    duration-700
-                  "
-                >
-                  {network}
-                </div>
-              ))}
-            </div>
-          </div>
+  <h2 className="text-center text-[30px] lg:text-[42px] font-light mb-8 lg:mb-10">
+    Our Networks
+  </h2>
+
+  <Swiper
+    modules={[Autoplay]}
+    loop={true}
+    speed={5000}
+    autoplay={{
+      delay: 0,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: false,
+    }}
+    allowTouchMove={true}
+    grabCursor={true}
+    breakpoints={{
+      320: {
+        slidesPerView: 2,
+        spaceBetween: 15,
+      },
+      768: {
+        slidesPerView: 4,
+        spaceBetween: 20,
+      },
+      1024: {
+        slidesPerView: 5,
+        spaceBetween: 30,
+      },
+    }}
+  >
+
+    {networks.map((network, index) => (
+
+      <SwiperSlide key={index}>
+
+        <div
+          className="
+            h-[100px]
+            lg:h-[140px]
+            bg-white
+            rounded-xl
+            shadow-sm
+            flex
+            items-center
+            justify-center
+            p-4
+          "
+        >
+
+          <img
+            src={network.logo}
+            alt={network.name}
+            className="
+              max-h-[60px]
+              lg:max-h-[90px]
+              w-auto
+              object-contain
+            "
+          />
+
         </div>
+
+      </SwiperSlide>
+
+    ))}
+
+  </Swiper>
+
+</div>
 
         {/* CUSTOMERS */}
 
