@@ -11,28 +11,60 @@ export const metadata: Metadata = {
 
 const otherProjects = [
   {
-    title: "225MT Used Machinery Import",
-    image: "/images/Casestudies/Project-2/Project2_Gallery1.webp",
-    link: "/case-studies/Project-2",
-  },
+  slug: "national-defence-project",
+  category: "DEFENCE CARGO PROJECT",
+  title: "BMP-II Vehicle Transportation",
+  image: "/images/NationalDefenceProjectCardImage.JPG",
+},
 
-  {
-    title: "Factory Relocation",
-    image: "/images/Casestudies/Project-3/Project3_Gallery1.webp",
-    link: "/case-studies/Project-3",
-  },
+{
+  slug: "Project-2",
+  category: "PROJECT CARGO IMPORT",
+  title: "Industrial Machinery",
+  image: "/images/225MTUsedMachineryImportCardImage.jpeg",
+},
 
-  {
-    title: "70MT Heat Condenser Export",
-    image: "/images/Casestudies/Project-4/Project4_Gallery2.webp",
-    link: "/case-studies/Project-4",
-  },
+{
+  slug: "Project-3",
+  category: "FACTORY RELOCATION",
+  title: "Manufacturing Plant Transfer",
+  image: "/images/FactoryRelocationGermanyToIndiaCardImage.jpeg",
+},
 
-  {
-    title: "100MT Heat Exchanger",
-    image: "/images/Casestudies/Project-5/Project5_Gallery2.webp",
-    link: "/case-studies/Project-5",
-  },
+{
+  slug: "Project-4",
+  category: "BREAKBULK EXPORTS",
+  title: "Heat Condenser Shipment",
+  image: "/images/Casestudies/Project-4/Project4_HeroImage.webp",
+},
+
+{
+  slug: "Project-5",
+  category: "HEAVY HAUL TRANSPORTATION",
+  title: "2x100MT Heat Exchanger",
+  image: "/images/Casestudies/Project-5/Project5_Cardheroimage.webp",
+},
+
+{
+  slug: "Project-6",
+  category: "PROJECT CARGO EXPORT",
+  title: "Chemical Storage Tanks",
+  image: "/images/Casestudies/Project-6/Project6_Gallery10.webp",
+},
+
+{
+  slug: "Project-7",
+  category: "SPECIALIZED EQUIPMENT IMPORT",
+  title: "X-Ray Systems",
+  image: "/images/Casestudies/Project-7/Project7_Gallery3.webp",
+},
+
+{
+  slug: "Project-8",
+  category: "HEAVY LIFT EXPORTS",
+  title: "EOT Crane Shipment",
+  image: "/images/Casestudies/Project-8/Project8_Gallery1.webp",
+},
 ];
 
 export default function NationalDefenceProject() {
@@ -212,7 +244,7 @@ export default function NationalDefenceProject() {
 
         <Link
           key={index}
-          href={project.link}
+          href={`/case-studies/${project.slug}`}
           className="
             w-[320px]
             bg-white
