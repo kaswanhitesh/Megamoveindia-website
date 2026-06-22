@@ -38,7 +38,7 @@ export default function CaseStudies() {
   {
     slug: "Project-6",
     title: "Chemical Storage Tanks: Ex-Mumbai To Italy",
-    image: "/images/ChemicalStorageTankCardImage.jpeg",
+    image: "/images/Casestudies/Project-6/Project6_Gallery10.webp",
   },
 
   {
