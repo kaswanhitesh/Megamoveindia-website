@@ -45,7 +45,7 @@ export default function CaseStudies() {
     slug: "Project-7",
     title:
       "8 Nos Used Oil X-Ray Machines Import: Ex-Hamburg to Mumbai Port",
-    image: "/images/Casestudies/Project-7/Project7_Gallery3",
+    image: "/images/Casestudies/Project-7/Project7_Gallery3.webp",
   },
 
   {
