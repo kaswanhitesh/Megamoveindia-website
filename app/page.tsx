@@ -11,21 +11,21 @@ const cards = [
     link: "/services/air-freight",
     description:
       "Specialized air freight solutions for urgent, high-value and time-critical cargo movements. Through our global airline partnerships and logistics network, we provide reliable import, export, charter and door-to-door transportation services to major destinations worldwide.",
-    image: "images/AirFreightHeroImage.jpeg",
+    image: "images/AirFreightHeroImage.jwebp",
   },
   {
     title: "OCEAN",
     link: "/services/ocean-freight",
     description:
       "Comprehensive ocean freight services covering FCL, LCL, breakbulk and project cargo shipments. Our experienced team manages international freight movements through strategic carrier partnerships, ensuring efficient, secure and cost-effective transportation across global trade routes.",
-    image: "images/OceanfreightHeroCardImage.png",
+    image: "images/OceanfreightHeroCardImage.webp",
   },
   {
     title: "LAND",
     link: "/services/land-transport",
     description:
       "Heavy haulage, over-dimensional cargo transportation and project logistics supported by hydraulic axle trailers, lowbed trailers and specialized equipment. We execute complex cargo movements safely and efficiently across India for industrial, infrastructure and energy projects.",
-    image: "images/LandTransportCardHeroImage.png",
+    image: "images/LandTransportCardHeroImage.webp",
   },
   {
     title: "RENTALS",
