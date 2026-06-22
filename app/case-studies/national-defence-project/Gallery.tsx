@@ -79,21 +79,21 @@ useEffect(() => {
     hidden lg:block
     relative
     z-10
-    h-[900vh]
+    h-1200vh]
     overflow-hidden
   "
 >
   <div
     className="
-      sticky
-      top-0
-      h-screen
-      flex
-      items-center
-      overflow-hidden
-      bg-white/70
-      backdrop-blur-md
-    "
+  sticky
+  top-0
+  h-screen
+  flex
+  items-center
+  overflow-hidden
+  bg-white/60
+  backdrop-blur-xl
+"
   >
     <div
       ref={trackRef}
