@@ -18,36 +18,38 @@ export default function Gallery() {
   const trackRef = useRef<HTMLDivElement>(null);
 
 useEffect(() => {
-  const handleScroll = () => {
+  const updateGallery = () => {
     if (!sectionRef.current || !trackRef.current) return;
 
     const section = sectionRef.current;
+    const track = trackRef.current;
 
     const rect = section.getBoundingClientRect();
 
-    const scrollProgress =
-      Math.min(
-        Math.max(-rect.top / (section.offsetHeight - window.innerHeight), 0),
-        1
-      );
+    const scrollableHeight =
+      section.offsetHeight - window.innerHeight;
+
+    const progress = Math.min(
+      Math.max(-rect.top / scrollableHeight, 0),
+      1
+    );
 
     const maxTranslate =
-      trackRef.current.scrollWidth - window.innerWidth;
+      track.scrollWidth - window.innerWidth;
 
-    trackRef.current.style.transform =
-      `translateX(-${scrollProgress * maxTranslate}px)`;
+    track.style.transform =
+      `translate3d(-${progress * maxTranslate}px,0,0)`;
   };
 
-  window.addEventListener("scroll", handleScroll);
+  updateGallery();
 
-  handleScroll();
+  window.addEventListener("scroll", updateGallery);
 
   return () => {
-    window.removeEventListener("scroll", handleScroll);
+    window.removeEventListener("scroll", updateGallery);
   };
 }, []);
-  return (
-    <>
+  
       {/* MOBILE */}
 
       <section className="lg:hidden relative z-10 bg-white py-10">
@@ -67,58 +69,57 @@ useEffect(() => {
 
       {/* DESKTOP */}
 
-      <section
+<section
   ref={sectionRef}
   className="
     hidden lg:block
     relative
-    h-[600vh]
-    bg-white
+    z-10
+    h-[900vh]
     overflow-hidden
   "
 >
-        <div
-  className="
-    sticky
-    top-0
-    h-screen
-    overflow-hidden
-    flex
-    items-center
-    bg-white
-  "
->
-
-          <div
-  ref={trackRef}
-  className="
-    flex
-    gap-20
-    pl-[15vw]
-    pr-[15vw]
-    w-max
-    will-change-transform
-  "
->
-            {images.map((image, index) => (
-              <img
-                key={index}
-                src={image}
-                alt={`Gallery ${index + 1}`}
-                className="
-                  w-[750px]
-                  h-[500px]
-                  object-cover
-                  rounded-3xl
-                  shadow-xl
-                  shrink-0
-                "
-              />
-            ))}
-          </div>
-
-        </div>
-      </section>
+  <div
+    className="
+      sticky
+      top-0
+      h-screen
+      flex
+      items-center
+      overflow-hidden
+      bg-white/70
+      backdrop-blur-md
+    "
+  >
+    <div
+      ref={trackRef}
+      className="
+        flex
+        gap-12
+        pl-[25vw]
+        pr-[25vw]
+        w-max
+        will-change-transform
+      "
+    >
+      {images.map((image, index) => (
+        <img
+          key={index}
+          src={image}
+          alt={`Gallery ${index + 1}`}
+          className="
+            w-[900px]
+            h-[600px]
+            object-cover
+            rounded-3xl
+            shadow-2xl
+            shrink-0
+          "
+        />
+      ))}
+    </div>
+  </div>
+</section>
     </>
   );
 }
