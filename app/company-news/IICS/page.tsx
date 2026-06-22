@@ -5,7 +5,7 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "India International Cargo Show | Mega Move India",
   description:
-    "Mega Move India will be participating in the India International Cargo Show (IICS), showcasing expertise in project cargo logistics, heavy lift transportation, breakbulk operations, freight forwarding, and engineered logistics solutions.",
+    "Mega Move India will be participating in the India International Cargo Show (IICS) 2025, showcasing expertise in project cargo logistics, heavy lift transportation, breakbulk operations, freight forwarding, and engineered logistics solutions.",
 };
 
 export default function IICSPage() {
@@ -41,21 +41,11 @@ export default function IICSPage() {
         </h2>
 
         <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-          We are pleased to announce that Mega Move India will be participating
-          in the India International Cargo Show (IICS) 2026, one of the leading
-          exhibitions for container logistics, transportation, freight
-          forwarding, breakbulk, project cargo, and heavy lift industries.
+          25-word summary:
+
+Mega Move India will exhibit at IICS 2025, showcasing project logistics, heavy lift, breakbulk, freight forwarding, and engineered cargo solutions for complex transportation projects.
         </p>
 
-        <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10 mt-8">
-          Join us at Stall I-25 to explore our expertise in project cargo
-          logistics, heavy lift chartering, breakbulk operations, marine
-          engineering transportation, freight forwarding, and end-to-end
-          engineered logistics solutions. Our team will be available to discuss
-          customized logistics strategies and demonstrate our capabilities in
-          handling complex, oversized, and mission-critical cargo movements
-          across domestic and international trade routes.
-        </p>
       </section>
 
       {/* Event Details */}
@@ -74,7 +64,7 @@ export default function IICSPage() {
                 Exhibition
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                India International Cargo Show (IICS) 2026
+                India International Cargo Show (IICS) 2025
               </p>
             </div>
 
@@ -92,7 +82,7 @@ export default function IICSPage() {
                 Dates
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                17–18 March 2026
+                10–12 December 2025
               </p>
             </div>
 
@@ -101,7 +91,7 @@ export default function IICSPage() {
                 Stall Number
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                I-25
+                N-21
               </p>
             </div>
 
@@ -123,24 +113,6 @@ export default function IICSPage() {
               </p>
             </div>
 
-            <div className="text-center">
-              <h3 className="font-bold text-[16px] lg:text-[22px] text-[#173f74] mb-3">
-                Services Showcased
-              </h3>
-              <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Project Logistics, Breakbulk, Heavy Lift & Freight Forwarding
-              </p>
-            </div>
-
-            <div className="text-center">
-              <h3 className="font-bold text-[16px] lg:text-[22px] text-[#173f74] mb-3">
-                Meet Our Team
-              </h3>
-              <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Discuss Customized Logistics Solutions
-              </p>
-            </div>
-
           </div>
         </div>
       </section>
@@ -148,31 +120,6 @@ export default function IICSPage() {
       {/* Gallery */}
 
       <Gallery />
-
-      {/* Invitation */}
-
-      <section className="bg-[#f7f7f7] py-12 lg:py-20">
-
-        <div className="max-w-7xl mx-auto px-4 lg:px-8">
-
-          <h2 className="text-3xl lg:text-5xl font-light text-[#173f74] text-center mb-8 lg:mb-12">
-            Visit Our Stall
-          </h2>
-
-          <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-            Meet our project logistics specialists and discover how Mega Move
-            India delivers reliable, safe, and innovative transportation
-            solutions for heavy lift cargo, oversized equipment, industrial
-            projects, and global freight movements. Whether your requirements
-            involve multimodal transportation, chartering, route surveys,
-            specialized equipment, or turnkey logistics management, our team
-            will be available to discuss tailored solutions designed around your
-            project requirements.
-          </p>
-
-        </div>
-
-      </section>
 
       {/* Closing Message */}
 
@@ -190,7 +137,7 @@ export default function IICSPage() {
 
         <div className="mt-12 text-center">
           <p className="text-2xl lg:text-4xl text-[#173f74] font-light italic">
-            Moving Smart. Moving Heavy.
+            Moving the Immovable. Moving the Impossible.
           </p>
         </div>
 
@@ -201,7 +148,7 @@ export default function IICSPage() {
           </h3>
 
           <p className="text-gray-600 mb-4">
-            Connect with Mega Move India during IICS 2026 to discuss your
+            Connect with Mega Move India during IICS 2025 to discuss your
             project logistics, breakbulk, heavy lift, freight forwarding and
             transportation requirements.
           </p>
