@@ -32,7 +32,7 @@ export default function CaseStudies() {
   {
     slug: "Project-5",
     title: "In-Land Transportation: 100MT Heat Exchanger",
-    image: "/images/100MTHeatExchangerCardImage.jpeg",
+    image: "/images/Casestudies/Project-5/Project5_Cardheroimage.webp",
   },
 
   {
