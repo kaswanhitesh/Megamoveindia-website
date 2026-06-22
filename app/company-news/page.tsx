@@ -1,7 +1,7 @@
 export default function CompanyNews() {
   const news = [
     {
-      image: "/images/news/news1.jpg",
+      image: "/images/Companynews/IICS/IICS_Newscardimage.png",
       title: "Mega Move India at IICS 2025 Exhibition",
       date: "Dec 3, 2025",
       excerpt:
