@@ -51,7 +51,7 @@ export default function CaseStudies() {
   {
     slug: "Project-8",
     title: "35M EOT Crane Export: Ex-NSA to Houston, USA",
-    image: "/images/EOTCraneCardImage.jpeg",
+    image: "/images/Casestudies/Project-8/Project8_Gallery1.webp",
   },
 ];
   
