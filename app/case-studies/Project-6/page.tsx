@@ -265,8 +265,6 @@ export default function ChemicalStorageTankExportProject() {
             {project.title}
           </h3>
 
-</div>
-
           </div>
 
         </Link>
