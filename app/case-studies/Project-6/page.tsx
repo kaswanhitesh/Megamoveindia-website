@@ -41,10 +41,10 @@ const otherProjects = [
   },
 
   {
-    title: "Industrial Earth Moving Machinery Imports: X-Ray Equipment,
-    image: "/images/Casestudies/Project-7/Project7_Gallery1.webp",
-    link: "/case-studies/Project-7",
-  },
+  title: "Industrial Earth Moving Machinery Imports: X-Ray Equipment",
+  image: "/images/Casestudies/Project-7/Project7_Gallery1.webp",
+  link: "/case-studies/Project-7",
+},
 
   {
     title: "    Heavy Lift Exports: EOT Crane Shipment",
@@ -261,11 +261,9 @@ export default function ChemicalStorageTankExportProject() {
 
           <div className="p-5">
 
-            <div className="p-5">
-
-  <h3 className="text-[18px] leading-7 font-medium text-[#173f74]">
-    {project.title}
-  </h3>
+          <h3 className="text-[18px] leading-7 font-medium text-[#173f74]">
+            {project.title}
+          </h3>
 
 </div>
 
