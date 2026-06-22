@@ -97,70 +97,74 @@ export default function CaseStudies() {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {projects.map((project, index) => (
-            <Link
-  key={index}
-  href={`/case-studies/${project.slug}`}
-  className="
-    group
-    bg-white
-    rounded-lg
-    overflow-hidden
-    shadow-sm
-    hover:shadow-2xl
-    transition-all
-    duration-500
-    block
-  "
->
-              <img
-                src={project.image}
-                alt={project.title}
-                className="
-                w-full
-                h-[140px]
-                md:h-[220px]
-                lg:h-[200px]
-                object-cover
-                grayscale
-                hover:grayscale-0
-                transition-all
-                duration-700
-                "
-              />
+  <Link
+    key={index}
+    href={`/case-studies/${project.slug}`}
+    className="
+      group
+      bg-white
+      rounded-lg
+      overflow-hidden
+      shadow-sm
+      hover:shadow-2xl
+      transition-all
+      duration-500
+      block
+    "
+  >
 
-              <div className="p-4 lg:p-5 text-center">
+    <img
+      src={project.image}
+      alt={project.title}
+      className="
+        w-full
+        h-[140px]
+        md:h-[220px]
+        lg:h-[260px]
+        object-cover
+        grayscale
+        hover:grayscale-0
+        transition-all
+        duration-700
+      "
+    />
 
-  <div className="h-[110px] px-4 flex flex-col justify-center items-center text-center">
+    <div className="h-[110px] px-4 flex flex-col justify-center items-center text-center">
 
-  <h2 className="
-    font-bold
-    text-black
-    text-[14px]
-    lg:text-[18px]
-    leading-6
-    transition-colors
-    duration-300
-    group-hover:text-yellow-500
-  ">
-    {project.category}
-  </h2>
+      <h2
+        className="
+          font-bold
+          text-black
+          text-[14px]
+          lg:text-[18px]
+          leading-6
+          transition-colors
+          duration-300
+          group-hover:text-[#f4b400]
+        "
+      >
+        {project.category}
+      </h2>
 
-  <p className="
-    mt-2
-    text-gray-600
-    text-[13px]
-    lg:text-[15px]
-    leading-6
-    transition-colors
-    duration-300
-    group-hover:text-yellow-500
-  ">
-    {project.title}
-  </p>
+      <p
+        className="
+          mt-2
+          text-gray-600
+          text-[13px]
+          lg:text-[15px]
+          leading-6
+          transition-colors
+          duration-300
+          group-hover:text-[#f4b400]
+        "
+      >
+        {project.title}
+      </p>
 
-</div>
-              </Link>
-          ))}
+    </div>
+
+  </Link>
+))}
         </div>
 
         {/* NETWORKS */}
