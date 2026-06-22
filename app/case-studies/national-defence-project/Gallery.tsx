@@ -86,6 +86,7 @@ useEffect(() => {
   <div
     className="
       sticky
+       border-4 border-red-500
       top-0
       h-screen
       overflow-hidden
