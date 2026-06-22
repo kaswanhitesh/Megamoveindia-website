@@ -9,7 +9,7 @@ export default function CompanyNews() {
     link: "/company-news/IICS",
   },
   {
-    image: "/images/news/news2.jpg",
+    image: "/images/Companynews/IMG_0982.jpeg",
     title: "Mega Move India Featured on MMI Network",
     date: "Jan 31, 2026",
     excerpt:
