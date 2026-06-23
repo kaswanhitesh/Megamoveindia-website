@@ -96,8 +96,10 @@ function getDesktopMetrics(): DesktopMetrics {
 
 export default function Gallery() {
   const sectionRef = useRef<HTMLElement>(null);
+  const stickyRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<number | null>(null);
   const metricsFrameRef = useRef<number | null>(null);
+  const wheelActiveRef = useRef(false);
   const progressRef = useRef(0);
   const [desktopMetrics, setDesktopMetrics] = useState<DesktopMetrics>(EMPTY_METRICS);
   const [progress, setProgress] = useState(0);
@@ -150,21 +152,41 @@ export default function Gallery() {
     };
   }, []);
 
-  const syncProgress = useCallback(() => {
+  const computeProgress = useCallback((): number => {
     const section = sectionRef.current;
+    const sticky = stickyRef.current;
 
-    if (!section || desktopMetrics.scrollDistance === 0) {
-      return;
+    if (!section || !sticky || desktopMetrics.scrollDistance === 0) {
+      return progressRef.current;
     }
 
+    const sectionRect = section.getBoundingClientRect();
+    const stickyRect = sticky.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+
+    const sectionTop = sectionRect.top + window.scrollY;
+    const sectionBottom = sectionTop + desktopMetrics.sectionHeight;
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY < sectionTop) {
+      return 0;
+    }
+
+    if (currentScrollY >= sectionBottom) {
+      return 1;
+    }
+
+    const progressWithinSection = (currentScrollY - sectionTop) / desktopMetrics.scrollDistance;
+    return clamp(progressWithinSection, 0, 1);
+  }, [desktopMetrics.scrollDistance, desktopMetrics.sectionHeight]);
+
+  const syncProgress = useCallback(() => {
     if (frameRef.current !== null) {
       window.cancelAnimationFrame(frameRef.current);
-      frameRef.current = null;
     }
 
     frameRef.current = window.requestAnimationFrame(() => {
-      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-      const nextProgress = clamp((window.scrollY - sectionTop) / desktopMetrics.scrollDistance, 0, 1);
+      const nextProgress = computeProgress();
 
       if (Math.abs(nextProgress - progressRef.current) < PROGRESS_THRESHOLD) {
         return;
@@ -173,25 +195,21 @@ export default function Gallery() {
       progressRef.current = nextProgress;
       setProgress(nextProgress);
     });
-  }, [desktopMetrics.scrollDistance]);
+  }, [computeProgress]);
 
   useEffect(() => {
     if (desktopMetrics.scrollDistance === 0) {
       return;
     }
 
-    const handleScroll = () => syncProgress();
     syncProgress();
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', syncProgress, { passive: true });
 
     return () => {
+      window.removeEventListener('scroll', syncProgress);
       if (frameRef.current !== null) {
         window.cancelAnimationFrame(frameRef.current);
-        frameRef.current = null;
       }
-
-      window.removeEventListener('scroll', handleScroll);
     };
   }, [desktopMetrics.scrollDistance, syncProgress]);
 
@@ -210,24 +228,21 @@ export default function Gallery() {
         return;
       }
 
-      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-      const sectionEnd = sectionTop + desktopMetrics.scrollDistance;
-      const currentY = window.scrollY;
-      const deltaY = event.deltaY;
-      const isInsideTakeover = currentY >= sectionTop - 1 && currentY <= sectionEnd + 1;
+      const currentProgress = computeProgress();
+      const isInGalleryRange = currentProgress > 0 && currentProgress < 1;
 
-      if (!isInsideTakeover) {
-        return;
-      }
-
-      const atStart = currentY <= sectionTop + 1;
-      const atEnd = currentY >= sectionEnd - 1;
-      if ((deltaY < 0 && atStart) || (deltaY > 0 && atEnd)) {
+      if (!isInGalleryRange) {
+        wheelActiveRef.current = false;
         return;
       }
 
       event.preventDefault();
-      const nextScrollY = clamp(currentY + deltaY, sectionTop, sectionEnd);
+      wheelActiveRef.current = true;
+
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+      const sectionEnd = sectionTop + desktopMetrics.scrollDistance;
+      const nextScrollY = clamp(window.scrollY + event.deltaY, sectionTop, sectionEnd);
+
       window.scrollTo(0, nextScrollY);
       syncProgress();
     };
@@ -236,8 +251,9 @@ export default function Gallery() {
 
     return () => {
       window.removeEventListener('wheel', handleWheel);
+      wheelActiveRef.current = false;
     };
-  }, [desktopMetrics.scrollDistance, syncProgress]);
+  }, [desktopMetrics.scrollDistance, desktopMetrics.sectionHeight, computeProgress, syncProgress]);
 
   const currentSlide = getCurrentSlide(progress, IMAGES.length);
   const translateX = desktopMetrics.startOffset - progress * desktopMetrics.scrollDistance;
@@ -297,7 +313,11 @@ export default function Gallery() {
         className="relative hidden bg-white lg:block"
         style={{ height: `${desktopMetrics.sectionHeight}px` }}
       >
-        <div className="sticky top-0 h-screen overflow-hidden bg-white">
+        <div
+          ref={stickyRef}
+          className="sticky top-0 h-screen overflow-hidden bg-white"
+          style={{ zIndex: 40 }}
+        >
           <div
             className="absolute inset-0"
             style={{
@@ -326,6 +346,7 @@ export default function Gallery() {
                   gap: `${desktopMetrics.gap}px`,
                   transform: `translate3d(${translateX}px, 0, 0)`,
                   willChange: 'transform',
+                  backfaceVisibility: 'hidden',
                 }}
               >
                 {IMAGES.map((image, index) => (

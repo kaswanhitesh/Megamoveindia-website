@@ -85,12 +85,12 @@ const OTHER_PROJECTS = [
 
 export default function NationalDefenceProject() {
   return (
-    <main className="relative w-full bg-white overflow-x-clip">
-      {/* Hero - Full viewport with fixed background */}
+    <main className="relative w-full bg-white overflow-hidden">
+      {/* Hero - Full viewport with scroll background */}
       <Hero />
 
-      {/* Project Overview - Seamless transition over hero */}
-      <section className="relative z-30 bg-white rounded-t-[50px] py-16 lg:py-24" style={{ marginTop: '-50px' }}>
+      {/* Project Overview - Seamless white transition */}
+      <section className="relative z-20 bg-white py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <h2 className="text-3xl lg:text-5xl font-light text-[#173f74] text-center mb-8 lg:mb-12">
             Project Overview
@@ -108,7 +108,7 @@ export default function NationalDefenceProject() {
       </section>
 
       {/* Project Details Grid */}
-      <section className="relative z-30 bg-[#f7f7f7] py-12 lg:py-20">
+      <section className="relative z-20 bg-[#f7f7f7] py-12 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <h2 className="text-3xl lg:text-5xl font-light text-[#173f74] text-center mb-8 lg:mb-12">
             Project Details
@@ -128,7 +128,7 @@ export default function NationalDefenceProject() {
       <Gallery />
 
       {/* Project Outcome */}
-      <section className="relative z-30 bg-white py-12 lg:py-20">
+      <section className="relative z-20 bg-white py-12 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <h2 className="text-3xl lg:text-5xl font-light text-[#173f74] text-center mb-8 lg:mb-12">
             Project Outcome
