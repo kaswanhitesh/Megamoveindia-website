@@ -105,7 +105,7 @@ gsap.to(track, {
             h-[220px]
             object-cover
             rounded-2xl
-            shadow-xl
+            shadow-[0_20px_60px_rgba(0,0,0,0.30)]
           "
         />
       </div>
@@ -122,7 +122,26 @@ gsap.to(track, {
       >
         {/* Hero visible behind gallery */}
 
-        <div className="absolute inset-0 bg-white/25 backdrop-blur-md z-10" />
+        <div
+  className="
+    absolute
+    inset-0
+    bg-white/50
+    backdrop-blur-xl
+    z-10
+  "
+/>
+        <div
+  className="absolute inset-0 z-0"
+  style={{
+    backgroundImage:
+      "url('/images/Casestudies/DefenceCargo/DefenceCargoHeroImage.webp')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    filter: "blur(12px)",
+    opacity: 0.35,
+  }}
+/>
 
         <div className="sticky top-0 h-screen overflow-hidden z-20">
 
@@ -136,12 +155,12 @@ gsap.to(track, {
                 <div
                   key={index}
                   className="
-                    shrink-0
-                    rounded-3xl
-                    overflow-hidden
-                    shadow-2xl
-                    bg-white
-                  "
+  shrink-0
+  rounded-3xl
+  overflow-hidden
+  bg-white
+  shadow-[0_30px_80px_rgba(0,0,0,0.35)]
+"
                 >
                   <Image
                     src={image}
@@ -149,10 +168,13 @@ gsap.to(track, {
                     width={520}
                     height={344}
                     className="
-                      w-[520px]
-                      h-[344px]
-                      object-cover
-                    "
+  w-[520px]
+  h-[344px]
+  object-cover
+  transition-all
+  duration-500
+  hover:scale-[1.02]
+"
                     priority={index < 2}
                   />
                 </div>
