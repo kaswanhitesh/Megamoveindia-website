@@ -17,7 +17,9 @@ const IMAGES = [
 const MOBILE_CARD_WIDTH = 280;
 const MOBILE_CARD_HEIGHT = 220;
 const MOBILE_GAP = 16;
-const MIN_PROGRESS_BAR_WIDTH_PERCENT = 6;
+const MOBILE_CARD_HALF_WIDTH = MOBILE_CARD_WIDTH / 2;
+const EAGER_LOAD_COUNT = 2;
+const MIN_PROGRESS_BAR_WIDTH_PCT = 6;
 
 interface DesktopMetrics {
   cardWidth: number;
@@ -74,6 +76,7 @@ function getDesktopMetrics(): DesktopMetrics {
 
 export default function Gallery() {
   const sectionRef = useRef<HTMLElement>(null);
+  const sectionTopRef = useRef(0);
   const frameRef = useRef<number | null>(null);
   const metricsFrameRef = useRef<number | null>(null);
   const progressRef = useRef(0);
@@ -95,6 +98,7 @@ export default function Gallery() {
 
   useEffect(() => {
     const updateMetrics = () => {
+      sectionTopRef.current = (sectionRef.current?.getBoundingClientRect().top ?? 0) + window.scrollY;
       setDesktopMetrics((currentMetrics) => {
         const nextMetrics = getDesktopMetrics();
 
@@ -144,8 +148,7 @@ export default function Gallery() {
     }
 
     frameRef.current = window.requestAnimationFrame(() => {
-      const sectionTop = (sectionRef.current?.getBoundingClientRect().top ?? 0) + window.scrollY;
-      const nextProgress = clamp((window.scrollY - sectionTop) / desktopMetrics.scrollDistance, 0, 1);
+      const nextProgress = clamp((window.scrollY - sectionTopRef.current) / desktopMetrics.scrollDistance, 0, 1);
 
       if (Math.abs(nextProgress - progressRef.current) < 0.001) {
         return;
@@ -193,8 +196,8 @@ export default function Gallery() {
         <div
           className="mt-8 overflow-x-auto snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           style={{
-            paddingLeft: `calc(50vw - ${MOBILE_CARD_WIDTH / 2}px)`,
-            paddingRight: `calc(50vw - ${MOBILE_CARD_WIDTH / 2}px)`,
+            paddingLeft: `calc(50vw - ${MOBILE_CARD_HALF_WIDTH}px)`,
+            paddingRight: `calc(50vw - ${MOBILE_CARD_HALF_WIDTH}px)`,
           }}
         >
           <div className="flex w-max" style={{ gap: `${MOBILE_GAP}px` }}>
@@ -210,7 +213,7 @@ export default function Gallery() {
                   width={MOBILE_CARD_WIDTH}
                   height={MOBILE_CARD_HEIGHT}
                   className="h-[220px] w-full object-cover"
-                  loading={index > 1 ? 'lazy' : 'eager'}
+                  loading={index < EAGER_LOAD_COUNT ? 'eager' : 'lazy'}
                   sizes="280px"
                 />
                 <div className="flex items-center justify-between px-5 py-4">
@@ -272,7 +275,7 @@ export default function Gallery() {
                       height={desktopMetrics.cardHeight}
                       className="w-full object-cover"
                       style={{ height: `${desktopMetrics.cardHeight}px` }}
-                      loading={index > 1 ? 'lazy' : 'eager'}
+                      loading={index < EAGER_LOAD_COUNT ? 'eager' : 'lazy'}
                       sizes="(min-width: 1536px) 460px, (min-width: 1024px) 32vw, 420px"
                       priority={index === 0}
                     />
@@ -293,7 +296,7 @@ export default function Gallery() {
               <div className="h-1.5 w-56 overflow-hidden rounded-full bg-slate-200">
                 <div
                   className="h-full rounded-full bg-[#173f74] transition-[width] duration-150"
-                  style={{ width: `${Math.max(progress * 100, MIN_PROGRESS_BAR_WIDTH_PERCENT)}%` }}
+                  style={{ width: `${Math.max(progress * 100, MIN_PROGRESS_BAR_WIDTH_PCT)}%` }}
                 />
               </div>
               <span className="min-w-20 text-sm font-semibold text-[#173f74]">
