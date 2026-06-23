@@ -1,7 +1,6 @@
 'use client';
 
 import { useRef, useState, useEffect } from 'react';
-import { useGalleryScroll } from './hooks/useGalleryScroll';
 
 const IMAGES = [
   '/images/Casestudies/DefenceCargo/defencecargo_Gallery1.webp',
@@ -21,6 +20,7 @@ const Gallery = () => {
   const trackRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(1024);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     setMounted(true);
@@ -33,14 +33,36 @@ const Gallery = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const scrollState = useGalleryScroll({
-    containerRef,
-    trackRef,
-    imageCount: IMAGES.length,
-    imageWidth: CONFIG.width,
-    imageGap: CONFIG.gap,
-    sidePadding: CONFIG.sidePadding,
-  });
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current || !trackRef.current) return;
+
+      const rect = containerRef.current.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const isGalleryInView = rect.top < viewportHeight && rect.bottom > 0;
+
+      if (!isGalleryInView) return;
+
+      const distanceFromBottom = Math.max(0, viewportHeight - rect.top);
+      const totalDistance = viewportHeight + rect.height;
+      let newProgress = distanceFromBottom / totalDistance;
+      newProgress = Math.max(0, Math.min(1, newProgress));
+
+      const totalImagesWidth = IMAGES.length * CONFIG.width + (IMAGES.length - 1) * CONFIG.gap;
+      const trackWidth = CONFIG.sidePadding * 2 + totalImagesWidth;
+      const maxScroll = Math.max(0, trackWidth - viewportWidth);
+      const translateX = newProgress * maxScroll;
+
+      if (trackRef.current) {
+        trackRef.current.style.transform = `translate3d(-${translateX}px, 0, 0)`;
+      }
+
+      setProgress(newProgress);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [viewportWidth]);
 
   const totalImagesWidth = IMAGES.length * CONFIG.width + (IMAGES.length - 1) * CONFIG.gap;
   const trackWidth = CONFIG.sidePadding * 2 + totalImagesWidth;
@@ -131,7 +153,7 @@ const Gallery = () => {
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-4 pointer-events-none">
             <div className="flex gap-2">
               {IMAGES.map((_, idx) => {
-                const isActive = idx < Math.ceil(scrollState.progress * IMAGES.length);
+                const isActive = idx < Math.ceil(progress * IMAGES.length);
                 return (
                   <div
                     key={idx}
@@ -145,15 +167,15 @@ const Gallery = () => {
               })}
             </div>
             <span className="text-sm text-gray-700 font-semibold whitespace-nowrap">
-              {Math.round(scrollState.progress * 100)}%
+              {Math.round(progress * 100)}%
             </span>
           </div>
 
-          {scrollState.progress < 0.08 && (
+          {progress < 0.08 && (
             <div
               className="absolute top-8 left-1/2 transform -translate-x-1/2 z-20 text-center text-gray-600 text-sm pointer-events-none"
               style={{
-                opacity: Math.max(0, 1 - scrollState.progress * 12),
+                opacity: Math.max(0, 1 - progress * 12),
                 transition: 'opacity 300ms ease',
               }}
             >
