@@ -33,25 +33,34 @@ const Gallery = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Calculate dimensions
+  const totalImagesWidth = IMAGES.length * CONFIG.width + (IMAGES.length - 1) * CONFIG.gap;
+  const trackWidth = CONFIG.sidePadding * 2 + totalImagesWidth;
+  const maxHorizontalScroll = Math.max(0, trackWidth - viewportWidth);
+  const viewportHeight = typeof window !== 'undefined' ? window.innerHeight : 1080;
+  
+  // FIXED: Section height = exactly the scroll distance needed for horizontal animation
+  // When progress reaches 1.0, user should be at bottom of section
+  const sectionHeight = maxHorizontalScroll + viewportHeight;
+
+  // Scroll event handler
   useEffect(() => {
     const handleScroll = () => {
       if (!containerRef.current || !trackRef.current) return;
 
       const rect = containerRef.current.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
       const isGalleryInView = rect.top < viewportHeight && rect.bottom > 0;
 
       if (!isGalleryInView) return;
 
+      // Calculate progress: 0 when gallery enters viewport, 1 when exits top
       const distanceFromBottom = Math.max(0, viewportHeight - rect.top);
       const totalDistance = viewportHeight + rect.height;
       let newProgress = distanceFromBottom / totalDistance;
       newProgress = Math.max(0, Math.min(1, newProgress));
 
-      const totalImagesWidth = IMAGES.length * CONFIG.width + (IMAGES.length - 1) * CONFIG.gap;
-      const trackWidth = CONFIG.sidePadding * 2 + totalImagesWidth;
-      const maxScroll = Math.max(0, trackWidth - viewportWidth);
-      const translateX = newProgress * maxScroll;
+      // Apply translation
+      const translateX = newProgress * maxHorizontalScroll;
 
       if (trackRef.current) {
         trackRef.current.style.transform = `translate3d(-${translateX}px, 0, 0)`;
@@ -62,18 +71,13 @@ const Gallery = () => {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [viewportWidth]);
-
-  const totalImagesWidth = IMAGES.length * CONFIG.width + (IMAGES.length - 1) * CONFIG.gap;
-  const trackWidth = CONFIG.sidePadding * 2 + totalImagesWidth;
-  const maxScroll = Math.max(0, trackWidth - viewportWidth);
-  const viewportHeight = typeof window !== 'undefined' ? window.innerHeight : 1080;
-  const sectionHeight = maxScroll > 0 ? Math.ceil((maxScroll / viewportHeight) * viewportHeight) + viewportHeight : viewportHeight * 2;
+  }, [viewportWidth, maxHorizontalScroll, viewportHeight]);
 
   if (!mounted) return null;
 
   return (
     <>
+      {/* Mobile Gallery */}
       <section className="lg:hidden relative z-30 bg-white py-10">
         <div className="overflow-x-auto snap-x snap-mandatory scrollbar-hide">
           <div className="flex gap-4 px-4 w-max">
@@ -92,11 +96,13 @@ const Gallery = () => {
         </div>
       </section>
 
+      {/* Desktop Gallery - Sticky Horizontal Scroll */}
       <section
         ref={containerRef}
         className="hidden lg:block relative z-20 bg-white"
         style={{ height: `${sectionHeight}px` }}
       >
+        {/* Sticky Container */}
         <div
           className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center"
           style={{
@@ -105,6 +111,7 @@ const Gallery = () => {
             WebkitBackdropFilter: 'blur(4px)',
           }}
         >
+          {/* Background */}
           <div
             className="absolute inset-0 z-0"
             style={{
@@ -116,6 +123,7 @@ const Gallery = () => {
             }}
           />
 
+          {/* Content */}
           <div className="relative z-10 w-full h-full flex items-center overflow-hidden">
             <div
               ref={trackRef}
@@ -150,6 +158,7 @@ const Gallery = () => {
             </div>
           </div>
 
+          {/* Progress Indicator */}
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-4 pointer-events-none">
             <div className="flex gap-2">
               {IMAGES.map((_, idx) => {
@@ -171,6 +180,7 @@ const Gallery = () => {
             </span>
           </div>
 
+          {/* Scroll Hint */}
           {progress < 0.08 && (
             <div
               className="absolute top-8 left-1/2 transform -translate-x-1/2 z-20 text-center text-gray-600 text-sm pointer-events-none"
