@@ -70,7 +70,7 @@ export default function Home() {
           <p className="mt-3 text-[15px] leading-[1.9] text-gray-700">
             Driven by specialized equipment, experienced personnel and a
             commitment to operational excellence, we provide end-to-end
-            logistics solutions for the world's most challenging cargo movements.
+            logistics solutions for the world&rsquo;s most challenging cargo movements.
           </p>
         </div>
 
