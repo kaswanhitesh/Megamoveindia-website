@@ -1,1 +1,53 @@
-'use client';\n\nimport { useRef } from 'react';\nimport { useScrollFadeText } from './hooks/useScrollFadeText';\n\nexport default function Hero() {\n  const sectionRef = useRef<HTMLDivElement>(null);\n  const { showText, textOpacity } = useScrollFadeText({ sectionRef });\n\n  return (\n    <section\n      ref={sectionRef}\n      className=\"relative w-full h-screen flex items-center justify-center overflow-hidden bg-black\"\n    >\n      {/* Fixed Background Image */}\n      <div\n        className=\"absolute inset-0 w-full h-full\"\n        style={{\n          backgroundImage: 'url(/images/Casestudies/DefenceCargo/DefenceCargoHeroImage.webp)',\n          backgroundSize: 'cover',\n          backgroundPosition: 'center',\n          backgroundAttachment: 'fixed',\n          zIndex: 0,\n        }}\n      />\n\n      {/* Dark Overlay */}\n      <div className=\"absolute inset-0 bg-black/45 z-[1]\" />\n\n      {/* Text Content with Scroll-based Fade */}\n      <div\n        className=\"relative z-[2] text-center px-4\"\n        style={{\n          opacity: textOpacity,\n          willChange: 'opacity',\n        }}\n      >\n        <div\n          className={`transition-all duration-1000 ${\n            showText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'\n          }`}\n        >\n          <h1 className=\"text-white text-4xl lg:text-7xl font-light tracking-[6px] mb-6 leading-tight\">\n            NATIONAL DEFENCE PROJECT\n          </h1>\n\n          <div className=\"w-20 h-px bg-white/60 mx-auto mb-6\" />\n\n          <p className=\"text-white text-lg lg:text-2xl tracking-[2px] font-light\">\n            Manufacturing Unit to Nyoma, Ladakh\n          </p>\n        </div>\n      </div>\n    </section>\n  );\n}\n
+'use client';
+
+import { useRef } from 'react';
+import { useScrollFadeText } from './hooks/useScrollFadeText';
+
+const Hero = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { showText, textOpacity } = useScrollFadeText({ sectionRef });
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black"
+    >
+      <div
+        className="absolute inset-0 w-full h-full"
+        style={{
+          backgroundImage: 'url(/images/Casestudies/DefenceCargo/DefenceCargoHeroImage.webp)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+          zIndex: 0,
+        }}
+      />
+
+      <div className="absolute inset-0 bg-black/45 z-[1]" />
+
+      <div
+        className="relative z-[2] text-center px-4"
+        style={{
+          opacity: textOpacity,
+          willChange: 'opacity',
+        }}
+      >
+        <div
+          className={`transition-all duration-1000 ${
+            showText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <h1 className="text-white text-4xl lg:text-7xl font-light tracking-[6px] mb-6 leading-tight">
+            NATIONAL DEFENCE PROJECT
+          </h1>
+          <div className="w-20 h-px bg-white/60 mx-auto mb-6" />
+          <p className="text-white text-lg lg:text-2xl tracking-[2px] font-light">
+            Manufacturing Unit to Nyoma, Ladakh
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;

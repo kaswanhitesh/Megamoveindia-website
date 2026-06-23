@@ -1,1 +1,93 @@
-'use client';\n\nimport { useEffect, useRef, useCallback, useState } from 'react';\n\ninterface UseGalleryScrollProps {\n  containerRef: React.RefObject<HTMLDivElement>;\n  trackRef: React.RefObject<HTMLDivElement>;\n  imageCount: number;\n  imageWidth: number;\n  imageGap: number;\n  sidePadding: number;\n}\n\ninterface ScrollState {\n  progress: number;\n  translateX: number;\n  isActive: boolean;\n}\n\nexport function useGalleryScroll({\n  containerRef,\n  trackRef,\n  imageCount,\n  imageWidth,\n  imageGap,\n  sidePadding,\n}: UseGalleryScrollProps) {\n  const [scrollState, setScrollState] = useState<ScrollState>({\n    progress: 0,\n    translateX: 0,\n    isActive: false,\n  });\n\n  const rafRef = useRef<number | null>(null);\n  const prevProgressRef = useRef(0);\n\n  // Calculate max horizontal scroll needed\n  const calculateMaxScroll = useCallback(() => {\n    const track = trackRef.current;\n    if (!track) return 0;\n    const totalImagesWidth = imageCount * imageWidth + (imageCount - 1) * imageGap;\n    const trackWidth = sidePadding * 2 + totalImagesWidth;\n    const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 1024;\n    return Math.max(0, trackWidth - viewportWidth);\n  }, [imageCount, imageWidth, imageGap, sidePadding]);\n\n  const maxScroll = calculateMaxScroll();\n\n  const handleScroll = useCallback(() => {\n    const container = containerRef.current;\n    const track = trackRef.current;\n    \n    if (!container || !track) return;\n\n    if (rafRef.current) cancelAnimationFrame(rafRef.current);\n\n    rafRef.current = requestAnimationFrame(() => {\n      if (!container) return;\n      \n      const rect = container.getBoundingClientRect();\n      const viewportHeight = window.innerHeight;\n\n      // Calculate if gallery is in viewport\n      const isGalleryInView = rect.top < viewportHeight && rect.bottom > 0;\n\n      if (!isGalleryInView) {\n        setScrollState(prev => ({\n          ...prev,\n          isActive: false,\n        }));\n        return;\n      }\n\n      // Progress: 0 when container enters bottom, 1 when exits top\n      const distanceFromBottom = Math.max(0, viewportHeight - rect.top);\n      const totalDistance = viewportHeight + rect.height;\n      let progress = distanceFromBottom / totalDistance;\n      progress = Math.max(0, Math.min(1, progress));\n\n      // Calculate horizontal translation\n      const translateX = progress * maxScroll;\n\n      // Update track transform\n      if (track) {\n        track.style.transform = `translate3d(-${translateX}px, 0, 0)`;\n      }\n\n      // Only update state if progress changed significantly\n      if (Math.abs(progress - prevProgressRef.current) > 0.005) {\n        prevProgressRef.current = progress;\n        setScrollState({\n          progress,\n          translateX,\n          isActive: progress < 0.99,\n        });\n      }\n    });\n  }, [containerRef, trackRef, maxScroll]);\n\n  useEffect(() => {\n    window.addEventListener('scroll', handleScroll, { passive: true });\n\n    return () => {\n      window.removeEventListener('scroll', handleScroll);\n      if (rafRef.current) cancelAnimationFrame(rafRef.current);\n    };\n  }, [handleScroll]);\n\n  return scrollState;\n}\n
+'use client';
+
+import { useEffect, useRef, useCallback, useState } from 'react';
+
+interface UseGalleryScrollProps {
+  containerRef: React.RefObject<HTMLDivElement>;
+  trackRef: React.RefObject<HTMLDivElement>;
+  imageCount: number;
+  imageWidth: number;
+  imageGap: number;
+  sidePadding: number;
+}
+
+interface ScrollState {
+  progress: number;
+  translateX: number;
+  isActive: boolean;
+}
+
+export function useGalleryScroll({
+  containerRef,
+  trackRef,
+  imageCount,
+  imageWidth,
+  imageGap,
+  sidePadding,
+}: UseGalleryScrollProps): ScrollState {
+  const [scrollState, setScrollState] = useState<ScrollState>({
+    progress: 0,
+    translateX: 0,
+    isActive: false,
+  });
+
+  const rafRef = useRef<number | null>(null);
+  const prevProgressRef = useRef(0);
+
+  const handleScroll = useCallback(() => {
+    const container = containerRef.current;
+    const track = trackRef.current;
+    
+    if (!container || !track) return;
+
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+
+    rafRef.current = requestAnimationFrame(() => {
+      if (!container) return;
+      
+      const rect = container.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const isGalleryInView = rect.top < viewportHeight && rect.bottom > 0;
+
+      if (!isGalleryInView) {
+        setScrollState(prev => ({ ...prev, isActive: false }));
+        return;
+      }
+
+      const distanceFromBottom = Math.max(0, viewportHeight - rect.top);
+      const totalDistance = viewportHeight + rect.height;
+      let progress = distanceFromBottom / totalDistance;
+      progress = Math.max(0, Math.min(1, progress));
+
+      const totalImagesWidth = imageCount * imageWidth + (imageCount - 1) * imageGap;
+      const trackWidth = sidePadding * 2 + totalImagesWidth;
+      const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 1024;
+      const maxScroll = Math.max(0, trackWidth - viewportWidth);
+      const translateX = progress * maxScroll;
+
+      if (track) {
+        track.style.transform = `translate3d(-${translateX}px, 0, 0)`;
+      }
+
+      if (Math.abs(progress - prevProgressRef.current) > 0.005) {
+        prevProgressRef.current = progress;
+        setScrollState({
+          progress,
+          translateX,
+          isActive: progress < 0.99,
+        });
+      }
+    });
+  }, [containerRef, trackRef, imageCount, imageWidth, imageGap, sidePadding]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [handleScroll]);
+
+  return scrollState;
+}
