@@ -126,7 +126,7 @@ gsap.to(track, {
   className="
     absolute
     inset-0
-    bg-white/50
+    opacity: 0.55
     backdrop-blur-xl
     z-10
   "
