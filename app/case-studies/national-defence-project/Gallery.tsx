@@ -20,6 +20,9 @@ const MOBILE_GAP = 16;
 const MOBILE_CARD_HALF_WIDTH = MOBILE_CARD_WIDTH / 2;
 const EAGER_LOAD_COUNT = 2;
 const MIN_PROGRESS_BAR_WIDTH_PCT = 6;
+const PROGRESS_THRESHOLD = 0.001;
+const MOBILE_GALLERY_LABEL = 'Project Gallery';
+const DESKTOP_GALLERY_LABEL = 'Mission Frame';
 
 interface DesktopMetrics {
   cardWidth: number;
@@ -49,6 +52,17 @@ function getCurrentSlide(progress: number, totalImages: number) {
   }
 
   return Math.max(1, Math.min(totalImages, Math.round(progress * (totalImages - 1)) + 1));
+}
+
+function areMetricsEqual(currentMetrics: DesktopMetrics, nextMetrics: DesktopMetrics) {
+  return (
+    currentMetrics.cardWidth === nextMetrics.cardWidth &&
+    currentMetrics.cardHeight === nextMetrics.cardHeight &&
+    currentMetrics.gap === nextMetrics.gap &&
+    currentMetrics.startOffset === nextMetrics.startOffset &&
+    currentMetrics.scrollDistance === nextMetrics.scrollDistance &&
+    currentMetrics.sectionHeight === nextMetrics.sectionHeight
+  );
 }
 
 function getDesktopMetrics(): DesktopMetrics {
@@ -85,8 +99,8 @@ export default function Gallery() {
 
   useEffect(() => {
     const previousScrollRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = 'manual';
     const resetFrame = window.requestAnimationFrame(() => {
-      window.history.scrollRestoration = 'manual';
       window.scrollTo(0, 0);
     });
 
@@ -102,14 +116,7 @@ export default function Gallery() {
       setDesktopMetrics((currentMetrics) => {
         const nextMetrics = getDesktopMetrics();
 
-        if (
-          currentMetrics.cardWidth === nextMetrics.cardWidth &&
-          currentMetrics.cardHeight === nextMetrics.cardHeight &&
-          currentMetrics.gap === nextMetrics.gap &&
-          currentMetrics.startOffset === nextMetrics.startOffset &&
-          currentMetrics.scrollDistance === nextMetrics.scrollDistance &&
-          currentMetrics.sectionHeight === nextMetrics.sectionHeight
-        ) {
+        if (areMetricsEqual(currentMetrics, nextMetrics)) {
           return currentMetrics;
         }
 
@@ -125,12 +132,11 @@ export default function Gallery() {
       metricsFrameRef.current = window.requestAnimationFrame(updateMetrics);
     };
 
-    const resizeFrame = window.requestAnimationFrame(updateMetrics);
+    resizeHandler();
 
     window.addEventListener('resize', resizeHandler);
 
     return () => {
-      window.cancelAnimationFrame(resizeFrame);
       if (metricsFrameRef.current !== null) {
         window.cancelAnimationFrame(metricsFrameRef.current);
       }
@@ -150,7 +156,7 @@ export default function Gallery() {
     frameRef.current = window.requestAnimationFrame(() => {
       const nextProgress = clamp((window.scrollY - sectionTopRef.current) / desktopMetrics.scrollDistance, 0, 1);
 
-      if (Math.abs(nextProgress - progressRef.current) < 0.001) {
+      if (Math.abs(nextProgress - progressRef.current) < PROGRESS_THRESHOLD) {
         return;
       }
 
@@ -165,13 +171,13 @@ export default function Gallery() {
     }
 
     const handleScroll = () => syncProgress();
-    const scrollFrame = window.requestAnimationFrame(syncProgress);
+    if (window.scrollY > 0) {
+      syncProgress();
+    }
 
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
-      window.cancelAnimationFrame(scrollFrame);
-
       if (frameRef.current !== null) {
         window.cancelAnimationFrame(frameRef.current);
       }
@@ -217,7 +223,9 @@ export default function Gallery() {
                   sizes="280px"
                 />
                 <div className="flex items-center justify-between px-5 py-4">
-                  <span className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">Project Gallery</span>
+                  <span className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
+                    {MOBILE_GALLERY_LABEL}
+                  </span>
                   <span className="text-sm font-semibold text-[#173f74]">
                     {index + 1}/{IMAGES.length}
                   </span>
@@ -281,7 +289,7 @@ export default function Gallery() {
                     />
                     <div className="flex items-center justify-between px-6 py-5">
                       <span className="text-xs font-medium uppercase tracking-[0.22em] text-slate-500">
-                        Mission Frame
+                        {DESKTOP_GALLERY_LABEL}
                       </span>
                       <span className="text-base font-semibold text-[#173f74]">
                         {index + 1}/{IMAGES.length}
