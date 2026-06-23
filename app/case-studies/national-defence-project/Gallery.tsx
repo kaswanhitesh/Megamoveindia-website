@@ -31,7 +31,8 @@ export default function Gallery() {
 
     const ctx = gsap.context(() => {
       const track = trackRef.current!;
-
+      const galleryCards =
+  gsap.utils.toArray<HTMLElement>(".gallery-card");
       const cards = track.children;
 const lastCard = cards[cards.length - 1] as HTMLElement;
 
@@ -47,18 +48,49 @@ const totalMove =
 
 gsap.to(track, {
   x: -totalMove,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: `+=${totalMove}`,
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-        },
+  ease: "none",
+  scrollTrigger: {
+    trigger: sectionRef.current,
+    start: "top top",
+    end: `+=${totalMove}`,
+    scrub: 1,
+    pin: true,
+    anticipatePin: 1,
+    invalidateOnRefresh: true,
+
+    onUpdate: () => {
+      const viewportCenter =
+        window.innerWidth / 2;
+
+      galleryCards.forEach((card) => {
+        const rect =
+          card.getBoundingClientRect();
+
+        const cardCenter =
+          rect.left + rect.width / 2;
+
+        const distance =
+          Math.abs(
+            viewportCenter - cardCenter
+          );
+
+        const maxDistance =
+          window.innerWidth / 2;
+
+        const ratio =
+          Math.min(distance / maxDistance, 1);
+
+        const scale =
+          1 - ratio * 0.25;
+
+        gsap.set(card, {
+          scale,
+          zIndex: Math.round(scale * 100),
+        });
       });
-    });
+    },
+  },
+});
 
     ScrollTrigger.refresh();
 
@@ -87,14 +119,21 @@ gsap.to(track, {
     "
   >
     {images.map((image, index) => (
-      <div
-        key={index}
-        className="
-          snap-center
-          shrink-0
-          w-[70vw]
-        "
-      >
+  <div
+    key={index}
+    className="
+  gallery-card
+  shrink-0
+  transition-transform
+  duration-300
+  will-change-transform
+
+      rounded-3xl
+      overflow-hidden
+      bg-white
+      shadow-[0_30px_80px_rgba(0,0,0,0.35)]
+    "
+  >
         <Image
           src={image}
           alt={`Gallery ${index + 1}`}
@@ -122,11 +161,11 @@ gsap.to(track, {
       >
         {/* Hero visible behind gallery */}
 
-        <div
+       <div
   className="
     absolute
     inset-0
-    opacity: 0.55
+    bg-white/35
     backdrop-blur-xl
     z-10
   "
