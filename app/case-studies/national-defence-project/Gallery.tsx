@@ -26,8 +26,8 @@ const EAGER_LOAD_COUNT = 2;
 const MIN_PROGRESS_BAR_WIDTH_PCT = 6;
 const PROGRESS_THRESHOLD = 0.001;
 const HINT_FADE_THRESHOLD = 0.12;
-const MOBILE_GALLERY_LABEL = 'Project Gallery';
-const DESKTOP_GALLERY_LABEL = 'Mission Frame';
+const PROJECT_GALLERY_LABEL = 'Project Gallery';
+const MISSION_FRAME_LABEL = 'Mission Frame';
 const BRAND_BLUE = '#173f74';
 
 interface DesktopMetrics {
@@ -45,7 +45,7 @@ const EMPTY_METRICS: DesktopMetrics = {
   gap: 32,
   startOffset: 0,
   scrollDistance: 0,
-  sectionHeight: 0,
+  sectionHeight: 2000,
 };
 
 function clamp(value: number, min: number, max: number) {
@@ -106,11 +106,12 @@ export default function Gallery() {
   useEffect(() => {
     const previousScrollRestoration = window.history.scrollRestoration;
     window.history.scrollRestoration = 'manual';
-    window.requestAnimationFrame(() => {
+    const resetFrame = window.requestAnimationFrame(() => {
       window.scrollTo(0, 0);
     });
 
     return () => {
+      window.cancelAnimationFrame(resetFrame);
       window.history.scrollRestoration = previousScrollRestoration;
     };
   }, []);
@@ -132,6 +133,7 @@ export default function Gallery() {
     const resizeHandler = () => {
       if (metricsFrameRef.current !== null) {
         window.cancelAnimationFrame(metricsFrameRef.current);
+        metricsFrameRef.current = null;
       }
 
       metricsFrameRef.current = window.requestAnimationFrame(updateMetrics);
@@ -144,6 +146,7 @@ export default function Gallery() {
     return () => {
       if (metricsFrameRef.current !== null) {
         window.cancelAnimationFrame(metricsFrameRef.current);
+        metricsFrameRef.current = null;
       }
       window.removeEventListener('resize', resizeHandler);
     };
@@ -156,6 +159,7 @@ export default function Gallery() {
 
     if (frameRef.current !== null) {
       window.cancelAnimationFrame(frameRef.current);
+      frameRef.current = null;
     }
 
     frameRef.current = window.requestAnimationFrame(() => {
@@ -185,6 +189,7 @@ export default function Gallery() {
     return () => {
       if (frameRef.current !== null) {
         window.cancelAnimationFrame(frameRef.current);
+        frameRef.current = null;
       }
 
       window.removeEventListener('scroll', handleScroll);
@@ -232,7 +237,7 @@ export default function Gallery() {
                 />
                 <div className="flex items-center justify-between px-5 py-4">
                   <span className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
-                    {MOBILE_GALLERY_LABEL}
+                    {PROJECT_GALLERY_LABEL}
                   </span>
                   <span className="text-sm font-semibold" style={{ color: BRAND_BLUE }}>
                     {index + 1}/{IMAGES.length}
@@ -247,7 +252,7 @@ export default function Gallery() {
       <section
         ref={sectionRef}
         className="relative hidden bg-white lg:block"
-        style={{ height: desktopMetrics.sectionHeight > 0 ? `${desktopMetrics.sectionHeight}px` : '200vh' }}
+        style={{ height: `${desktopMetrics.sectionHeight}px` }}
       >
         <div className="sticky top-0 h-screen overflow-hidden bg-white">
           <div
@@ -293,13 +298,12 @@ export default function Gallery() {
                       height={desktopMetrics.cardHeight}
                       className="w-full object-cover"
                       style={{ height: `${desktopMetrics.cardHeight}px` }}
-                      loading={index < EAGER_LOAD_COUNT ? 'eager' : 'lazy'}
                       sizes="(min-width: 1536px) 460px, (min-width: 1024px) 32vw, 420px"
-                      priority={index === 0}
+                      priority={index < EAGER_LOAD_COUNT}
                     />
                     <div className="flex items-center justify-between px-6 py-5">
                       <span className="text-xs font-medium uppercase tracking-[0.22em] text-slate-500">
-                        {DESKTOP_GALLERY_LABEL}
+                        {MISSION_FRAME_LABEL}
                       </span>
                       <span className="text-base font-semibold" style={{ color: BRAND_BLUE }}>
                         {index + 1}/{IMAGES.length}
