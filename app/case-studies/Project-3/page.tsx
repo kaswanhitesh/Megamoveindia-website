@@ -78,7 +78,7 @@ export default function FactoryRelocationProject() {
       </h2>
 
       <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-        Mega Move India successfully executed a complex factory relocation project involving the dismantling, packing, international transportation and delivery of industrial machinery from Germany to Navi Mumbai, India. The project required detailed planning, export packing, multimodal transportation, customs clearance and coordinated delivery to the client's new facility. Our project team managed every stage of the relocation process, ensuring safe handling of sensitive equipment and timely execution while minimizing disruption to the client's operations.
+        Mega Move India successfully executed a complex factory relocation project involving the dismantling, packing, international transportation and delivery of industrial machinery from Germany to Navi Mumbai, India. The project required detailed planning, export packing, multimodal transportation, customs clearance and coordinated delivery to the client&rsquo;s new facility. Our project team managed every stage of the relocation process, ensuring safe handling of sensitive equipment and timely execution while minimizing disruption to the client&rsquo;s operations.
       </p>
      </section>
 

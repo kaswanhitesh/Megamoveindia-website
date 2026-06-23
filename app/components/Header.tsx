@@ -66,12 +66,12 @@ export default function Header() {
         </button>
 
         <div className="text-lg text-gray-200 pt-10">
-          <a
+          <Link
             href="/"
             className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300"
           >
             Home
-          </a>
+          </Link>
 
           <div>
             <button
