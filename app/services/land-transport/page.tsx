@@ -10,29 +10,24 @@ export const metadata: Metadata = {
 
 const recentProjects = [
   {
-    title: "National Defence Project",
-    image: "/images/Casestudies/DefenceCargo/DefenceCargoHeroImage.webp",
-    description: "Transportation of BMP-II Armoured Vehicles to Nyoma, Ladakh.",
-    link: "/case-studies/national-defence-project",
-  },
+  slug: "national-defence-project",
+  category: "DEFENCE CARGO PROJECT",
+  title: "BMP-II Vehicle Transportation",
+  image: "/images/NationalDefenceProjectCardImage.JPG",
+},
   {
-    title: "225MT Used Machinery Import",
-    image: "/images/Casestudies/225MT/225MTHeroImage.jpg",
-    description: "Heavy machinery import handling and transportation.",
-    link: "/case-studies/225mt-used-machinery-import",
-  },
+  slug: "Project-5",
+  category: "HEAVY HAUL TRANSPORTATION",
+  title: "2x100MT Heat Exchanger",
+  image: "/images/Casestudies/Project-5/Project5_Cardheroimage.webp",
+},
+  
   {
-    title: "Factory Relocation",
-    image: "/images/Casestudies/FactoryRelocation/FactoryRelocationHeroImage.jpg",
-    description: "Factory relocation project from Germany to India.",
-    link: "/case-studies/factory-relocation-germany-to-india",
-  },
-  {
-    title: "70MT Heat Condenser Export",
-    image: "/images/Casestudies/HeatCondenser/HeatCondenserHeroImage.jpg",
-    description: "Heavy lift export movement from Kattupalli to Brazil.",
-    link: "/case-studies/70mt-heat-condenser-export",
-  },
+  slug: "Project-4",
+  category: "BREAKBULK EXPORTS",
+  title: "Heat Condenser Shipment",
+  image: "/images/Casestudies/Project-4/Project4_HeroImage.webp",
+},
 ];
 
 export default function LandTransport() {
