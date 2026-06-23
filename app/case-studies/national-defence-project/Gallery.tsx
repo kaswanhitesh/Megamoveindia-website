@@ -151,7 +151,9 @@ export default function Gallery() {
   }, []);
 
   const syncProgress = useCallback(() => {
-    if (!sectionRef.current || desktopMetrics.scrollDistance === 0) {
+    const section = sectionRef.current;
+
+    if (!section || desktopMetrics.scrollDistance === 0) {
       return;
     }
 
@@ -161,14 +163,8 @@ export default function Gallery() {
     }
 
     frameRef.current = window.requestAnimationFrame(() => {
-      const sectionRect = sectionRef.current?.getBoundingClientRect();
-
-      if (!sectionRect) {
-        return;
-      }
-
-      const availableScroll = Math.max(1, sectionRect.height - window.innerHeight);
-      const nextProgress = clamp(-sectionRect.top / availableScroll, 0, 1);
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+      const nextProgress = clamp((window.scrollY - sectionTop) / desktopMetrics.scrollDistance, 0, 1);
 
       if (Math.abs(nextProgress - progressRef.current) < PROGRESS_THRESHOLD) {
         return;
@@ -196,6 +192,50 @@ export default function Gallery() {
       }
 
       window.removeEventListener('scroll', handleScroll);
+    };
+  }, [desktopMetrics.scrollDistance, syncProgress]);
+
+  useEffect(() => {
+    if (desktopMetrics.scrollDistance === 0) {
+      return;
+    }
+
+    const handleWheel = (event: WheelEvent) => {
+      if (window.innerWidth < 1024) {
+        return;
+      }
+
+      const section = sectionRef.current;
+      if (!section) {
+        return;
+      }
+
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+      const sectionEnd = sectionTop + desktopMetrics.scrollDistance;
+      const currentY = window.scrollY;
+      const deltaY = event.deltaY;
+      const isInsideTakeover = currentY >= sectionTop - 1 && currentY <= sectionEnd + 1;
+
+      if (!isInsideTakeover) {
+        return;
+      }
+
+      const atStart = currentY <= sectionTop + 1;
+      const atEnd = currentY >= sectionEnd - 1;
+      if ((deltaY < 0 && atStart) || (deltaY > 0 && atEnd)) {
+        return;
+      }
+
+      event.preventDefault();
+      const nextScrollY = clamp(currentY + deltaY, sectionTop, sectionEnd);
+      window.scrollTo(0, nextScrollY);
+      syncProgress();
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
     };
   }, [desktopMetrics.scrollDistance, syncProgress]);
 

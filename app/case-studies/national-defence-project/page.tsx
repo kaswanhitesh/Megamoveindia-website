@@ -85,7 +85,7 @@ const OTHER_PROJECTS = [
 
 export default function NationalDefenceProject() {
   return (
-    <main className="relative w-full bg-white overflow-x-hidden">
+    <main className="relative w-full bg-white overflow-x-clip">
       {/* Hero - Full viewport with fixed background */}
       <Hero />
 
