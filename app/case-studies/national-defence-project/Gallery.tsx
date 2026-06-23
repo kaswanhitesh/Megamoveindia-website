@@ -66,6 +66,7 @@ function getDesktopMetrics(): DesktopMetrics {
 export default function Gallery() {
   const sectionRef = useRef<HTMLElement>(null);
   const frameRef = useRef<number | null>(null);
+  const metricsFrameRef = useRef<number | null>(null);
   const progressRef = useRef(0);
   const [desktopMetrics, setDesktopMetrics] = useState<DesktopMetrics>(EMPTY_METRICS);
   const [progress, setProgress] = useState(0);
@@ -103,13 +104,23 @@ export default function Gallery() {
       });
     };
 
-    const resizeHandler = () => updateMetrics();
+    const resizeHandler = () => {
+      if (metricsFrameRef.current !== null) {
+        window.cancelAnimationFrame(metricsFrameRef.current);
+      }
+
+      metricsFrameRef.current = window.requestAnimationFrame(updateMetrics);
+    };
+
     const resizeFrame = window.requestAnimationFrame(updateMetrics);
 
     window.addEventListener('resize', resizeHandler);
 
     return () => {
       window.cancelAnimationFrame(resizeFrame);
+      if (metricsFrameRef.current !== null) {
+        window.cancelAnimationFrame(metricsFrameRef.current);
+      }
       window.removeEventListener('resize', resizeHandler);
     };
   }, []);
@@ -145,7 +156,6 @@ export default function Gallery() {
     const scrollFrame = window.requestAnimationFrame(syncProgress);
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', handleScroll);
 
     return () => {
       window.cancelAnimationFrame(scrollFrame);
@@ -155,11 +165,11 @@ export default function Gallery() {
       }
 
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
     };
   }, [desktopMetrics.scrollDistance, syncProgress]);
 
-  const currentSlide = Math.min(IMAGES.length, Math.round(progress * (IMAGES.length - 1)) + 1);
+  const currentSlide =
+    IMAGES.length === 0 ? 0 : Math.max(1, Math.min(IMAGES.length, Math.round(progress * (IMAGES.length - 1)) + 1));
   const translateX = desktopMetrics.startOffset - progress * desktopMetrics.scrollDistance;
 
   return (
