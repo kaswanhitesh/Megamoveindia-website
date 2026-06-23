@@ -17,6 +17,7 @@ const IMAGES = [
 const MOBILE_CARD_WIDTH = 280;
 const MOBILE_CARD_HEIGHT = 220;
 const MOBILE_GAP = 16;
+const MIN_PROGRESS_BAR_WIDTH_PERCENT = 6;
 
 interface DesktopMetrics {
   cardWidth: number;
@@ -38,6 +39,14 @@ const EMPTY_METRICS: DesktopMetrics = {
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(Math.max(value, min), max);
+}
+
+function getCurrentSlide(progress: number, totalImages: number) {
+  if (totalImages === 0) {
+    return 0;
+  }
+
+  return Math.max(1, Math.min(totalImages, Math.round(progress * (totalImages - 1)) + 1));
 }
 
 function getDesktopMetrics(): DesktopMetrics {
@@ -135,7 +144,7 @@ export default function Gallery() {
     }
 
     frameRef.current = window.requestAnimationFrame(() => {
-      const sectionTop = sectionRef.current?.offsetTop ?? 0;
+      const sectionTop = (sectionRef.current?.getBoundingClientRect().top ?? 0) + window.scrollY;
       const nextProgress = clamp((window.scrollY - sectionTop) / desktopMetrics.scrollDistance, 0, 1);
 
       if (Math.abs(nextProgress - progressRef.current) < 0.001) {
@@ -168,8 +177,7 @@ export default function Gallery() {
     };
   }, [desktopMetrics.scrollDistance, syncProgress]);
 
-  const currentSlide =
-    IMAGES.length === 0 ? 0 : Math.max(1, Math.min(IMAGES.length, Math.round(progress * (IMAGES.length - 1)) + 1));
+  const currentSlide = getCurrentSlide(progress, IMAGES.length);
   const translateX = desktopMetrics.startOffset - progress * desktopMetrics.scrollDistance;
 
   return (
@@ -285,7 +293,7 @@ export default function Gallery() {
               <div className="h-1.5 w-56 overflow-hidden rounded-full bg-slate-200">
                 <div
                   className="h-full rounded-full bg-[#173f74] transition-[width] duration-150"
-                  style={{ width: `${Math.max(progress * 100, 6)}%` }}
+                  style={{ width: `${Math.max(progress * 100, MIN_PROGRESS_BAR_WIDTH_PERCENT)}%` }}
                 />
               </div>
               <span className="min-w-20 text-sm font-semibold text-[#173f74]">
