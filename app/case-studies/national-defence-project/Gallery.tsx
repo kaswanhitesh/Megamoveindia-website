@@ -22,6 +22,13 @@ const Gallery = () => {
   const [viewportWidth, setViewportWidth] = useState(1024);
   const [progress, setProgress] = useState(0);
 
+  // Hard refresh scroll reset
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
   useEffect(() => {
     setMounted(true);
     setViewportWidth(window.innerWidth);
@@ -38,9 +45,9 @@ const Gallery = () => {
   const trackWidth = CONFIG.sidePadding * 2 + totalImagesWidth;
   const maxHorizontalScroll = Math.max(0, trackWidth - viewportWidth);
   const viewportHeight = typeof window !== 'undefined' ? window.innerHeight : 1080;
-  
-  // FIXED: Section height = exactly the scroll distance needed for horizontal animation
-  // When progress reaches 1.0, user should be at bottom of section
+
+  // CORRECT FORMULA: Section height equals the horizontal scroll distance
+  // This ensures that scrolling through the entire section height maps to 0→1 progress
   const sectionHeight = maxHorizontalScroll + viewportHeight;
 
   // Scroll event handler
@@ -49,17 +56,29 @@ const Gallery = () => {
       if (!containerRef.current || !trackRef.current) return;
 
       const rect = containerRef.current.getBoundingClientRect();
-      const isGalleryInView = rect.top < viewportHeight && rect.bottom > 0;
+      
+      // Check if gallery section is visible
+      if (rect.bottom < 0 || rect.top > viewportHeight) {
+        return; // Gallery not in viewport
+      }
 
-      if (!isGalleryInView) return;
-
-      // Calculate progress: 0 when gallery enters viewport, 1 when exits top
-      const distanceFromBottom = Math.max(0, viewportHeight - rect.top);
-      const totalDistance = viewportHeight + rect.height;
-      let newProgress = distanceFromBottom / totalDistance;
+      // CORRECT PROGRESS CALCULATION:
+      // Progress starts when gallery top reaches bottom of viewport
+      // Progress ends when gallery bottom reaches top of viewport
+      // At top of viewport (rect.top = 0), progress should be 0
+      // At bottom of viewport (rect.bottom = 0), progress should be 1
+      
+      const startTrigger = viewportHeight; // When gallery top enters bottom of viewport
+      const endTrigger = -sectionHeight; // When gallery bottom exits top of viewport
+      
+      // Distance scrolled from start to end
+      let scrolledDistance = startTrigger - rect.top;
+      let totalScrollDistance = startTrigger - endTrigger;
+      
+      let newProgress = scrolledDistance / totalScrollDistance;
       newProgress = Math.max(0, Math.min(1, newProgress));
 
-      // Apply translation
+      // Apply translation based on progress
       const translateX = newProgress * maxHorizontalScroll;
 
       if (trackRef.current) {
@@ -71,7 +90,7 @@ const Gallery = () => {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [viewportWidth, maxHorizontalScroll, viewportHeight]);
+  }, [viewportWidth, maxHorizontalScroll, sectionHeight, viewportHeight]);
 
   if (!mounted) return null;
 
