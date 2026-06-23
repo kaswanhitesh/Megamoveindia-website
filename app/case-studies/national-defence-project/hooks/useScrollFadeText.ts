@@ -7,20 +7,25 @@ interface UseScrollFadeTextProps {
   startDelay?: number;
 }
 
-export function useScrollFadeText({ sectionRef, startDelay = 2000 }: UseScrollFadeTextProps) {
-  const [showText, setShowText] = useState(false);
-  const [textOpacity, setTextOpacity] = useState(0);
+interface FadeState {
+  showText: boolean;
+  textOpacity: number;
+}
+
+export function useScrollFadeText({ sectionRef, startDelay = 2000 }: UseScrollFadeTextProps): FadeState {
+  const [state, setState] = useState<FadeState>({
+    showText: false,
+    textOpacity: 0,
+  });
   const rafRef = useRef<number | null>(null);
 
-  // Initial fade in after delay
   useEffect(() => {
-    const timer = setTimeout(() => setShowText(true), startDelay);
+    const timer = setTimeout(() => setState(prev => ({ ...prev, showText: true })), startDelay);
     return () => clearTimeout(timer);
   }, [startDelay]);
 
-  // Scroll-based fade out
   useEffect(() => {
-    if (!showText) return;
+    if (!state.showText) return;
 
     const handleScroll = () => {
       if (!sectionRef.current) return;
@@ -32,9 +37,6 @@ export function useScrollFadeText({ sectionRef, startDelay = 2000 }: UseScrollFa
 
         const rect = sectionRef.current.getBoundingClientRect();
         const viewportHeight = window.innerHeight;
-
-        // Fade starts when hero center reaches viewport center
-        // Fade completes when hero top reaches top of viewport
         const fadeStart = viewportHeight / 2;
         const fadeEnd = -viewportHeight / 2;
         const distanceToFade = rect.top - fadeStart;
@@ -43,7 +45,7 @@ export function useScrollFadeText({ sectionRef, startDelay = 2000 }: UseScrollFa
         let opacity = 1 - distanceToFade / totalFadeDistance;
         opacity = Math.max(0, Math.min(1, opacity));
 
-        setTextOpacity(opacity);
+        setState(prev => ({ ...prev, textOpacity: opacity }));
       });
     };
 
@@ -53,7 +55,7 @@ export function useScrollFadeText({ sectionRef, startDelay = 2000 }: UseScrollFa
       window.removeEventListener('scroll', handleScroll);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [showText, sectionRef]);
+  }, [state.showText, sectionRef]);
 
-  return { showText, textOpacity };
+  return state;
 }
