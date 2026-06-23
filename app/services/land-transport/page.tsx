@@ -14,12 +14,14 @@ const recentProjects = [
   category: "DEFENCE CARGO PROJECT",
   title: "BMP-II Vehicle Transportation",
   image: "/images/NationalDefenceProjectCardImage.JPG",
+  description: "Critical defence equipment transportation to Nyoma, Ladakh covering 3,700 km in 21 days.",
 },
   {
   slug: "Project-5",
   category: "HEAVY HAUL TRANSPORTATION",
   title: "2x100MT Heat Exchanger",
   image: "/images/Casestudies/Project-5/Project5_Cardheroimage.webp",
+  description: "Specialized heavy lift transportation of dual 100MT heat exchangers with precision handling.",
 },
   
   {
@@ -27,6 +29,7 @@ const recentProjects = [
   category: "BREAKBULK EXPORTS",
   title: "Heat Condenser Shipment",
   image: "/images/Casestudies/Project-4/Project4_HeroImage.webp",
+  description: "International breakbulk export of large heat condenser units with comprehensive logistics support.",
 },
 ];
 
