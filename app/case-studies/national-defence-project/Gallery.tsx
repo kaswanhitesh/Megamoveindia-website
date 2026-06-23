@@ -1,6 +1,7 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import Image from 'next/image';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 const IMAGES = [
   '/images/Casestudies/DefenceCargo/defencecargo_Gallery1.webp',
@@ -13,193 +14,284 @@ const IMAGES = [
   '/images/Casestudies/DefenceCargo/defencecargo_Gallery8.webp',
 ];
 
-const CONFIG = { imageWidth: 420, imageHeight: 320, gap: 32 };
+const MOBILE_CARD_WIDTH = 280;
+const MOBILE_CARD_HEIGHT = 220;
+const MOBILE_GAP = 16;
 
-const Gallery = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [mounted, setMounted] = useState(false);
+interface DesktopMetrics {
+  cardWidth: number;
+  cardHeight: number;
+  gap: number;
+  startOffset: number;
+  scrollDistance: number;
+  sectionHeight: number;
+}
+
+const EMPTY_METRICS: DesktopMetrics = {
+  cardWidth: 420,
+  cardHeight: 320,
+  gap: 32,
+  startOffset: 0,
+  scrollDistance: 0,
+  sectionHeight: 0,
+};
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(Math.max(value, min), max);
+}
+
+function getDesktopMetrics(): DesktopMetrics {
+  if (typeof window === 'undefined') {
+    return EMPTY_METRICS;
+  }
+
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+  const gap = viewportWidth >= 1440 ? 40 : 32;
+  const cardWidth = Math.round(clamp(viewportWidth * 0.32, 320, 460));
+  const cardHeight = Math.round(cardWidth * 0.76);
+  const startOffset = (viewportWidth - cardWidth) / 2;
+  const scrollDistance = Math.max(0, (IMAGES.length - 1) * (cardWidth + gap));
+
+  return {
+    cardWidth,
+    cardHeight,
+    gap,
+    startOffset,
+    scrollDistance,
+    sectionHeight: viewportHeight + scrollDistance,
+  };
+}
+
+export default function Gallery() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const frameRef = useRef<number | null>(null);
+  const progressRef = useRef(0);
+  const [desktopMetrics, setDesktopMetrics] = useState<DesktopMetrics>(EMPTY_METRICS);
   const [progress, setProgress] = useState(0);
-  const [dimensions, setDimensions] = useState({
-    totalScrollWidth: 0,
-    sectionHeight: 0,
-  });
 
-  // Initialize on client only
   useEffect(() => {
-    window.scrollTo(0, 0);
-
-    const imageCount = IMAGES.length;
-    const totalScrollWidth = (imageCount - 1) * (CONFIG.imageWidth + CONFIG.gap);
-    const viewportHeight = window.innerHeight;
-    const sectionHeight = totalScrollWidth + viewportHeight;
-
-    setDimensions({
-      totalScrollWidth,
-      sectionHeight,
+    const previousScrollRestoration = window.history.scrollRestoration;
+    const resetFrame = window.requestAnimationFrame(() => {
+      window.history.scrollRestoration = 'manual';
+      window.scrollTo(0, 0);
     });
-    setMounted(true);
+
+    return () => {
+      window.cancelAnimationFrame(resetFrame);
+      window.history.scrollRestoration = previousScrollRestoration;
+    };
   }, []);
 
-  // Handle scroll animation
   useEffect(() => {
-    if (!mounted || dimensions.sectionHeight === 0) return;
+    const updateMetrics = () => {
+      setDesktopMetrics((currentMetrics) => {
+        const nextMetrics = getDesktopMetrics();
 
-    const handleScroll = () => {
-      if (!sectionRef.current || !trackRef.current) return;
+        if (
+          currentMetrics.cardWidth === nextMetrics.cardWidth &&
+          currentMetrics.cardHeight === nextMetrics.cardHeight &&
+          currentMetrics.gap === nextMetrics.gap &&
+          currentMetrics.startOffset === nextMetrics.startOffset &&
+          currentMetrics.scrollDistance === nextMetrics.scrollDistance &&
+          currentMetrics.sectionHeight === nextMetrics.sectionHeight
+        ) {
+          return currentMetrics;
+        }
 
-      const sectionRect = sectionRef.current.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-      const sectionHeight = dimensions.sectionHeight;
+        return nextMetrics;
+      });
+    };
 
-      // Calculate progress based on section position
-      const sectionEntersAt = viewportHeight;
-      const sectionExitsAt = -sectionHeight;
+    const resizeHandler = () => updateMetrics();
+    const resizeFrame = window.requestAnimationFrame(updateMetrics);
 
-      if (sectionRect.top > sectionEntersAt || sectionRect.top < sectionExitsAt) {
+    window.addEventListener('resize', resizeHandler);
+
+    return () => {
+      window.cancelAnimationFrame(resizeFrame);
+      window.removeEventListener('resize', resizeHandler);
+    };
+  }, []);
+
+  const syncProgress = useCallback(() => {
+    if (!sectionRef.current || desktopMetrics.scrollDistance === 0) {
+      return;
+    }
+
+    if (frameRef.current !== null) {
+      window.cancelAnimationFrame(frameRef.current);
+    }
+
+    frameRef.current = window.requestAnimationFrame(() => {
+      const sectionTop = sectionRef.current?.offsetTop ?? 0;
+      const nextProgress = clamp((window.scrollY - sectionTop) / desktopMetrics.scrollDistance, 0, 1);
+
+      if (Math.abs(nextProgress - progressRef.current) < 0.001) {
         return;
       }
 
-      const scrollProgress = (sectionEntersAt - sectionRect.top) / (sectionEntersAt - sectionExitsAt);
-      const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
+      progressRef.current = nextProgress;
+      setProgress(nextProgress);
+    });
+  }, [desktopMetrics.scrollDistance]);
 
-      setProgress(clampedProgress);
+  useEffect(() => {
+    if (desktopMetrics.scrollDistance === 0) {
+      return;
+    }
 
-      // Apply translation directly to track
-      const translateX = clampedProgress * dimensions.totalScrollWidth;
-      trackRef.current.style.transform = `translateX(-${translateX}px)`;
-    };
+    const handleScroll = () => syncProgress();
+    const scrollFrame = window.requestAnimationFrame(syncProgress);
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [mounted, dimensions]);
+    window.addEventListener('resize', handleScroll);
 
-  if (!mounted) {
-    return <section className="w-full h-screen bg-white" />;
-  }
+    return () => {
+      window.cancelAnimationFrame(scrollFrame);
 
-  const imageCount = IMAGES.length;
+      if (frameRef.current !== null) {
+        window.cancelAnimationFrame(frameRef.current);
+      }
+
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [desktopMetrics.scrollDistance, syncProgress]);
+
+  const currentSlide = Math.min(IMAGES.length, Math.round(progress * (IMAGES.length - 1)) + 1);
+  const translateX = desktopMetrics.startOffset - progress * desktopMetrics.scrollDistance;
 
   return (
     <>
-      {/* Mobile Gallery */}
-      <section className="lg:hidden relative z-30 bg-white py-12 px-4">
-        <h2 className="text-2xl font-light text-[#173f74] text-center mb-8">Project Gallery</h2>
-        <div className="overflow-x-auto snap-x snap-mandatory scrollbar-hide">
-          <div className="flex gap-4 w-max px-4">
-            {IMAGES.map((img, idx) => (
-              <div key={idx} className="snap-center flex-shrink-0">
-                <img
-                  src={img}
-                  alt={`Gallery ${idx + 1}`}
-                  className="w-[300px] h-[220px] object-cover rounded-lg shadow-lg"
-                  loading={idx > 2 ? 'lazy' : 'eager'}
-                  decoding="async"
+      <section className="bg-white px-4 py-14 lg:hidden">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="text-center text-3xl font-light text-[#173f74]">Project Gallery</h2>
+          <p className="mt-3 text-center text-sm tracking-[0.18em] text-slate-500 uppercase">
+            Swipe through the execution journey
+          </p>
+        </div>
+
+        <div
+          className="mt-8 overflow-x-auto snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          style={{
+            paddingLeft: `calc(50vw - ${MOBILE_CARD_WIDTH / 2}px)`,
+            paddingRight: `calc(50vw - ${MOBILE_CARD_WIDTH / 2}px)`,
+          }}
+        >
+          <div className="flex w-max" style={{ gap: `${MOBILE_GAP}px` }}>
+            {IMAGES.map((image, index) => (
+              <article
+                key={image}
+                className="snap-center overflow-hidden rounded-[28px] bg-slate-100 shadow-[0_20px_60px_rgba(15,23,42,0.14)]"
+                style={{ width: `${MOBILE_CARD_WIDTH}px` }}
+              >
+                <Image
+                  src={image}
+                  alt={`National defence gallery image ${index + 1}`}
+                  width={MOBILE_CARD_WIDTH}
+                  height={MOBILE_CARD_HEIGHT}
+                  className="h-[220px] w-full object-cover"
+                  loading={index > 1 ? 'lazy' : 'eager'}
+                  sizes="280px"
                 />
-              </div>
+                <div className="flex items-center justify-between px-5 py-4">
+                  <span className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">Project Gallery</span>
+                  <span className="text-sm font-semibold text-[#173f74]">
+                    {index + 1}/{IMAGES.length}
+                  </span>
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Desktop Gallery - Sticky Horizontal Scroll */}
       <section
         ref={sectionRef}
-        className="hidden lg:block relative"
-        style={{ height: `${dimensions.sectionHeight}px` }}
+        className="relative hidden bg-white lg:block"
+        style={{ height: desktopMetrics.sectionHeight > 0 ? `${desktopMetrics.sectionHeight}px` : '200vh' }}
       >
-        {/* Sticky viewport container */}
-        <div className="sticky top-0 w-full h-screen bg-white overflow-hidden flex items-center justify-center">
-          {/* Background */}
+        <div className="sticky top-0 h-screen overflow-hidden bg-white">
           <div
             className="absolute inset-0"
             style={{
               backgroundImage: 'url(/images/Casestudies/DefenceCargo/DefenceCargoHeroImage.webp)',
-              backgroundSize: 'cover',
               backgroundPosition: 'center',
-              backgroundAttachment: 'fixed',
-              opacity: 0.06,
-              zIndex: 0,
+              backgroundSize: 'cover',
+              opacity: 0.08,
             }}
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-white via-white/92 to-white" />
 
-          {/* Gallery content wrapper */}
-          <div className="relative z-10 w-full h-full flex items-center justify-center">
-            {/* Track - Images container that will be translated */}
-            <div
-              ref={trackRef}
-              className="flex items-center"
-              style={{
-                gap: `${CONFIG.gap}px`,
-                transform: 'translateX(0)',
-                willChange: 'transform',
-                transition: 'none',
-              }}
-            >
-              {IMAGES.map((img, idx) => (
+          <div className="relative z-10 flex h-full flex-col">
+            <div className="px-8 pt-16 text-center">
+              <h2 className="text-5xl font-light text-[#173f74]">Project Gallery</h2>
+              <p className="mt-4 text-sm uppercase tracking-[0.3em] text-slate-500">
+                Scroll down to move through the transport sequence
+              </p>
+            </div>
+
+            <div className="flex flex-1 items-center overflow-hidden">
+              <div
+                className="flex items-center"
+                style={{
+                  gap: `${desktopMetrics.gap}px`,
+                  transform: `translate3d(${translateX}px, 0, 0)`,
+                  willChange: 'transform',
+                }}
+              >
+                {IMAGES.map((image, index) => (
+                  <article
+                    key={image}
+                    className="relative flex-shrink-0 overflow-hidden rounded-[36px] bg-white shadow-[0_24px_80px_rgba(15,23,42,0.18)]"
+                    style={{ width: `${desktopMetrics.cardWidth}px` }}
+                  >
+                    <Image
+                      src={image}
+                      alt={`National defence gallery image ${index + 1}`}
+                      width={desktopMetrics.cardWidth}
+                      height={desktopMetrics.cardHeight}
+                      className="w-full object-cover"
+                      style={{ height: `${desktopMetrics.cardHeight}px` }}
+                      loading={index > 1 ? 'lazy' : 'eager'}
+                      sizes="(min-width: 1536px) 460px, (min-width: 1024px) 32vw, 420px"
+                      priority={index === 0}
+                    />
+                    <div className="flex items-center justify-between px-6 py-5">
+                      <span className="text-xs font-medium uppercase tracking-[0.22em] text-slate-500">
+                        Mission Frame
+                      </span>
+                      <span className="text-base font-semibold text-[#173f74]">
+                        {index + 1}/{IMAGES.length}
+                      </span>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            <div className="absolute bottom-10 left-1/2 flex -translate-x-1/2 items-center gap-5 rounded-full bg-white/85 px-6 py-4 shadow-[0_18px_60px_rgba(15,23,42,0.12)] backdrop-blur">
+              <div className="h-1.5 w-56 overflow-hidden rounded-full bg-slate-200">
                 <div
-                  key={idx}
-                  className="flex-shrink-0 flex flex-col items-center justify-center"
-                  style={{
-                    width: `${CONFIG.imageWidth}px`,
-                  }}
-                >
-                  <img
-                    src={img}
-                    alt={`Gallery ${idx + 1}`}
-                    className="w-full object-cover rounded-2xl shadow-2xl"
-                    style={{
-                      height: `${CONFIG.imageHeight}px`,
-                    }}
-                    loading={idx > 2 ? 'lazy' : 'eager'}
-                    decoding="async"
-                  />
-                  <p className="text-center text-gray-700 text-sm font-medium mt-4">
-                    {idx + 1} / {imageCount}
-                  </p>
-                </div>
-              ))}
+                  className="h-full rounded-full bg-[#173f74] transition-[width] duration-150"
+                  style={{ width: `${Math.max(progress * 100, 6)}%` }}
+                />
+              </div>
+              <span className="min-w-20 text-sm font-semibold text-[#173f74]">
+                {currentSlide}/{IMAGES.length}
+              </span>
             </div>
-          </div>
 
-          {/* Progress Indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-3">
-            <div className="flex gap-2">
-              {IMAGES.map((_, idx) => {
-                const isActive = idx < Math.ceil(progress * imageCount);
-                return (
-                  <div
-                    key={idx}
-                    className="h-2 rounded-full transition-all duration-200"
-                    style={{
-                      width: isActive ? '28px' : '8px',
-                      backgroundColor: isActive ? '#2563eb' : '#d1d5db',
-                    }}
-                  />
-                );
-              })}
-            </div>
-            <span className="text-sm text-gray-700 font-semibold ml-4 whitespace-nowrap">
-              {Math.round(progress * 100)}%
-            </span>
-          </div>
-
-          {/* Scroll Hint */}
-          {progress < 0.05 && (
             <div
-              className="absolute top-12 left-1/2 transform -translate-x-1/2 z-20 text-center text-gray-600 text-sm pointer-events-none"
-              style={{
-                opacity: 1 - progress * 20,
-                transition: 'opacity 300ms ease',
-              }}
+              className="absolute top-12 left-1/2 -translate-x-1/2 text-center text-sm uppercase tracking-[0.28em] text-slate-500 transition-opacity duration-200"
+              style={{ opacity: progress < 0.12 ? 1 - progress / 0.12 : 0 }}
             >
-              ↓ Scroll down to explore gallery →
+              Horizontal scroll takeover
             </div>
-          )}
+          </div>
         </div>
       </section>
     </>
   );
-};
-
-export default Gallery;
+}
