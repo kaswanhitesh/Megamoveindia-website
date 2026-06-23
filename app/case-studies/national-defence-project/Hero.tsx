@@ -1,11 +1,9 @@
 'use client';
 
 import { useRef } from 'react';
-import { useScrollFadeText } from './hooks/useScrollFadeText';
 
 const Hero = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const { showText, textOpacity } = useScrollFadeText({ sectionRef });
 
   return (
     <section
@@ -26,17 +24,12 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black/45 z-[1]" />
 
       <div
-        className="relative z-[2] text-center px-4"
+        className="relative z-[2] text-center px-4 opacity-100 transition-opacity duration-300"
         style={{
-          opacity: textOpacity,
           willChange: 'opacity',
         }}
       >
-        <div
-          className={`transition-all duration-1000 ${
-            showText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
+        <div className="opacity-100 translate-y-0 transition-all duration-1000">
           <h1 className="text-white text-4xl lg:text-7xl font-light tracking-[6px] mb-6 leading-tight">
             NATIONAL DEFENCE PROJECT
           </h1>
