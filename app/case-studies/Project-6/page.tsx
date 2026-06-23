@@ -216,7 +216,7 @@ export default function ChemicalStorageTankExportProject() {
         </h2>
 
         <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-  All three storage tanks were successfully exported and delivered without damage, demonstrating Mega Move India's expertise in handling oversized industrial cargo and international project logistics.
+  All three storage tanks were successfully exported and delivered without damage, demonstrating Mega Move India&rsquo;s expertise in handling oversized industrial cargo and international project logistics.
 </p>
 
         {/* OTHER PROJECTS */}

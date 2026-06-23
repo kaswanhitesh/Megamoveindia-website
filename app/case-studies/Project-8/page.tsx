@@ -198,7 +198,7 @@ export default function EOTCraneExportProject() {
         </h2>
 
         <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-  The EOT Crane was successfully transported, exported and delivered without damage, meeting project timelines and demonstrating Mega Move India's expertise in heavy lift logistics and international project cargo execution.
+  The EOT Crane was successfully transported, exported and delivered without damage, meeting project timelines and demonstrating Mega Move India&rsquo;s expertise in heavy lift logistics and international project cargo execution.
 </p>
 
         {/* OTHER PROJECTS */}
