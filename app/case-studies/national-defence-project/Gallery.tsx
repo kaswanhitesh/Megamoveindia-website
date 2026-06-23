@@ -20,47 +20,48 @@ const Gallery = () => {
   const trackRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [dimensions, setDimensions] = useState({
+    trackWidth: 0,
+    maxTranslate: 0,
+    sectionHeight: 0,
+    windowHeight: 0,
+  });
 
-  // Reset scroll on mount
+  // Initialize on client only
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
 
-  useEffect(() => {
+    const windowHeight = window.innerHeight;
+    const imageCount = IMAGES.length;
+    const totalImageWidth = imageCount * CONFIG.width + (imageCount - 1) * CONFIG.gap;
+    const trackWidth = CONFIG.sidePadding * 2 + totalImageWidth;
+    const maxTranslate = trackWidth - window.innerWidth;
+    const sectionHeight = maxTranslate + windowHeight;
+
+    setDimensions({
+      trackWidth,
+      maxTranslate,
+      sectionHeight,
+      windowHeight,
+    });
     setMounted(true);
   }, []);
 
-  // Calculate exact dimensions
-  const imageCount = IMAGES.length;
-  const totalImageWidth = imageCount * CONFIG.width + (imageCount - 1) * CONFIG.gap;
-  const trackWidth = CONFIG.sidePadding * 2 + totalImageWidth;
-  const maxTranslate = trackWidth - window.innerWidth;
-
-  // Section height is precisely what we need for the scroll animation
-  // We want: scrolling through this section = horizontal translation from 0 to maxTranslate
-  const sectionHeight = maxTranslate + window.innerHeight;
-
   useEffect(() => {
+    if (!mounted || dimensions.maxTranslate === 0) return;
+
     const handleScroll = () => {
       if (!containerRef.current || !trackRef.current) return;
 
       const containerRect = containerRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
+      const windowHeight = dimensions.windowHeight;
 
-      // Calculate where gallery section is relative to viewport
-      // When top of section = bottom of viewport (containerRect.top = windowHeight), trigger = 0
-      // When bottom of section = top of viewport (containerRect.bottom = 0), trigger = 1
-      
       if (containerRect.bottom < 0 || containerRect.top > windowHeight) {
-        // Gallery is completely out of view
         return;
       }
 
-      // Calculate progress based on container position
-      // triggerStart = when container.top reaches window bottom (windowHeight)
-      // triggerEnd = when container.bottom reaches window top (0)
       const triggerStart = windowHeight;
-      const triggerEnd = -sectionHeight;
+      const triggerEnd = -dimensions.sectionHeight;
       const currentPosition = containerRect.top;
 
       let currentProgress = (triggerStart - currentPosition) / (triggerStart - triggerEnd);
@@ -68,22 +69,27 @@ const Gallery = () => {
 
       setProgress(currentProgress);
 
-      // Apply horizontal translation
       if (trackRef.current) {
-        const translateAmount = currentProgress * maxTranslate;
+        const translateAmount = currentProgress * dimensions.maxTranslate;
         trackRef.current.style.transform = `translate3d(-${translateAmount}px, 0, 0)`;
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [sectionHeight, maxTranslate]);
+  }, [mounted, dimensions]);
 
-  if (!mounted) return null;
+  if (!mounted) {
+    return (
+      <section className="w-full h-screen bg-white lg:block hidden" />
+    );
+  }
+
+  const imageCount = IMAGES.length;
 
   return (
     <>
-      {/* Mobile Gallery - Simple Horizontal Scroll */}
+      {/* Mobile Gallery */}
       <section className="lg:hidden relative z-30 bg-white py-12 px-4">
         <h2 className="text-2xl font-light text-[#173f74] text-center mb-8">Project Gallery</h2>
         <div className="overflow-x-auto snap-x snap-mandatory scrollbar-hide">
@@ -103,20 +109,15 @@ const Gallery = () => {
         </div>
       </section>
 
-      {/* Desktop Gallery - Sticky Horizontal Scroll */}
+      {/* Desktop Gallery */}
       <section
         ref={containerRef}
         className="hidden lg:block relative z-20 bg-gradient-to-b from-white via-white to-gray-50"
-        style={{ height: `${sectionHeight}px` }}
+        style={{ height: `${dimensions.sectionHeight}px` }}
       >
-        {/* Sticky Container */}
         <div
           className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center bg-white"
-          style={{
-            backgroundColor: '#ffffff',
-          }}
         >
-          {/* Background Image */}
           <div
             className="absolute inset-0"
             style={{
@@ -129,14 +130,12 @@ const Gallery = () => {
             }}
           />
 
-          {/* Gallery Container */}
           <div className="relative z-10 w-full h-full flex items-center justify-center overflow-hidden">
-            {/* Track - Images Container */}
             <div
               ref={trackRef}
               className="flex items-center"
               style={{
-                width: `${trackWidth}px`,
+                width: `${dimensions.trackWidth}px`,
                 height: '100%',
                 gap: `${CONFIG.gap}px`,
                 paddingLeft: `${CONFIG.sidePadding}px`,
@@ -161,7 +160,7 @@ const Gallery = () => {
                       decoding="async"
                     />
                     <p className="text-center text-gray-700 text-sm font-medium mt-4">
-                      {idx + 1} / {IMAGES.length}
+                      {idx + 1} / {imageCount}
                     </p>
                   </div>
                 </div>
@@ -169,7 +168,6 @@ const Gallery = () => {
             </div>
           </div>
 
-          {/* Progress Indicator */}
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-3">
             <div className="flex gap-2">
               {IMAGES.map((_, idx) => {
@@ -191,7 +189,6 @@ const Gallery = () => {
             </span>
           </div>
 
-          {/* Scroll Hint */}
           {progress < 0.05 && (
             <div
               className="absolute top-12 left-1/2 transform -translate-x-1/2 z-20 text-center text-gray-600 text-sm"
