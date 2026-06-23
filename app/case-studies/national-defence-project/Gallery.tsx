@@ -17,40 +17,27 @@ const CONFIG = { imageWidth: 420, imageHeight: 320, gap: 32 };
 
 const Gallery = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
   const [progress, setProgress] = useState(0);
   const [dimensions, setDimensions] = useState({
     totalScrollWidth: 0,
     sectionHeight: 0,
-    viewportWidth: 0,
-    viewportHeight: 0,
   });
 
-  // Initialize dimensions on client
+  // Initialize on client only
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-
-    // Calculate total horizontal distance to scroll through all images
-    // We want first image centered, last image centered
-    // So total scroll = (number of images - 1) * (imageWidth + gap)
     const imageCount = IMAGES.length;
     const totalScrollWidth = (imageCount - 1) * (CONFIG.imageWidth + CONFIG.gap);
-
-    // Section must be tall enough so that scrolling through it maps to horizontal translation
-    // scrollHeight = totalScrollWidth + viewportHeight
+    const viewportHeight = window.innerHeight;
     const sectionHeight = totalScrollWidth + viewportHeight;
 
     setDimensions({
       totalScrollWidth,
       sectionHeight,
-      viewportWidth,
-      viewportHeight,
     });
-
     setMounted(true);
   }, []);
 
@@ -59,32 +46,28 @@ const Gallery = () => {
     if (!mounted || dimensions.sectionHeight === 0) return;
 
     const handleScroll = () => {
-      if (!sectionRef.current || !scrollContainerRef.current) return;
+      if (!sectionRef.current || !trackRef.current) return;
 
       const sectionRect = sectionRef.current.getBoundingClientRect();
-      const sectionTop = sectionRect.top;
+      const viewportHeight = window.innerHeight;
       const sectionHeight = dimensions.sectionHeight;
-      const viewportHeight = dimensions.viewportHeight;
 
-      // Calculate when section enters and exits viewport
-      // Section enters when its top reaches viewport bottom
-      // Section exits when its bottom reaches viewport top
+      // Calculate progress based on section position
       const sectionEntersAt = viewportHeight;
       const sectionExitsAt = -sectionHeight;
 
-      // Calculate progress: 0 when entering, 1 when exiting
-      if (sectionTop > sectionEntersAt || sectionTop < sectionExitsAt) {
-        return; // Section not in active scroll zone
+      if (sectionRect.top > sectionEntersAt || sectionRect.top < sectionExitsAt) {
+        return;
       }
 
-      const scrollProgress = (sectionEntersAt - sectionTop) / (sectionEntersAt - sectionExitsAt);
+      const scrollProgress = (sectionEntersAt - sectionRect.top) / (sectionEntersAt - sectionExitsAt);
       const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
 
       setProgress(clampedProgress);
 
-      // Apply horizontal translation
+      // Apply translation directly to track
       const translateX = clampedProgress * dimensions.totalScrollWidth;
-      scrollContainerRef.current.style.transform = `translate3d(-${translateX}px, 0, 0)`;
+      trackRef.current.style.transform = `translateX(-${translateX}px)`;
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -96,7 +79,6 @@ const Gallery = () => {
   }
 
   const imageCount = IMAGES.length;
-  const totalVisibleWidth = imageCount * CONFIG.imageWidth + (imageCount - 1) * CONFIG.gap;
 
   return (
     <>
@@ -126,13 +108,8 @@ const Gallery = () => {
         className="hidden lg:block relative"
         style={{ height: `${dimensions.sectionHeight}px` }}
       >
-        {/* Sticky viewport */}
-        <div
-          className="sticky top-0 w-full h-screen overflow-hidden bg-white flex items-center justify-center"
-          style={{
-            backgroundColor: '#ffffff',
-          }}
-        >
+        {/* Sticky viewport container */}
+        <div className="sticky top-0 w-full h-screen bg-white overflow-hidden flex items-center justify-center">
           {/* Background */}
           <div
             className="absolute inset-0"
@@ -146,17 +123,15 @@ const Gallery = () => {
             }}
           />
 
-          {/* Scroll container */}
-          <div
-            className="relative z-10 overflow-hidden w-full h-full flex items-center justify-center"
-          >
-            {/* Track - will be translated */}
+          {/* Gallery content wrapper */}
+          <div className="relative z-10 w-full h-full flex items-center justify-center">
+            {/* Track - Images container that will be translated */}
             <div
-              ref={scrollContainerRef}
-              className="flex items-center gap-8"
+              ref={trackRef}
+              className="flex items-center"
               style={{
-                width: `${totalVisibleWidth}px`,
-                transform: 'translate3d(0, 0, 0)',
+                gap: `${CONFIG.gap}px`,
+                transform: 'translateX(0)',
                 willChange: 'transform',
                 transition: 'none',
               }}
