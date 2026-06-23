@@ -1,6 +1,7 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import Image from 'next/image';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 const IMAGES = [
   '/images/Casestudies/DefenceCargo/defencecargo_Gallery1.webp',
@@ -11,224 +12,332 @@ const IMAGES = [
   '/images/Casestudies/DefenceCargo/defencecargo_Gallery6.webp',
   '/images/Casestudies/DefenceCargo/defencecargo_Gallery7.webp',
   '/images/Casestudies/DefenceCargo/defencecargo_Gallery8.webp',
+  '/images/Casestudies/DefenceCargo/defencecargo_Gallery9.webp',
+  '/images/Casestudies/DefenceCargo/defencecargo_Gallery10.webp',
+  '/images/Casestudies/DefenceCargo/defencecargo_Gallery11.webp',
+  '/images/Casestudies/DefenceCargo/defencecargo_Gallery12.webp',
 ];
 
-const IMAGE_WIDTH = 420;
-const IMAGE_HEIGHT = 320;
-const GAP = 32;
+const MOBILE_CARD_WIDTH = 280;
+const MOBILE_CARD_HEIGHT = 220;
+const MOBILE_GAP = 16;
+const MOBILE_CARD_HALF_WIDTH = MOBILE_CARD_WIDTH / 2;
+const EAGER_LOAD_COUNT = 2;
+const MIN_PROGRESS_BAR_WIDTH_PCT = 6;
+const PROGRESS_THRESHOLD = 0.001;
+const HINT_FADE_THRESHOLD = 0.12;
+const PROJECT_GALLERY_LABEL = 'Project Gallery';
+const MISSION_FRAME_LABEL = 'Mission Frame';
+const BRAND_BLUE = '#173f74';
 
-const Gallery = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const stickyRef = useRef<HTMLDivElement>(null);
-  const scrollerRef = useRef<HTMLDivElement>(null);
-  const [mounted, setMounted] = useState(false);
+interface DesktopMetrics {
+  cardWidth: number;
+  cardHeight: number;
+  gap: number;
+  startOffset: number;
+  scrollDistance: number;
+  sectionHeight: number;
+}
+
+const EMPTY_METRICS: DesktopMetrics = {
+  cardWidth: 420,
+  cardHeight: 320,
+  gap: 32,
+  startOffset: 0,
+  scrollDistance: 0,
+  sectionHeight: 2000,
+};
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(Math.max(value, min), max);
+}
+
+function getCurrentSlide(progress: number, totalImages: number) {
+  if (totalImages === 0) {
+    return 0;
+  }
+
+  return Math.max(1, Math.min(totalImages, Math.round(progress * (totalImages - 1)) + 1));
+}
+
+function areMetricsEqual(currentMetrics: DesktopMetrics, nextMetrics: DesktopMetrics) {
+  return (
+    currentMetrics.cardWidth === nextMetrics.cardWidth &&
+    currentMetrics.cardHeight === nextMetrics.cardHeight &&
+    currentMetrics.gap === nextMetrics.gap &&
+    currentMetrics.startOffset === nextMetrics.startOffset &&
+    currentMetrics.scrollDistance === nextMetrics.scrollDistance &&
+    currentMetrics.sectionHeight === nextMetrics.sectionHeight
+  );
+}
+
+function getDesktopMetrics(): DesktopMetrics {
+  if (typeof window === 'undefined') {
+    return EMPTY_METRICS;
+  }
+
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+  const gap = viewportWidth >= 1440 ? 40 : 32;
+  const cardWidth = Math.round(clamp(viewportWidth * 0.32, 320, 460));
+  const cardHeight = Math.round(cardWidth * 0.76);
+  const startOffset = (viewportWidth - cardWidth) / 2;
+  const scrollDistance = Math.max(0, (IMAGES.length - 1) * (cardWidth + gap));
+
+  return {
+    cardWidth,
+    cardHeight,
+    gap,
+    startOffset,
+    scrollDistance,
+    sectionHeight: viewportHeight + scrollDistance,
+  };
+}
+
+export default function Gallery() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const sectionTopRef = useRef(0);
+  const frameRef = useRef<number | null>(null);
+  const metricsFrameRef = useRef<number | null>(null);
+  const progressRef = useRef(0);
+  const [desktopMetrics, setDesktopMetrics] = useState<DesktopMetrics>(EMPTY_METRICS);
   const [progress, setProgress] = useState(0);
-  const [config, setConfig] = useState({
-    containerWidth: 0,
-    containerHeight: 0,
-    scrollDistance: 0,
-  });
 
-  // Initialize dimensions
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    window.scrollTo(0, 0);
-
-    // Calculate dimensions
-    const imageCount = IMAGES.length;
-    const totalWidth = imageCount * IMAGE_WIDTH + (imageCount - 1) * GAP;
-    const viewportHeight = window.innerHeight;
-    const viewportWidth = window.innerWidth;
-
-    // The distance images need to scroll horizontally
-    const scrollDistance = totalWidth - viewportWidth;
-
-    // Container height = scroll distance + viewport height (for scroll space)
-    const containerHeight = scrollDistance + viewportHeight;
-
-    setConfig({
-      containerWidth: totalWidth,
-      containerHeight,
-      scrollDistance,
+    const previousScrollRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = 'manual';
+    const resetFrame = window.requestAnimationFrame(() => {
+      window.scrollTo(0, 0);
     });
 
-    setMounted(true);
+    return () => {
+      window.cancelAnimationFrame(resetFrame);
+      window.history.scrollRestoration = previousScrollRestoration;
+    };
   }, []);
 
-  // Handle scroll
   useEffect(() => {
-    if (!mounted || config.containerHeight === 0) return;
+    const updateMetrics = () => {
+      sectionTopRef.current = (sectionRef.current?.getBoundingClientRect().top ?? 0) + window.scrollY;
+      setDesktopMetrics((currentMetrics) => {
+        const nextMetrics = getDesktopMetrics();
 
-    const handleScroll = () => {
-      if (!containerRef.current) return;
+        if (areMetricsEqual(currentMetrics, nextMetrics)) {
+          return currentMetrics;
+        }
 
-      const rect = containerRef.current.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
+        return nextMetrics;
+      });
+    };
 
-      // When does animation start? When container top reaches bottom of viewport
-      const startTrigger = viewportHeight;
-      // When does animation end? When container top reaches -containerHeight
-      const endTrigger = -config.containerHeight;
+    const resizeHandler = () => {
+      if (metricsFrameRef.current !== null) {
+        window.cancelAnimationFrame(metricsFrameRef.current);
+        metricsFrameRef.current = null;
+      }
 
-      // If container is outside the scroll zone, return
-      if (rect.top > startTrigger || rect.top < endTrigger) {
+      metricsFrameRef.current = window.requestAnimationFrame(updateMetrics);
+    };
+
+    resizeHandler();
+
+    window.addEventListener('resize', resizeHandler);
+
+    return () => {
+      if (metricsFrameRef.current !== null) {
+        window.cancelAnimationFrame(metricsFrameRef.current);
+        metricsFrameRef.current = null;
+      }
+      window.removeEventListener('resize', resizeHandler);
+    };
+  }, []);
+
+  const syncProgress = useCallback(() => {
+    if (!sectionRef.current || desktopMetrics.scrollDistance === 0) {
+      return;
+    }
+
+    if (frameRef.current !== null) {
+      window.cancelAnimationFrame(frameRef.current);
+      frameRef.current = null;
+    }
+
+    frameRef.current = window.requestAnimationFrame(() => {
+      const nextProgress = clamp((window.scrollY - sectionTopRef.current) / desktopMetrics.scrollDistance, 0, 1);
+
+      if (Math.abs(nextProgress - progressRef.current) < PROGRESS_THRESHOLD) {
         return;
       }
 
-      // Calculate progress (0 to 1)
-      const distance = startTrigger - rect.top;
-      const totalDistance = startTrigger - endTrigger;
-      let newProgress = distance / totalDistance;
-      newProgress = Math.max(0, Math.min(1, newProgress));
+      progressRef.current = nextProgress;
+      setProgress(nextProgress);
+    });
+  }, [desktopMetrics.scrollDistance]);
 
-      setProgress(newProgress);
+  useEffect(() => {
+    if (desktopMetrics.scrollDistance === 0) {
+      return;
+    }
 
-      // Apply scroll to scroller
-      if (scrollerRef.current) {
-        const translateAmount = newProgress * config.scrollDistance;
-        scrollerRef.current.style.transform = `translate3d(-${translateAmount}px, 0, 0)`;
-      }
-    };
+    const handleScroll = () => syncProgress();
+    if (window.scrollY > 0) {
+      syncProgress();
+    }
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [mounted, config]);
 
-  if (!mounted) return <div className="w-full h-screen bg-white" />;
+    return () => {
+      if (frameRef.current !== null) {
+        window.cancelAnimationFrame(frameRef.current);
+        frameRef.current = null;
+      }
 
-  const imageCount = IMAGES.length;
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [desktopMetrics.scrollDistance, syncProgress]);
+
+  const currentSlide = getCurrentSlide(progress, IMAGES.length);
+  const translateX = desktopMetrics.startOffset - progress * desktopMetrics.scrollDistance;
 
   return (
     <>
-      {/* Mobile Version */}
-      <section className="lg:hidden w-full bg-white py-12">
-        <h2 className="text-2xl font-light text-[#173f74] text-center mb-8 px-4">Project Gallery</h2>
-        <div className="overflow-x-auto scrollbar-hide">
-          <div className="flex gap-4 px-4 w-max">
-            {IMAGES.map((img, idx) => (
-              <div key={idx} className="flex-shrink-0">
-                <img
-                  src={img}
-                  alt={`Gallery ${idx + 1}`}
-                  className="h-56 w-72 object-cover rounded-lg shadow-lg"
-                  loading={idx > 2 ? 'lazy' : 'eager'}
-                  decoding="async"
+      <section className="bg-white px-4 py-14 lg:hidden">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="text-center text-3xl font-light" style={{ color: BRAND_BLUE }}>
+            Project Gallery
+          </h2>
+          <p className="mt-3 text-center text-sm tracking-[0.18em] text-slate-500 uppercase">
+            Swipe through the execution journey
+          </p>
+        </div>
+
+        <div
+          className="mt-8 overflow-x-auto snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          style={{
+            paddingLeft: `calc(50vw - ${MOBILE_CARD_HALF_WIDTH}px)`,
+            paddingRight: `calc(50vw - ${MOBILE_CARD_HALF_WIDTH}px)`,
+          }}
+        >
+          <div className="flex w-max" style={{ gap: `${MOBILE_GAP}px` }}>
+            {IMAGES.map((image, index) => (
+              <article
+                key={image}
+                className="snap-center overflow-hidden rounded-[28px] bg-slate-100 shadow-[0_20px_60px_rgba(15,23,42,0.14)]"
+                style={{ width: `${MOBILE_CARD_WIDTH}px` }}
+              >
+                <Image
+                  src={image}
+                  alt={`National defence gallery image ${index + 1}`}
+                  width={MOBILE_CARD_WIDTH}
+                  height={MOBILE_CARD_HEIGHT}
+                  className="w-full object-cover"
+                  style={{ height: `${MOBILE_CARD_HEIGHT}px` }}
+                  loading={index < EAGER_LOAD_COUNT ? 'eager' : 'lazy'}
+                  sizes="280px"
                 />
-              </div>
+                <div className="flex items-center justify-between px-5 py-4">
+                  <span className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
+                    {PROJECT_GALLERY_LABEL}
+                  </span>
+                  <span className="text-sm font-semibold" style={{ color: BRAND_BLUE }}>
+                    {index + 1}/{IMAGES.length}
+                  </span>
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Desktop Version */}
       <section
-        ref={containerRef}
-        className="hidden lg:block relative w-full bg-white"
-        style={{ height: `${config.containerHeight}px` }}
+        ref={sectionRef}
+        className="relative hidden bg-white lg:block"
+        style={{ height: `${desktopMetrics.sectionHeight}px` }}
       >
-        {/* Sticky container */}
-        <div
-          ref={stickyRef}
-          className="sticky top-0 w-full h-screen bg-white overflow-hidden"
-          style={{
-            backgroundColor: '#ffffff',
-          }}
-        >
-          {/* Background */}
+        <div className="sticky top-0 h-screen overflow-hidden bg-white">
           <div
-            className="absolute inset-0 z-0"
+            className="absolute inset-0"
             style={{
               backgroundImage: 'url(/images/Casestudies/DefenceCargo/DefenceCargoHeroImage.webp)',
-              backgroundSize: 'cover',
               backgroundPosition: 'center',
-              backgroundAttachment: 'fixed',
-              opacity: 0.06,
+              backgroundSize: 'cover',
+              opacity: 0.08,
             }}
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-white via-white/92 to-white" />
 
-          {/* Scroller wrapper - this creates the scroll zone */}
-          <div className="relative z-10 w-full h-full flex items-center overflow-hidden">
-            {/* Content that gets translated */}
-            <div
-              ref={scrollerRef}
-              className="flex items-center flex-shrink-0"
-              style={{
-                width: `${config.containerWidth}px`,
-                gap: `${GAP}px`,
-                transform: 'translate3d(0, 0, 0)',
-                willChange: 'transform',
-                transition: 'none',
-              }}
-            >
-              {IMAGES.map((img, idx) => (
+          <div className="relative z-10 flex h-full flex-col">
+            <div className="px-8 pt-16 text-center">
+              <h2 className="text-5xl font-light" style={{ color: BRAND_BLUE }}>
+                Project Gallery
+              </h2>
+              <p className="mt-4 text-sm uppercase tracking-[0.3em] text-slate-500">
+                Scroll down to move through the transport sequence
+              </p>
+            </div>
+
+            <div className="flex flex-1 items-center overflow-hidden">
+              <div
+                className="flex items-center"
+                style={{
+                  gap: `${desktopMetrics.gap}px`,
+                  transform: `translate3d(${translateX}px, 0, 0)`,
+                  willChange: 'transform',
+                }}
+              >
+                {IMAGES.map((image, index) => (
+                  <article
+                    key={image}
+                    className="relative flex-shrink-0 overflow-hidden rounded-[36px] bg-white shadow-[0_24px_80px_rgba(15,23,42,0.18)]"
+                    style={{ width: `${desktopMetrics.cardWidth}px` }}
+                  >
+                    <Image
+                      src={image}
+                      alt={`National defence gallery image ${index + 1}`}
+                      width={desktopMetrics.cardWidth}
+                      height={desktopMetrics.cardHeight}
+                      className="w-full object-cover"
+                      style={{ height: `${desktopMetrics.cardHeight}px` }}
+                      sizes="(min-width: 1536px) 460px, (min-width: 1024px) 32vw, 420px"
+                      priority={index < EAGER_LOAD_COUNT}
+                    />
+                    <div className="flex items-center justify-between px-6 py-5">
+                      <span className="text-xs font-medium uppercase tracking-[0.22em] text-slate-500">
+                        {MISSION_FRAME_LABEL}
+                      </span>
+                      <span className="text-base font-semibold" style={{ color: BRAND_BLUE }}>
+                        {index + 1}/{IMAGES.length}
+                      </span>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            <div className="absolute bottom-10 left-1/2 flex -translate-x-1/2 items-center gap-5 rounded-full bg-white/85 px-6 py-4 shadow-[0_18px_60px_rgba(15,23,42,0.12)] backdrop-blur">
+              <div className="h-1.5 w-56 overflow-hidden rounded-full bg-slate-200">
                 <div
-                  key={idx}
-                  className="flex-shrink-0 flex flex-col items-center gap-4"
+                  className="h-full origin-left rounded-full transition-transform duration-150"
                   style={{
-                    width: `${IMAGE_WIDTH}px`,
+                    backgroundColor: BRAND_BLUE,
+                    transform: `scaleX(${Math.max(progress, MIN_PROGRESS_BAR_WIDTH_PCT / 100)})`,
                   }}
-                >
-                  <img
-                    src={img}
-                    alt={`Gallery image ${idx + 1}`}
-                    className="rounded-3xl shadow-2xl w-full h-auto"
-                    style={{
-                      height: `${IMAGE_HEIGHT}px`,
-                      objectFit: 'cover',
-                    }}
-                    loading={idx > 2 ? 'lazy' : 'eager'}
-                    decoding="async"
-                  />
-                  <p className="text-center text-gray-700 text-sm font-medium">
-                    {idx + 1} / {imageCount}
-                  </p>
-                </div>
-              ))}
+                />
+              </div>
+              <span className="min-w-20 text-sm font-semibold" style={{ color: BRAND_BLUE }}>
+                {currentSlide}/{IMAGES.length}
+              </span>
             </div>
-          </div>
 
-          {/* Progress Bar */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4">
-            <div className="flex gap-2">
-              {IMAGES.map((_, idx) => {
-                const threshold = idx / imageCount;
-                const nextThreshold = (idx + 1) / imageCount;
-                const isActive = progress >= threshold && progress < nextThreshold;
-                
-                return (
-                  <div
-                    key={idx}
-                    className="h-2 rounded-full transition-all duration-300"
-                    style={{
-                      width: isActive ? '32px' : '8px',
-                      backgroundColor: isActive ? '#2563eb' : '#e5e7eb',
-                    }}
-                  />
-                );
-              })}
-            </div>
-            <span className="text-sm font-semibold text-gray-700 whitespace-nowrap">
-              {Math.round(progress * 100)}%
-            </span>
-          </div>
-
-          {/* Hint Text */}
-          {progress < 0.1 && (
             <div
-              className="absolute top-10 left-1/2 -translate-x-1/2 z-20 text-center text-gray-600 text-sm transition-opacity duration-300"
-              style={{
-                opacity: Math.max(0, 1 - progress * 10),
-                pointerEvents: 'none',
-              }}
+              className="absolute top-12 left-1/2 -translate-x-1/2 text-center text-sm uppercase tracking-[0.28em] text-slate-500 transition-opacity duration-200"
+              style={{ opacity: progress < HINT_FADE_THRESHOLD ? 1 - progress / HINT_FADE_THRESHOLD : 0 }}
             >
-              Scroll down to explore gallery →
+              Horizontal scroll takeover
             </div>
-          )}
+          </div>
         </div>
       </section>
     </>
   );
-};
-
-export default Gallery;
+}

@@ -113,7 +113,7 @@ export default function CaseStudies() {
         </h1>
 
         <p className="text-center text-sm lg:text-xl text-gray-500 mt-4 mb-10 lg:mb-14">
-          Showcasing Mega Move India's Expertise in Project Logistics,
+          Showcasing Mega Move India&rsquo;s Expertise in Project Logistics,
           Heavy Lift Transportation and Freight Forwarding
         </p>
 

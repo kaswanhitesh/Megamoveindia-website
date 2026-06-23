@@ -17,7 +17,7 @@ export default function TermsAndConditions() {
         </h1>
 
         <p className="text-lg text-gray-600 leading-8 mb-10">
-          Please review Mega Move India Private Limited's Terms &
+          Please review Mega Move India Private Limited&rsquo;s Terms &
           Conditions by viewing or downloading the document below.
         </p>
 
