@@ -13,86 +13,105 @@ const IMAGES = [
   '/images/Casestudies/DefenceCargo/defencecargo_Gallery8.webp',
 ];
 
-const CONFIG = { imageWidth: 420, imageHeight: 320, gap: 32 };
+const IMAGE_WIDTH = 420;
+const IMAGE_HEIGHT = 320;
+const GAP = 32;
 
 const Gallery = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const stickyRef = useRef<HTMLDivElement>(null);
+  const scrollerRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [dimensions, setDimensions] = useState({
-    totalScrollWidth: 0,
-    sectionHeight: 0,
+  const [config, setConfig] = useState({
+    containerWidth: 0,
+    containerHeight: 0,
+    scrollDistance: 0,
   });
 
-  // Initialize on client only
+  // Initialize dimensions
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     window.scrollTo(0, 0);
 
+    // Calculate dimensions
     const imageCount = IMAGES.length;
-    const totalScrollWidth = (imageCount - 1) * (CONFIG.imageWidth + CONFIG.gap);
+    const totalWidth = imageCount * IMAGE_WIDTH + (imageCount - 1) * GAP;
     const viewportHeight = window.innerHeight;
-    const sectionHeight = totalScrollWidth + viewportHeight;
+    const viewportWidth = window.innerWidth;
 
-    setDimensions({
-      totalScrollWidth,
-      sectionHeight,
+    // The distance images need to scroll horizontally
+    const scrollDistance = totalWidth - viewportWidth;
+
+    // Container height = scroll distance + viewport height (for scroll space)
+    const containerHeight = scrollDistance + viewportHeight;
+
+    setConfig({
+      containerWidth: totalWidth,
+      containerHeight,
+      scrollDistance,
     });
+
     setMounted(true);
   }, []);
 
-  // Handle scroll animation
+  // Handle scroll
   useEffect(() => {
-    if (!mounted || dimensions.sectionHeight === 0) return;
+    if (!mounted || config.containerHeight === 0) return;
 
     const handleScroll = () => {
-      if (!sectionRef.current || !trackRef.current) return;
+      if (!containerRef.current) return;
 
-      const sectionRect = sectionRef.current.getBoundingClientRect();
+      const rect = containerRef.current.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
-      const sectionHeight = dimensions.sectionHeight;
 
-      // Calculate progress based on section position
-      const sectionEntersAt = viewportHeight;
-      const sectionExitsAt = -sectionHeight;
+      // When does animation start? When container top reaches bottom of viewport
+      const startTrigger = viewportHeight;
+      // When does animation end? When container top reaches -containerHeight
+      const endTrigger = -config.containerHeight;
 
-      if (sectionRect.top > sectionEntersAt || sectionRect.top < sectionExitsAt) {
+      // If container is outside the scroll zone, return
+      if (rect.top > startTrigger || rect.top < endTrigger) {
         return;
       }
 
-      const scrollProgress = (sectionEntersAt - sectionRect.top) / (sectionEntersAt - sectionExitsAt);
-      const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
+      // Calculate progress (0 to 1)
+      const distance = startTrigger - rect.top;
+      const totalDistance = startTrigger - endTrigger;
+      let newProgress = distance / totalDistance;
+      newProgress = Math.max(0, Math.min(1, newProgress));
 
-      setProgress(clampedProgress);
+      setProgress(newProgress);
 
-      // Apply translation directly to track
-      const translateX = clampedProgress * dimensions.totalScrollWidth;
-      trackRef.current.style.transform = `translateX(-${translateX}px)`;
+      // Apply scroll to scroller
+      if (scrollerRef.current) {
+        const translateAmount = newProgress * config.scrollDistance;
+        scrollerRef.current.style.transform = `translate3d(-${translateAmount}px, 0, 0)`;
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [mounted, dimensions]);
+  }, [mounted, config]);
 
-  if (!mounted) {
-    return <section className="w-full h-screen bg-white" />;
-  }
+  if (!mounted) return <div className="w-full h-screen bg-white" />;
 
   const imageCount = IMAGES.length;
 
   return (
     <>
-      {/* Mobile Gallery */}
-      <section className="lg:hidden relative z-30 bg-white py-12 px-4">
-        <h2 className="text-2xl font-light text-[#173f74] text-center mb-8">Project Gallery</h2>
-        <div className="overflow-x-auto snap-x snap-mandatory scrollbar-hide">
-          <div className="flex gap-4 w-max px-4">
+      {/* Mobile Version */}
+      <section className="lg:hidden w-full bg-white py-12">
+        <h2 className="text-2xl font-light text-[#173f74] text-center mb-8 px-4">Project Gallery</h2>
+        <div className="overflow-x-auto scrollbar-hide">
+          <div className="flex gap-4 px-4 w-max">
             {IMAGES.map((img, idx) => (
-              <div key={idx} className="snap-center flex-shrink-0">
+              <div key={idx} className="flex-shrink-0">
                 <img
                   src={img}
                   alt={`Gallery ${idx + 1}`}
-                  className="w-[300px] h-[220px] object-cover rounded-lg shadow-lg"
+                  className="h-56 w-72 object-cover rounded-lg shadow-lg"
                   loading={idx > 2 ? 'lazy' : 'eager'}
                   decoding="async"
                 />
@@ -102,36 +121,42 @@ const Gallery = () => {
         </div>
       </section>
 
-      {/* Desktop Gallery - Sticky Horizontal Scroll */}
+      {/* Desktop Version */}
       <section
-        ref={sectionRef}
-        className="hidden lg:block relative"
-        style={{ height: `${dimensions.sectionHeight}px` }}
+        ref={containerRef}
+        className="hidden lg:block relative w-full bg-white"
+        style={{ height: `${config.containerHeight}px` }}
       >
-        {/* Sticky viewport container */}
-        <div className="sticky top-0 w-full h-screen bg-white overflow-hidden flex items-center justify-center">
+        {/* Sticky container */}
+        <div
+          ref={stickyRef}
+          className="sticky top-0 w-full h-screen bg-white overflow-hidden"
+          style={{
+            backgroundColor: '#ffffff',
+          }}
+        >
           {/* Background */}
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 z-0"
             style={{
               backgroundImage: 'url(/images/Casestudies/DefenceCargo/DefenceCargoHeroImage.webp)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundAttachment: 'fixed',
               opacity: 0.06,
-              zIndex: 0,
             }}
           />
 
-          {/* Gallery content wrapper */}
-          <div className="relative z-10 w-full h-full flex items-center justify-center">
-            {/* Track - Images container that will be translated */}
+          {/* Scroller wrapper - this creates the scroll zone */}
+          <div className="relative z-10 w-full h-full flex items-center overflow-hidden">
+            {/* Content that gets translated */}
             <div
-              ref={trackRef}
-              className="flex items-center"
+              ref={scrollerRef}
+              className="flex items-center flex-shrink-0"
               style={{
-                gap: `${CONFIG.gap}px`,
-                transform: 'translateX(0)',
+                width: `${config.containerWidth}px`,
+                gap: `${GAP}px`,
+                transform: 'translate3d(0, 0, 0)',
                 willChange: 'transform',
                 transition: 'none',
               }}
@@ -139,22 +164,23 @@ const Gallery = () => {
               {IMAGES.map((img, idx) => (
                 <div
                   key={idx}
-                  className="flex-shrink-0 flex flex-col items-center justify-center"
+                  className="flex-shrink-0 flex flex-col items-center gap-4"
                   style={{
-                    width: `${CONFIG.imageWidth}px`,
+                    width: `${IMAGE_WIDTH}px`,
                   }}
                 >
                   <img
                     src={img}
-                    alt={`Gallery ${idx + 1}`}
-                    className="w-full object-cover rounded-2xl shadow-2xl"
+                    alt={`Gallery image ${idx + 1}`}
+                    className="rounded-3xl shadow-2xl w-full h-auto"
                     style={{
-                      height: `${CONFIG.imageHeight}px`,
+                      height: `${IMAGE_HEIGHT}px`,
+                      objectFit: 'cover',
                     }}
                     loading={idx > 2 ? 'lazy' : 'eager'}
                     decoding="async"
                   />
-                  <p className="text-center text-gray-700 text-sm font-medium mt-4">
+                  <p className="text-center text-gray-700 text-sm font-medium">
                     {idx + 1} / {imageCount}
                   </p>
                 </div>
@@ -162,38 +188,41 @@ const Gallery = () => {
             </div>
           </div>
 
-          {/* Progress Indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-3">
+          {/* Progress Bar */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4">
             <div className="flex gap-2">
               {IMAGES.map((_, idx) => {
-                const isActive = idx < Math.ceil(progress * imageCount);
+                const threshold = idx / imageCount;
+                const nextThreshold = (idx + 1) / imageCount;
+                const isActive = progress >= threshold && progress < nextThreshold;
+                
                 return (
                   <div
                     key={idx}
-                    className="h-2 rounded-full transition-all duration-200"
+                    className="h-2 rounded-full transition-all duration-300"
                     style={{
-                      width: isActive ? '28px' : '8px',
-                      backgroundColor: isActive ? '#2563eb' : '#d1d5db',
+                      width: isActive ? '32px' : '8px',
+                      backgroundColor: isActive ? '#2563eb' : '#e5e7eb',
                     }}
                   />
                 );
               })}
             </div>
-            <span className="text-sm text-gray-700 font-semibold ml-4 whitespace-nowrap">
+            <span className="text-sm font-semibold text-gray-700 whitespace-nowrap">
               {Math.round(progress * 100)}%
             </span>
           </div>
 
-          {/* Scroll Hint */}
-          {progress < 0.05 && (
+          {/* Hint Text */}
+          {progress < 0.1 && (
             <div
-              className="absolute top-12 left-1/2 transform -translate-x-1/2 z-20 text-center text-gray-600 text-sm pointer-events-none"
+              className="absolute top-10 left-1/2 -translate-x-1/2 z-20 text-center text-gray-600 text-sm transition-opacity duration-300"
               style={{
-                opacity: 1 - progress * 20,
-                transition: 'opacity 300ms ease',
+                opacity: Math.max(0, 1 - progress * 10),
+                pointerEvents: 'none',
               }}
             >
-              ↓ Scroll down to explore gallery →
+              Scroll down to explore gallery →
             </div>
           )}
         </div>
