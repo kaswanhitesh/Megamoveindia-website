@@ -1,37 +1,101 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 export default function Hero() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const textContainerRef = useRef<HTMLDivElement>(null);
+  const [textOpacity, setTextOpacity] = useState(0);
   const [showText, setShowText] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    // Show text after 2 seconds
+    const showTimer = setTimeout(() => {
       setShowText(true);
     }, 2000);
 
-    return () => clearTimeout(timer);
+    return () => clearTimeout(showTimer);
   }, []);
 
+  useEffect(() => {
+    if (!showText) return;
+
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+
+      const rect = sectionRef.current.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+
+      // Calculate opacity based on scroll position
+      // Text should be fully visible when hero is centered
+      // Text should fade out as user scrolls past hero
+      const distanceFromTop = rect.top;
+      
+      // When distanceFromTop is 0, text should start fading
+      // When distanceFromTop is -viewportHeight, text should be invisible
+      let opacity = 1 - (Math.max(0, -distanceFromTop) / viewportHeight);
+      opacity = Math.max(0, Math.min(1, opacity));
+
+      setTextOpacity(opacity);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [showText]);
+
   return (
-    <section className="absolute top-0 left-0 w-full h-screen -z-10">
-      <Image
-        src="/images/Casestudies/DefenceCargo/DefenceCargoHeroImage.webp"
-        alt="National Defence Project"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-[center_15%]"
+    <section
+      ref={sectionRef}
+      className="
+        relative
+        w-full
+        h-screen
+        flex
+        items-center
+        justify-center
+        overflow-hidden
+      "
+    >
+      {/* Fixed Background Image */}
+      <div
+        className="
+          absolute
+          inset-0
+          bg-cover
+          bg-center
+          bg-no-repeat
+        "
+        style={{
+          backgroundImage: 'url(/images/Casestudies/DefenceCargo/DefenceCargoHeroImage.webp)',
+          backgroundAttachment: 'fixed',
+        }}
       />
 
+      {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/45" />
 
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-
+      {/* Text Content with Fade Out */}
+      <div
+        ref={textContainerRef}
+        className="
+          relative
+          z-10
+          text-center
+          px-4
+          transition-opacity
+          duration-300
+        "
+        style={{
+          opacity: textOpacity,
+        }}
+      >
         <div
           className={`
-            transition-all duration-1000
+            transition-all
+            duration-1000
             ${showText
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-8"}
@@ -41,13 +105,13 @@ export default function Hero() {
             NATIONAL DEFENCE PROJECT
           </h1>
 
-          <p className="mt-6 text-white text-lg lg:text-2xl tracking-[2px]">
+          <div className="w-24 h-[1px] bg-white/70 mx-auto my-6" />
+
+          <p className="text-white text-lg lg:text-2xl tracking-[2px]">
             Manufacturing Unit to Nyoma, Ladakh
           </p>
         </div>
-
       </div>
-
     </section>
   );
 }
