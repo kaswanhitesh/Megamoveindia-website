@@ -12,6 +12,10 @@ const IMAGES = [
   '/images/Casestudies/DefenceCargo/defencecargo_Gallery6.webp',
   '/images/Casestudies/DefenceCargo/defencecargo_Gallery7.webp',
   '/images/Casestudies/DefenceCargo/defencecargo_Gallery8.webp',
+  '/images/Casestudies/DefenceCargo/defencecargo_Gallery9.webp',
+  '/images/Casestudies/DefenceCargo/defencecargo_Gallery10.webp',
+  '/images/Casestudies/DefenceCargo/defencecargo_Gallery11.webp',
+  '/images/Casestudies/DefenceCargo/defencecargo_Gallery12.webp',
 ];
 
 const MOBILE_CARD_WIDTH = 280;
