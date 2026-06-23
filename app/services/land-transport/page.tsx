@@ -137,7 +137,7 @@ export default function LandTransport() {
               {[...recentProjects, ...recentProjects].map((project, index) => (
                 <Link
                   key={index}
-                  href={project.link}
+                  href={`/case-studies/${project.slug}`}
                   className="w-[260px] lg:w-[380px] bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 shrink-0"
                 >
                   <img
