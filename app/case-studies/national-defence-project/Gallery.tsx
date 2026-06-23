@@ -91,7 +91,7 @@ gsap.to(track, {
     },
   },
 });
-
+}); // closes gsap.context
     ScrollTrigger.refresh();
 
     return () => ctx.revert();
@@ -120,20 +120,19 @@ gsap.to(track, {
   >
     {images.map((image, index) => (
   <div
-    key={index}
-    className="
-  gallery-card
-  shrink-0
-  transition-transform
-  duration-300
-  will-change-transform
-
-      rounded-3xl
-      overflow-hidden
-      bg-white
-      shadow-[0_30px_80px_rgba(0,0,0,0.35)]
-    "
-  >
+  key={index}
+  className="
+    gallery-card
+    shrink-0
+    rounded-3xl
+    overflow-hidden
+    bg-white
+    shadow-[0_30px_80px_rgba(0,0,0,0.35)]
+    transition-transform
+    duration-300
+    will-change-transform
+  "
+>
         <Image
           src={image}
           alt={`Gallery ${index + 1}`}
@@ -165,7 +164,7 @@ gsap.to(track, {
   className="
     absolute
     inset-0
-    bg-white/35
+    bg-white/65
     backdrop-blur-xl
     z-10
   "
