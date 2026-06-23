@@ -21,8 +21,10 @@ const MOBILE_CARD_HALF_WIDTH = MOBILE_CARD_WIDTH / 2;
 const EAGER_LOAD_COUNT = 2;
 const MIN_PROGRESS_BAR_WIDTH_PCT = 6;
 const PROGRESS_THRESHOLD = 0.001;
+const HINT_FADE_THRESHOLD = 0.12;
 const MOBILE_GALLERY_LABEL = 'Project Gallery';
 const DESKTOP_GALLERY_LABEL = 'Mission Frame';
+const BRAND_BLUE = '#173f74';
 
 interface DesktopMetrics {
   cardWidth: number;
@@ -100,12 +102,11 @@ export default function Gallery() {
   useEffect(() => {
     const previousScrollRestoration = window.history.scrollRestoration;
     window.history.scrollRestoration = 'manual';
-    const resetFrame = window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(() => {
       window.scrollTo(0, 0);
     });
 
     return () => {
-      window.cancelAnimationFrame(resetFrame);
       window.history.scrollRestoration = previousScrollRestoration;
     };
   }, []);
@@ -193,7 +194,9 @@ export default function Gallery() {
     <>
       <section className="bg-white px-4 py-14 lg:hidden">
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-center text-3xl font-light text-[#173f74]">Project Gallery</h2>
+          <h2 className="text-center text-3xl font-light" style={{ color: BRAND_BLUE }}>
+            Project Gallery
+          </h2>
           <p className="mt-3 text-center text-sm tracking-[0.18em] text-slate-500 uppercase">
             Swipe through the execution journey
           </p>
@@ -218,7 +221,8 @@ export default function Gallery() {
                   alt={`National defence gallery image ${index + 1}`}
                   width={MOBILE_CARD_WIDTH}
                   height={MOBILE_CARD_HEIGHT}
-                  className="h-[220px] w-full object-cover"
+                  className="w-full object-cover"
+                  style={{ height: `${MOBILE_CARD_HEIGHT}px` }}
                   loading={index < EAGER_LOAD_COUNT ? 'eager' : 'lazy'}
                   sizes="280px"
                 />
@@ -226,7 +230,7 @@ export default function Gallery() {
                   <span className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
                     {MOBILE_GALLERY_LABEL}
                   </span>
-                  <span className="text-sm font-semibold text-[#173f74]">
+                  <span className="text-sm font-semibold" style={{ color: BRAND_BLUE }}>
                     {index + 1}/{IMAGES.length}
                   </span>
                 </div>
@@ -255,7 +259,9 @@ export default function Gallery() {
 
           <div className="relative z-10 flex h-full flex-col">
             <div className="px-8 pt-16 text-center">
-              <h2 className="text-5xl font-light text-[#173f74]">Project Gallery</h2>
+              <h2 className="text-5xl font-light" style={{ color: BRAND_BLUE }}>
+                Project Gallery
+              </h2>
               <p className="mt-4 text-sm uppercase tracking-[0.3em] text-slate-500">
                 Scroll down to move through the transport sequence
               </p>
@@ -291,7 +297,7 @@ export default function Gallery() {
                       <span className="text-xs font-medium uppercase tracking-[0.22em] text-slate-500">
                         {DESKTOP_GALLERY_LABEL}
                       </span>
-                      <span className="text-base font-semibold text-[#173f74]">
+                      <span className="text-base font-semibold" style={{ color: BRAND_BLUE }}>
                         {index + 1}/{IMAGES.length}
                       </span>
                     </div>
@@ -303,18 +309,21 @@ export default function Gallery() {
             <div className="absolute bottom-10 left-1/2 flex -translate-x-1/2 items-center gap-5 rounded-full bg-white/85 px-6 py-4 shadow-[0_18px_60px_rgba(15,23,42,0.12)] backdrop-blur">
               <div className="h-1.5 w-56 overflow-hidden rounded-full bg-slate-200">
                 <div
-                  className="h-full rounded-full bg-[#173f74] transition-[width] duration-150"
-                  style={{ width: `${Math.max(progress * 100, MIN_PROGRESS_BAR_WIDTH_PCT)}%` }}
+                  className="h-full origin-left rounded-full transition-transform duration-150"
+                  style={{
+                    backgroundColor: BRAND_BLUE,
+                    transform: `scaleX(${Math.max(progress, MIN_PROGRESS_BAR_WIDTH_PCT / 100)})`,
+                  }}
                 />
               </div>
-              <span className="min-w-20 text-sm font-semibold text-[#173f74]">
+              <span className="min-w-20 text-sm font-semibold" style={{ color: BRAND_BLUE }}>
                 {currentSlide}/{IMAGES.length}
               </span>
             </div>
 
             <div
               className="absolute top-12 left-1/2 -translate-x-1/2 text-center text-sm uppercase tracking-[0.28em] text-slate-500 transition-opacity duration-200"
-              style={{ opacity: progress < 0.12 ? 1 - progress / 0.12 : 0 }}
+              style={{ opacity: progress < HINT_FADE_THRESHOLD ? 1 - progress / HINT_FADE_THRESHOLD : 0 }}
             >
               Horizontal scroll takeover
             </div>
