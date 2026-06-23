@@ -96,7 +96,6 @@ function getDesktopMetrics(): DesktopMetrics {
 
 export default function Gallery() {
   const sectionRef = useRef<HTMLElement>(null);
-  const sectionTopRef = useRef(0);
   const frameRef = useRef<number | null>(null);
   const metricsFrameRef = useRef<number | null>(null);
   const progressRef = useRef(0);
@@ -118,7 +117,6 @@ export default function Gallery() {
 
   useEffect(() => {
     const updateMetrics = () => {
-      sectionTopRef.current = (sectionRef.current?.getBoundingClientRect().top ?? 0) + window.scrollY;
       setDesktopMetrics((currentMetrics) => {
         const nextMetrics = getDesktopMetrics();
 
@@ -163,7 +161,14 @@ export default function Gallery() {
     }
 
     frameRef.current = window.requestAnimationFrame(() => {
-      const nextProgress = clamp((window.scrollY - sectionTopRef.current) / desktopMetrics.scrollDistance, 0, 1);
+      const sectionRect = sectionRef.current?.getBoundingClientRect();
+
+      if (!sectionRect) {
+        return;
+      }
+
+      const availableScroll = Math.max(1, sectionRect.height - window.innerHeight);
+      const nextProgress = clamp(-sectionRect.top / availableScroll, 0, 1);
 
       if (Math.abs(nextProgress - progressRef.current) < PROGRESS_THRESHOLD) {
         return;
@@ -180,9 +185,7 @@ export default function Gallery() {
     }
 
     const handleScroll = () => syncProgress();
-    if (window.scrollY > 0) {
-      syncProgress();
-    }
+    syncProgress();
 
     window.addEventListener('scroll', handleScroll, { passive: true });
 
