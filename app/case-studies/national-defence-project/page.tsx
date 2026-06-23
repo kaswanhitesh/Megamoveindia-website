@@ -57,11 +57,11 @@ const otherProjects = [
 export default function NationalDefenceProject() {
   return (
     <main className="relative w-full bg-white overflow-x-hidden">
-      {/* Hero Section - Fixed Background */}
+      {/* Hero Section - Full viewport with fixed background */}
       <Hero />
 
-      {/* Project Overview - Overlaps Hero with rounded top */}
-      <section className="relative z-30 bg-white rounded-t-[50px] py-16 lg:py-24">
+      {/* Project Overview - Overlaps hero with smooth transition */}
+      <section className="relative z-30 bg-white rounded-t-[50px] py-16 lg:py-24" style={{ marginTop: '-50px' }}>
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <h2 className="text-3xl lg:text-5xl font-light text-[#173f74] text-center mb-8 lg:mb-12">
             Project Overview
@@ -73,90 +73,38 @@ export default function NationalDefenceProject() {
         </div>
       </section>
 
-      {/* Project Details */}
+      {/* Project Details Grid */}
       <section className="relative z-30 bg-[#f7f7f7] py-12 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <h2 className="text-3xl lg:text-5xl font-light text-[#173f74] text-center mb-8 lg:mb-12">
             Project Details
           </h2>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 lg:gap-y-12 gap-x-4 lg:gap-x-10 max-w-7xl mx-auto">
-            <div className="text-center">
-              <h3 className="font-bold text-[16px] lg:text-[22px] text-[#173f74] mb-3">
-                Industry Sector
-              </h3>
-              <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Defence Logistics & Military Transportation
-              </p>
-            </div>
-
-            <div className="text-center">
-              <h3 className="font-bold text-[16px] lg:text-[22px] text-[#173f74] mb-3">
-                Cargo Description
-              </h3>
-              <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                BMP-II Armoured Vehicles & Defence Equipment
-              </p>
-            </div>
-
-            <div className="text-center">
-              <h3 className="font-bold text-[16px] lg:text-[22px] text-[#173f74] mb-3">
-                Origin & Destination
-              </h3>
-              <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Manufacturing Facility, India → Nyoma, Ladakh
-              </p>
-            </div>
-
-            <div className="text-center">
-              <h3 className="font-bold text-[16px] lg:text-[22px] text-[#173f74] mb-3">
-                Distance Covered
-              </h3>
-              <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                3,700 KM
-              </p>
-            </div>
-
-            <div className="text-center">
-              <h3 className="font-bold text-[16px] lg:text-[22px] text-[#173f74] mb-3">
-                Project Scope
-              </h3>
-              <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Project Logistics, ODC Transportation, Route Survey, Permits & Escorts
-              </p>
-            </div>
-
-            <div className="text-center">
-              <h3 className="font-bold text-[16px] lg:text-[22px] text-[#173f74] mb-3">
-                Equipment Deployed
-              </h3>
-              <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Hydraulic Modular Trailers, Prime Movers & Escort Vehicles
-              </p>
-            </div>
-
-            <div className="text-center">
-              <h3 className="font-bold text-[16px] lg:text-[22px] text-[#173f74] mb-3">
-                Transit Time
-              </h3>
-              <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                21 Days
-              </p>
-            </div>
-
-            <div className="text-center">
-              <h3 className="font-bold text-[16px] lg:text-[22px] text-[#173f74] mb-3">
-                Key Achievement
-              </h3>
-              <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                National Benchmark for Fastest Defence ODC Delivery
-              </p>
-            </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 lg:gap-y-12 gap-x-4 lg:gap-x-10">
+            {[
+              { title: 'Industry Sector', value: 'Defence Logistics & Military Transportation' },
+              { title: 'Cargo Description', value: 'BMP-II Armoured Vehicles & Defence Equipment' },
+              { title: 'Origin & Destination', value: 'Manufacturing Facility, India → Nyoma, Ladakh' },
+              { title: 'Distance Covered', value: '3,700 KM' },
+              { title: 'Project Scope', value: 'Project Logistics, ODC Transportation, Route Survey, Permits & Escorts' },
+              { title: 'Equipment Deployed', value: 'Hydraulic Modular Trailers, Prime Movers & Escort Vehicles' },
+              { title: 'Transit Time', value: '21 Days' },
+              { title: 'Key Achievement', value: 'National Benchmark for Fastest Defence ODC Delivery' },
+            ].map((item, idx) => (
+              <div key={idx} className="text-center">
+                <h3 className="font-bold text-[16px] lg:text-[22px] text-[#173f74] mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
+                  {item.value}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Gallery Section */}
+      {/* Gallery with sticky horizontal scroll */}
       <Gallery />
 
       {/* Project Outcome */}
@@ -186,28 +134,16 @@ export default function NationalDefenceProject() {
                   <Link
                     key={index}
                     href={`/case-studies/${project.slug}`}
-                    className="
-                      w-[320px]
-                      bg-white
-                      rounded-xl
-                      overflow-hidden
-                      shadow-md
-                      hover:shadow-xl
-                      transition-all
-                      duration-500
-                      shrink-0
-                    "
+                    className="w-[320px] bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 shrink-0"
                   >
                     <img
                       src={project.image}
                       alt={project.title}
                       className="w-full h-[220px] object-cover"
+                      loading="lazy"
                     />
-
                     <div className="p-5">
-                      <h3 className="text-xl text-[#173f74]">
-                        {project.title}
-                      </h3>
+                      <h3 className="text-xl text-[#173f74]">{project.title}</h3>
                     </div>
                   </Link>
                 ))}
@@ -215,7 +151,7 @@ export default function NationalDefenceProject() {
             </div>
           </section>
 
-          {/* CTA */}
+          {/* CTA Section */}
           <div className="mt-12 border-t pt-8 text-center">
             <h3 className="text-xl lg:text-2xl font-semibold text-[#173f74] mb-3">
               Discuss Your Project Logistics Requirement
