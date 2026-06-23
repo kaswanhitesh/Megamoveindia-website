@@ -32,11 +32,21 @@ export default function Gallery() {
     const ctx = gsap.context(() => {
       const track = trackRef.current!;
 
-      const totalMove =
-        track.scrollWidth - window.innerWidth;
+      const cards = track.children;
+const lastCard = cards[cards.length - 1] as HTMLElement;
 
-      gsap.to(track, {
-        x: -totalMove,
+const cardCenter =
+  lastCard.offsetLeft +
+  lastCard.offsetWidth / 2;
+
+const viewportCenter =
+  window.innerWidth / 2;
+
+const totalMove =
+  cardCenter - viewportCenter;
+
+gsap.to(track, {
+  x: -totalMove,
         ease: "none",
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -59,22 +69,50 @@ export default function Gallery() {
     <>
       {/* MOBILE */}
 
-      <section className="lg:hidden bg-white py-10">
-        <div className="overflow-x-auto">
-          <div className="flex gap-4 px-4 w-max">
-            {images.map((image, index) => (
-              <Image
-                key={index}
-                src={image}
-                alt={`Gallery ${index + 1}`}
-                width={300}
-                height={220}
-                className="rounded-xl object-cover"
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+      <section className="lg:hidden py-8 bg-white/30 backdrop-blur-md">
+
+  <h2 className="text-center text-2xl font-light text-[#173f74] mb-6">
+    Project Gallery
+  </h2>
+
+  <div
+    className="
+      flex
+      overflow-x-auto
+      snap-x
+      snap-mandatory
+      gap-4
+      px-[15vw]
+      pb-4
+    "
+  >
+    {images.map((image, index) => (
+      <div
+        key={index}
+        className="
+          snap-center
+          shrink-0
+          w-[70vw]
+        "
+      >
+        <Image
+          src={image}
+          alt={`Gallery ${index + 1}`}
+          width={300}
+          height={200}
+          className="
+            w-full
+            h-[220px]
+            object-cover
+            rounded-2xl
+            shadow-xl
+          "
+        />
+      </div>
+    ))}
+  </div>
+
+</section>
 
       {/* DESKTOP */}
 
@@ -108,11 +146,11 @@ export default function Gallery() {
                   <Image
                     src={image}
                     alt={`Gallery ${index + 1}`}
-                    width={700}
-                    height={500}
+                    width={520}
+                    height={344}
                     className="
-                      w-[700px]
-                      h-[500px]
+                      w-[520px]
+                      h-[344px]
                       object-cover
                     "
                     priority={index < 2}
