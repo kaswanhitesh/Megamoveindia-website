@@ -1,6 +1,7 @@
 import Hero from './Hero';
 import Gallery from './Gallery';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -155,12 +156,16 @@ export default function NationalDefenceProject() {
                     href={`/case-studies/${project.slug}`}
                     className="w-[320px] bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 shrink-0"
                   >
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-[220px] object-cover"
-                      loading="lazy"
-                    />
+                    <div className="relative h-[220px] w-full">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover"
+                        loading="lazy"
+                        sizes="320px"
+                      />
+                    </div>
                     <div className="p-5">
                       <h3 className="text-xl text-[#173f74]">{project.title}</h3>
                     </div>
