@@ -2,6 +2,8 @@ export default function Footer() {
   return (
     <footer
       className="
+        relative
+        z-10
         border-t
         border-gray-300
         bg-[#f7f7f7]

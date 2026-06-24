@@ -85,12 +85,24 @@ const OTHER_PROJECTS = [
 
 export default function NationalDefenceProject() {
   return (
-    <main className="relative w-full bg-white overflow-x-clip">
+    <div className="relative w-full bg-transparent overflow-x-clip">
+      {/* Fixed Background Image */}
+      <div className="fixed inset-0 w-full h-full z-[-10] pointer-events-none">
+        <Image
+          src="/images/Casestudies/DefenceCargo/DefenceCargoHeroImage.webp"
+          alt="National Defence Project Background"
+          fill
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-black/45" />
+      </div>
+
       {/* Hero - Full viewport with fixed background */}
       <Hero />
 
       {/* Project Overview - Seamless transition over hero */}
-      <section className="relative z-30 bg-white rounded-t-[50px] py-16 lg:py-24" style={{ marginTop: '-50px' }}>
+      <section className="relative z-10 bg-white rounded-t-[50px] py-16 lg:py-24 shadow-[0_-20px_50px_rgba(0,0,0,0.08)]" style={{ marginTop: '-50px' }}>
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <h2 className="text-3xl lg:text-5xl font-light text-[#173f74] text-center mb-8 lg:mb-12">
             Project Overview
@@ -99,16 +111,15 @@ export default function NationalDefenceProject() {
             Mega Move India successfully executed a strategic National Defence logistics project involving the
             transportation of critical defence equipment from the manufacturing facility to Nyoma, Ladakh, near the
             India–China border. Selected from four approved vendors, Mega Move India was awarded the government contract
-            based on its proven expertise in heavy-haul and over-dimensional cargo (ODC) transportation. The project
-            required meticulous planning, route surveys, permit management, escort coordination, and specialized
-            transportation solutions. Covering approximately 3,700 kilometers, the mission was completed within an
-            exceptional timeline of 21 days.
+            based on its proven expertise in heavy-haul and ODC transportation. The project required meticulous planning,
+            route surveys, permit management, escort coordination, and specialized transportation solutions. Covering
+            approximately 3,700 kilometers, the mission was completed within an exceptional timeline of 21 days.
           </p>
         </div>
       </section>
 
       {/* Project Details Grid */}
-      <section className="relative z-30 bg-[#f7f7f7] py-12 lg:py-20">
+      <section className="relative z-10 bg-[#f7f7f7] py-12 lg:py-20 shadow-md">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <h2 className="text-3xl lg:text-5xl font-light text-[#173f74] text-center mb-8 lg:mb-12">
             Project Details
@@ -128,7 +139,7 @@ export default function NationalDefenceProject() {
       <Gallery />
 
       {/* Project Outcome */}
-      <section className="relative z-30 bg-white py-12 lg:py-20">
+      <section className="relative z-10 bg-white py-12 lg:py-20 shadow-[0_-20px_50px_rgba(0,0,0,0.08)]">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <h2 className="text-3xl lg:text-5xl font-light text-[#173f74] text-center mb-8 lg:mb-12">
             Project Outcome
@@ -193,6 +204,6 @@ export default function NationalDefenceProject() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

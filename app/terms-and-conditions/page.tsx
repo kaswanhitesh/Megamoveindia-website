@@ -22,7 +22,7 @@ export default function TermsAndConditions() {
         </p>
 
         <a
-          href="/documents/MegaMoveIndia-Terms-and-Conditions.pdf"
+          href="/documents/MegaMoveIndia%20Terms%20and%20Conditions.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="
