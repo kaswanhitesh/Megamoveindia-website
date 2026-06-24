@@ -3,6 +3,7 @@ import "./globals.css";
 
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import ScrollReset from "@/app/components/ScrollReset";
 
 export const metadata: Metadata = {
   title: "Mega Move India Private Limited",
@@ -30,6 +31,9 @@ export default function RootLayout({
           overflow-x-hidden
         "
       >
+        {/* Global Scroll Reset */}
+        <ScrollReset />
+
         {/* Global Header */}
         <Header />
 

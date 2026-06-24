@@ -116,19 +116,41 @@ This file tracks the current project status, architecture, page list, dependenci
 ## 8. Next Actions & Pending Tasks
 - [ ] Monitor site feedback on desktop/mobile scroll interactions.
 - [ ] Review performance metrics for dynamic image loads in the horizontal gallery.
-- [ ] Build similar high-fidelity cinematic horizontal scroll galleries for other project case studies if requested.
 
 ---
 
 ## Latest Update
 
 - **Date:** June 24, 2026
-- **Files Modified:** [Gallery.tsx](file:///Users/hiteshkaswan/mega-move-india/app/case-studies/national-defence-project/Gallery.tsx)
+- **Files Modified:**
+  - `app/components/OtherProjectsCarousel.tsx` (New component)
+  - `app/case-studies/national-defence-project/page.tsx`
+  - `app/case-studies/Project-2/page.tsx` through `Project-8/page.tsx`
+  - `AGY_CONTEXT.md`
 - **Changes Made:**
-  - Converted the National Defence Project horizontal gallery into a premium 3D Coverflow layout.
-  - Implemented mathematical tracking of card centers relative to viewport width to dynamically calculate perspective rotation, scale, depth, translateX, and z-index offsets on every scroll update.
-  - Removed all title headers, text descriptions, captions, slide counters, and bottom progress bar indicators for both desktop (GSAP pinning sequence) and mobile (overflow scroll listener swipe) formats.
-  - Positioned and scaled the center image to be dominant and large, while adjacent left/right images scale down and angle inward into the background.
-  - Integrated sharing of a single parent perspective context (`1200px` desktop / `800px` mobile) and `preserve-3d` transforms on layout tracks to ensure correct vanishing point rendering.
+  - Designed and created the premium responsive `OtherProjectsCarousel.tsx` component to replace the static carousels across all Case Study pages.
+  - Recreated and refined the "Our Other Projects" visual treatment from the reference image:
+    - Custom uppercase badges (e.g. `DEFENCE`, `IMPORT`, `PLANT TRANSFER`, `ODC`, `EXPORT`, `HEAVY LIFT`) absolute-positioned on card images.
+    - Title hierarchy, metadata layout, and typography proportions matching the reference design.
+    - Standardized card text layout by wrapping project titles inside a fixed-height block (`h-[52px]`/`lg:h-[56px]`), vertically centering the text (`flex items-center`), and setting a consistent 2-line clamp (`line-clamp-2` and `leading-snug`). This keeps all cards uniform in height regardless of title length.
+    - Integrated bottom metadata row using high-fidelity inline SVGs for Weight (anvil scale), Location (map pin), and Duration (calendar) metrics, perfectly aligned on a single baseline across all cards.
+    - Enabled intelligent route/location truncation (`truncate` with a maximum width boundary of `max-w-[42%]`) to prevent layout shifts or item overlap, while providing native hover tooltips (`title={project.location}`) for full path accessibility.
+    - Circle navigation arrows (`<` and `>`) overlaying the container edges with soft shadows.
+    - Responsive layout displaying 3 wider cards on desktop (`lg`/`xl`), 2 on tablet (`md`), and 1 on mobile screens for enhanced layout presence.
+    - Pagination dots centered at the bottom, dynamically updating and cycling matching the active index.
+    - Spring-like Apple Cards hover lift/shadow scaling interactions (`hover:scale-[1.05] hover:-translate-y-2.5 hover:shadow-[0_30px_60px_rgba(23,63,116,0.16)]`) with inner image scale zoom transitions (`group-hover:scale-105`).
+    - Integrated continuous infinite auto-slide marquee functionality (running via a smooth `requestAnimationFrame` loop using a duplicated card set). Speed increased by 15% to 40.25 pixels per second for faster, highly responsive transitions.
+    - Solved timing regressions where autoplay failed to initialize consistently on page loads: introduced a React `mounted` state dependency inside the scroll loop animation effect to guarantee initialization ONLY after the container ref has successfully bound to the client DOM.
+  - Implemented a clean monochrome typography system across all Case Study templates, Gallery files, and the dynamic carousel:
+    - Removed all blue typography (replacing `#173f74` colors with high-contrast `zinc-900`/`zinc-950` monochrome scales for titles, headings, values, controls, and active states).
+    - Converted category badges, pagination elements, and SVG vector borders to neutral monochrome colors (`bg-zinc-950` / `border-zinc-100`).
+    - Synced navigation controls in the Gallery slider and lightbox overlays to match the monochrome scheme.
+  - Standardized and tightened the vertical rhythm and layout spacing across all Case Study pages to build a dense, intentional, high-end enterprise aesthetic:
+    - Reduced Hero overlapping offset to `-40px` and rounded-top corner container sizes to `rounded-t-[40px]`.
+    - Tightened section paddings (`py-16 lg:py-24` became `py-12 lg:py-16` on Overview; `py-12 lg:py-20` became `py-10 lg:py-14` on Details, Outcomes, and post-gallery segments).
+    - Reduced margin gaps below section headings (`mb-8 lg:mb-12` became `mb-6 lg:mb-8`).
+    - Decreased spaces between post-gallery text sections (`mb-20` became `mb-10 lg:mb-12` on Challenges and Outcomes; `mt-24` became `mt-14 lg:mt-16` on the Other Projects section).
+  - Integrated the component inside all 8 Case Study templates (`national-defence-project` and `Project-2` to `Project-8`), filtering out the active project from each page's carousel to present the other 7 projects.
+  - Successfully verified Next.js production build runs and compiles with zero compilation or TypeScript errors.
 - **Known Issues:** None.
-- **Next Actions:** Test user scroll feel and performance of the 3D coverflow transition in desktop and mobile viewport sizes.
+- **Next Actions:** Monitor the scroll-driven interactions in desktop/mobile web views.
