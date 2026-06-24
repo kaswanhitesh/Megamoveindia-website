@@ -6,7 +6,7 @@ This file tracks the current project status, architecture, page list, dependenci
 
 ## 1. Project Status & Details
 - **Project Name:** Mega Move India (Project Logistics & Freight Forwarding portal)
-- **Current State:** Production-build ready (Build verified and compiles successfully).
+- **Current State:** Production-build verified and deployed (Successfully merged remote conflicts and pushed to GitHub main branch).
 - **Primary Framework:** Next.js 16.2.9 (App Router)
 - **Styling Solution:** Tailwind CSS v4 (configured via `@tailwindcss/postcss`)
 - **Animations Framework:** GSAP (v3.15.0) + ScrollTrigger, Swiper (v12.2.0), Motion (v12.40.0), Three.js for 3D elements
@@ -152,5 +152,6 @@ This file tracks the current project status, architecture, page list, dependenci
     - Decreased spaces between post-gallery text sections (`mb-20` became `mb-10 lg:mb-12` on Challenges and Outcomes; `mt-24` became `mt-14 lg:mt-16` on the Other Projects section).
   - Integrated the component inside all 8 Case Study templates (`national-defence-project` and `Project-2` to `Project-8`), filtering out the active project from each page's carousel to present the other 7 projects.
   - Successfully verified Next.js production build runs and compiles with zero compilation or TypeScript errors.
+  - Successfully resolved merge conflicts in `national-defence-project/Gallery.tsx` in favor of local horizontal slider updates, committed the changes, and pushed to the remote GitHub repository on the main branch.
 - **Known Issues:** None.
-- **Next Actions:** Monitor the scroll-driven interactions in desktop/mobile web views.
+- **Next Actions:** Monitor deployment analytics and gather browser feedback on desktop/mobile scroll interactions.
