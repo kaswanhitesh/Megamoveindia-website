@@ -72,7 +72,7 @@ export default async function Page() {
       294,
       2031,
       6000,       // 1,738 frames ÷ 6000vh ≈ 0.29 frames/vh — smooth, no skipping
-      120,        // initialPreload: load first 120 frames (50% of auto-scroll target) before showing
+      12,         // initialPreload: load first 12 frames before showing (progressive load in bg)
       80,         // preloadAhead: prefetch 80 frames ahead of scroll position
       40,         // preloadBehind: keep 40 frames behind for smooth backward scroll
       300,        // cacheSize: max 300 frames in memory
