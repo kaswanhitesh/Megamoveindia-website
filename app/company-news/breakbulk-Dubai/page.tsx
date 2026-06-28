@@ -12,7 +12,7 @@ export default function BreakbulkDubaiPage() {
       {/* HERO SECTION */}
       <section className="relative h-[280px] lg:h-[450px] overflow-hidden">
         <img
-          src="/images/Companynews/Breakbulkdubai2025/IMG_0980.png"
+          src="/images/Companynews/Breakbulkdubai2025/IMG_0980.webp"
           alt="Breakbulk Middle East Dubai"
           className="w-full h-full object-cover"
         />
@@ -59,8 +59,8 @@ export default function BreakbulkDubaiPage() {
           
           <div className="my-8 border-l-4 border-[#173f74] bg-white p-6 rounded-r shadow-sm">
             <p className="italic font-medium text-gray-700">
-              "Building robust international alliances at Breakbulk Dubai allows us to engineer and execute door-to-door
-              logistics solutions for even the most challenging industrial cargo imports and exports."
+              &ldquo;Building robust international alliances at Breakbulk Dubai allows us to engineer and execute door-to-door
+              logistics solutions for even the most challenging industrial cargo imports and exports.&rdquo;
             </p>
             <p className="text-xs text-gray-500 mt-2 font-semibold">— Projects Team, Mega Move India</p>
           </div>

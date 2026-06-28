@@ -13,7 +13,7 @@ const recentProjects = [
   slug: "national-defence-project",
   category: "DEFENCE CARGO PROJECT",
   title: "BMP-II Vehicle Transportation",
-  image: "/images/NationalDefenceProjectCardImage.JPG",
+  image: "/images/NationalDefenceProjectCardImage.webp",
   description: "Critical defence equipment transportation to Nyoma, Ladakh covering 3,700 km in 21 days.",
 },
   {

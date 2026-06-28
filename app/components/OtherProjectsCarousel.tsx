@@ -27,7 +27,7 @@ const ALL_PROJECTS: Project[] = [
   {
     slug: 'Project-2',
     title: '225 MT Used Machinery Import',
-    image: '/images/225MTUsedMachineryImportCardImage.jpeg',
+    image: '/images/225MTUsedMachineryImportCardImage.webp',
     badge: 'IMPORT',
     weight: '225 MT',
     location: 'Rotterdam → Pune',
@@ -36,7 +36,7 @@ const ALL_PROJECTS: Project[] = [
   {
     slug: 'Project-3',
     title: 'Manufacturing Plant Transfer',
-    image: '/images/FactoryRelocationGermanyToIndiaCardImage.jpeg',
+    image: '/images/FactoryRelocationGermanyToIndiaCardImage.webp',
     badge: 'PLANT TRANSFER',
     weight: '350 MT',
     location: 'Mumbai → Gujarat',
@@ -96,7 +96,6 @@ interface OtherProjectsCarouselProps {
 export default function OtherProjectsCarousel({ excludeSlug }: OtherProjectsCarouselProps) {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [activeDotIndex, setActiveDotIndex] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(3);
   const [isPaused, setIsPaused] = useState(false);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -106,26 +105,10 @@ export default function OtherProjectsCarousel({ excludeSlug }: OtherProjectsCaro
   // Duplicate array to achieve seamless infinite marquee loop
   const displayProjects = [...projects, ...projects];
 
-  const updateVisibleCount = () => {
-    const w = window.innerWidth;
-    if (w >= 1024) setVisibleCount(3); // 3 wider cards on lg and xl
-    else if (w >= 768) setVisibleCount(2); // 2 cards on md
-    else setVisibleCount(1); // 1 card on mobile
-  };
-
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    updateVisibleCount();
-    setMounted(true);
-    window.addEventListener('resize', updateVisibleCount);
-    return () => window.removeEventListener('resize', updateVisibleCount);
-  }, []);
-
   // Continuous auto-slide marquee effect
   useEffect(() => {
     const container = sliderRef.current;
-    if (!container || isPaused || !mounted) return;
+    if (!container || isPaused) return;
 
     let animationFrameId: number;
     let lastTime = performance.now();
@@ -154,7 +137,7 @@ export default function OtherProjectsCarousel({ excludeSlug }: OtherProjectsCaro
     return () => {
       cancelAnimationFrame(animationFrameId);
     };
-  }, [isPaused, projects.length, mounted]);
+  }, [isPaused, projects.length]);
 
   const handleScroll = () => {
     const container = sliderRef.current;

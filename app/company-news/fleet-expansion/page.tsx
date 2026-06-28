@@ -12,7 +12,7 @@ export default function FleetExpansionPage() {
       {/* HERO SECTION */}
       <section className="relative h-[280px] lg:h-[450px] overflow-hidden">
         <img
-          src="/images/Companynews/IMG_0983.jpeg"
+          src="/images/Companynews/IMG_0983.webp"
           alt="Fleet Expansion"
           className="w-full h-full object-cover"
         />
@@ -59,8 +59,8 @@ export default function FleetExpansionPage() {
           
           <div className="my-8 border-l-4 border-[#173f74] bg-white p-6 rounded-r shadow-sm">
             <p className="italic font-medium text-gray-700">
-              "By continuously investing in our equipment fleet and training our personnel in state-of-the-art lashing
-              and stability systems, we can guarantee higher reliability and absolute safety for oversized cargo shipments."
+              &ldquo;By continuously investing in our equipment fleet and training our personnel in state-of-the-art lashing
+              and stability systems, we can guarantee higher reliability and absolute safety for oversized cargo shipments.&rdquo;
             </p>
             <p className="text-xs text-gray-500 mt-2 font-semibold">— Fleet Manager, Mega Move India</p>
           </div>

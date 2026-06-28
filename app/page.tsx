@@ -179,23 +179,23 @@ export default function Home() {
 
       {[
         {
-          icon: "/images/icons/icon_industrialplants.jpeg",
+          icon: "/images/icons/icon_industrialplants.webp",
           title: "Industrial Plants and Projects",
         },
         {
-          icon: "/images/icons/icon_infrastructure.jpeg",
+          icon: "/images/icons/icon_infrastructure.webp",
           title: "Infrastructure",
         },
         {
-          icon: "/images/icons/icon_metalandmining.jpeg",
+          icon: "/images/icons/icon_metalandmining.webp",
           title: "Metal & Mining",
         },
         {
-          icon: "/images/icons/icon_oilandgas.png",
+          icon: "/images/icons/icon_oilandgas.webp",
           title: "Oil and Gas",
         },
         {
-          icon: "/images/icons/icon_power and energy.jpeg",
+          icon: "/images/icons/icon_power and energy.webp",
           title: "Power and Energy",
         },
       ].map((item, index) => (

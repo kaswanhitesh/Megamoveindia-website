@@ -16,7 +16,7 @@ export default function IICSPage() {
 
       <section className="relative h-[280px] lg:h-[500px]">
         <Image
-          src="/images/Companynews/IICS/IICS_GalleryHeroimage.png"
+          src="/images/Companynews/IICS/IICS_GalleryHeroimage.webp"
           alt="India International Cargo Show"
           fill
           priority

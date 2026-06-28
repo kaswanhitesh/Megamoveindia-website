@@ -38,7 +38,7 @@ export default function Gallery() {
   const fixedContainerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const mobileContainerRef = useRef<HTMLDivElement>(null);
-  const scrollTriggerRef = useRef<any>(null);
+  const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
   const lenisRef = useRef<Lenis | null>(null);
 
   // States and refs for positioning tracking

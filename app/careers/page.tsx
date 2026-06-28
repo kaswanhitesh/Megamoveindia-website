@@ -128,7 +128,7 @@ export default function CareersPage() {
         {/* GENERAL APPLICATION CTA */}
         <div className="mt-12 bg-white border border-gray-200 p-8 rounded-lg text-center shadow-sm">
           <h3 className="text-xl font-bold text-gray-800 mb-2">
-            Don't see a matching role?
+            Don&apos;t see a matching role?
           </h3>
           <p className="text-sm lg:text-base text-gray-600 mb-6">
             We are always looking for passionate talent. Send your resume and cover letter to our recruitment team.

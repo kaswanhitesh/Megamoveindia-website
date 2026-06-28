@@ -10,21 +10,21 @@ export default function CaseStudies() {
   slug: "national-defence-project",
   category: "DEFENCE CARGO PROJECT",
   title: "BMP-II Vehicle Transportation",
-  image: "/images/NationalDefenceProjectCardImage.JPG",
+  image: "/images/NationalDefenceProjectCardImage.webp",
 },
 
 {
   slug: "Project-2",
   category: "PROJECT CARGO IMPORT",
   title: "Industrial Machinery",
-  image: "/images/225MTUsedMachineryImportCardImage.jpeg",
+  image: "/images/225MTUsedMachineryImportCardImage.webp",
 },
 
 {
   slug: "Project-3",
   category: "FACTORY RELOCATION",
   title: "Manufacturing Plant Transfer",
-  image: "/images/FactoryRelocationGermanyToIndiaCardImage.jpeg",
+  image: "/images/FactoryRelocationGermanyToIndiaCardImage.webp",
 },
 
 {
@@ -66,31 +66,31 @@ export default function CaseStudies() {
   const networks = [
   {
     name: "AITWA",
-    logo: "/images/Networks/icons/AITWA.png",
+    logo: "/images/Networks/icons/AITWA.webp",
   },
   {
     name: "MMA",
-    logo: "/images/Networks/icons/MMA.png",
+    logo: "/images/Networks/icons/MMA.webp",
   },
   {
     name: "HTOA",
-    logo: "/images/Networks/icons/HTOA.png",
+    logo: "/images/Networks/icons/HTOA.webp",
   },
   {
     name: "JC Trans",
-    logo: "/images/Networks/icons/JCElite.png",
+    logo: "/images/Networks/icons/JCElite.webp",
   },
   {
     name: "JC Projects",
-    logo: "/images/Networks/icons/JCProjects.png",
+    logo: "/images/Networks/icons/JCProjects.webp",
   },
   {
     name: "FFFAI",
-    logo: "/images/Networks/icons/FFFAI.png",
+    logo: "/images/Networks/icons/FFFAI.webp",
   },
   {
   name: "FIATA",
-  logo: "/images/Networks/icons/FIATA.png",
+  logo: "/images/Networks/icons/FIATA.webp",
   size: "small",
 },
 ];

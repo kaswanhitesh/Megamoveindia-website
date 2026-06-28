@@ -1,7 +1,7 @@
 export default function CompanyNews() {
   const news = [
   {
-    image: "/images/Companynews/IICS/IICS_Newscardimage.png",
+    image: "/images/Companynews/IICS/IICS_Newscardimage.webp",
     title: "Mega Move India at IICS 2025 Exhibition",
     date: "Dec 3, 2025",
     excerpt:
@@ -9,7 +9,7 @@ export default function CompanyNews() {
     link: "/company-news/IICS",
   },
   {
-    image: "/images/Companynews/IMG_0982.jpeg",
+    image: "/images/Companynews/IMG_0982.webp",
     title: "Mega Move India Featured on MMI Network",
     date: "Jan 31, 2026",
     excerpt:
@@ -17,7 +17,7 @@ export default function CompanyNews() {
     link: "https://megamovealliance.com/mega-move-india-executes-break-bulk-shipment-from-bangalore-to-brazil/",
   },
   {
-    image: "/images/Companynews/Breakbulkdubai2025/IMG_0980.png",
+    image: "/images/Companynews/Breakbulkdubai2025/IMG_0980.webp",
     title: "Mega Move India at BreakBulk Dubai 2026",
     date: "Feb 4, 2026",
     excerpt:
@@ -25,7 +25,7 @@ export default function CompanyNews() {
     link: "/company-news/breakbulk-Dubai",
   },
   {
-    image: "/images/Companynews/IMG_0983.jpeg",
+    image: "/images/Companynews/IMG_0983.webp",
     title: "Mega Move India Expands Equipment Fleet",
     date: "Nov 3, 2025",
     excerpt:
@@ -40,7 +40,7 @@ export default function CompanyNews() {
 
       <section className="relative h-[280px] lg:h-[500px]">
         <img
-          src="/images/Companynews/IMG_0981.jpeg"
+          src="/images/Companynews/IMG_0981.webp"
           alt="Company News"
           className="w-full h-full object-cover"
         />
