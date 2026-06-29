@@ -101,6 +101,7 @@ export default function Sitemap() {
                   <li key={lIdx}>
                     <Link
                       href={link.href}
+                      prefetch={false}
                       className="text-gray-600 hover:text-black hover:underline text-[15px] leading-relaxed transition-colors duration-200 block"
                     >
                       {link.label}

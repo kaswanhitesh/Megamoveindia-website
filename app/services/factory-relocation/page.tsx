@@ -35,30 +35,31 @@ export default function FactoryRelocation() {
   return (
     <main className="bg-[#f7f7f7]">
       {/* HERO */}
-      <section className="relative h-[500px] overflow-hidden">
+      <section className="relative h-[320px] md:h-[400px] lg:h-[500px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=1800&q=80"
           alt="Factory Relocation Services"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center px-4">
           <div className="text-center text-white">
-            <h1 className="text-6xl font-light mb-4">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-light mb-3 lg:mb-4">
               Factory Relocation Services
             </h1>
-            <p className="text-lg tracking-[3px] uppercase">
+            <p className="text-xs md:text-sm lg:text-lg tracking-[2px] lg:tracking-[3px] uppercase">
               Inspection • Dismantling • Loading • Stuffing • Relocation
             </p>
           </div>
         </div>
       </section>
+
       {/* INTRO */}
-      <section className="max-w-7xl mx-auto px-16 py-20">
-        <h2 className="text-center text-[42px] font-light text-[#173f74] mb-8">
+      <section className="max-w-7xl mx-auto px-4 lg:px-16 py-12 lg:py-20">
+        <h2 className="text-center text-[26px] md:text-[34px] lg:text-[42px] font-light text-[#173f74] mb-6 lg:mb-8">
           Complete Industrial Relocation Solutions
         </h2>
-        <p className="text-center text-lg text-gray-600 leading-8 max-w-5xl mx-auto">
+        <p className="text-center text-sm md:text-base lg:text-lg text-gray-600 leading-7 lg:leading-8 max-w-5xl mx-auto">
           Mega Move India provides end-to-end factory relocation and
           industrial plant shifting services for manufacturers, EPC
           contractors and industrial organizations. Our experienced
@@ -68,37 +69,39 @@ export default function FactoryRelocation() {
           installation support.
         </p>
       </section>
+
       {/* SERVICES */}
-      <section className="max-w-7xl mx-auto px-16 pb-20">
-        <div className="grid grid-cols-3 gap-8">
+      <section className="max-w-7xl mx-auto px-4 lg:px-16 pb-12 lg:pb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-8">
           {services.map((item, index) => (
             <div
               key={index}
               className="
                 bg-white
-                p-8
+                p-5 lg:p-8
                 shadow-sm
                 hover:shadow-lg
                 transition-all
                 duration-300
               "
             >
-              <h3 className="text-2xl font-medium text-[#173f74] mb-4">
+              <h3 className="text-lg md:text-xl lg:text-2xl font-medium text-[#173f74] mb-3 lg:mb-4">
                 {item.title}
               </h3>
-              <p className="text-gray-600 leading-7">
+              <p className="text-sm md:text-base text-gray-600 leading-6 lg:leading-7">
                 {item.text}
               </p>
             </div>
           ))}
         </div>
       </section>
+
       {/* SEO CONTENT */}
-      <section className="max-w-6xl mx-auto px-16 pb-20">
-        <h2 className="text-center text-[42px] font-light text-[#173f74] mb-10">
+      <section className="max-w-6xl mx-auto px-4 lg:px-16 pb-12 lg:pb-20">
+        <h2 className="text-center text-[26px] md:text-[34px] lg:text-[42px] font-light text-[#173f74] mb-8 lg:mb-10">
           Industrial Machinery & Plant Relocation Expertise
         </h2>
-        <div className="space-y-8 text-gray-600 leading-9 text-[16px]">
+        <div className="space-y-6 lg:space-y-8 text-gray-600 leading-7 lg:leading-9 text-sm md:text-base">
           <p>
             Factory relocation projects require careful planning,
             engineering expertise and precise execution. Mega Move India
@@ -138,12 +141,13 @@ export default function FactoryRelocation() {
           </p>
         </div>
       </section>
+
       {/* PROJECT CAPABILITIES */}
-      <section className="max-w-7xl mx-auto px-16 pb-20">
-        <h2 className="text-center text-[42px] font-light text-[#173f74] mb-10">
+      <section className="max-w-7xl mx-auto px-4 lg:px-16 pb-12 lg:pb-20">
+        <h2 className="text-center text-[26px] md:text-[34px] lg:text-[42px] font-light text-[#173f74] mb-8 lg:mb-10">
           Relocation Capabilities
         </h2>
-        <div className="grid grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6">
           {[
             "Inspection Engineering",
             "Factory Relocation",
@@ -158,26 +162,27 @@ export default function FactoryRelocation() {
               key={item}
               className="
                 bg-white
-                py-8
+                py-5 lg:py-8
                 text-center
                 border
                 border-gray-100
                 shadow-sm
               "
             >
-              <span className="text-gray-700 text-lg">
+              <span className="text-sm md:text-base lg:text-lg text-gray-700">
                 {item}
               </span>
             </div>
           ))}
         </div>
       </section>
+
       {/* INDUSTRIES */}
-      <section className="max-w-7xl mx-auto px-16 pb-20">
-        <h2 className="text-center text-[42px] font-light text-[#173f74] mb-10">
+      <section className="max-w-7xl mx-auto px-4 lg:px-16 pb-12 lg:pb-20">
+        <h2 className="text-center text-[26px] md:text-[34px] lg:text-[42px] font-light text-[#173f74] mb-8 lg:mb-10">
           Industries We Support
         </h2>
-        <div className="grid grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6">
           {[
             "Manufacturing",
             "Steel Plants",
@@ -192,32 +197,33 @@ export default function FactoryRelocation() {
               key={industry}
               className="
                 bg-white
-                py-8
+                py-5 lg:py-8
                 text-center
                 border
                 border-gray-100
                 shadow-sm
               "
             >
-              <span className="text-gray-700 text-lg">
+              <span className="text-sm md:text-base lg:text-lg text-gray-700">
                 {industry}
               </span>
             </div>
           ))}
         </div>
       </section>
+
       {/* CTA */}
-      <section className="max-w-7xl mx-auto px-16 pb-24">
-        <div className="bg-white border border-gray-200 py-12 px-10 text-center">
-          <h2 className="text-[36px] font-light text-[#173f74] mb-6">
+      <section className="max-w-7xl mx-auto px-4 lg:px-16 pb-16 lg:pb-24">
+        <div className="bg-white border border-gray-200 py-8 lg:py-12 px-6 lg:px-10 text-center">
+          <h2 className="text-[24px] md:text-[30px] lg:text-[36px] font-light text-[#173f74] mb-4 lg:mb-6">
             Request a Factory Relocation Consultation
           </h2>
-          <p className="text-gray-600 text-lg mb-6">
+          <p className="text-sm md:text-base lg:text-lg text-gray-600 mb-4 lg:mb-6">
             Send your enquiries to
           </p>
           <a
             href="mailto:projects@megamoveindia.com"
-            className="text-2xl font-medium text-[#173f74] hover:underline"
+            className="text-lg md:text-xl lg:text-2xl font-medium text-[#173f74] hover:underline"
           >
             projects@megamoveindia.com
           </a>

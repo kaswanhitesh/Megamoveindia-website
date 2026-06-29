@@ -22,9 +22,10 @@ interface LoopingVideoProps {
   src: string;
   className?: string;
   style?: React.CSSProperties;
+  status?: "active" | "preload" | "idle";
 }
 
-const LoopingVideo = ({ src, className, style }: LoopingVideoProps) => {
+const LoopingVideo = ({ src, className, style, status = "idle" }: LoopingVideoProps) => {
   const [shouldLoad, setShouldLoad] = useState(false);
   const [videoSrc, setVideoSrc] = useState("");
   const containerRef = useRef<HTMLDivElement>(null);
@@ -32,26 +33,7 @@ const LoopingVideo = ({ src, className, style }: LoopingVideoProps) => {
   const videoRefB = useRef<HTMLVideoElement>(null);
   const activeVideoRef = useRef<'A' | 'B'>('A');
 
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const loadObserver = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShouldLoad(true);
-          loadObserver.disconnect();
-        }
-      },
-      { rootMargin: "600px 0px" } // Preload when within 600px of viewport
-    );
-    loadObserver.observe(container);
-
-    return () => {
-      loadObserver.disconnect();
-    };
-  }, []);
-
+  // 1. Resolve mobile vs desktop source path
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
     if (isMobile) {
@@ -63,6 +45,14 @@ const LoopingVideo = ({ src, className, style }: LoopingVideoProps) => {
     }
   }, [src]);
 
+  // 2. Drive loading state from status prop: once loaded, keep mounted
+  useEffect(() => {
+    if (status === "active" || status === "preload") {
+      setShouldLoad(true);
+    }
+  }, [status]);
+
+  // 3. Playback / Continuous Seamless Crossfade loop
   useEffect(() => {
     if (!shouldLoad || !videoSrc) return;
 
@@ -70,94 +60,101 @@ const LoopingVideo = ({ src, className, style }: LoopingVideoProps) => {
     const videoB = videoRefB.current;
     if (!videoA || !videoB) return;
 
-    // Initial styles and programmatic muted bypass
+    // Set sources once
+    if (!videoA.src || videoA.getAttribute("src") !== videoSrc) {
+      videoA.src = videoSrc;
+    }
+    if (!videoB.src || videoB.getAttribute("src") !== videoSrc) {
+      videoB.src = videoSrc;
+    }
+
     videoA.muted = true;
     videoB.muted = true;
-    videoA.style.opacity = "1";
-    videoB.style.opacity = "0";
 
-    let isVisible = true;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        isVisible = entry.isIntersecting;
-        if (entry.isIntersecting) {
-          if (activeVideoRef.current === 'A') {
-            videoA.play().catch(() => {});
-          } else {
-            videoB.play().catch(() => {});
-          }
-        } else {
-          videoA.pause();
-          videoB.pause();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(videoA);
+    // Boot up the active video
+    if (activeVideoRef.current === 'A') {
+      videoA.style.opacity = "1";
+      videoB.style.opacity = "0";
+      videoA.play().catch(() => {});
+    } else {
+      videoA.style.opacity = "0";
+      videoB.style.opacity = "1";
+      videoB.play().catch(() => {});
+    }
 
     let rafId: number;
-    const fadeDuration = 0.8; // 0.8s matching fade duration
+    const fadeDuration = 0.8;
 
     const tick = () => {
-      if (!isVisible) {
+      const vA = videoRefA.current;
+      const vB = videoRefB.current;
+      if (!vA || !vB) {
         rafId = requestAnimationFrame(tick);
         return;
       }
 
       if (activeVideoRef.current === 'A') {
-        const duration = videoA.duration;
-        const currentTime = videoA.currentTime;
+        // Guarantee active video is playing
+        if (vA.paused) {
+          vA.play().catch(() => {});
+        }
+
+        const duration = vA.duration;
+        const currentTime = vA.currentTime;
 
         if (duration && currentTime >= duration - fadeDuration) {
-          if (videoB.paused) {
-            videoB.currentTime = 0;
-            videoB.play().catch(() => {});
-            videoB.style.opacity = "1"; // Show B underneath
+          if (vB.paused) {
+            vB.currentTime = 0;
+            vB.play().catch(() => {});
+            vB.style.opacity = "1";
           }
 
           const progress = (duration - currentTime) / fadeDuration;
-          videoA.style.opacity = Math.max(0, Math.min(1, progress)).toString();
+          vA.style.opacity = Math.max(0, Math.min(1, progress)).toString();
 
           if (currentTime >= duration - 0.05) {
-            videoA.pause();
-            videoA.style.opacity = "0";
+            vA.pause();
+            vA.style.opacity = "0";
             activeVideoRef.current = 'B';
           }
         } else {
-          if (videoA.style.opacity !== "1") videoA.style.opacity = "1";
-          if (videoB.style.opacity !== "0") videoB.style.opacity = "0";
-          if (!videoB.paused) {
-            videoB.pause();
-            videoB.currentTime = 0;
+          if (vA.style.opacity !== "1") vA.style.opacity = "1";
+          if (vB.style.opacity !== "0") vB.style.opacity = "0";
+          if (!vB.paused) {
+            vB.pause();
+            vB.currentTime = 0;
           }
         }
       } else {
-        const duration = videoB.duration;
-        const currentTime = videoB.currentTime;
+        // Guarantee active video is playing
+        if (vB.paused) {
+          vB.play().catch(() => {});
+        }
+
+        const duration = vB.duration;
+        const currentTime = vB.currentTime;
 
         if (duration && currentTime >= duration - fadeDuration) {
-          if (videoA.paused) {
-            videoA.currentTime = 0;
-            videoA.play().catch(() => {});
-            videoA.style.opacity = "1"; // Show A underneath
+          if (vA.paused) {
+            vA.currentTime = 0;
+            vA.play().catch(() => {});
+            vA.style.opacity = "1";
           }
 
           const progress = (duration - currentTime) / fadeDuration;
-          videoB.style.opacity = Math.max(0, Math.min(1, progress)).toString();
+          vB.style.opacity = Math.max(0, Math.min(1, progress)).toString();
 
           if (currentTime >= duration - 0.05) {
-            videoB.pause();
-            videoB.style.opacity = "0";
+            vB.pause();
+            vB.style.opacity = "0";
             activeVideoRef.current = 'A';
           }
         } else {
-          if (videoB.style.opacity !== "1") videoB.style.opacity = "1";
-          if (videoA.style.opacity !== "0") videoA.style.opacity = "0";
-          if (!videoA.paused) {
-            videoA.pause();
-            videoA.currentTime = 0;
+          if (vB.style.opacity !== "1") vB.style.opacity = "1";
+          if (vA.style.opacity !== "0") vA.style.opacity = "0";
+          if (!vA.paused) {
+            vA.pause();
+            vA.currentTime = 0;
           }
         }
       }
@@ -168,7 +165,6 @@ const LoopingVideo = ({ src, className, style }: LoopingVideoProps) => {
     rafId = requestAnimationFrame(tick);
 
     return () => {
-      observer.disconnect();
       cancelAnimationFrame(rafId);
     };
   }, [shouldLoad, videoSrc]);
@@ -318,7 +314,7 @@ const INDUSTRY_DATA = [
 ];
 
 // --- Premium Editorial Card Component (Restored to Original Styling) ---
-const InteractiveCard = ({ item, index, cardOpacity, cardY, cardScale, isActive, s2FrameIndex, s2Cache, isMobileView }: any) => {
+const InteractiveCard = ({ item, index, cardOpacity, cardY, cardScale, isActive, s2FrameIndex, s2Cache, isMobileView, videoStatus }: any) => {
   const cardCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -349,6 +345,7 @@ const InteractiveCard = ({ item, index, cardOpacity, cardY, cardScale, isActive,
   return (
     <Link 
       href={item.link || "#"}
+      prefetch={false}
       className="flex-shrink-0 group block"
       style={{
         width: isMobileView ? "min(360px, 90vw)" : "440px",
@@ -406,6 +403,7 @@ const InteractiveCard = ({ item, index, cardOpacity, cardY, cardScale, isActive,
               <LoopingVideo
                 key="infrastructure-video"
                 src="/images/THE_MUMBAI_LINK_Optimized.mp4"
+                status={videoStatus}
                 style={{
                   width: "100%",
                   height: "100%",
@@ -417,6 +415,7 @@ const InteractiveCard = ({ item, index, cardOpacity, cardY, cardScale, isActive,
               <LoopingVideo
                 key="industrial-video"
                 src="/images/industrial_final.mp4"
+                status={videoStatus}
                 style={{
                   width: "100%",
                   height: "100%",
@@ -428,6 +427,7 @@ const InteractiveCard = ({ item, index, cardOpacity, cardY, cardScale, isActive,
               <LoopingVideo
                 key="mining-video"
                 src="/images/Mining_mining_industry.mp4"
+                status={videoStatus}
                 style={{
                   width: "100%",
                   height: "100%",
@@ -439,6 +439,7 @@ const InteractiveCard = ({ item, index, cardOpacity, cardY, cardScale, isActive,
               <LoopingVideo
                 key="oil-video"
                 src="/images/oil1_norm.mp4"
+                status={videoStatus}
                 style={{
                   width: "100%",
                   height: "100%",
@@ -450,6 +451,7 @@ const InteractiveCard = ({ item, index, cardOpacity, cardY, cardScale, isActive,
               <LoopingVideo
                 key="power-video"
                 src="/images/oil2.mp4"
+                status={videoStatus}
                 style={{
                   width: "100%",
                   height: "100%",
@@ -544,6 +546,9 @@ export default function HomeClient({ sections }: HomeClientProps) {
   const [s1Progress, setS1Progress] = useState(0); // 0 to 1
   const [isMobileView, setIsMobileView] = useState(false);
   const [industriesTitleOpacity, setIndustriesTitleOpacity] = useState(0);
+  const [whiteOverlayOpacity, setWhiteOverlayOpacity] = useState(0);
+  const [isCanvasHidden, setIsCanvasHidden] = useState(false);
+  const isCanvasHiddenRef = useRef<boolean>(false);
 
   // Cache and state management
   const cacheRef = useRef<Map<string, HTMLImageElement>>(new Map());
@@ -580,6 +585,10 @@ export default function HomeClient({ sections }: HomeClientProps) {
   const maxCacheSize = s1.cacheSize + (s2 ? s2.cacheSize : 0);
   const totalScrollHeightVh = s1.scrollHeight; // Page height = Section 1 scroll height
   const S2_START_OFFSET = 260; // Industries We Serve slides in at frame 260 (original timing)
+  const S2_EXIT_FRAMES = 150;
+  const s2TotalFrames = s2 ? s2.totalFrames : 718;
+  const S2_END_INDEX = S2_START_OFFSET + s2TotalFrames - 1;
+  const S2_EXIT_START = S2_END_INDEX - S2_EXIT_FRAMES;
 
   const handleRetry = useCallback(() => {
     setError(null);
@@ -598,6 +607,8 @@ export default function HomeClient({ sections }: HomeClientProps) {
     isMobileRef.current = isMobile;
     setIsMobileView(isMobile);
     
+    let preloadWindowTimeout: ReturnType<typeof setTimeout> | null = null;
+    
     // Prevent the browser from restoring the previous scroll position on refresh
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
@@ -606,7 +617,7 @@ export default function HomeClient({ sections }: HomeClientProps) {
 
     // Render method
     const drawImageToCanvas = (img: HTMLImageElement, canvas: HTMLCanvasElement) => {
-      const ctx = canvas.getContext("2d");
+      const ctx = canvas.getContext("2d", { alpha: false });
       if (!ctx) return;
       const cw = canvas.width;
       const ch = canvas.height;
@@ -622,11 +633,11 @@ export default function HomeClient({ sections }: HomeClientProps) {
         sw = ih * canvasRatio;
         sx = (iw - sw) / 2;
       }
-      ctx.clearRect(0, 0, cw, ch);
       ctx.drawImage(img, sx, sy, sw, sh, 0, 0, cw, ch);
     };
 
     const drawFrame = (index: number) => {
+      if (isCanvasHiddenRef.current) return;
       // Draw Section 1 only
       if (canvas1Ref.current) {
         const img1 = cacheRef.current.get(`section1_${index}`);
@@ -683,15 +694,29 @@ export default function HomeClient({ sections }: HomeClientProps) {
       img.decoding = "async";
       
       img.onload = () => {
-        cache.set(key, img);
-        loadingSet.delete(key);
-        cleanCache(currentIndexRef.current);
-        // Immediately repaint if this is the frame the user is currently on
-        if (localIndex === currentIndexRef.current || 
-            (section.id === "section2" && localIndex === currentIndexRef.current - S2_START_OFFSET)) {
-          drawFrame(currentIndexRef.current);
-        }
-        if (onDone) onDone();
+        img.decode()
+          .then(() => {
+            cache.set(key, img);
+            loadingSet.delete(key);
+            cleanCache(currentIndexRef.current);
+            // Immediately repaint if this is the frame the user is currently on
+            if (localIndex === currentIndexRef.current || 
+                (section.id === "section2" && localIndex === currentIndexRef.current - S2_START_OFFSET)) {
+              drawFrame(currentIndexRef.current);
+            }
+            if (onDone) onDone();
+          })
+          .catch(() => {
+            // Fallback: cache and render immediately if background decoding fails or is not supported
+            cache.set(key, img);
+            loadingSet.delete(key);
+            cleanCache(currentIndexRef.current);
+            if (localIndex === currentIndexRef.current || 
+                (section.id === "section2" && localIndex === currentIndexRef.current - S2_START_OFFSET)) {
+              drawFrame(currentIndexRef.current);
+            }
+            if (onDone) onDone();
+          });
       };
       
       img.onerror = () => {
@@ -708,32 +733,54 @@ export default function HomeClient({ sections }: HomeClientProps) {
     };
 
     // Preload a window of frames centered ahead of currentIndex.
-    // Always loads from targetScrollIndex so frames are ready before the renderer reaches them.
+    // Loads in batches of 6 frames during requestIdleCallback to keep CPU free and maintain 60/120 Hz render smoothness.
     const lazyLoadWindow = (targetIndex: number) => {
-      // Clamp target to ensure we don't go out of range
+      if (targetIndex >= S2_END_INDEX) return;
       const clampedTarget = Math.max(0, Math.min(s1.totalFrames - 1, targetIndex));
 
-      // Section 1: load ahead (bias toward direction of scroll)
       const s1Start = Math.max(0, clampedTarget - s1.preloadBehind);
       const s1End = Math.min(s1.totalFrames - 1, clampedTarget + s1.preloadAhead);
-      // Current frame is highest priority
+      
+      // Load current frame immediately at highest priority
       lazyLoadHighResFrame(s1, clampedTarget);
-      // Then spiral outward
-      for (let off = 1; off <= Math.max(s1.preloadAhead, s1.preloadBehind); off++) {
-        if (clampedTarget + off <= s1End) lazyLoadHighResFrame(s1, clampedTarget + off);
-        if (clampedTarget - off >= s1Start) lazyLoadHighResFrame(s1, clampedTarget - off);
-      }
 
-      // Section 2: preload when near
-      if (s2 && targetIndex >= S2_START_OFFSET - s2.preloadBehind) {
-        const localTarget = Math.max(0, Math.min(s2.totalFrames - 1, targetIndex - S2_START_OFFSET));
-        const s2Start = Math.max(0, localTarget - s2.preloadBehind);
-        const s2End = Math.min(s2.totalFrames - 1, localTarget + s2.preloadAhead);
-        lazyLoadHighResFrame(s2, localTarget);
-        for (let off = 1; off <= Math.max(s2.preloadAhead, s2.preloadBehind); off++) {
-          if (localTarget + off <= s2End) lazyLoadHighResFrame(s2, localTarget + off);
-          if (localTarget - off >= s2Start) lazyLoadHighResFrame(s2, localTarget - off);
+      let offset = 1;
+      const maxOffset = Math.max(s1.preloadAhead, s1.preloadBehind);
+      const batchSize = 6;
+
+      const loadNextBatch = () => {
+        // Halt loading if the user has scrolled away from this targetIndex to conserve bandwidth/CPU
+        if (Math.abs(targetScrollIndexRef.current - targetIndex) > 15) return;
+
+        let loadedInBatch = 0;
+        while (offset <= maxOffset && loadedInBatch < batchSize) {
+          const aheadFrame = clampedTarget + offset;
+          const behindFrame = clampedTarget - offset;
+
+          if (aheadFrame <= s1End) {
+            lazyLoadHighResFrame(s1, aheadFrame);
+            loadedInBatch++;
+          }
+          if (behindFrame >= s1Start) {
+            lazyLoadHighResFrame(s1, behindFrame);
+            loadedInBatch++;
+          }
+          offset++;
         }
+
+        if (offset <= maxOffset) {
+          if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+            window.requestIdleCallback(() => loadNextBatch(), { timeout: 100 });
+          } else {
+            setTimeout(loadNextBatch, 16);
+          }
+        }
+      };
+
+      if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+        window.requestIdleCallback(() => loadNextBatch(), { timeout: 100 });
+      } else {
+        setTimeout(loadNextBatch, 16);
       }
     };
 
@@ -854,7 +901,7 @@ export default function HomeClient({ sections }: HomeClientProps) {
         let indTitleOp = 0;
 
         const S2_EXIT_FRAMES = 150;
-        const S2_END_INDEX = s2 ? S2_START_OFFSET + s2.totalFrames - 1 : 1027;
+        const S2_END_INDEX = S2_START_OFFSET + s2TotalFrames - 1;
         const S2_EXIT_START = S2_END_INDEX - S2_EXIT_FRAMES;
         const S2_CARDS_PLAY_START = PORTFOLIO_SLIDE_END + 0.25 * (S2_EXIT_START - PORTFOLIO_SLIDE_END);
 
@@ -881,13 +928,27 @@ export default function HomeClient({ sections }: HomeClientProps) {
           }
         }
 
-        // Exit timing
+        // Exit timing & solid white overlay transition
+        let whiteOp = 0;
+        let canvasHidden = false;
         if (targetIndex >= S2_EXIT_START) {
           const exitP = Math.min(1, (targetIndex - S2_EXIT_START) / S2_EXIT_FRAMES);
           const easedExit = exitP * exitP * (3 - 2 * exitP); // smoothstep 0→1
           s2Opacity = 1 - easedExit; // fade out cards
           indTitleOp = 1 - easedExit; // fade out title in sync
+          whiteOp = easedExit; // fade in white overlay
+          
+          if (targetIndex >= S2_END_INDEX) {
+            canvasHidden = true;
+            // Release memory cache when fully transitioned to white background to preserve RAM
+            if (cacheRef.current.size > 0) {
+              cacheRef.current.clear();
+            }
+          }
         }
+        setWhiteOverlayOpacity(whiteOp);
+        setIsCanvasHidden(canvasHidden);
+        isCanvasHiddenRef.current = canvasHidden;
 
         setSection2TranslateY(0);
         setSection2TranslateX(0); // No horizontal movement
@@ -981,18 +1042,37 @@ export default function HomeClient({ sections }: HomeClientProps) {
         setHeaderOpacity(hOpacity);
     };
 
-    const renderLoop = () => {
-      const target = targetScrollIndexRef.current;
-      const current = currentIndexRef.current;
-      
-      if (target !== current) {
-        currentIndexRef.current = target;
-        currentRenderIndexRef.current = target;
+    let lastRenderTime = 0;
+    const fpsInterval = 1000 / 60; // ~16.67ms
+
+    const renderLoop = (timestamp: number) => {
+      animationFrameIdRef.current = requestAnimationFrame(renderLoop);
+
+      if (!lastRenderTime) {
+        lastRenderTime = timestamp;
+        // Draw the initial frame immediately
+        const target = targetScrollIndexRef.current;
         drawFrame(target);
         updateUI(target);
+        return;
       }
-      
-      animationFrameIdRef.current = requestAnimationFrame(renderLoop);
+
+      const elapsed = timestamp - lastRenderTime;
+
+      // Allow 15.6ms threshold to tolerate minor timer drift at 60Hz
+      if (elapsed >= 15.6) {
+        lastRenderTime = timestamp;
+
+        const target = targetScrollIndexRef.current;
+        const current = currentIndexRef.current;
+        
+        if (target !== current) {
+          currentIndexRef.current = target;
+          currentRenderIndexRef.current = target;
+          drawFrame(target);
+          updateUI(target);
+        }
+      }
     };
 
     const cancelAutoScroll = () => {
@@ -1016,9 +1096,44 @@ export default function HomeClient({ sections }: HomeClientProps) {
       setScrollProgress(sp);
       const newTarget = getTargetFrame(sp, globalTotalFrames);
       if (newTarget !== targetScrollIndexRef.current) {
+        const lastTarget = targetScrollIndexRef.current;
         targetScrollIndexRef.current = newTarget;
-        // Preload ahead of where the user IS GOING, not where the video currently is
-        lazyLoadWindow(newTarget);
+
+        // 1. Load current frame immediately at highest priority (if not past Section 2)
+        const clampedTarget = Math.max(0, Math.min(s1.totalFrames - 1, newTarget));
+        if (newTarget < S2_END_INDEX) {
+          lazyLoadHighResFrame(s1, clampedTarget);
+          if (s2 && newTarget >= S2_START_OFFSET) {
+            const localTarget = Math.max(0, Math.min(s2.totalFrames - 1, newTarget - S2_START_OFFSET));
+            lazyLoadHighResFrame(s2, localTarget);
+          }
+        }
+
+        // 2. Manage preload queue throttling based on velocity
+        if (preloadWindowTimeout) {
+          clearTimeout(preloadWindowTimeout);
+        }
+
+        const deltaFrames = Math.abs(newTarget - lastTarget);
+        if (deltaFrames > 3) {
+          // Rapid scroll: load a wider 15-frame forward lookahead to maintain immediate visual continuity (if not past Section 2)
+          if (newTarget < S2_END_INDEX) {
+            const direction = newTarget > lastTarget ? 1 : -1;
+            for (let i = 1; i <= 15; i++) {
+              const nextFrame = clampedTarget + i * direction;
+              if (nextFrame >= 0 && nextFrame < s1.totalFrames) {
+                lazyLoadHighResFrame(s1, nextFrame);
+              }
+            }
+          }
+          // Debounce the large 80-frame pre-fetch window until scroll velocity slows down
+          preloadWindowTimeout = setTimeout(() => {
+            lazyLoadWindow(newTarget);
+          }, 60);
+        } else {
+          // Slow scroll: load full cache window immediately
+          lazyLoadWindow(newTarget);
+        }
       }
     };
 
@@ -1536,154 +1651,172 @@ export default function HomeClient({ sections }: HomeClientProps) {
               willChange: "transform",
             }}
           >
-            {services.map((service, idx) => (
-              <Link
-                key={idx}
-                href={service.link}
-                style={{
-                  width: isMobileView ? "min(300px, 80vw)" : "380px",
-                  height: isMobileView ? "340px" : "420px",
-                  flexShrink: 0,
-                  background: "rgba(24, 24, 27, 0.60)",
-                  backdropFilter: "blur(12px)",
-                  WebkitBackdropFilter: "blur(12px)",
-                  border: "1px solid rgba(63, 63, 70, 0.8)",
-                  borderRadius: "16px",
-                  padding: isMobileView ? "1rem" : "2rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  position: "relative",
-                  overflow: "hidden",
-                  pointerEvents: "auto",
-                  transition: "transform 0.3s ease",
-                  textDecoration: "none",
-                }}
-                className="group" // to use hover pseudo-classes via tailwind classes in children if needed
-              >
-                <div>
-                  <div
-                    style={{
-                      width: isMobileView ? "calc(100% + 2rem)" : "calc(100% + 4rem)",
-                      marginLeft: isMobileView ? "-1rem" : "-2rem",
-                      marginRight: isMobileView ? "-1rem" : "-2rem",
-                      marginTop: isMobileView ? "-1rem" : "-2rem",
-                      padding: isMobileView ? "10px" : "20px",
-                      backgroundColor: "transparent",
-                      display: "flex",
-                      flexDirection: "column",
-                      flexShrink: 0,
-                      marginBottom: "4px",
-                    }}
-                  >
+            {services.map((service, idx) => {
+              const currentFrame = targetScrollIndexRef.current;
+              const isS3Near = currentFrame >= PORTFOLIO_ENTER_START - 60 && currentFrame <= PORTFOLIO_EXIT_END + 40;
+              let s3ActiveIndex = 0;
+              if (currentFrame >= 175) {
+                s3ActiveIndex = Math.min(3, Math.max(0, Math.round((currentFrame - 175) / 80)));
+              }
+              let videoStatus: "active" | "preload" | "idle" = "idle";
+              if (isS3Near) {
+                if (idx === s3ActiveIndex) {
+                  videoStatus = "active";
+                } else if (idx === s3ActiveIndex + 1 || idx === s3ActiveIndex - 1) {
+                  videoStatus = "preload";
+                }
+              }
+
+              return (
+                <Link
+                  key={idx}
+                  href={service.link}
+                  prefetch={false}
+                  style={{
+                    width: isMobileView ? "min(300px, 80vw)" : "380px",
+                    height: isMobileView ? "340px" : "420px",
+                    flexShrink: 0,
+                    background: "rgba(24, 24, 27, 0.60)",
+                    backdropFilter: "blur(12px)",
+                    WebkitBackdropFilter: "blur(12px)",
+                    border: "1px solid rgba(63, 63, 70, 0.8)",
+                    borderRadius: "16px",
+                    padding: isMobileView ? "1rem" : "2rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    position: "relative",
+                    overflow: "hidden",
+                    pointerEvents: "auto",
+                    transition: "transform 0.3s ease",
+                    textDecoration: "none",
+                  }}
+                  className="group"
+                >
+                  <div>
                     <div
                       style={{
-                        position: "relative",
-                        height: isMobileView ? "150px" : "230px",
-                        width: "100%",
-                        borderRadius: "12px",
-                        overflow: "hidden",
-                        backgroundColor: "#09090b",
-                        border: "1px solid rgba(63, 63, 70, 0.5)",
+                        width: isMobileView ? "calc(100% + 2rem)" : "calc(100% + 4rem)",
+                        marginLeft: isMobileView ? "-1rem" : "-2rem",
+                        marginRight: isMobileView ? "-1rem" : "-2rem",
+                        marginTop: isMobileView ? "-1rem" : "-2rem",
+                        padding: isMobileView ? "10px" : "20px",
+                        backgroundColor: "transparent",
+                        display: "flex",
+                        flexDirection: "column",
+                        flexShrink: 0,
+                        marginBottom: "4px",
                       }}
                     >
-                      {service.title === 'AIR FREIGHT' || service.title === 'OCEAN FREIGHT' || service.title === 'LAND TRANSPORT' || service.title === 'RENTALS & WAREHOUSING' ? (
-                        <LoopingVideo
-                          key={
-                            service.title === 'AIR FREIGHT'
-                              ? 'air-freight-video'
-                              : service.title === 'OCEAN FREIGHT'
-                              ? 'ocean-freight-video'
-                              : service.title === 'LAND TRANSPORT'
-                              ? 'land-transport-video'
-                              : 'rentals-warehousing-video'
-                          }
-                          src={
-                            service.title === 'AIR FREIGHT'
-                              ? '/images/AirFreight.mp4'
-                              : service.title === 'OCEAN FREIGHT'
-                              ? '/images/OceanFreightOptimizedV2.mp4'
-                              : service.title === 'LAND TRANSPORT'
-                              ? '/images/Land_transport.mp4'
-                              : '/images/Rental_Warehouse_Final.mp4'
-                          }
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            objectFit: "cover",
-                            transition: "transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
-                          }}
-                          className="group-hover:scale-105"
-                        />
-                      ) : (
-                        <img
-                          src={service.image}
-                          alt={service.title}
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            objectFit: "cover",
-                            transition: "transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
-                          }}
-                          className="group-hover:scale-105"
-                          onError={(e) => {
-                            // Fallback if image not found
-                            e.currentTarget.style.display = 'none';
-                          }}
-                        />
-                      )}
-                      <div style={{ position: "absolute", inset: 0, backgroundColor: "rgba(9, 9, 11, 0.2)", pointerEvents: "none" }} />
+                      <div
+                        style={{
+                          position: "relative",
+                          height: isMobileView ? "150px" : "230px",
+                          width: "100%",
+                          borderRadius: "12px",
+                          overflow: "hidden",
+                          backgroundColor: "#09090b",
+                          border: "1px solid rgba(63, 63, 70, 0.5)",
+                        }}
+                      >
+                        {service.title === 'AIR FREIGHT' || service.title === 'OCEAN FREIGHT' || service.title === 'LAND TRANSPORT' || service.title === 'RENTALS & WAREHOUSING' ? (
+                          <LoopingVideo
+                            key={
+                              service.title === 'AIR FREIGHT'
+                                ? 'air-freight-video'
+                                : service.title === 'OCEAN FREIGHT'
+                                ? 'ocean-freight-video'
+                                : service.title === 'LAND TRANSPORT'
+                                ? 'land-transport-video'
+                                : 'rentals-warehousing-video'
+                            }
+                            src={
+                              service.title === 'AIR FREIGHT'
+                                ? '/images/AirFreight.mp4'
+                                : service.title === 'OCEAN FREIGHT'
+                                ? '/images/OceanFreightOptimizedV2.mp4'
+                                : service.title === 'LAND TRANSPORT'
+                                ? '/images/Land_transport.mp4'
+                                : '/images/Rental_Warehouse_Final.mp4'
+                            }
+                            status={videoStatus}
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "cover",
+                              transition: "transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
+                            }}
+                            className="group-hover:scale-105"
+                          />
+                        ) : (
+                          <img
+                            src={service.image}
+                            alt={service.title}
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "cover",
+                              transition: "transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
+                            }}
+                            className="group-hover:scale-105"
+                            onError={(e) => {
+                              e.currentTarget.style.display = 'none';
+                            }}
+                          />
+                        )}
+                        <div style={{ position: "absolute", inset: 0, backgroundColor: "rgba(9, 9, 11, 0.2)", pointerEvents: "none" }} />
+                      </div>
                     </div>
+
+                    <h4
+                      style={{
+                        fontSize: isMobileView ? "1.1rem" : "1.25rem",
+                        fontWeight: 500,
+                        color: "#f4f4f5",
+                        letterSpacing: "0.025em",
+                        marginBottom: isMobileView ? "0.5rem" : "0.75rem",
+                        fontFamily: "var(--font-geist-sans), sans-serif",
+                      }}
+                    >
+                      {service.title}
+                    </h4>
+                    <p
+                      style={{
+                        fontSize: isMobileView ? "0.72rem" : "0.75rem",
+                        color: "#a1a1aa",
+                        lineHeight: isMobileView ? 1.5 : 1.625,
+                        fontWeight: 300,
+                        display: "-webkit-box",
+                        WebkitLineClamp: 3,
+                        WebkitBoxOrient: "vertical",
+                        overflow: "hidden",
+                        fontFamily: "var(--font-geist-sans), sans-serif",
+                      }}
+                    >
+                      {service.description}
+                    </p>
                   </div>
 
-                  <h4
+                  <div
                     style={{
-                      fontSize: isMobileView ? "1.1rem" : "1.25rem",
-                      fontWeight: 500,
-                      color: "#f4f4f5",
-                      letterSpacing: "0.025em",
-                      marginBottom: isMobileView ? "0.5rem" : "0.75rem",
-                      fontFamily: "var(--font-geist-sans), sans-serif",
+                      fontSize: "0.75rem",
+                      fontFamily: "var(--font-geist-mono), monospace",
+                      letterSpacing: "0.1em",
+                      color: "#e4e4e7",
+                      textTransform: "uppercase",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                      paddingTop: "1rem",
+                      borderTop: "1px solid rgba(63, 63, 70, 0.4)",
                     }}
+                    className="group-hover:text-white transition-colors"
                   >
-                    {service.title}
-                  </h4>
-                  <p
-                    style={{
-                      fontSize: isMobileView ? "0.72rem" : "0.75rem",
-                      color: "#a1a1aa",
-                      lineHeight: isMobileView ? 1.5 : 1.625,
-                      fontWeight: 300,
-                      display: "-webkit-box",
-                      WebkitLineClamp: 3,
-                      WebkitBoxOrient: "vertical",
-                      overflow: "hidden",
-                      fontFamily: "var(--font-geist-sans), sans-serif",
-                    }}
-                  >
-                    {service.description}
-                  </p>
-                </div>
-
-                <div
-                  style={{
-                    fontSize: "0.75rem",
-                    fontFamily: "var(--font-geist-mono), monospace",
-                    letterSpacing: "0.1em",
-                    color: "#e4e4e7",
-                    textTransform: "uppercase",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                    paddingTop: "1rem",
-                    borderTop: "1px solid rgba(63, 63, 70, 0.4)",
-                  }}
-                  className="group-hover:text-white transition-colors"
-                >
-                  Explore Services <span className="group-hover:translate-x-1 transition-transform">→</span>
-                </div>
-              </Link>
-            ))}
+                    Explore Services <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
 
 
@@ -1699,14 +1832,14 @@ export default function HomeClient({ sections }: HomeClientProps) {
           left: 0,
           width: "100vw",
           height: "100vh",
-          display: "block",
+          display: isCanvasHidden ? "none" : "block",
           zIndex: 1,
           willChange: "transform",
         }}
       />
 
       {/* Section 2 replaced canvas with solid 50% black overlay */}
-      {s2 && (
+      {true && (
         <>
           {/* Solid black overlay — fades in on section entry, fades out on exit */}
           <div
@@ -1719,6 +1852,21 @@ export default function HomeClient({ sections }: HomeClientProps) {
               backgroundColor: "rgba(0,0,0,0.50)",
               zIndex: 7,
               opacity: industriesTitleOpacity,
+              willChange: "opacity",
+              pointerEvents: "none",
+            }}
+          />
+          {/* Solid white transition overlay — fades in on exit to transition to white footer background */}
+          <div
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100vw",
+              height: "100vh",
+              backgroundColor: "#ffffff",
+              zIndex: 8,
+              opacity: whiteOverlayOpacity,
               willChange: "opacity",
               pointerEvents: "none",
             }}
@@ -1833,6 +1981,15 @@ export default function HomeClient({ sections }: HomeClientProps) {
                     : segmentStart + segmentSize - 1;
                   const segmentProgress = Math.max(0, Math.min(1, s2HoldProgress));
                   const s2FrameIndex = Math.round(segmentStart + segmentProgress * (segmentEnd - segmentStart));
+                  const isS2Near = targetScrollIndexRef.current >= S2_START_OFFSET - 80 && targetScrollIndexRef.current <= S2_EXIT_START + 150;
+                  let videoStatus: "active" | "preload" | "idle" = "idle";
+                  if (isS2Near) {
+                    if (index === activeIndex) {
+                      videoStatus = "active";
+                    } else if (index === activeIndex + 1 || index === activeIndex - 1) {
+                      videoStatus = "preload";
+                    }
+                  }
 
                   return (
                     <InteractiveCard
@@ -1846,6 +2003,7 @@ export default function HomeClient({ sections }: HomeClientProps) {
                       s2FrameIndex={s2FrameIndex}
                       s2Cache={cacheRef.current}
                       isMobileView={isMobileView}
+                      videoStatus={videoStatus}
                     />
                   );
                 })}

@@ -86,6 +86,7 @@ export default function Header() {
         <div className="text-lg text-gray-200 pt-20">
           <Link
             href="/"
+            prefetch={false}
             onClick={() => setDrawerOpen(false)}
             className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300 border-b border-white/5 font-sans"
           >
@@ -110,6 +111,7 @@ export default function Header() {
               <div className="py-2 text-[15px]">
                 <Link
                   href="/services/air-freight"
+                  prefetch={false}
                   onClick={() => setDrawerOpen(false)}
                   className="block py-3 px-10 lg:px-16 hover:text-white text-gray-400 hover:bg-white/5 transition-colors"
                 >
@@ -117,6 +119,7 @@ export default function Header() {
                 </Link>
                 <Link
                   href="/services/ocean-freight"
+                  prefetch={false}
                   onClick={() => setDrawerOpen(false)}
                   className="block py-3 px-10 lg:px-16 hover:text-white text-gray-400 hover:bg-white/5 transition-colors"
                 >
@@ -124,6 +127,7 @@ export default function Header() {
                 </Link>
                 <Link
                   href="/services/land-transport"
+                  prefetch={false}
                   onClick={() => setDrawerOpen(false)}
                   className="block py-3 px-10 lg:px-16 hover:text-white text-gray-400 hover:bg-white/5 transition-colors"
                 >
@@ -131,6 +135,7 @@ export default function Header() {
                 </Link>
                 <Link
                   href="/services/rentals-warehousing"
+                  prefetch={false}
                   onClick={() => setDrawerOpen(false)}
                   className="block py-3 px-10 lg:px-16 hover:text-white text-gray-400 hover:bg-white/5 transition-colors"
                 >
@@ -138,6 +143,7 @@ export default function Header() {
                 </Link>
                 <Link
                   href="/services/factory-relocation"
+                  prefetch={false}
                   onClick={() => setDrawerOpen(false)}
                   className="block py-3 px-10 lg:px-16 hover:text-white text-gray-400 hover:bg-white/5 transition-colors"
                 >
@@ -145,6 +151,7 @@ export default function Header() {
                 </Link>
                 <Link
                   href="/services/project-forwarding"
+                  prefetch={false}
                   onClick={() => setDrawerOpen(false)}
                   className="block py-3 px-10 lg:px-16 hover:text-white text-gray-400 hover:bg-white/5 transition-colors"
                 >
@@ -152,6 +159,7 @@ export default function Header() {
                 </Link>
                 <Link
                   href="/services/transport-engineering"
+                  prefetch={false}
                   onClick={() => setDrawerOpen(false)}
                   className="block py-3 px-10 lg:px-16 hover:text-white text-gray-400 hover:bg-white/5 transition-colors"
                 >
@@ -159,6 +167,7 @@ export default function Header() {
                 </Link>
                 <Link
                   href="/services/logistics-supply-chain"
+                  prefetch={false}
                   onClick={() => setDrawerOpen(false)}
                   className="block py-3 px-10 lg:px-16 hover:text-white text-gray-400 hover:bg-white/5 transition-colors"
                 >
@@ -166,6 +175,7 @@ export default function Header() {
                 </Link>
                 <Link
                   href="/services/transshipment"
+                  prefetch={false}
                   onClick={() => setDrawerOpen(false)}
                   className="block py-3 px-10 lg:px-16 hover:text-white text-gray-400 hover:bg-white/5 transition-colors"
                 >
@@ -177,6 +187,7 @@ export default function Header() {
 
           <Link
             href="/case-studies"
+            prefetch={false}
             onClick={() => setDrawerOpen(false)}
             className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300 border-b border-white/5 font-sans"
           >
@@ -184,6 +195,7 @@ export default function Header() {
           </Link>
           <Link
             href="/equipment"
+            prefetch={false}
             onClick={() => setDrawerOpen(false)}
             className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300 border-b border-white/5 font-sans"
           >
@@ -191,6 +203,7 @@ export default function Header() {
           </Link>
           <Link
             href="/company-news"
+            prefetch={false}
             onClick={() => setDrawerOpen(false)}
             className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300 border-b border-white/5 font-sans"
           >
@@ -198,6 +211,7 @@ export default function Header() {
           </Link>
           <Link
             href="/history"
+            prefetch={false}
             onClick={() => setDrawerOpen(false)}
             className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300 border-b border-white/5 font-sans"
           >
@@ -205,6 +219,7 @@ export default function Header() {
           </Link>
           <Link
             href="/careers"
+            prefetch={false}
             onClick={() => setDrawerOpen(false)}
             className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300 border-b border-white/5 font-sans"
           >
@@ -212,6 +227,7 @@ export default function Header() {
           </Link>
           <Link
             href="/contact"
+            prefetch={false}
             onClick={() => setDrawerOpen(false)}
             className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300 border-b border-white/5 font-sans"
           >

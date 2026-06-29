@@ -70,25 +70,12 @@ export default async function Page() {
       "Section 1",
       "Section 1",
       294,
-      2031,
-      6000,       // 1,738 frames ÷ 6000vh ≈ 0.29 frames/vh — smooth, no skipping
-      12,         // initialPreload: load first 12 frames before showing (progressive load in bg)
+      1294,
+      6000,       // 1001 frames ÷ 6000vh ≈ 0.17 frames/vh
+      12,         // initialPreload: load first 12 frames before showing
       80,         // preloadAhead: prefetch 80 frames ahead of scroll position
       40,         // preloadBehind: keep 40 frames behind for smooth backward scroll
       300,        // cacheSize: max 300 frames in memory
-      true
-    ),
-    getSectionMetadata(
-      "section2",
-      "Section 2",
-      "Section 2",
-      2044,
-      2761,
-      2500,       // 718 frames ÷ 2500vh ≈ 0.29 frames/vh
-      0,          // initialPreload: not first section
-      80,
-      40,
-      300,
       true
     ),
   ];

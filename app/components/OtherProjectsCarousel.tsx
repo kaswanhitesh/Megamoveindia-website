@@ -235,6 +235,7 @@ export default function OtherProjectsCarousel({ excludeSlug }: OtherProjectsCaro
               {/* Card Container with Extra Prominent Hover Lift & Deep Soft Shadows */}
               <Link
                 href={`/case-studies/${project.slug}`}
+                prefetch={false}
                 className="group block bg-white rounded-2xl overflow-hidden border border-gray-100/50 shadow-[0_12px_36px_rgba(23,63,116,0.04)] hover:shadow-[0_30px_60px_rgba(23,63,116,0.16)] hover:scale-[1.05] hover:-translate-y-2.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] h-full flex flex-col"
               >
                 {/* Elevated Image & Badge Container */}

@@ -35,30 +35,31 @@ export default function ProjectForwarding() {
   return (
     <main className="bg-[#f7f7f7]">
       {/* HERO */}
-      <section className="relative h-[500px] overflow-hidden">
+      <section className="relative h-[320px] md:h-[400px] lg:h-[500px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1800&q=80"
           alt="Project Forwarding Services"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center px-4">
           <div className="text-center text-white">
-            <h1 className="text-6xl font-light mb-4">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-light mb-3 lg:mb-4">
               Project Forwarding Services
             </h1>
-            <p className="text-lg tracking-[3px] uppercase">
+            <p className="text-xs md:text-sm lg:text-lg tracking-[2px] lg:tracking-[3px] uppercase">
               Breakbulk • OOG Cargo • Heavy Lift • Project Logistics
             </p>
           </div>
         </div>
       </section>
+
       {/* INTRO */}
-      <section className="max-w-7xl mx-auto px-16 py-20">
-        <h2 className="text-center text-[42px] font-light text-[#173f74] mb-8">
+      <section className="max-w-7xl mx-auto px-4 lg:px-16 py-12 lg:py-20">
+        <h2 className="text-center text-[26px] md:text-[34px] lg:text-[42px] font-light text-[#173f74] mb-6 lg:mb-8">
           Global Project Forwarding Expertise
         </h2>
-        <p className="text-center text-lg text-gray-600 leading-8 max-w-5xl mx-auto">
+        <p className="text-center text-sm md:text-base lg:text-lg text-gray-600 leading-7 lg:leading-8 max-w-5xl mx-auto">
           Mega Move India provides specialized project forwarding,
           breakbulk shipping, out of gauge (OOG) cargo transportation,
           heavy lift logistics and project cargo management solutions.
@@ -68,37 +69,39 @@ export default function ProjectForwarding() {
           projects across the globe.
         </p>
       </section>
+
       {/* SERVICES */}
-      <section className="max-w-7xl mx-auto px-16 pb-20">
-        <div className="grid grid-cols-3 gap-8">
+      <section className="max-w-7xl mx-auto px-4 lg:px-16 pb-12 lg:pb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-8">
           {services.map((item, index) => (
             <div
               key={index}
               className="
                 bg-white
-                p-8
+                p-5 lg:p-8
                 shadow-sm
                 hover:shadow-lg
                 transition-all
                 duration-300
               "
             >
-              <h3 className="text-2xl font-medium text-[#173f74] mb-4">
+              <h3 className="text-lg md:text-xl lg:text-2xl font-medium text-[#173f74] mb-3 lg:mb-4">
                 {item.title}
               </h3>
-              <p className="text-gray-600 leading-7">
+              <p className="text-sm md:text-base text-gray-600 leading-6 lg:leading-7">
                 {item.text}
               </p>
             </div>
           ))}
         </div>
       </section>
+
       {/* SEO CONTENT */}
-      <section className="max-w-6xl mx-auto px-16 pb-20">
-        <h2 className="text-center text-[42px] font-light text-[#173f74] mb-10">
+      <section className="max-w-6xl mx-auto px-4 lg:px-16 pb-12 lg:pb-20">
+        <h2 className="text-center text-[26px] md:text-[34px] lg:text-[42px] font-light text-[#173f74] mb-8 lg:mb-10">
           Breakbulk & Out of Gauge Cargo Specialists
         </h2>
-        <div className="space-y-8 text-gray-600 leading-9 text-[16px]">
+        <div className="space-y-6 lg:space-y-8 text-gray-600 leading-7 lg:leading-9 text-sm md:text-base">
           <p>
             Mega Move India specializes in project forwarding services
             for oversized, heavy lift and complex cargo movements.
@@ -137,12 +140,13 @@ export default function ProjectForwarding() {
           </p>
         </div>
       </section>
+
       {/* PROJECT CAPABILITIES */}
-      <section className="max-w-7xl mx-auto px-16 pb-20">
-        <h2 className="text-center text-[42px] font-light text-[#173f74] mb-10">
+      <section className="max-w-7xl mx-auto px-4 lg:px-16 pb-12 lg:pb-20">
+        <h2 className="text-center text-[26px] md:text-[34px] lg:text-[42px] font-light text-[#173f74] mb-8 lg:mb-10">
           Project Logistics Capabilities
         </h2>
-        <div className="grid grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6">
           {[
             "Breakbulk Cargo",
             "Out of Gauge Cargo",
@@ -157,26 +161,27 @@ export default function ProjectForwarding() {
               key={item}
               className="
                 bg-white
-                py-8
+                py-5 lg:py-8
                 text-center
                 border
                 border-gray-100
                 shadow-sm
               "
             >
-              <span className="text-gray-700 text-lg">
+              <span className="text-sm md:text-base lg:text-lg text-gray-700">
                 {item}
               </span>
             </div>
           ))}
         </div>
       </section>
+
       {/* INDUSTRIES */}
-      <section className="max-w-7xl mx-auto px-16 pb-20">
-        <h2 className="text-center text-[42px] font-light text-[#173f74] mb-10">
+      <section className="max-w-7xl mx-auto px-4 lg:px-16 pb-12 lg:pb-20">
+        <h2 className="text-center text-[26px] md:text-[34px] lg:text-[42px] font-light text-[#173f74] mb-8 lg:mb-10">
           Industries We Serve
         </h2>
-        <div className="grid grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6">
           {[
             "Power Projects",
             "Renewable Energy",
@@ -191,32 +196,33 @@ export default function ProjectForwarding() {
               key={industry}
               className="
                 bg-white
-                py-8
+                py-5 lg:py-8
                 text-center
                 border
                 border-gray-100
                 shadow-sm
               "
             >
-              <span className="text-gray-700 text-lg">
+              <span className="text-sm md:text-base lg:text-lg text-gray-700">
                 {industry}
               </span>
             </div>
           ))}
         </div>
       </section>
+
       {/* CTA */}
-      <section className="max-w-7xl mx-auto px-16 pb-24">
-        <div className="bg-white border border-gray-200 py-12 px-10 text-center">
-          <h2 className="text-[36px] font-light text-[#173f74] mb-6">
+      <section className="max-w-7xl mx-auto px-4 lg:px-16 pb-16 lg:pb-24">
+        <div className="bg-white border border-gray-200 py-8 lg:py-12 px-6 lg:px-10 text-center">
+          <h2 className="text-[24px] md:text-[30px] lg:text-[36px] font-light text-[#173f74] mb-4 lg:mb-6">
             Request a Project Cargo Consultation
           </h2>
-          <p className="text-gray-600 text-lg mb-6">
+          <p className="text-sm md:text-base lg:text-lg text-gray-600 mb-4 lg:mb-6">
             Send your enquiries to
           </p>
           <a
             href="mailto:projects@megamoveindia.com"
-            className="text-2xl font-medium text-[#173f74] hover:underline"
+            className="text-lg md:text-xl lg:text-2xl font-medium text-[#173f74] hover:underline"
           >
             projects@megamoveindia.com
           </a>

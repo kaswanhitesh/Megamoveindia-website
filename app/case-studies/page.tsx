@@ -124,6 +124,7 @@ export default function CaseStudies() {
   <Link
     key={index}
     href={`/case-studies/${project.slug}`}
+    prefetch={false}
     className="
       group
       bg-white

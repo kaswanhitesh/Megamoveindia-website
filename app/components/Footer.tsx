@@ -35,7 +35,7 @@ export default function Footer() {
         © Copyright 2026, Mega Move India Private Limited. All rights reserved.
       </div>
       <div className="flex flex-wrap justify-center lg:justify-end items-center gap-2 lg:gap-4 text-center">
-        <Link href="/sitemap" className="hover:text-black transition-colors">
+        <Link href="/sitemap" prefetch={false} className="hover:text-black transition-colors">
           Site Map
         </Link>
         <span className="hidden lg:inline">|</span>
@@ -48,7 +48,7 @@ export default function Footer() {
           Terms &amp; Conditions
         </a>
         <span className="hidden lg:inline">|</span>
-        <Link href="/privacy-policy" className="hover:text-black transition-colors">
+        <Link href="/privacy-policy" prefetch={false} className="hover:text-black transition-colors">
           Privacy Policy
         </Link>
       </div>
