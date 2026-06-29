@@ -25,11 +25,35 @@ interface LoopingVideoProps {
 }
 
 const LoopingVideo = ({ src, className, style }: LoopingVideoProps) => {
+  const [shouldLoad, setShouldLoad] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
   const videoRefA = useRef<HTMLVideoElement>(null);
   const videoRefB = useRef<HTMLVideoElement>(null);
   const activeVideoRef = useRef<'A' | 'B'>('A');
 
   useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const loadObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+          loadObserver.disconnect();
+        }
+      },
+      { rootMargin: "600px 0px" } // Preload when within 600px of viewport
+    );
+    loadObserver.observe(container);
+
+    return () => {
+      loadObserver.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!shouldLoad) return;
+
     const videoA = videoRefA.current;
     const videoB = videoRefB.current;
     if (!videoA || !videoB) return;
@@ -133,42 +157,46 @@ const LoopingVideo = ({ src, className, style }: LoopingVideoProps) => {
       observer.disconnect();
       cancelAnimationFrame(rafId);
     };
-  }, []);
+  }, [shouldLoad]);
 
   return (
-    <div style={{ ...style, position: "relative", overflow: "hidden" }} className={className}>
-      <video
-        ref={videoRefA}
-        src={src}
-        muted
-        playsInline
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          pointerEvents: "none",
-          transition: "transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
-        }}
-        className="group-hover:scale-105"
-      />
-      <video
-        ref={videoRefB}
-        src={src}
-        muted
-        playsInline
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          pointerEvents: "none",
-          transition: "transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
-        }}
-        className="group-hover:scale-105"
-      />
+    <div ref={containerRef} style={{ ...style, position: "relative", overflow: "hidden" }} className={className}>
+      {shouldLoad && (
+        <>
+          <video
+            ref={videoRefA}
+            src={src}
+            muted
+            playsInline
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              pointerEvents: "none",
+              transition: "transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
+            }}
+            className="group-hover:scale-105"
+          />
+          <video
+            ref={videoRefB}
+            src={src}
+            muted
+            playsInline
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              pointerEvents: "none",
+              transition: "transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
+            }}
+            className="group-hover:scale-105"
+          />
+        </>
+      )}
     </div>
   );
 };
