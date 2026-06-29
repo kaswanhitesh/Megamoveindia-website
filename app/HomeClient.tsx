@@ -331,7 +331,7 @@ const InteractiveCard = ({ item, index, cardOpacity, cardY, cardScale, isActive,
       href={item.link || "#"}
       className="flex-shrink-0 group block"
       style={{
-        width: isMobileView ? "min(440px, 90vw)" : "440px",
+        width: isMobileView ? "min(360px, 90vw)" : "440px",
         opacity: cardOpacity,
         transform: `translateY(${cardY}px) scale(${cardScale})`,
         pointerEvents: cardOpacity < 0.15 ? "none" : "auto", // prevent clicking on faded-out cards
@@ -340,8 +340,8 @@ const InteractiveCard = ({ item, index, cardOpacity, cardY, cardScale, isActive,
       <div 
         className="relative w-full rounded-[24px] flex flex-col overflow-hidden transition-all duration-500"
         style={{
-          height: isMobileView ? "380px" : "450px",
-          padding: isMobileView ? "1.25rem" : "2rem",
+          height: isMobileView ? "340px" : "450px",
+          padding: isMobileView ? "1rem" : "2rem",
           background: "linear-gradient(135deg, rgba(24, 26, 32, 0.72) 0%, rgba(14, 16, 20, 0.88) 100%)",
           backdropFilter: "blur(24px)",
           WebkitBackdropFilter: "blur(24px)",
@@ -359,11 +359,11 @@ const InteractiveCard = ({ item, index, cardOpacity, cardY, cardScale, isActive,
         {/* Frame sequence canvas (Redesigned visual hero with 5% outer margin) */}
         <div 
           style={{
-            width: isMobileView ? "calc(100% + 2.5rem)" : "calc(100% + 4rem)",
-            marginLeft: isMobileView ? "-1.25rem" : "-2rem",
-            marginRight: isMobileView ? "-1.25rem" : "-2rem",
-            marginTop: isMobileView ? "-1.25rem" : "-2rem",
-            padding: isMobileView ? "12px" : "20px",
+            width: isMobileView ? "calc(100% + 2rem)" : "calc(100% + 4rem)",
+            marginLeft: isMobileView ? "-1rem" : "-2rem",
+            marginRight: isMobileView ? "-1rem" : "-2rem",
+            marginTop: isMobileView ? "-1rem" : "-2rem",
+            padding: isMobileView ? "10px" : "20px",
             backgroundColor: "transparent",
             display: "flex",
             flexDirection: "column",
@@ -374,7 +374,7 @@ const InteractiveCard = ({ item, index, cardOpacity, cardY, cardScale, isActive,
           <div 
             style={{
               position: "relative",
-              height: isMobileView ? "180px" : "250px",
+              height: isMobileView ? "150px" : "250px",
               width: "100%",
               borderRadius: "12px",
               overflow: "hidden",
@@ -892,18 +892,17 @@ export default function HomeClient({ sections }: HomeClientProps) {
              // Continue scrolling upward during the exit fade-out
              const exitP = Math.min(1, (targetIndex - S2_EXIT_START) / S2_EXIT_FRAMES);
              holdProgress = 1.0 + exitP * 0.25;
+             const cardHeight = isMobileVal ? 340 : 450;
+             const gapSize = isMobileVal ? 16 : 32;
+             const CARD_STEP = cardHeight + gapSize;
+             carouselY = -holdProgress * (INDUSTRY_DATA.length - 1) * CARD_STEP;
            }
-
-           const cardHeight = isMobileVal ? 380 : 450;
-           const gapSize = isMobileVal ? 20 : 32;
-           const CARD_STEP = cardHeight + gapSize;
-           carouselY = -holdProgress * (INDUSTRY_DATA.length - 1) * CARD_STEP;
         } else {
            // Before Section 2 cards appear, lock Card 0 below viewport
            isMobileVal = innerWidth < 768;
            holdProgress = -0.25;
-           const cardHeight = isMobileVal ? 380 : 450;
-           const gapSize = isMobileVal ? 20 : 32;
+           const cardHeight = isMobileVal ? 340 : 450;
+           const gapSize = isMobileVal ? 16 : 32;
            const CARD_STEP = cardHeight + gapSize;
            carouselY = -holdProgress * (INDUSTRY_DATA.length - 1) * CARD_STEP;
         }
@@ -1479,11 +1478,11 @@ export default function HomeClient({ sections }: HomeClientProps) {
           >
             <h3
               style={{
-                fontSize: isMobileView ? "2.25rem" : "3.5rem",
+                fontSize: isMobileView ? "1.75rem" : "3.5rem",
                 fontWeight: 300,
                 color: "#f4f4f5",
                 letterSpacing: "0.02em",
-                marginBottom: "1.5rem",
+                marginBottom: "1rem",
                 fontFamily: "var(--font-geist-sans), sans-serif",
                 lineHeight: 1.1,
                 textShadow: "0 2px 10px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.15)",
@@ -1493,7 +1492,7 @@ export default function HomeClient({ sections }: HomeClientProps) {
             </h3>
             <p
               style={{
-                fontSize: isMobileView ? "0.85rem" : "1rem",
+                fontSize: isMobileView ? "0.8rem" : "1rem",
                 color: "#a1a1aa",
                 lineHeight: 1.625,
                 fontWeight: 300,
@@ -1509,7 +1508,7 @@ export default function HomeClient({ sections }: HomeClientProps) {
           <div
             style={{
               position: "absolute",
-              bottom: isMobileView ? "12vh" : "15vh", // Pushed lower to ensure clear separation from title
+              bottom: isMobileView ? "10vh" : "15vh", // Pushed lower to ensure clear separation from title
               display: "flex",
               gap: isMobileView ? "1rem" : "2rem",
               transform: `translateX(${portfolioCardsX}px)`,
@@ -1521,15 +1520,15 @@ export default function HomeClient({ sections }: HomeClientProps) {
                 key={idx}
                 href={service.link}
                 style={{
-                  width: isMobileView ? "min(340px, 85vw)" : "380px",
-                  height: isMobileView ? "380px" : "420px",
+                  width: isMobileView ? "min(300px, 80vw)" : "380px",
+                  height: isMobileView ? "340px" : "420px",
                   flexShrink: 0,
                   background: "rgba(24, 24, 27, 0.60)",
                   backdropFilter: "blur(12px)",
                   WebkitBackdropFilter: "blur(12px)",
                   border: "1px solid rgba(63, 63, 70, 0.8)",
                   borderRadius: "16px",
-                  padding: isMobileView ? "1.25rem" : "2rem",
+                  padding: isMobileView ? "1rem" : "2rem",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
@@ -1544,11 +1543,11 @@ export default function HomeClient({ sections }: HomeClientProps) {
                 <div>
                   <div
                     style={{
-                      width: isMobileView ? "calc(100% + 2.5rem)" : "calc(100% + 4rem)",
-                      marginLeft: isMobileView ? "-1.25rem" : "-2rem",
-                      marginRight: isMobileView ? "-1.25rem" : "-2rem",
-                      marginTop: isMobileView ? "-1.25rem" : "-2rem",
-                      padding: isMobileView ? "12px" : "20px",
+                      width: isMobileView ? "calc(100% + 2rem)" : "calc(100% + 4rem)",
+                      marginLeft: isMobileView ? "-1rem" : "-2rem",
+                      marginRight: isMobileView ? "-1rem" : "-2rem",
+                      marginTop: isMobileView ? "-1rem" : "-2rem",
+                      padding: isMobileView ? "10px" : "20px",
                       backgroundColor: "transparent",
                       display: "flex",
                       flexDirection: "column",
@@ -1559,7 +1558,7 @@ export default function HomeClient({ sections }: HomeClientProps) {
                     <div
                       style={{
                         position: "relative",
-                        height: isMobileView ? "180px" : "230px",
+                        height: isMobileView ? "150px" : "230px",
                         width: "100%",
                         borderRadius: "12px",
                         overflow: "hidden",
@@ -1763,9 +1762,9 @@ export default function HomeClient({ sections }: HomeClientProps) {
               style={{
                 position: "absolute",
                 top: "50%",
-                left: isMobileView ? "calc(50vw - min(220px, 45vw))" : "calc(30vw - 220px)",
-                width: isMobileView ? "min(440px, 90vw)" : "440px",
-                height: isMobileView ? "380px" : "450px",
+                left: isMobileView ? "calc(50vw - min(180px, 45vw))" : "calc(30vw - 220px)",
+                width: isMobileView ? "min(360px, 90vw)" : "440px",
+                height: isMobileView ? "340px" : "450px",
                 transform: "translateY(-50%)",
                 opacity: section2Opacity,
                 pointerEvents: section2Opacity > 0.1 ? "auto" : "none",
@@ -1781,7 +1780,7 @@ export default function HomeClient({ sections }: HomeClientProps) {
                   width: "100%",
                   display: "flex",
                   flexDirection: "column",
-                  gap: isMobileView ? "20px" : "32px",
+                  gap: isMobileView ? "16px" : "32px",
                   transform: `translateY(${s2CarouselY}px)`,
                   willChange: "transform",
                   // No transition style on transform to get instantaneous, fluid scroll matching Portfolio section
@@ -1854,8 +1853,8 @@ export default function HomeClient({ sections }: HomeClientProps) {
       <div style={{
         position: "fixed",
         bottom: "5vh",
-        left: isMobileView ? "calc(50vw - min(220px, 45vw))" : "calc(50vw - 220px)",
-        width: isMobileView ? "min(440px, 90vw)" : "440px",
+        left: isMobileView ? "calc(50vw - min(180px, 45vw))" : "calc(50vw - 220px)",
+        width: isMobileView ? "min(360px, 90vw)" : "440px",
         height: "2px",
         backgroundColor: "rgba(255,255,255,0.08)",
         borderRadius: "4px",
