@@ -26,6 +26,7 @@ interface LoopingVideoProps {
 
 const LoopingVideo = ({ src, className, style }: LoopingVideoProps) => {
   const [shouldLoad, setShouldLoad] = useState(false);
+  const [videoSrc, setVideoSrc] = useState("");
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRefA = useRef<HTMLVideoElement>(null);
   const videoRefB = useRef<HTMLVideoElement>(null);
@@ -52,7 +53,18 @@ const LoopingVideo = ({ src, className, style }: LoopingVideoProps) => {
   }, []);
 
   useEffect(() => {
-    if (!shouldLoad) return;
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      const ext = src.substring(src.lastIndexOf("."));
+      const base = src.substring(0, src.lastIndexOf("."));
+      setVideoSrc(`${base}_144p${ext}`);
+    } else {
+      setVideoSrc(src);
+    }
+  }, [src]);
+
+  useEffect(() => {
+    if (!shouldLoad || !videoSrc) return;
 
     const videoA = videoRefA.current;
     const videoB = videoRefB.current;
@@ -157,15 +169,15 @@ const LoopingVideo = ({ src, className, style }: LoopingVideoProps) => {
       observer.disconnect();
       cancelAnimationFrame(rafId);
     };
-  }, [shouldLoad]);
+  }, [shouldLoad, videoSrc]);
 
   return (
     <div ref={containerRef} style={{ ...style, position: "relative", overflow: "hidden" }} className={className}>
-      {shouldLoad && (
+      {shouldLoad && videoSrc && (
         <>
           <video
             ref={videoRefA}
-            src={src}
+            src={videoSrc}
             muted
             playsInline
             style={{
@@ -181,7 +193,7 @@ const LoopingVideo = ({ src, className, style }: LoopingVideoProps) => {
           />
           <video
             ref={videoRefB}
-            src={src}
+            src={videoSrc}
             muted
             playsInline
             style={{
