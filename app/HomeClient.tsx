@@ -70,7 +70,9 @@ const LoopingVideo = ({ src, className, style }: LoopingVideoProps) => {
     const videoB = videoRefB.current;
     if (!videoA || !videoB) return;
 
-    // Initial styles
+    // Initial styles and programmatic muted bypass
+    videoA.muted = true;
+    videoB.muted = true;
     videoA.style.opacity = "1";
     videoB.style.opacity = "0";
 
@@ -180,6 +182,9 @@ const LoopingVideo = ({ src, className, style }: LoopingVideoProps) => {
             src={videoSrc}
             muted
             playsInline
+            autoPlay
+            loop
+            preload="auto"
             style={{
               position: "absolute",
               inset: 0,
@@ -196,6 +201,9 @@ const LoopingVideo = ({ src, className, style }: LoopingVideoProps) => {
             src={videoSrc}
             muted
             playsInline
+            autoPlay
+            loop
+            preload="auto"
             style={{
               position: "absolute",
               inset: 0,
