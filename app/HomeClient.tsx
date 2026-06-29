@@ -298,7 +298,7 @@ const INDUSTRY_DATA = [
 ];
 
 // --- Premium Editorial Card Component (Restored to Original Styling) ---
-const InteractiveCard = ({ item, index, cardOpacity, cardY, cardScale, isActive, s2FrameIndex, s2Cache }: any) => {
+const InteractiveCard = ({ item, index, cardOpacity, cardY, cardScale, isActive, s2FrameIndex, s2Cache, isMobileView }: any) => {
   const cardCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -331,20 +331,23 @@ const InteractiveCard = ({ item, index, cardOpacity, cardY, cardScale, isActive,
       href={item.link || "#"}
       className="flex-shrink-0 group block"
       style={{
-        width: "440px",
+        width: isMobileView ? "min(440px, 90vw)" : "440px",
         opacity: cardOpacity,
         transform: `translateY(${cardY}px) scale(${cardScale})`,
         pointerEvents: cardOpacity < 0.15 ? "none" : "auto", // prevent clicking on faded-out cards
       }}
     >
       <div 
-        className={`relative w-full h-[450px] rounded-[24px] flex flex-col p-[2rem] overflow-hidden transition-all duration-500 ${isActive ? 'border-white/20' : 'border-white/5'}`}
+        className="relative w-full rounded-[24px] flex flex-col overflow-hidden transition-all duration-500"
         style={{
+          height: isMobileView ? "380px" : "450px",
+          padding: isMobileView ? "1.25rem" : "2rem",
           background: "linear-gradient(135deg, rgba(24, 26, 32, 0.72) 0%, rgba(14, 16, 20, 0.88) 100%)",
           backdropFilter: "blur(24px)",
           WebkitBackdropFilter: "blur(24px)",
           borderWidth: "1px",
           borderStyle: "solid",
+          borderColor: isActive ? "rgba(255, 255, 255, 0.2)" : "rgba(255, 255, 255, 0.05)",
           boxShadow: isActive
             ? "inset 0 1px 0 0 rgba(255,255,255,0.18), inset 0 -1px 0 0 rgba(0,0,0,0.4), 0 30px 60px -15px rgba(0,0,0,0.8), 0 0 40px rgba(255,255,255,0.02)"
             : "inset 0 1px 0 0 rgba(255,255,255,0.08), inset 0 -1px 0 0 rgba(0,0,0,0.4), 0 20px 40px rgba(0,0,0,0.6)",
@@ -354,8 +357,31 @@ const InteractiveCard = ({ item, index, cardOpacity, cardY, cardScale, isActive,
         <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/[0.01] to-white/[0.04] pointer-events-none rounded-[24px]" />
 
         {/* Frame sequence canvas (Redesigned visual hero with 5% outer margin) */}
-        <div className="w-[calc(100%+4rem)] -mt-[2rem] -mx-[2rem] p-[20px] bg-transparent flex-shrink-0 mb-[4px]">
-          <div className="w-full h-[250px] rounded-[16px] overflow-hidden relative border border-white/5">
+        <div 
+          style={{
+            width: isMobileView ? "calc(100% + 2.5rem)" : "calc(100% + 4rem)",
+            marginLeft: isMobileView ? "-1.25rem" : "-2rem",
+            marginRight: isMobileView ? "-1.25rem" : "-2rem",
+            marginTop: isMobileView ? "-1.25rem" : "-2rem",
+            padding: isMobileView ? "12px" : "20px",
+            backgroundColor: "transparent",
+            display: "flex",
+            flexDirection: "column",
+            flexShrink: 0,
+            marginBottom: "4px",
+          }}
+        >
+          <div 
+            style={{
+              position: "relative",
+              height: isMobileView ? "180px" : "250px",
+              width: "100%",
+              borderRadius: "12px",
+              overflow: "hidden",
+              backgroundColor: "#09090b",
+              border: "1px solid rgba(63, 63, 70, 0.5)",
+            }}
+          >
             {item.title === "Infrastructure" ? (
               <LoopingVideo
                 key="infrastructure-video"
@@ -414,8 +440,8 @@ const InteractiveCard = ({ item, index, cardOpacity, cardY, cardScale, isActive,
             ) : (
               <canvas
                 ref={cardCanvasRef}
-                width={400} // card width (440px) - 2 * 20px padding = 400px
-                height={250}
+                width={isMobileView ? 340 : 400}
+                height={isMobileView ? 180 : 250}
                 className="w-full h-full object-cover"
                 style={{ display: "block" }}
               />
@@ -427,10 +453,19 @@ const InteractiveCard = ({ item, index, cardOpacity, cardY, cardScale, isActive,
         {/* Content */}
         <div className="flex flex-col flex-1 mt-1 justify-between">
           <div>
-            <h3 className="text-white font-extrabold text-[22px] leading-none uppercase tracking-wider line-clamp-1 mb-3">
+            <h3 
+              className="text-white font-extrabold leading-none uppercase tracking-wider line-clamp-1 mb-3"
+              style={{ fontSize: isMobileView ? "1.1rem" : "22px" }}
+            >
               {item.title}
             </h3>
-            <p className="text-zinc-400 text-[14.5px] leading-[1.65] font-sans font-light line-clamp-3">
+            <p 
+              className="text-zinc-400 font-sans font-light line-clamp-3"
+              style={{
+                fontSize: isMobileView ? "0.72rem" : "14.5px",
+                lineHeight: isMobileView ? 1.5 : 1.65,
+              }}
+            >
               {item.description}
             </p>
           </div>
@@ -539,7 +574,9 @@ export default function HomeClient({ sections }: HomeClientProps) {
   }, []);
 
   useEffect(() => {
-    isMobileRef.current = window.innerWidth <= 768;
+    const isMobile = window.innerWidth <= 768;
+    isMobileRef.current = isMobile;
+    setIsMobileView(isMobile);
     
     // Prevent the browser from restoring the previous scroll position on refresh
     if ("scrollRestoration" in window.history) {
@@ -738,11 +775,19 @@ export default function HomeClient({ sections }: HomeClientProps) {
         let titleOp = 0;
         
         const innerWidth = typeof window !== "undefined" ? window.innerWidth : 1000;
-        const startTrackX = (innerWidth / 2) - 190; // First card exactly in center
-        const endTrackX = -1700; // Last card completely offscreen left
+        const isMobile = innerWidth <= 768;
+        const cardWidth = isMobile ? Math.min(340, innerWidth * 0.85) : 380;
+        const gapVal = isMobile ? 16 : 32;
+        const startTrackX = (innerWidth / 2) - (cardWidth / 2);
+        
+        const trackWidth = 4 * cardWidth + 3 * gapVal;
+        const endTrackX = -trackWidth - 100;
         const totalSlideDist = startTrackX - endTrackX;
-        const lastCardCenterTrackX = (innerWidth / 2) - 1426; // Track pos when 4th card is centered
-        const slideProgressAtCenter = 1236 / totalSlideDist;
+        
+        const rentalOffset = 3 * (cardWidth + gapVal);
+        const rentalCenterTrackX = (innerWidth / 2) - rentalOffset - (cardWidth / 2);
+        const slideProgressAtCenter = (startTrackX - rentalCenterTrackX) / totalSlideDist;
+        
         const RENTAL_CENTER_FRAME = Math.round(
           PORTFOLIO_SLIDE_START + slideProgressAtCenter * (PORTFOLIO_SLIDE_END - PORTFOLIO_SLIDE_START)
         );
@@ -832,9 +877,9 @@ export default function HomeClient({ sections }: HomeClientProps) {
         // === Calculate S2 Hold Progress for Industries UI ===
         let holdProgress = 0;
         let carouselY = 0;
-        let isMobile = false;
+        let isMobileVal = false;
         if (indTitleOp >= 0.5 || targetIndex >= S2_EXIT_START) {
-           isMobile = innerWidth < 768;
+           isMobileVal = innerWidth < 768;
            
            if (targetIndex <= S2_CARDS_PLAY_START) {
              // Card 0 slides up from below viewport (holdProgress goes -0.25 to 0)
@@ -849,18 +894,22 @@ export default function HomeClient({ sections }: HomeClientProps) {
              holdProgress = 1.0 + exitP * 0.25;
            }
 
-           // Vertical Cover-Flow: spacing of 450px card height + 32px gap = 482px step
-           const CARD_STEP = 482;
+           const cardHeight = isMobileVal ? 380 : 450;
+           const gapSize = isMobileVal ? 20 : 32;
+           const CARD_STEP = cardHeight + gapSize;
            carouselY = -holdProgress * (INDUSTRY_DATA.length - 1) * CARD_STEP;
         } else {
            // Before Section 2 cards appear, lock Card 0 below viewport
+           isMobileVal = innerWidth < 768;
            holdProgress = -0.25;
-           const CARD_STEP = 482;
+           const cardHeight = isMobileVal ? 380 : 450;
+           const gapSize = isMobileVal ? 20 : 32;
+           const CARD_STEP = cardHeight + gapSize;
            carouselY = -holdProgress * (INDUSTRY_DATA.length - 1) * CARD_STEP;
         }
         setS2HoldProgress(holdProgress);
         setS2CarouselY(carouselY);
-        setIsMobileView(isMobile);
+        setIsMobileView(isMobileVal);
         
         // Calculate S1 Progress
         let currentS1Progress = 0;
@@ -955,11 +1004,16 @@ export default function HomeClient({ sections }: HomeClientProps) {
 
     // 5. Resize adapter
     const handleResize = () => {
-      isMobileRef.current = window.innerWidth <= 768;
+      const isMobile = window.innerWidth <= 768;
+      isMobileRef.current = isMobile;
+      setIsMobileView(isMobile);
       resizeCanvas();
     };
 
     // 1. Initial size setup
+    const isMobileSetup = window.innerWidth <= 768;
+    isMobileRef.current = isMobileSetup;
+    setIsMobileView(isMobileSetup);
     resizeCanvas();
 
     // 2. Map current scroll position to initial frame index
@@ -1324,7 +1378,7 @@ export default function HomeClient({ sections }: HomeClientProps) {
               WebkitBackdropFilter: "blur(20px)",
               border: "1px solid rgba(63, 63, 70, 0.5)",
               borderRadius: "16px",
-              padding: "clamp(32px, 5vw, 48px)",
+              padding: isMobileView ? "1.5rem" : "clamp(32px, 5vw, 48px)",
               boxShadow: "0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255,255,255,0.03) inset",
               pointerEvents: "auto",
               cursor: "pointer",
@@ -1413,11 +1467,11 @@ export default function HomeClient({ sections }: HomeClientProps) {
           <div
             style={{
               position: "absolute",
-              left: "4rem", // Standard page margin
-              top: "6vh", // Pushed closer to the top corner to avoid overlap
-              width: "35%",
-              maxWidth: "500px",
-              minWidth: "320px",
+              left: isMobileView ? "1.5rem" : "4rem", // Standard page margin
+              top: isMobileView ? "4vh" : "6vh", // Pushed closer to the top corner to avoid overlap
+              width: isMobileView ? "calc(100% - 3rem)" : "35%",
+              maxWidth: isMobileView ? "100%" : "500px",
+              minWidth: isMobileView ? "0px" : "320px",
               pointerEvents: "auto",
               opacity: portfolioTitleOpacity,
               willChange: "opacity",
@@ -1425,7 +1479,7 @@ export default function HomeClient({ sections }: HomeClientProps) {
           >
             <h3
               style={{
-                fontSize: "3.5rem",
+                fontSize: isMobileView ? "2.25rem" : "3.5rem",
                 fontWeight: 300,
                 color: "#f4f4f5",
                 letterSpacing: "0.02em",
@@ -1439,7 +1493,7 @@ export default function HomeClient({ sections }: HomeClientProps) {
             </h3>
             <p
               style={{
-                fontSize: "1rem",
+                fontSize: isMobileView ? "0.85rem" : "1rem",
                 color: "#a1a1aa",
                 lineHeight: 1.625,
                 fontWeight: 300,
@@ -1452,13 +1506,12 @@ export default function HomeClient({ sections }: HomeClientProps) {
             </p>
           </div>
 
-          {/* Service Cards Sliding Container (Lower half of screen) */}
           <div
             style={{
               position: "absolute",
-              bottom: "15vh", // Pushed lower to ensure clear separation from title
+              bottom: isMobileView ? "12vh" : "15vh", // Pushed lower to ensure clear separation from title
               display: "flex",
-              gap: "2rem",
+              gap: isMobileView ? "1rem" : "2rem",
               transform: `translateX(${portfolioCardsX}px)`,
               willChange: "transform",
             }}
@@ -1468,15 +1521,15 @@ export default function HomeClient({ sections }: HomeClientProps) {
                 key={idx}
                 href={service.link}
                 style={{
-                  width: "380px",
-                  height: "420px",
+                  width: isMobileView ? "min(340px, 85vw)" : "380px",
+                  height: isMobileView ? "380px" : "420px",
                   flexShrink: 0,
                   background: "rgba(24, 24, 27, 0.60)",
                   backdropFilter: "blur(12px)",
                   WebkitBackdropFilter: "blur(12px)",
                   border: "1px solid rgba(63, 63, 70, 0.8)",
                   borderRadius: "16px",
-                  padding: "2rem",
+                  padding: isMobileView ? "1.25rem" : "2rem",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
@@ -1489,14 +1542,13 @@ export default function HomeClient({ sections }: HomeClientProps) {
                 className="group" // to use hover pseudo-classes via tailwind classes in children if needed
               >
                 <div>
-                  {/* Image Mask (Redesigned visual hero with 5% outer margin) */}
                   <div
                     style={{
-                      width: "calc(100% + 4rem)",
-                      marginLeft: "-2rem",
-                      marginRight: "-2rem",
-                      marginTop: "-2rem",
-                      padding: "20px",
+                      width: isMobileView ? "calc(100% + 2.5rem)" : "calc(100% + 4rem)",
+                      marginLeft: isMobileView ? "-1.25rem" : "-2rem",
+                      marginRight: isMobileView ? "-1.25rem" : "-2rem",
+                      marginTop: isMobileView ? "-1.25rem" : "-2rem",
+                      padding: isMobileView ? "12px" : "20px",
                       backgroundColor: "transparent",
                       display: "flex",
                       flexDirection: "column",
@@ -1507,7 +1559,7 @@ export default function HomeClient({ sections }: HomeClientProps) {
                     <div
                       style={{
                         position: "relative",
-                        height: "230px",
+                        height: isMobileView ? "180px" : "230px",
                         width: "100%",
                         borderRadius: "12px",
                         overflow: "hidden",
@@ -1566,11 +1618,11 @@ export default function HomeClient({ sections }: HomeClientProps) {
 
                   <h4
                     style={{
-                      fontSize: "1.25rem",
+                      fontSize: isMobileView ? "1.1rem" : "1.25rem",
                       fontWeight: 500,
                       color: "#f4f4f5",
                       letterSpacing: "0.025em",
-                      marginBottom: "0.75rem",
+                      marginBottom: isMobileView ? "0.5rem" : "0.75rem",
                       fontFamily: "var(--font-geist-sans), sans-serif",
                     }}
                   >
@@ -1578,9 +1630,9 @@ export default function HomeClient({ sections }: HomeClientProps) {
                   </h4>
                   <p
                     style={{
-                      fontSize: "0.75rem",
+                      fontSize: isMobileView ? "0.72rem" : "0.75rem",
                       color: "#a1a1aa",
-                      lineHeight: 1.625,
+                      lineHeight: isMobileView ? 1.5 : 1.625,
                       fontWeight: 300,
                       display: "-webkit-box",
                       WebkitLineClamp: 3,
@@ -1711,9 +1763,9 @@ export default function HomeClient({ sections }: HomeClientProps) {
               style={{
                 position: "absolute",
                 top: "50%",
-                left: "calc(30vw - 220px)", // Perfectly centers 440px card horizontally within left 60% (30vw)
-                width: "440px",
-                height: "450px", // height of exactly 1 card
+                left: isMobileView ? "calc(50vw - min(220px, 45vw))" : "calc(30vw - 220px)",
+                width: isMobileView ? "min(440px, 90vw)" : "440px",
+                height: isMobileView ? "380px" : "450px",
                 transform: "translateY(-50%)",
                 opacity: section2Opacity,
                 pointerEvents: section2Opacity > 0.1 ? "auto" : "none",
@@ -1729,7 +1781,7 @@ export default function HomeClient({ sections }: HomeClientProps) {
                   width: "100%",
                   display: "flex",
                   flexDirection: "column",
-                  gap: "32px", // gap restored
+                  gap: isMobileView ? "20px" : "32px",
                   transform: `translateY(${s2CarouselY}px)`,
                   willChange: "transform",
                   // No transition style on transform to get instantaneous, fluid scroll matching Portfolio section
@@ -1773,6 +1825,7 @@ export default function HomeClient({ sections }: HomeClientProps) {
                       isActive={isActive}
                       s2FrameIndex={s2FrameIndex}
                       s2Cache={cacheRef.current}
+                      isMobileView={isMobileView}
                     />
                   );
                 })}
@@ -1801,8 +1854,8 @@ export default function HomeClient({ sections }: HomeClientProps) {
       <div style={{
         position: "fixed",
         bottom: "5vh",
-        left: "calc(50vw - 220px)", // Centered horizontally
-        width: "440px", // matches restored card width
+        left: isMobileView ? "calc(50vw - min(220px, 45vw))" : "calc(50vw - 220px)",
+        width: isMobileView ? "min(440px, 90vw)" : "440px",
         height: "2px",
         backgroundColor: "rgba(255,255,255,0.08)",
         borderRadius: "4px",
