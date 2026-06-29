@@ -892,11 +892,12 @@ export default function HomeClient({ sections }: HomeClientProps) {
              // Continue scrolling upward during the exit fade-out
              const exitP = Math.min(1, (targetIndex - S2_EXIT_START) / S2_EXIT_FRAMES);
              holdProgress = 1.0 + exitP * 0.25;
-             const cardHeight = isMobileVal ? 340 : 450;
-             const gapSize = isMobileVal ? 16 : 32;
-             const CARD_STEP = cardHeight + gapSize;
-             carouselY = -holdProgress * (INDUSTRY_DATA.length - 1) * CARD_STEP;
            }
+
+           const cardHeight = isMobileVal ? 340 : 450;
+           const gapSize = isMobileVal ? 16 : 32;
+           const CARD_STEP = cardHeight + gapSize;
+           carouselY = -holdProgress * (INDUSTRY_DATA.length - 1) * CARD_STEP;
         } else {
            // Before Section 2 cards appear, lock Card 0 below viewport
            isMobileVal = innerWidth < 768;
