@@ -170,7 +170,7 @@ export default function HistoryTimeline() {
         <div className="flex items-center gap-3 lg:gap-5">
           <Link href="/experimental-home">
             <Image
-              src="/images/mega-move-logo.svg"
+              src="/mega-move-logo.svg"
               alt="Mega Move India"
               width={90}
               height={45}
