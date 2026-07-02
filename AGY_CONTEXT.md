@@ -121,37 +121,30 @@ This file tracks the current project status, architecture, page list, dependenci
 
 ## Latest Update
 
-- **Date:** June 24, 2026
+- **Date:** July 2, 2026
 - **Files Modified:**
-  - `app/components/OtherProjectsCarousel.tsx` (New component)
-  - `app/case-studies/national-defence-project/page.tsx`
-  - `app/case-studies/Project-2/page.tsx` through `Project-8/page.tsx`
+  - `app/history/page.tsx`
+  - `app/history/HistoryClient.tsx` (New component)
   - `AGY_CONTEXT.md`
 - **Changes Made:**
-  - Designed and created the premium responsive `OtherProjectsCarousel.tsx` component to replace the static carousels across all Case Study pages.
-  - Recreated and refined the "Our Other Projects" visual treatment from the reference image:
-    - Custom uppercase badges (e.g. `DEFENCE`, `IMPORT`, `PLANT TRANSFER`, `ODC`, `EXPORT`, `HEAVY LIFT`) absolute-positioned on card images.
-    - Title hierarchy, metadata layout, and typography proportions matching the reference design.
-    - Standardized card text layout by wrapping project titles inside a fixed-height block (`h-[52px]`/`lg:h-[56px]`), vertically centering the text (`flex items-center`), and setting a consistent 2-line clamp (`line-clamp-2` and `leading-snug`). This keeps all cards uniform in height regardless of title length.
-    - Integrated bottom metadata row using high-fidelity inline SVGs for Weight (anvil scale), Location (map pin), and Duration (calendar) metrics, perfectly aligned on a single baseline across all cards.
-    - Enabled intelligent route/location truncation (`truncate` with a maximum width boundary of `max-w-[42%]`) to prevent layout shifts or item overlap, while providing native hover tooltips (`title={project.location}`) for full path accessibility.
-    - Circle navigation arrows (`<` and `>`) overlaying the container edges with soft shadows.
-    - Responsive layout displaying 3 wider cards on desktop (`lg`/`xl`), 2 on tablet (`md`), and 1 on mobile screens for enhanced layout presence.
-    - Pagination dots centered at the bottom, dynamically updating and cycling matching the active index.
-    - Spring-like Apple Cards hover lift/shadow scaling interactions (`hover:scale-[1.05] hover:-translate-y-2.5 hover:shadow-[0_30px_60px_rgba(23,63,116,0.16)]`) with inner image scale zoom transitions (`group-hover:scale-105`).
-    - Integrated continuous infinite auto-slide marquee functionality (running via a smooth `requestAnimationFrame` loop using a duplicated card set). Speed increased by 15% to 40.25 pixels per second for faster, highly responsive transitions.
-    - Solved timing regressions where autoplay failed to initialize consistently on page loads: introduced a React `mounted` state dependency inside the scroll loop animation effect to guarantee initialization ONLY after the container ref has successfully bound to the client DOM.
-  - Implemented a clean monochrome typography system across all Case Study templates, Gallery files, and the dynamic carousel:
-    - Removed all blue typography (replacing `#173f74` colors with high-contrast `zinc-900`/`zinc-950` monochrome scales for titles, headings, values, controls, and active states).
-    - Converted category badges, pagination elements, and SVG vector borders to neutral monochrome colors (`bg-zinc-950` / `border-zinc-100`).
-    - Synced navigation controls in the Gallery slider and lightbox overlays to match the monochrome scheme.
-  - Standardized and tightened the vertical rhythm and layout spacing across all Case Study pages to build a dense, intentional, high-end enterprise aesthetic:
-    - Reduced Hero overlapping offset to `-40px` and rounded-top corner container sizes to `rounded-t-[40px]`.
-    - Tightened section paddings (`py-16 lg:py-24` became `py-12 lg:py-16` on Overview; `py-12 lg:py-20` became `py-10 lg:py-14` on Details, Outcomes, and post-gallery segments).
-    - Reduced margin gaps below section headings (`mb-8 lg:mb-12` became `mb-6 lg:mb-8`).
-    - Decreased spaces between post-gallery text sections (`mb-20` became `mb-10 lg:mb-12` on Challenges and Outcomes; `mt-24` became `mt-14 lg:mt-16` on the Other Projects section).
-  - Integrated the component inside all 8 Case Study templates (`national-defence-project` and `Project-2` to `Project-8`), filtering out the active project from each page's carousel to present the other 7 projects.
-  - Successfully verified Next.js production build runs and compiles with zero compilation or TypeScript errors.
-  - Successfully resolved merge conflicts in `national-defence-project/Gallery.tsx` in favor of local horizontal slider updates, committed the changes, and pushed to the remote GitHub repository on the main branch.
+  - **Git History Cleanups & Branch Prunes:**
+    - Cleaned local and remote GitHub branches by deleting 14 obsolete branches (`origin/copilot/*`, `origin/railway/*`, `origin/kaswanhitesh-fix-gallery-scroll`) and removing associated filesystem worktrees.
+    - Rewrote commit database history using `git-filter-repo` to strip large obsolete media (>2MB) and prune unreferenced assets.
+    - Wrote a custom python script using the `git-filter-repo` API library to perform a final commit-by-commit replacement mapping, swapping all 1,001 original unoptimized Section 1 frame blobs (~150KB each) with their 720p WebP optimized hashes.
+    - Compressed and garbage-collected the pack database (`git gc --prune=now --aggressive`), shrinking the local `.git` footprint to **936 MB** and total project size to **2.9 GB** (reclaiming ~900 MB).
+    - Safely updated remote repository using `git push --force-with-lease origin main` (Commit: `3588b24`).
+  - **History Page Editorial Animations:**
+    - Designed and implemented a premium editorial magazine animation sequence on the History page inspired by classic engineering brochures.
+    - Created `HistoryClient.tsx` to handle GSAP transitions and scroll behaviors as a Client Component, while maintaining `page.tsx` as a Server Component to preserve Next.js metadata exports.
+    - Configured multi-step timeline animations:
+      - *Page Reveal:* Opacity fade and thin border frame layout reveal.
+      - *Editorial Text Reveal:* Staggered opacity fades, translations, and blur transitions on paragraphs.
+      - *Section Headings:* Translating and scaling heading reveals staggered slightly after paragraphs.
+      - *Main Illustration Reveal:* Vertical sliding mask `clip-path` reveal on the Hero illustration.
+      - *Fine Details:* Card borders, drop-shadows, and milestone dot indicator reveals.
+    - Integrated subtle ScrollTrigger-based parallax offsets on the Hero illustration and header groups for enhanced tactile depth.
+  - **Build Verification:**
+    - Successfully verified all pages compile without TypeScript, ESLint, or static page pre-rendering errors via `npm run build`.
+
 - **Known Issues:** None.
-- **Next Actions:** Monitor deployment analytics and gather browser feedback on desktop/mobile scroll interactions.
+- **Next Actions:** Gather user feedback on brochure transition speeds and desktop scroll feel.
