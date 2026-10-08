@@ -1,8 +1,13 @@
 Options -Indexes
 DirectoryIndex index.html
 
-# Force HTTPS
 RewriteEngine On
+
+# One canonical address: https://megamoveindia.com (no www)
+RewriteCond %{HTTP_HOST} ^www\.megamoveindia\.com$ [NC]
+RewriteRule ^ https://megamoveindia.com%{REQUEST_URI} [L,R=301]
+
+# Force HTTPS
 RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
@@ -11,6 +16,9 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 RewriteRule ^industries/industrial/?$ /industries/industrial-plants/ [R=301,L]
 RewriteRule ^industries/metals-mining/?$ /industries/metal-mining/ [R=301,L]
 RewriteRule ^company-profile/?$ /company-profile.pdf [R=301,L]
+
+# Sitemaps from the previous WordPress site
+RewriteRule ^(sitemap_index|page-sitemap|post-sitemap|category-sitemap|wp-sitemap)\.xml$ /sitemap.xml [R=301,L]
 
 ErrorDocument 404 /404.html
 
