@@ -135,11 +135,11 @@ export default function Home() {
       </section>
 
       {/* Core Portfolios */}
-      <section className="mx-auto max-w-7xl px-6 py-16 lg:px-16 lg:py-24">
+      <section className="mx-auto max-w-7xl px-6 py-16 text-center lg:px-16 lg:py-24">
         <h2 className="mb-4 text-[1.75rem] font-light leading-[1.1] tracking-[0.02em] text-zinc-100 lg:text-[3.5rem]">
           CORE PORTFOLIOS
         </h2>
-        <p className="mb-10 max-w-[500px] text-sm font-light leading-relaxed text-zinc-400 lg:text-base">
+        <p className="mx-auto mb-10 max-w-[500px] text-sm font-light leading-relaxed text-zinc-400 lg:text-base">
           Integrated logistics solutions across air, ocean, and specialized land transportation.
         </p>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -159,19 +159,19 @@ export default function Home() {
       </section>
 
       {/* Industries We Serve */}
-      <section className="mx-auto max-w-7xl px-6 pb-20 pt-8 lg:px-16 lg:pb-28">
+      <section className="mx-auto max-w-7xl px-6 pb-20 pt-8 text-center lg:px-16 lg:pb-28">
         <h2 className="mb-6 text-[1.75rem] font-extrabold uppercase leading-[1.2] tracking-[0.02em] lg:text-[2.25rem]">
           INDUSTRIES WE SERVE
         </h2>
-        <p className="mb-10 max-w-3xl text-[1.05rem] font-light leading-[1.7] text-zinc-400">
+        <p className="mx-auto mb-10 max-w-3xl text-[1.05rem] font-light leading-[1.7] text-zinc-400">
           Project Cargo &amp; Heavy Logistics Solutions Across Key Industries. Mega Move India provides specialized
           heavy haulage, oversized cargo transportation, project logistics, multimodal freight, and industrial supply
           chain solutions for infrastructure, oil &amp; gas, power, mining, manufacturing, and construction projects
           across India and globally.
         </p>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="flex flex-wrap justify-center gap-6">
           {industries.map((item) => (
-            <Link key={item.title} href={item.link} className={cardClass}>
+            <Link key={item.title} href={item.link} className={`${cardClass} w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]`}>
               <div className="mb-4 h-[200px] overflow-hidden rounded-xl border border-zinc-700/50 bg-zinc-950">
                 <CardVideo src={item.video} poster={item.image} />
               </div>
