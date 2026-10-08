@@ -1,10 +1,9 @@
-import type { Metadata } from "next";
-export const metadata: Metadata = {
-  title:
-    "Logistics & Supply Chain Solutions | Customs Clearance & Port Handling | Mega Move India",
-  description:
-    "Integrated logistics and supply chain solutions including customs clearance, port handling, documentation, dunnage, lashing, cargo supervision, local support and real-time shipment tracking services.",
-};
+import { pageMetadata } from "@/app/lib/seo";
+export const metadata = pageMetadata({
+  path: "/services/logistics-supply-chain/",
+  title: "Logistics & Supply Chain Solutions | Customs Clearance & Port Handling | Mega Move India",
+  description: "Integrated logistics and supply chain solutions including customs clearance, port handling, documentation, dunnage, lashing, cargo supervision, local support and real-time shipment tracking services.",
+});
 export default function LogisticsSupplyChain() {
   const services = [
     {
@@ -37,7 +36,7 @@ export default function LogisticsSupplyChain() {
       {/* HERO */}
       <section className="relative h-[320px] md:h-[400px] lg:h-[500px] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=1800&q=80"
+          src="/images/Casestudies/Project-6/Project6_Gallery1.webp"
           alt="Logistics and Supply Chain Solutions"
           className="w-full h-full object-cover"
         />

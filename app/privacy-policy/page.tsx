@@ -1,3 +1,10 @@
+import { pageMetadata } from "@/app/lib/seo";
+export const metadata = pageMetadata({
+  path: "/privacy-policy/",
+  title: "Employee Privacy Notice | Mega Move India",
+  description: "How Mega Move India Private Limited collects, uses and protects the personal data of its employees.",
+});
+
 export default function PrivacyPolicy() {
   return (
     <main className="min-h-screen bg-[#f7f7f7]">

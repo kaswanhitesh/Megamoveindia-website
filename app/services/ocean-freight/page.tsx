@@ -1,11 +1,10 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/app/lib/seo";
 
-export const metadata: Metadata = {
-  title:
-    "Ocean Freight Services | FCL, LCL & Breakbulk Shipping | Mega Move India",
-  description:
-    "International ocean freight services including FCL, LCL, breakbulk shipping, project cargo transportation, import export logistics and global sea freight forwarding solutions.",
-};
+export const metadata = pageMetadata({
+  path: "/services/ocean-freight/",
+  title: "Ocean Freight Services | FCL, LCL & Breakbulk Shipping | Mega Move India",
+  description: "International ocean freight services including FCL, LCL, breakbulk shipping, project cargo transportation, import export logistics and global sea freight forwarding solutions.",
+});
 
 export default function OceanFreight() {
   const services = [
@@ -41,7 +40,7 @@ export default function OceanFreight() {
       {/* HERO */}
       <section className="relative h-[280px] lg:h-[500px] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1800&q=80"
+          src="/images/OceanfreightHeroCardImage.webp"
           alt="Ocean Freight Services"
           className="w-full h-full object-cover"
         />

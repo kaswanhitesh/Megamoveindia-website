@@ -1,5 +1,13 @@
+import { pageMetadata } from "@/app/lib/seo";
 import Link from "next/link";
 import HomeHero from "./components/HomeHero";
+
+export const metadata = pageMetadata({
+  path: "/",
+  title: "Mega Move India | Project Logistics, Heavy Haulage & ODC Transport",
+  description: "Mega Move India provides project logistics, heavy haulage, ODC transportation, freight forwarding and equipment rentals across India and worldwide. Since 2005.",
+});
+
 
 const services = [
   {
@@ -175,6 +183,28 @@ export default function Home() {
                 </div>
               </Link>
             ))}
+          </div>
+        </section>
+
+        {/* Call to action */}
+        <section className="border-t border-zinc-800 px-6 py-16 text-center lg:py-24">
+          <h2 className="mb-4 text-[1.75rem] font-light leading-[1.2] tracking-[0.02em] text-zinc-100 lg:text-[2.75rem]">
+            HAVE HEAVY OR OVERSIZED CARGO TO MOVE?
+          </h2>
+          <p className="mx-auto mb-10 max-w-2xl text-[1.05rem] font-light leading-[1.7] text-zinc-400">
+            Share your cargo dimensions, weight and route. Our project team will come back with a transport plan and
+            quotation.
+          </p>
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link
+              href="/contact/"
+              className="rounded bg-[#c41e1e] px-10 py-4 text-lg font-semibold text-white no-underline hover:bg-[#a51919]"
+            >
+              Request a Quote
+            </Link>
+            <a href="tel:+919321499970" className="px-6 py-4 text-lg text-zinc-300 no-underline hover:text-white">
+              or call +91 93214 99970
+            </a>
           </div>
         </section>
       </div>

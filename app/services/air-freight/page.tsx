@@ -1,11 +1,10 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/app/lib/seo";
 
-export const metadata: Metadata = {
-  title:
-    "Air Freight Services | International Air Cargo Solutions | Mega Move India",
-  description:
-    "International air freight services, air cargo transportation, charter solutions, project cargo airlift, oversized cargo movement and global logistics services by Mega Move India.",
-};
+export const metadata = pageMetadata({
+  path: "/services/air-freight/",
+  title: "Air Freight Services | International Air Cargo Solutions | Mega Move India",
+  description: "International air freight services, air cargo transportation, charter solutions, project cargo airlift, oversized cargo movement and global logistics services by Mega Move India.",
+});
 
 export default function AirFreight() {
   const services = [
@@ -42,7 +41,7 @@ export default function AirFreight() {
       <section className="relative h-[320px] md:h-[400px] lg:h-[500px] overflow-hidden">
 
         <img
-          src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1800&q=80"
+          src="/images/AirFreightHeroImage.webp"
           alt="Air Freight Services"
           className="w-full h-full object-cover"
         />

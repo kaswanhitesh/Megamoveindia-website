@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/app/lib/seo";
 import Gallery from "./Gallery";
 import Image from "next/image";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/company-news/IICS/",
   title: "India International Cargo Show | Mega Move India",
-  description:
-    "Mega Move India will be participating in the India International Cargo Show (IICS) 2025, showcasing expertise in project cargo logistics, heavy lift transportation, breakbulk operations, freight forwarding, and engineered logistics solutions.",
-};
+  description: "Mega Move India will be participating in the India International Cargo Show (IICS) 2025, showcasing expertise in project cargo logistics, heavy lift transportation, breakbulk operations, freight forwarding, and engineered logistics solutions.",
+});
 
 export default function IICSPage() {
   return (

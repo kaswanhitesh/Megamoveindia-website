@@ -1,10 +1,9 @@
-import type { Metadata } from "next";
-export const metadata: Metadata = {
-  title:
-    "Transshipment Services | Global Cargo Routing & Hub Operations | Mega Move India",
-  description:
-    "International transshipment services, cargo routing, hub port operations, breakbulk transshipment, project cargo transshipment, container transfers and multimodal logistics solutions by Mega Move India.",
-};
+import { pageMetadata } from "@/app/lib/seo";
+export const metadata = pageMetadata({
+  path: "/services/transshipment/",
+  title: "Transshipment Services | Global Cargo Routing & Hub Operations | Mega Move India",
+  description: "International transshipment services, cargo routing, hub port operations, breakbulk transshipment, project cargo transshipment, container transfers and multimodal logistics solutions by Mega Move India.",
+});
 export default function Transshipment() {
   const services = [
     {
@@ -37,7 +36,7 @@ export default function Transshipment() {
       {/* HERO */}
       <section className="relative h-[320px] md:h-[400px] lg:h-[500px] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1800&q=80"
+          src="/images/Casestudies/Project-2/Project2_Galleryheroimage.webp"
           alt="Transshipment Services"
           className="w-full h-full object-cover"
         />

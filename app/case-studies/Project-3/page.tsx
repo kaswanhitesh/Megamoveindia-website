@@ -1,15 +1,15 @@
+import { pageMetadata } from "@/app/lib/seo";
 import Hero from './Hero';
 import Gallery from './Gallery';
 import OtherProjectsCarousel from '@/app/components/OtherProjectsCarousel';
-import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/case-studies/Project-3/",
   title: "Factory Relocation Germany to India | Mega Move India",
-description:
-  "Successful factory relocation project involving dismantling, packing, international transportation and delivery of industrial machinery from Germany to Navi Mumbai, India.",
-};
+  description: "Successful factory relocation project involving dismantling, packing, international transportation and delivery of industrial machinery from Germany to Navi Mumbai, India.",
+});
 
 
 

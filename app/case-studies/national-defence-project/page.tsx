@@ -1,15 +1,15 @@
+import { pageMetadata } from "@/app/lib/seo";
 import Hero from './Hero';
 import Gallery from './Gallery';
 import OtherProjectsCarousel from '@/app/components/OtherProjectsCarousel';
-import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/case-studies/national-defence-project/",
   title: 'National Defence Project | Mega Move India',
-  description:
-    'Mega Move India\'s successful execution of a National Defence Project involving specialized transportation, heavy lift handling, route surveys and end-to-end project logistics.',
-};
+  description: 'Mega Move India\'s successful execution of a National Defence Project involving specialized transportation, heavy lift handling, route surveys and end-to-end project logistics.',
+});
 
 const PROJECT_DETAILS = [
   {

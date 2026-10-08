@@ -1,10 +1,9 @@
-import type { Metadata } from "next";
-export const metadata: Metadata = {
-  title:
-    "Factory Relocation Services | Industrial Plant Relocation & Machinery Shifting | Mega Move India",
-  description:
-    "Factory relocation services including inspection engineering, dismantling, packing, loading, stuffing, transportation, unloading, installation support and industrial plant relocation solutions.",
-};
+import { pageMetadata } from "@/app/lib/seo";
+export const metadata = pageMetadata({
+  path: "/services/factory-relocation/",
+  title: "Factory Relocation Services | Industrial Plant Relocation & Machinery Shifting | Mega Move India",
+  description: "Factory relocation services including inspection engineering, dismantling, packing, loading, stuffing, transportation, unloading, installation support and industrial plant relocation solutions.",
+});
 export default function FactoryRelocation() {
   const services = [
     {
@@ -37,7 +36,7 @@ export default function FactoryRelocation() {
       {/* HERO */}
       <section className="relative h-[320px] md:h-[400px] lg:h-[500px] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=1800&q=80"
+          src="/images/Casestudies/Project-3/Project3_HeroImage.webp"
           alt="Factory Relocation Services"
           className="w-full h-full object-cover"
         />

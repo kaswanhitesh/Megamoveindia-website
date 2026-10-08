@@ -1,12 +1,11 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/app/lib/seo";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title:
-    "ODC & Heavy Lift Transportation Services | Hydraulic Axle Trailer Fleet | Mega Move India",
-  description:
-    "Specialized heavy lift transportation, ODC cargo movement, hydraulic axle trailer services, project logistics, route surveys and heavy haulage solutions across India.",
-};
+export const metadata = pageMetadata({
+  path: "/services/land-transport/",
+  title: "ODC & Heavy Lift Transportation Services | Hydraulic Axle Trailer Fleet | Mega Move India",
+  description: "Specialized heavy lift transportation, ODC cargo movement, hydraulic axle trailer services, project logistics, route surveys and heavy haulage solutions across India.",
+});
 
 const recentProjects = [
   {

@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/app/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/terms-and-conditions/",
   title: "Terms & Conditions | Mega Move India",
-  description:
-    "Terms and Conditions of Mega Move India Private Limited.",
-};
+  description: "Terms and conditions governing logistics, freight forwarding, heavy haulage and equipment rental services provided by Mega Move India Private Limited.",
+});
 
 export default function TermsAndConditions() {
   return (

@@ -1,18 +1,15 @@
-import type { Metadata } from "next";
-import IndustryPlaceholder from "../IndustryPlaceholder";
+import { pageMetadata } from "@/app/lib/seo";
+import IndustryPage from "../IndustryPage";
+import { INDUSTRIES } from "../data";
 
-export const dynamic = "force-static";
+const industry = INDUSTRIES["power-energy"];
 
-export const metadata: Metadata = {
-  title: "Power & Energy Logistics | Mega Move India",
-  description: "Specialized logistics and haulage for wind turbine blades, high-voltage transformers, and generator stators.",
-};
+export const metadata = pageMetadata({
+  path: "/industries/power-energy/",
+  title: industry.metaTitle,
+  description: industry.metaDescription,
+});
 
-export default function PowerEnergyPage() {
-  return (
-    <IndustryPlaceholder
-      title="Power & Energy"
-      description="We engineer transport configurations for the power grid, including massive wind turbine blades, generator stators, heat exchangers, and heavy nuclear power components."
-    />
-  );
+export default function Page() {
+  return <IndustryPage industry={industry} />;
 }

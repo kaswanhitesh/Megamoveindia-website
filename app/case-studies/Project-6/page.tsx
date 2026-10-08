@@ -1,15 +1,15 @@
+import { pageMetadata } from "@/app/lib/seo";
 import Hero from './Hero';
 import Gallery from './Gallery';
 import OtherProjectsCarousel from '@/app/components/OtherProjectsCarousel';
-import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/case-studies/Project-6/",
   title: "Chemical Storage Tanks Export | Mega Move India",
-  description:
-    "Successful FOB shipment of 3 Chemical Storage Tanks from Mundra, India to Dar-Es-Salaam, Tanzania involving specialized handling, export documentation and ocean freight logistics.",
-};
+  description: "Successful FOB shipment of 3 Chemical Storage Tanks from Mundra, India to Dar-Es-Salaam, Tanzania involving specialized handling, export documentation and ocean freight logistics.",
+});
 
 
 

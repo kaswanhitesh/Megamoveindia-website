@@ -1,15 +1,15 @@
+import { pageMetadata } from "@/app/lib/seo";
 import Hero from './Hero';
 import Gallery from './Gallery';
 import OtherProjectsCarousel from '@/app/components/OtherProjectsCarousel';
-import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
-  title: "Heat Exchanger | Mega Move India",
-  description:
-    "Successful breakbulk export shipment involving transportation and ocean freight movement of a 70MT Heat Condenser from Chennai, India to Santos, Brazil.",
-};
+export const metadata = pageMetadata({
+  path: "/case-studies/Project-5/",
+  title: "2 x 100MT Heat Exchangers to IOCL Panipat | Mega Move India",
+  description: "Heavy haulage of 2 x 100 MT heat exchangers and accessories for Godrej from Mumbai to IOCL Panipat, with route engineering, permits and escort arrangements.",
+});
 
 
 

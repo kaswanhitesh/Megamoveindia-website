@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/app/lib/seo";
 import HistoryClient from "./HistoryClient";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/history/",
   title: "Our History | Mega Move India",
-  description:
-    "Explore the legacy and milestone achievements of Mega Move India Private Limited, from our origins in heavy haulage in 2005 to full-scale global logistics integration in 2025 and beyond.",
-};
+  description: "Explore the legacy and milestone achievements of Mega Move India Private Limited, from our origins in heavy haulage in 2005 to full-scale global logistics integration in 2025 and beyond.",
+});
 
 export default function HistoryPage() {
   return (

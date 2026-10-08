@@ -1,4 +1,12 @@
+import { pageMetadata } from "@/app/lib/seo";
 import Link from "next/link";
+
+export const metadata = pageMetadata({
+  path: "/case-studies/",
+  title: "Case Studies | Project Cargo & Heavy Lift Projects | Mega Move India",
+  description: "Project cargo, heavy lift and ODC case studies by Mega Move India: defence cargo, factory relocation, breakbulk exports, heat exchangers and EOT cranes.",
+});
+
 
 export default function CaseStudies() {
   const projects = [

@@ -1,3 +1,10 @@
+import { pageMetadata } from "@/app/lib/seo";
+export const metadata = pageMetadata({
+  path: "/company-news/",
+  title: "Company News & Events | Mega Move India",
+  description: "Latest news from Mega Move India: exhibitions such as IICS and Breakbulk Middle East, fleet expansion and project logistics milestones.",
+});
+
 export default function CompanyNews() {
   const news = [
   {

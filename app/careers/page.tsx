@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/app/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/careers/",
   title: "Careers | Mega Move India",
-  description:
-    "Join the team at Mega Move India Private Limited. Explore job openings in heavy lift logistics, project freight forwarding, engineering, and supply chain management.",
-};
+  description: "Join the team at Mega Move India Private Limited. Explore job openings in heavy lift logistics, project freight forwarding, engineering, and supply chain management.",
+});
 
 export default function CareersPage() {
   const values = [
@@ -54,7 +54,7 @@ export default function CareersPage() {
       {/* HERO SECTION */}
       <section className="relative h-[280px] lg:h-[450px] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1521791136368-1a8b27503ad7?auto=format&fit=crop&w=1800&q=80"
+          src="/images/Casestudies/Project-8/Project8_Gallery1.webp"
           alt="Mega Move India Careers"
           className="w-full h-full object-cover"
         />

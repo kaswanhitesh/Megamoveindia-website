@@ -1,3 +1,10 @@
+import { pageMetadata } from "@/app/lib/seo";
+export const metadata = pageMetadata({
+  path: "/equipment/",
+  title: "In-House Equipment Fleet | Hydraulic Axles & Lowbed Trailers | Mega Move India",
+  description: "Mega Move India's in-house fleet: 40 hydraulic axle lines, heavy duty pullers, 18 lowbed trailers, 10 flatbed trailers, truck mounted manlifts and lashing equipment.",
+});
+
 export default function Equipment() {
   const equipment = [
     { name: "Hydraulic Axle Lines", value: "40", unit: "Axle Lines" },
@@ -18,7 +25,7 @@ export default function Equipment() {
 
       <section className="relative h-[280px] lg:h-[450px] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=1800&q=80"
+          src="/images/LandTransportCardHeroImage.webp"
           alt="Hydraulic Axle Trailer"
           className="w-full h-full object-cover"
         />

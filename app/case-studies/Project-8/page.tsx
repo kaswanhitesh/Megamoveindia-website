@@ -1,15 +1,15 @@
+import { pageMetadata } from "@/app/lib/seo";
 import Hero from './Hero';
 import Gallery from './Gallery';
 import OtherProjectsCarousel from '@/app/components/OtherProjectsCarousel';
-import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/case-studies/Project-8/",
   title: "35M EOT Crane Export | Mega Move India",
-  description:
-    "Successful export shipment involving transportation, handling and ocean freight movement of a 35 metre EOT Crane from Mumbai, India to Tata Steel Houston, USA.",
-};
+  description: "Successful export shipment involving transportation, handling and ocean freight movement of a 35 metre EOT Crane from Mumbai, India to Tata Steel Houston, USA.",
+});
 
 
 

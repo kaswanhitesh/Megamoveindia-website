@@ -1,18 +1,15 @@
-import type { Metadata } from "next";
-import IndustryPlaceholder from "../IndustryPlaceholder";
+import { pageMetadata } from "@/app/lib/seo";
+import IndustryPage from "../IndustryPage";
+import { INDUSTRIES } from "../data";
 
-export const dynamic = "force-static";
+const industry = INDUSTRIES["oil-gas"];
 
-export const metadata: Metadata = {
-  title: "Oil & Gas Logistics | Mega Move India",
-  description: "Specialized transport and movement for long-span pipelines, drilling rigs, and massive refinery vessels by Mega Move India.",
-};
+export const metadata = pageMetadata({
+  path: "/industries/oil-gas/",
+  title: industry.metaTitle,
+  description: industry.metaDescription,
+});
 
-export default function OilGasPage() {
-  return (
-    <IndustryPlaceholder
-      title="Oil & Gas"
-      description="We deliver precise logistics for the energy sector, including offshore drilling rigs, refinery reactors, heat exchangers, and heavy pipelines."
-    />
-  );
+export default function Page() {
+  return <IndustryPage industry={industry} />;
 }

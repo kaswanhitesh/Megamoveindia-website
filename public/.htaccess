@@ -7,6 +7,11 @@ RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+# Old and duplicate addresses
+RewriteRule ^industries/industrial/?$ /industries/industrial-plants/ [R=301,L]
+RewriteRule ^industries/metals-mining/?$ /industries/metal-mining/ [R=301,L]
+RewriteRule ^company-profile/?$ /company-profile.pdf [R=301,L]
+
 ErrorDocument 404 /404.html
 
 <IfModule mod_headers.c>

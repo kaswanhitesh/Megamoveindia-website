@@ -1,18 +1,12 @@
-import type { Metadata } from "next";
-import {
-  FaInstagram,
-  FaLinkedinIn,
-  FaWhatsapp,
-  FaFacebookF,
-} from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { pageMetadata } from "@/app/lib/seo";
+import { FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
+import EnquiryForm from "./EnquiryForm";
 
-export const metadata: Metadata = {
-  title:
-    "Contact Mega Move India | Project Logistics & Freight Forwarding",
-  description:
-    "Contact Mega Move India for project logistics, freight forwarding, heavy lift transportation, ODC cargo movement, equipment rentals and supply chain solutions.",
-};
+export const metadata = pageMetadata({
+  path: "/contact/",
+  title: "Contact Mega Move India | Project Logistics & Freight Forwarding",
+  description: "Contact Mega Move India for project logistics, freight forwarding, heavy lift transportation, ODC cargo movement, equipment rentals and supply chain solutions.",
+});
 
 export const dynamic = "force-static";
 
@@ -82,11 +76,17 @@ export default function ContactUs() {
 
                 <div className="mt-4 lg:mt-auto">
                   <p className="mt-4 text-center">
-                    <strong>Email:</strong> {office.email}
+                    <strong>Email:</strong>{" "}
+                    <a href={`mailto:${office.email}`} className="hover:underline">
+                      {office.email}
+                    </a>
                   </p>
 
                   <p className="text-center">
-                    <strong>Mobile:</strong> {office.phone}
+                    <strong>Mobile:</strong>{" "}
+                    <a href={`tel:${office.phone.replace(/\s/g, "")}`} className="hover:underline">
+                      {office.phone}
+                    </a>
                   </p>
                 </div>
               </div>
@@ -103,7 +103,8 @@ export default function ContactUs() {
 
           <div className="w-full lg:w-[45%] h-[300px] lg:h-auto flex flex-col">
             <iframe
-              src="https://www.google.com/maps?q=Andheri%20East%20Mumbai&output=embed"
+              src="https://www.google.com/maps?q=Pranik%20Chambers%2C%20Sakivihar%20Road%2C%20Sakinaka%2C%20Andheri%20East%2C%20Mumbai%20400072&output=embed"
+              title="Mega Move India office, Pranik Chambers, Sakinaka, Mumbai"
               loading="lazy"
               className="border-0 w-full h-full"
             />
@@ -116,54 +117,7 @@ export default function ContactUs() {
               Send Us An Enquiry
             </h2>
 
-            <form className="space-y-6 max-w-[520px] mx-auto">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                <input
-                  required
-                  type="text"
-                  placeholder="Name *"
-                  className="border border-gray-300 p-3 text-base bg-white"
-                />
-
-                <input
-                  required
-                  type="text"
-                  placeholder="Phone Number *"
-                  className="border border-gray-300 p-3 text-base bg-white"
-                />
-              </div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                <input
-                  required
-                  type="email"
-                  placeholder="Email Address *"
-                  className="border border-gray-300 p-3 text-base bg-white"
-                />
-
-                <input
-                  type="text"
-                  placeholder="Company Name"
-                  className="border border-gray-300 p-3 text-base bg-white"
-                />
-              </div>
-
-              <textarea
-                required
-                rows={5}
-                placeholder="Remarks *"
-                className="border border-gray-300 p-3 text-base bg-white w-full"
-              />
-
-              <div className="flex justify-center pt-2">
-                <button
-                  type="submit"
-                  className="bg-[#c41e1e] text-white px-10 lg:px-14 py-3 lg:py-4 text-lg lg:text-xl font-semibold rounded"
-                >
-                  Submit Enquiry
-                </button>
-              </div>
-            </form>
+            <EnquiryForm />
           </div>
         </div>
       </section>
@@ -185,6 +139,7 @@ export default function ContactUs() {
           <div className="flex gap-3 lg:gap-4 flex-wrap justify-center">
             <a
               href="https://www.instagram.com/megamoveindia/"
+              aria-label="Instagram"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 lg:w-14 lg:h-14 bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center justify-center text-white text-xl lg:text-2xl"
@@ -194,6 +149,7 @@ export default function ContactUs() {
 
             <a
               href="https://www.linkedin.com/company/megamoveindia"
+              aria-label="LinkedIn"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 lg:w-14 lg:h-14 bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center justify-center text-white text-xl lg:text-2xl"
@@ -203,29 +159,12 @@ export default function ContactUs() {
 
             <a
               href="https://wa.me/919321499970"
+              aria-label="WhatsApp"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 lg:w-14 lg:h-14 bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center justify-center text-white text-xl lg:text-2xl"
             >
               <FaWhatsapp />
-            </a>
-
-            <a
-              href="https://x.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 lg:w-14 lg:h-14 bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center justify-center text-white text-xl lg:text-2xl"
-            >
-              <FaXTwitter />
-            </a>
-
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 lg:w-14 lg:h-14 bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center justify-center text-white text-xl lg:text-2xl"
-            >
-              <FaFacebookF />
             </a>
           </div>
         </div>

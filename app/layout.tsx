@@ -4,6 +4,9 @@ import "./globals.css";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import OrganizationJsonLd from "./components/OrganizationJsonLd";
+import WhatsAppButton from "./components/WhatsAppButton";
+import { SITE_URL } from "./lib/seo";
 import { HeaderFooterProvider } from "./components/HeaderFooterContext";
 
 const geistSans = Geist({
@@ -17,6 +20,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Mega Move India — Project & Heavy Cargo Logistics",
   description:
     "Mega Move India provides heavy haulage, ODC transportation, project logistics, freight forwarding and equipment rentals across India and globally.",
@@ -41,6 +45,8 @@ export default function RootLayout({
             </div>
             <Footer />
           </main>
+          <WhatsAppButton />
+          <OrganizationJsonLd />
         </HeaderFooterProvider>
       </body>
     </html>

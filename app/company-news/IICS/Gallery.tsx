@@ -52,7 +52,7 @@ export default function Gallery() {
 
                 <img
                   src={image}
-                  alt=""
+                  alt={`Mega Move India at IICS 2025, photo ${index + 1}`}
                   className="
                     w-full
                     h-[220px]
@@ -114,7 +114,7 @@ export default function Gallery() {
 
           <img
             src={images[selectedImage]}
-            alt=""
+            alt={`Mega Move India at IICS 2025, photo ${selectedImage + 1}`}
             className="
               max-w-[95vw]
               max-h-[80vh]

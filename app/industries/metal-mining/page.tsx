@@ -1,18 +1,15 @@
-import type { Metadata } from "next";
-import IndustryPlaceholder from "../IndustryPlaceholder";
+import { pageMetadata } from "@/app/lib/seo";
+import IndustryPage from "../IndustryPage";
+import { INDUSTRIES } from "../data";
 
-export const dynamic = "force-static";
+const industry = INDUSTRIES["metal-mining"];
 
-export const metadata: Metadata = {
-  title: "Metals & Mining Logistics | Mega Move India",
-  description: "Specialized heavy transport and haulage solutions for mining machinery, dump trucks, and resource processing units.",
-};
+export const metadata = pageMetadata({
+  path: "/industries/metal-mining/",
+  title: industry.metaTitle,
+  description: industry.metaDescription,
+});
 
-export default function MetalMiningPage() {
-  return (
-    <IndustryPlaceholder
-      title="Metal & Mining"
-      description="We provide extreme-weight haulage and specialized cargo logistics for mining dump trucks, large excavators, stacker-reclaimers, and ore processing plants."
-    />
-  );
+export default function Page() {
+  return <IndustryPage industry={industry} />;
 }

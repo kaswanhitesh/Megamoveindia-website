@@ -1,11 +1,10 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/app/lib/seo";
 
-export const metadata: Metadata = {
-  title:
-    "Equipment Rentals & Warehousing Services | Manlift Rental | Mega Move India",
-  description:
-    "Truck mounted manlift rental, aerial lift rental, warehousing solutions, cargo handling, loading and unloading services and project logistics support by Mega Move India.",
-};
+export const metadata = pageMetadata({
+  path: "/services/rentals-warehousing/",
+  title: "Equipment Rentals & Warehousing Services | Manlift Rental | Mega Move India",
+  description: "Truck mounted manlift rental, aerial lift rental, warehousing solutions, cargo handling, loading and unloading services and project logistics support by Mega Move India.",
+});
 
 export default function RentalsWarehousing() {
   const services = [
@@ -40,7 +39,7 @@ export default function RentalsWarehousing() {
       {/* HERO */}
       <section className="relative h-[320px] md:h-[400px] lg:h-[500px] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1800&q=80"
+          src="/images/RentalsCardHeroImage.webp"
           alt="Equipment Rentals & Warehousing"
           className="w-full h-full object-cover"
         />

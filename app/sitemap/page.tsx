@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/app/lib/seo";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/sitemap/",
   title: "Site Map | Mega Move India",
   description: "Explore the complete directory of services, industries, success stories, and legal pages on the Mega Move India website.",
-};
+});
 
 export const dynamic = "force-static";
 
@@ -39,8 +40,8 @@ export default function Sitemap() {
       links: [
         { label: "Infrastructure", href: "/industries/infrastructure" },
         { label: "Rental & Warehousing", href: "/industries/rental-warehousing" },
-        { label: "Industrial Plants", href: "/industries/industrial" },
-        { label: "Metals & Mining", href: "/industries/metals-mining" },
+        { label: "Industrial Plants", href: "/industries/industrial-plants" },
+        { label: "Metal & Mining", href: "/industries/metal-mining" },
         { label: "Oil & Gas", href: "/industries/oil-gas" },
         { label: "Power & Energy", href: "/industries/power-energy" },
       ],

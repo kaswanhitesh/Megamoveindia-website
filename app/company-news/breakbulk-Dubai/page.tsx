@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/app/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/company-news/breakbulk-Dubai/",
   title: "Mega Move India at Breakbulk Middle East Dubai 2026 | Company News",
-  description:
-    "Mega Move India participates in the Breakbulk Middle East 2026 exhibition in Dubai, strengthening international freight forwarding and project logistics alliances.",
-};
+  description: "Mega Move India participates in the Breakbulk Middle East 2026 exhibition in Dubai, strengthening international freight forwarding and project logistics alliances.",
+});
 
 export default function BreakbulkDubaiPage() {
   return (

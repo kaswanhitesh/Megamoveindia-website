@@ -1,10 +1,9 @@
-import type { Metadata } from "next";
-export const metadata: Metadata = {
-  title:
-    "Project Forwarding Services | Breakbulk & OOG Cargo Specialists | Mega Move India",
-  description:
-    "Project forwarding services, breakbulk shipping, out of gauge cargo transportation, heavy lift logistics, project cargo management and global freight forwarding solutions by Mega Move India.",
-};
+import { pageMetadata } from "@/app/lib/seo";
+export const metadata = pageMetadata({
+  path: "/services/project-forwarding/",
+  title: "Project Forwarding Services | Breakbulk & OOG Cargo Specialists | Mega Move India",
+  description: "Project forwarding services, breakbulk shipping, out of gauge cargo transportation, heavy lift logistics, project cargo management and global freight forwarding solutions by Mega Move India.",
+});
 export default function ProjectForwarding() {
   const services = [
     {
@@ -37,7 +36,7 @@ export default function ProjectForwarding() {
       {/* HERO */}
       <section className="relative h-[320px] md:h-[400px] lg:h-[500px] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1800&q=80"
+          src="/images/Casestudies/Project-4/Project4_HeroImage.webp"
           alt="Project Forwarding Services"
           className="w-full h-full object-cover"
         />

@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/app/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/company-news/fleet-expansion/",
   title: "Equipment Fleet Expansion | Company News | Mega Move India",
-  description:
-    "Mega Move India Private Limited adds state-of-the-art hydraulic axle trailers and heavy-duty pullers to its in-house equipment fleet to support oversized cargo operations.",
-};
+  description: "Mega Move India Private Limited adds state-of-the-art hydraulic axle trailers and heavy-duty pullers to its in-house equipment fleet to support oversized cargo operations.",
+});
 
 export default function FleetExpansionPage() {
   return (

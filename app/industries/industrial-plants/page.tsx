@@ -1,18 +1,15 @@
-import type { Metadata } from "next";
-import IndustryPlaceholder from "../IndustryPlaceholder";
+import { pageMetadata } from "@/app/lib/seo";
+import IndustryPage from "../IndustryPage";
+import { INDUSTRIES } from "../data";
 
-export const dynamic = "force-static";
+const industry = INDUSTRIES["industrial-plants"];
 
-export const metadata: Metadata = {
-  title: "Industrial Plants Logistics | Mega Move India",
-  description: "Specialized factory relocations, heavy reactors lift, and critical assembly line haulage solutions by Mega Move India.",
-};
+export const metadata = pageMetadata({
+  path: "/industries/industrial-plants/",
+  title: industry.metaTitle,
+  description: industry.metaDescription,
+});
 
-export default function IndustrialPlantsPage() {
-  return (
-    <IndustryPlaceholder
-      title="Industrial Plants"
-      description="We specialize in end-to-end factory relocations, heavy haulage for massive industrial reactors, and precise installation services for critical manufacturing assembly lines."
-    />
-  );
+export default function Page() {
+  return <IndustryPage industry={industry} />;
 }

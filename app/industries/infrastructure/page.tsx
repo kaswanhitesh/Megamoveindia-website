@@ -1,18 +1,15 @@
-import type { Metadata } from "next";
-import IndustryPlaceholder from "../IndustryPlaceholder";
+import { pageMetadata } from "@/app/lib/seo";
+import IndustryPage from "../IndustryPage";
+import { INDUSTRIES } from "../data";
 
-export const dynamic = "force-static";
+const industry = INDUSTRIES["infrastructure"];
 
-export const metadata: Metadata = {
-  title: "Infrastructure Logistics | Mega Move India",
-  description: "Specialized logistics and heavy transport solutions for major infrastructure and construction projects across India.",
-};
+export const metadata = pageMetadata({
+  path: "/industries/infrastructure/",
+  title: industry.metaTitle,
+  description: industry.metaDescription,
+});
 
-export default function InfrastructurePage() {
-  return (
-    <IndustryPlaceholder
-      title="Infrastructure"
-      description="We provide comprehensive logistics and transport engineering solutions for major infrastructure projects, bridge constructions, highway developments, and pre-cast concrete transports."
-    />
-  );
+export default function Page() {
+  return <IndustryPage industry={industry} />;
 }

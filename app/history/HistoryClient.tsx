@@ -40,7 +40,7 @@ export default function HistoryClient() {
       {/* HERO SECTION */}
       <section className="relative h-[280px] lg:h-[450px] overflow-hidden border-b border-zinc-900 bg-zinc-950">
         <img
-          src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1800&q=80"
+          src="/images/LandTransportPageHeroImage.webp"
           alt="Mega Move India History"
           className="w-full h-full object-cover opacity-30 select-none pointer-events-none main-illustration"
         />

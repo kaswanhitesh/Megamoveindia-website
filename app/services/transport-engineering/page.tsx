@@ -1,11 +1,10 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/app/lib/seo";
 
-export const metadata: Metadata = {
-  title:
-    "Transport Engineering Services | Route Survey & Heavy Cargo Engineering | Mega Move India",
-  description:
-    "Transport engineering services including route surveys, bridge analysis, cargo securing studies, transport feasibility studies, lifting plans, heavy haulage engineering and ODC transportation planning.",
-};
+export const metadata = pageMetadata({
+  path: "/services/transport-engineering/",
+  title: "Transport Engineering Services | Route Survey & Heavy Cargo Engineering | Mega Move India",
+  description: "Transport engineering services including route surveys, bridge analysis, cargo securing studies, transport feasibility studies, lifting plans, heavy haulage engineering and ODC transportation planning.",
+});
 
 export default function TransportEngineering() {
   const services = [
@@ -40,7 +39,7 @@ export default function TransportEngineering() {
       {/* HERO */}
       <section className="relative h-[320px] md:h-[400px] lg:h-[500px] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1800&q=80"
+          src="/images/Casestudies/Project-5/Project5_Heroimage.webp"
           alt="Transport Engineering Services"
           className="w-full h-full object-cover"
         />
