@@ -17,9 +17,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MegaMoveIndia — Cinematic Scroll Experience",
+  title: "Mega Move India — Project & Heavy Cargo Logistics",
   description:
-    "An immersive, scroll-driven cinematic experience by MegaMoveIndia. Explore our story frame by frame.",
+    "Mega Move India provides heavy haulage, ODC transportation, project logistics, freight forwarding and equipment rentals across India and globally.",
 };
 
 export default function RootLayout({

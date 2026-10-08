@@ -1,13 +1,3 @@
-'use client';
-
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 const milestones = [
   {
     year: "2005",
@@ -42,106 +32,17 @@ const milestones = [
 ];
 
 export default function HistoryClient() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const heroImageRef = useRef<HTMLImageElement>(null);
-
-  useEffect(() => {
-    // 1. Set initial states to prevent FOUC / layout shifts
-    gsap.set(".page-border", { opacity: 0 });
-    gsap.set(".editorial-text", { y: 30, opacity: 0, filter: "blur(8px)" });
-    gsap.set(".section-heading", { y: 20, opacity: 0, scale: 0.98 });
-    gsap.set(heroImageRef.current, { clipPath: "inset(100% 0% 0% 0%)", y: 40, opacity: 0 });
-    gsap.set(".fine-detail", { opacity: 0 });
-
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-
-      // Step 1 – Page Reveal
-      tl.to(".page-border", {
-        opacity: 0.25,
-        duration: 0.3,
-      });
-
-      // Step 5 – Main Illustration Reveal (Hero Image)
-      tl.to(heroImageRef.current, {
-        clipPath: "inset(0% 0% 0% 0%)",
-        y: 0,
-        opacity: 0.3, // Match original opacity: 30%
-        duration: 0.8,
-        ease: "power4.inOut",
-      }, "-=0.15");
-
-      // Step 2 – Editorial Text Reveal (staggered paragraphs and spans)
-      tl.to(".editorial-text", {
-        y: 0,
-        opacity: 1,
-        filter: "blur(0px)",
-        duration: 0.6,
-        stagger: 0.08,
-      }, "-=0.4");
-
-      // Step 3 – Section Headings (arrive slightly after paragraphs)
-      tl.to(".section-heading", {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 0.6,
-        stagger: 0.1,
-      }, "-=0.35");
-
-      // Step 6 – Fine Details
-      tl.to(".fine-detail", {
-        opacity: 1,
-        duration: 0.5,
-        stagger: 0.05,
-      }, "-=0.3");
-
-      // Scroll Parallax (subtle editorial parallax)
-      // Main illustration (Hero Image) moves faster than text
-      if (heroImageRef.current) {
-        gsap.to(heroImageRef.current, {
-          yPercent: 15,
-          ease: "none",
-          scrollTrigger: {
-            trigger: heroImageRef.current,
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
-      }
-
-      // Parallax fade and shift for hero heading and texts
-      gsap.to(".hero-content-group", {
-        yPercent: -10,
-        opacity: 0.4,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".hero-content-group",
-          start: "top 30%",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <div ref={containerRef} className="relative w-full min-h-screen">
+    <div className="relative w-full min-h-screen">
       {/* Step 1 – Editorial Page Border (Thin border inset) */}
-      <div className="fixed inset-4 border border-zinc-800 pointer-events-none z-50 page-border" style={{ opacity: 0 }} />
+      <div className="fixed inset-4 border border-zinc-800 pointer-events-none z-50 opacity-25" />
 
       {/* HERO SECTION */}
       <section className="relative h-[280px] lg:h-[450px] overflow-hidden border-b border-zinc-900 bg-zinc-950">
         <img
-          ref={heroImageRef}
           src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1800&q=80"
           alt="Mega Move India History"
           className="w-full h-full object-cover opacity-30 select-none pointer-events-none main-illustration"
-          style={{ opacity: 0 }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent pointer-events-none" />
         <div className="absolute inset-0 flex items-center justify-center hero-content-group">

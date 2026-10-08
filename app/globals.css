@@ -65,14 +65,7 @@ body {
     rgba(255,255,255,0) 100%
   );
   transform: skewX(-20deg);
-  animation: laser-shine 5s infinite;
   pointer-events: none;
-}
-
-@keyframes laser-shine {
-  0% { left: -100%; }
-  15% { left: 200%; }
-  100% { left: 200%; }
 }
 
 .industry-card:hover {
@@ -122,19 +115,6 @@ body {
    COMPANY NEWS
 ========================================= */
 
-@keyframes news-scroll {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-news {
-  animation: news-scroll 30s linear infinite;
-}
 
 .news-marquee {
   overflow: hidden;
@@ -154,27 +134,11 @@ body {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
-.news-marquee-content:hover {
-  animation-play-state: paused;
-}
 
 /* ==========================================
    PROJECT GALLERY
 ========================================== */
 
-@keyframes galleryScroll {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-gallery {
-  animation: galleryScroll 40s linear infinite;
-}
 
 .gallery-marquee {
   overflow: hidden;
@@ -186,31 +150,12 @@ body {
   width: max-content;
 }
 
-.gallery-track:hover {
-  animation-play-state: paused;
-}
 
 /* ==========================================
    PROJECTS SLIDER
 ========================================== */
 
-@keyframes projects-slider {
-  from {
-    transform: translateX(0);
-  }
 
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-projects-slider {
-  animation: projects-slider 35s linear infinite;
-}
-
-.animate-projects-slider:hover {
-  animation-play-state: paused;
-}
 
 /* ==========================================
    MOBILE OPTIMIZATION
@@ -244,17 +189,8 @@ body {
   }
 
   /* SMOOTHER MOBILE ANIMATIONS */
-  .animate-gallery {
-    animation-duration: 55s;
-  }
 
-  .animate-news {
-    animation-duration: 40s;
-  }
 
-  .animate-projects-slider {
-    animation-duration: 45s;
-  }
 }
 
 /* ==========================================
@@ -273,20 +209,21 @@ body {
   }
 }
 
-@keyframes projectsSlider {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-projects-slider {
-  animation: projectsSlider 35s linear infinite;
-}
 
 .gallery-track {
   transform: translateX(0);
+}
+
+/* ==========================================
+   NO MOTION
+   Site is intentionally static: disable all CSS
+   animations, transitions and smooth scrolling.
+========================================== */
+
+*,
+*::before,
+*::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
 }

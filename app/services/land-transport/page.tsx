@@ -135,13 +135,13 @@ export default function LandTransport() {
             Explore some of our recent project logistics and heavy haulage assignments.
           </p>
 
-          <div className="overflow-hidden">
-            <div className="flex gap-4 lg:gap-8 animate-projects-slider w-max">
-              {[...recentProjects, ...recentProjects].map((project, index) => (
+          <div className="overflow-x-auto pb-4">
+            <div className="flex gap-4 lg:gap-8 w-max">
+              {recentProjects.map((project, index) => (
                 <Link
                   key={index}
                   href={`/case-studies/${project.slug}`}
-                  className="w-[260px] lg:w-[380px] bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 shrink-0"
+                  className="w-[260px] lg:w-[380px] bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl shrink-0"
                 >
                   <img
                     src={project.image}

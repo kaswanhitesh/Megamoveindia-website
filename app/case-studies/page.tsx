@@ -1,7 +1,3 @@
-"use client";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import "swiper/css";
 import Link from "next/link";
 
 export default function CaseStudies() {
@@ -200,71 +196,22 @@ export default function CaseStudies() {
     OUR NETWORKS
   </h2>
 
-  <Swiper
-    modules={[Autoplay]}
-    loop={true}
-    speed={5000}
-    autoplay={{
-      delay: 0,
-      disableOnInteraction: false,
-      pauseOnMouseEnter: false,
-    }}
-    allowTouchMove={true}
-    grabCursor={true}
-    breakpoints={{
-      320: {
-        slidesPerView: 2.2,
-        spaceBetween: 15,
-      },
-      768: {
-        slidesPerView: 4.5,
-        spaceBetween: 20,
-      },
-      1024: {
-        slidesPerView: 5,
-        spaceBetween: 30,
-      },
-    }}
-  >
-
+  <div className="flex flex-wrap items-center justify-center gap-4 lg:gap-8">
     {networks.map((network, index) => (
-
-   <SwiperSlide key={index}>
-
-  <div
-    className="
-      h-[120px]
-      lg:h-[140px]
-      w-[220px]
-      flex
-      items-center
-      justify-center
-      mx-auto
-    "
-  >
-
-    <img
-      src={network.logo}
-      alt={network.name}
-      className={`
-       object-contain
-       w-auto
-       h-auto
-       drop-shadow-[0_2px_6px_rgba(0,0,0,0.05)]
-       ${network.size === "small"
-       ? "max-w-[140px] max-h-[65px]"
-       : "max-w-[180px] max-h-[80px]"
-    }
-`}
-    />
-
-  </div>
-
-</SwiperSlide>
-
+      <div
+        key={index}
+        className="h-[120px] lg:h-[140px] w-[150px] lg:w-[220px] flex items-center justify-center"
+      >
+        <img
+          src={network.logo}
+          alt={network.name}
+          className={`object-contain w-auto h-auto drop-shadow-[0_2px_6px_rgba(0,0,0,0.05)] ${
+            network.size === "small" ? "max-w-[140px] max-h-[65px]" : "max-w-[180px] max-h-[80px]"
+          }`}
+        />
+      </div>
     ))}
-
-  </Swiper>
+  </div>
 
 </div>
 
@@ -275,9 +222,9 @@ export default function CaseStudies() {
             OUR CUSTOMERS
           </h2>
 
-          <div className="overflow-hidden">
-            <div className="flex gap-4 lg:gap-6 animate-marquee-reverse w-max">
-              {[...customers, ...customers].map((customer, i) => (
+          <div>
+            <div className="flex flex-wrap justify-center gap-4 lg:gap-6">
+              {customers.map((customer, i) => (
                 <div
                   key={i}
                   className="
@@ -297,8 +244,6 @@ export default function CaseStudies() {
                     text-gray-600
                     grayscale
                     hover:grayscale-0
-                    transition-all
-                    duration-700
                   "
                 >
                   {customer}

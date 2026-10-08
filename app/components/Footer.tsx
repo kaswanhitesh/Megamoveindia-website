@@ -1,20 +1,12 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 export default function Footer() {
-  const pathname = usePathname();
-  const isHome = pathname === "/";
-
   return (
     <footer
       style={{
-        position: isHome ? "absolute" : "relative",
-        bottom: 0,
-        left: 0,
+        position: "relative",
         width: "100%",
-        zIndex: isHome ? 150 : 10,
+        zIndex: 10,
         borderTop: "1px solid rgba(209, 213, 219, 1)",
         backgroundColor: "#f7f7f7",
         paddingLeft: "1.5rem",

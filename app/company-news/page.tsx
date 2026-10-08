@@ -57,9 +57,9 @@ export default function CompanyNews() {
       {/* NEWS SLIDER */}
 
       <section className="py-10 lg:py-16 overflow-hidden bg-[#f7f7f7]">
-        <div className="news-marquee">
-          <div className="news-marquee-content animate-news">
-            {[...news, ...news].map((item, index) => (
+        <div className="news-marquee overflow-x-auto pb-4 px-4 lg:px-8">
+          <div className="news-marquee-content">
+            {news.map((item, index) => (
               <a
                 key={index}
                 href={item.link}

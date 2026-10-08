@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -96,48 +96,11 @@ interface OtherProjectsCarouselProps {
 export default function OtherProjectsCarousel({ excludeSlug }: OtherProjectsCarouselProps) {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [activeDotIndex, setActiveDotIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
   // Filter out the active project
   const projects = ALL_PROJECTS.filter((p) => p.slug !== excludeSlug);
-  // Duplicate array to achieve seamless infinite marquee loop
-  const displayProjects = [...projects, ...projects];
-
-  // Continuous auto-slide marquee effect
-  useEffect(() => {
-    const container = sliderRef.current;
-    if (!container || isPaused) return;
-
-    let animationFrameId: number;
-    let lastTime = performance.now();
-    const speed = 40.25; // Pixels per second (exactly 15% speed increase from 35)
-
-    const scrollLoop = (time: number) => {
-      const delta = (time - lastTime) / 1000;
-      lastTime = time;
-
-      const cardWidth = container.firstElementChild?.clientWidth || 300;
-      const gap = 32; // gap-8
-      const halfWidth = projects.length * (cardWidth + gap);
-
-      // Loop seamlessly once the first batch scrolls out of view
-      if (container.scrollLeft >= halfWidth) {
-        container.scrollLeft -= halfWidth;
-      } else {
-        container.scrollLeft += speed * delta;
-      }
-
-      animationFrameId = requestAnimationFrame(scrollLoop);
-    };
-
-    animationFrameId = requestAnimationFrame(scrollLoop);
-
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, [isPaused, projects.length]);
 
   const handleScroll = () => {
     const container = sliderRef.current;
@@ -147,15 +110,7 @@ export default function OtherProjectsCarousel({ excludeSlug }: OtherProjectsCaro
     const gap = 32;
     const scrollLeft = container.scrollLeft;
 
-    const halfWidth = projects.length * (cardWidth + gap);
-    
-    // Normalizing wrap-around for scroll offset
-    let normalizedScroll = scrollLeft;
-    if (scrollLeft >= halfWidth) {
-      normalizedScroll = scrollLeft % halfWidth;
-    }
-
-    const index = Math.round(normalizedScroll / (cardWidth + gap)) % projects.length;
+    const index = Math.min(projects.length - 1, Math.round(scrollLeft / (cardWidth + gap)));
     setActiveDotIndex(index);
 
     setCanScrollLeft(scrollLeft > 5);
@@ -169,7 +124,7 @@ export default function OtherProjectsCarousel({ excludeSlug }: OtherProjectsCaro
     const gap = 32;
     container.scrollBy({
       left: -(cardWidth + gap),
-      behavior: 'smooth',
+      behavior: 'auto',
     });
   };
 
@@ -180,17 +135,13 @@ export default function OtherProjectsCarousel({ excludeSlug }: OtherProjectsCaro
     const gap = 32;
     container.scrollBy({
       left: cardWidth + gap,
-      behavior: 'smooth',
+      behavior: 'auto',
     });
   };
 
   return (
     <section 
       className="mt-14 lg:mt-16 border-t pt-10 lg:pt-12 relative select-none"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onTouchStart={() => setIsPaused(true)}
-      onTouchEnd={() => setIsPaused(false)}
     >
       {/* Section Header */}
       <h2 className="text-3xl lg:text-5xl font-light text-zinc-900 text-center mb-4">
@@ -221,13 +172,13 @@ export default function OtherProjectsCarousel({ excludeSlug }: OtherProjectsCaro
           </button>
         )}
 
-        {/* Slider Container (No CSS snap-points to allow completely smooth marquee crawl) */}
+        {/* Slider Container */}
         <div
           ref={sliderRef}
           onScroll={handleScroll}
-          className="flex gap-8 overflow-x-auto scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden py-8 px-1"
+          className="flex gap-8 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden py-8 px-1"
         >
-          {displayProjects.map((project, idx) => (
+          {projects.map((project, idx) => (
             <div
               key={`${project.slug}-${idx}`}
               className="w-[calc(100%-8px)] md:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] shrink-0 p-2"
@@ -236,7 +187,7 @@ export default function OtherProjectsCarousel({ excludeSlug }: OtherProjectsCaro
               <Link
                 href={`/case-studies/${project.slug}`}
                 prefetch={false}
-                className="group block bg-white rounded-2xl overflow-hidden border border-gray-100/50 shadow-[0_12px_36px_rgba(23,63,116,0.04)] hover:shadow-[0_30px_60px_rgba(23,63,116,0.16)] hover:scale-[1.05] hover:-translate-y-2.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] h-full flex flex-col"
+                className="group block bg-white rounded-2xl overflow-hidden border border-gray-100/50 shadow-[0_12px_36px_rgba(23,63,116,0.04)] hover:shadow-[0_30px_60px_rgba(23,63,116,0.16)] h-full flex flex-col"
               >
                 {/* Elevated Image & Badge Container */}
                 <div className="relative h-[250px] lg:h-[280px] w-full bg-gray-50 flex-shrink-0 overflow-hidden">
@@ -356,7 +307,7 @@ export default function OtherProjectsCarousel({ excludeSlug }: OtherProjectsCaro
               const gap = 32;
               container.scrollTo({
                 left: i * (cardWidth + gap),
-                behavior: 'smooth',
+                behavior: 'auto',
               });
               setActiveDotIndex(i);
             }}

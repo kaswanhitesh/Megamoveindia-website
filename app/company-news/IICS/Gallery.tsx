@@ -40,41 +40,31 @@ export default function Gallery() {
 
         </div>
 
-        <div className="gallery-marquee">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
 
-          <div className="gallery-track animate-gallery">
-
-            {[...images, ...images].map((image, index) => (
+            {images.map((image, index) => (
 
               <div
                 key={index}
-                className="mx-2 lg:mx-3 cursor-pointer"
-                onClick={() =>
-                  setSelectedImage(index % images.length)
-                }
+                className="cursor-pointer"
+                onClick={() => setSelectedImage(index)}
               >
 
                 <img
                   src={image}
                   alt=""
                   className="
-                    w-[280px]
-                    h-[190px]
-                    lg:w-[420px]
-                    lg:h-[280px]
+                    w-full
+                    h-[220px]
+                    lg:h-[260px]
                     object-cover
                     rounded-lg
-                    hover:scale-105
-                    transition-all
-                    duration-500
                   "
                 />
 
               </div>
 
             ))}
-
-          </div>
 
         </div>
 
