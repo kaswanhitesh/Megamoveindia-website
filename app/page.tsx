@@ -6,6 +6,7 @@ const services = [
     description:
       "Specialized air freight solutions for urgent, high-value and time-critical cargo movements. Through our global airline partnerships and logistics network, we provide reliable charter and door-to-door services.",
     image: "/images/AirFreightHeroImage.webp",
+    video: "/images/AirFreight.mp4",
     link: "/services/air-freight",
   },
   {
@@ -13,6 +14,7 @@ const services = [
     description:
       "Comprehensive ocean freight services covering FCL, LCL, breakbulk and project cargo shipments. Our experienced team manages international movements through strategic carrier partnerships.",
     image: "/images/OceanfreightHeroCardImage.webp",
+    video: "/images/OceanFreightOptimizedV2.mp4",
     link: "/services/ocean-freight",
   },
   {
@@ -20,6 +22,7 @@ const services = [
     description:
       "Heavy haulage, over-dimensional cargo transportation and project logistics supported by hydraulic axle trailers, lowbed trailers and specialized equipment across India.",
     image: "/images/LandTransportCardHeroImage.webp",
+    video: "/images/Land_transport.mp4",
     link: "/services/land-transport",
   },
   {
@@ -27,6 +30,7 @@ const services = [
     description:
       "Comprehensive equipment rental, warehousing and cargo handling solutions including truck mounted manlifts, aerial work platforms, loading services and project support.",
     image: "/images/RentalsCardHeroImage.webp",
+    video: "/images/Rental_Warehouse_Final.mp4",
     link: "/services/rentals-warehousing",
   },
 ];
@@ -37,6 +41,7 @@ const industries = [
     description:
       "End-to-end factory relocations. We engineer precise lifting and haulage for massive industrial reactors and critical assembly lines.",
     image: "/images/industries/industry_industrial_plants.webp",
+    video: "/images/industrial_final.mp4",
     link: "/industries/industrial-plants",
   },
   {
@@ -44,6 +49,7 @@ const industries = [
     description:
       "Logistics backbone for national mega-projects. Transporting colossal bridge girders, TBMs, and pre-cast concrete structures.",
     image: "/images/industries/industry_infrastructure.webp",
+    video: "/images/THE_MUMBAI_LINK_Optimized.mp4",
     link: "/industries/infrastructure",
   },
   {
@@ -51,6 +57,7 @@ const industries = [
     description:
       "Extreme-weight haulage for the resource sector. We move massive excavators, dump trucks, and heavy processing units.",
     image: "/images/industries/industry_metal_mining.webp",
+    video: "/images/Mining_mining_industry.mp4",
     link: "/industries/metal-mining",
   },
   {
@@ -58,6 +65,7 @@ const industries = [
     description:
       "Specialized movement of highly delicate assets including long-span pipelines, offshore rigs, and massive refinery vessels.",
     image: "/images/industries/industry_oil_gas.webp",
+    video: "/images/oil1_norm.mp4",
     link: "/industries/oil-gas",
   },
   {
@@ -65,9 +73,22 @@ const industries = [
     description:
       "Precision transport for the grid. Moving 80m wind turbine blades, high-voltage transformers, and heavy nuclear components.",
     image: "/images/industries/industry_power_energy.webp",
+    video: "/images/oil2.mp4",
     link: "/industries/power-energy",
   },
 ];
+
+// Looping, muted card video. Phones get the lighter 144p encode; the still
+// image shows until the video starts (and if it can't play).
+function CardVideo({ src, poster }: { src: string; poster: string }) {
+  const mobileSrc = src.replace(/\.mp4$/, "_144p.mp4");
+  return (
+    <video autoPlay muted loop playsInline preload="metadata" poster={poster} className="h-full w-full object-cover">
+      <source src={mobileSrc} type="video/mp4" media="(max-width: 767px)" />
+      <source src={src} type="video/mp4" />
+    </video>
+  );
+}
 
 const cardClass =
   "group flex flex-col rounded-2xl border border-zinc-700/80 bg-zinc-900/60 p-4 lg:p-5 no-underline hover:border-zinc-500";
@@ -125,7 +146,7 @@ export default function Home() {
           {services.map((service) => (
             <Link key={service.title} href={service.link} className={cardClass}>
               <div className="mb-4 h-[180px] overflow-hidden rounded-xl border border-zinc-700/50 bg-zinc-950">
-                <img src={service.image} alt={service.title} className="h-full w-full object-cover" />
+                <CardVideo src={service.video} poster={service.image} />
               </div>
               <h3 className="mb-3 text-lg font-medium tracking-wide text-zinc-100">{service.title}</h3>
               <p className="mb-4 flex-1 text-sm font-light leading-relaxed text-zinc-400">{service.description}</p>
@@ -152,7 +173,7 @@ export default function Home() {
           {industries.map((item) => (
             <Link key={item.title} href={item.link} className={cardClass}>
               <div className="mb-4 h-[200px] overflow-hidden rounded-xl border border-zinc-700/50 bg-zinc-950">
-                <img src={item.image} alt={item.title} className="h-full w-full object-cover" />
+                <CardVideo src={item.video} poster={item.image} />
               </div>
               <h3 className="mb-3 text-[22px] font-extrabold uppercase leading-none tracking-wider">{item.title}</h3>
               <p className="mb-4 flex-1 text-[14.5px] font-light leading-[1.65] text-zinc-400">{item.description}</p>
