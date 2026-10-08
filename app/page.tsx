@@ -1,4 +1,5 @@
 import Link from "next/link";
+import HomeHero from "./components/HomeHero";
 
 const services = [
   {
@@ -95,28 +96,17 @@ const cardClass =
 
 export default function Home() {
   return (
-    <div className="relative bg-black text-white">
-      {/* Hero */}
-      <section
-        className="relative flex min-h-screen flex-col items-center justify-center bg-cover bg-center px-4 pt-[90px]"
-        style={{ backgroundImage: "url('/images/home-hero.webp')" }}
-      >
-        <div className="absolute inset-0 bg-black/30" />
-        <div className="relative text-center">
-          <div className="mb-3 text-[clamp(0.9rem,2vw,1.3rem)] font-light uppercase tracking-[0.3em] text-white/85">
-            Welcome to
-          </div>
-          <h1 className="text-[clamp(2.5rem,7vw,5.5rem)] font-extrabold uppercase leading-[1.1] tracking-[0.05em] [text-shadow:0_2px_40px_rgba(0,0,0,0.6)]">
-            MEGA MOVE INDIA
-          </h1>
-        </div>
-      </section>
+    <div className="relative text-white">
+      <HomeHero />
+
+      {/* Empty first screen: only the pinned image and the welcome title */}
+      <div className="relative z-10 h-screen" />
 
       {/* Legacy & Mission */}
-      <section className="px-4 py-16 lg:py-24">
+      <section className="relative z-10 flex min-h-screen items-center px-4">
         <Link
           href="/history"
-          className="mx-auto block max-w-[820px] rounded-2xl border border-zinc-700/50 bg-zinc-900/60 p-6 text-center no-underline hover:border-zinc-600 lg:p-12"
+          className="mx-auto block w-full max-w-[820px] rounded-2xl border border-zinc-700/50 bg-zinc-900/60 p-6 backdrop-blur-xl text-center no-underline hover:border-zinc-600 lg:p-12"
         >
           <div className="mb-6 font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-400/70">
             OUR LEGACY &amp; MISSION
@@ -134,56 +124,59 @@ export default function Home() {
         </Link>
       </section>
 
-      {/* Core Portfolios */}
-      <section className="mx-auto max-w-7xl px-6 py-16 text-center lg:px-16 lg:py-24">
-        <h2 className="mb-4 text-[1.75rem] font-light leading-[1.1] tracking-[0.02em] text-zinc-100 lg:text-[3.5rem]">
-          CORE PORTFOLIOS
-        </h2>
-        <p className="mx-auto mb-10 max-w-[500px] text-sm font-light leading-relaxed text-zinc-400 lg:text-base">
-          Integrated logistics solutions across air, ocean, and specialized land transportation.
-        </p>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((service) => (
-            <Link key={service.title} href={service.link} className={cardClass}>
-              <div className="mb-4 h-[180px] overflow-hidden rounded-xl border border-zinc-700/50 bg-zinc-950">
-                <CardVideo src={service.video} poster={service.image} />
-              </div>
-              <h3 className="mb-3 text-lg font-medium tracking-wide text-zinc-100">{service.title}</h3>
-              <p className="mb-4 flex-1 text-sm font-light leading-relaxed text-zinc-400">{service.description}</p>
-              <div className="border-t border-zinc-700/40 pt-4 font-mono text-xs uppercase tracking-widest text-zinc-200 group-hover:text-white">
-                Explore Services →
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
+      {/* Opaque from here down, so it covers the pinned image as it scrolls up */}
+      <div className="relative z-10 bg-black">
+        {/* Core Portfolios */}
+        <section className="mx-auto max-w-7xl px-6 py-16 text-center lg:px-16 lg:py-24">
+          <h2 className="mb-4 text-[1.75rem] font-light leading-[1.1] tracking-[0.02em] text-zinc-100 lg:text-[3.5rem]">
+            CORE PORTFOLIOS
+          </h2>
+          <p className="mx-auto mb-10 max-w-[500px] text-sm font-light leading-relaxed text-zinc-400 lg:text-base">
+            Integrated logistics solutions across air, ocean, and specialized land transportation.
+          </p>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {services.map((service) => (
+              <Link key={service.title} href={service.link} className={cardClass}>
+                <div className="mb-4 h-[180px] overflow-hidden rounded-xl border border-zinc-700/50 bg-zinc-950">
+                  <CardVideo src={service.video} poster={service.image} />
+                </div>
+                <h3 className="mb-3 text-lg font-medium tracking-wide text-zinc-100">{service.title}</h3>
+                <p className="mb-4 flex-1 text-sm font-light leading-relaxed text-zinc-400">{service.description}</p>
+                <div className="border-t border-zinc-700/40 pt-4 font-mono text-xs uppercase tracking-widest text-zinc-200 group-hover:text-white">
+                  Explore Services →
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
 
-      {/* Industries We Serve */}
-      <section className="mx-auto max-w-7xl px-6 pb-20 pt-8 text-center lg:px-16 lg:pb-28">
-        <h2 className="mb-6 text-[1.75rem] font-extrabold uppercase leading-[1.2] tracking-[0.02em] lg:text-[2.25rem]">
-          INDUSTRIES WE SERVE
-        </h2>
-        <p className="mx-auto mb-10 max-w-3xl text-[1.05rem] font-light leading-[1.7] text-zinc-400">
-          Project Cargo &amp; Heavy Logistics Solutions Across Key Industries. Mega Move India provides specialized
-          heavy haulage, oversized cargo transportation, project logistics, multimodal freight, and industrial supply
-          chain solutions for infrastructure, oil &amp; gas, power, mining, manufacturing, and construction projects
-          across India and globally.
-        </p>
-        <div className="flex flex-wrap justify-center gap-6">
-          {industries.map((item) => (
-            <Link key={item.title} href={item.link} className={`${cardClass} w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]`}>
-              <div className="mb-4 h-[200px] overflow-hidden rounded-xl border border-zinc-700/50 bg-zinc-950">
-                <CardVideo src={item.video} poster={item.image} />
-              </div>
-              <h3 className="mb-3 text-[22px] font-extrabold uppercase leading-none tracking-wider">{item.title}</h3>
-              <p className="mb-4 flex-1 text-[14.5px] font-light leading-[1.65] text-zinc-400">{item.description}</p>
-              <div className="font-mono text-[11px] font-semibold uppercase tracking-widest text-white/50 group-hover:text-white">
-                Explore Sector →
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
+        {/* Industries We Serve */}
+        <section className="mx-auto max-w-7xl px-6 pb-20 pt-8 text-center lg:px-16 lg:pb-28">
+          <h2 className="mb-6 text-[1.75rem] font-extrabold uppercase leading-[1.2] tracking-[0.02em] lg:text-[2.25rem]">
+            INDUSTRIES WE SERVE
+          </h2>
+          <p className="mx-auto mb-10 max-w-3xl text-[1.05rem] font-light leading-[1.7] text-zinc-400">
+            Project Cargo &amp; Heavy Logistics Solutions Across Key Industries. Mega Move India provides specialized
+            heavy haulage, oversized cargo transportation, project logistics, multimodal freight, and industrial supply
+            chain solutions for infrastructure, oil &amp; gas, power, mining, manufacturing, and construction projects
+            across India and globally.
+          </p>
+          <div className="flex flex-wrap justify-center gap-6">
+            {industries.map((item) => (
+              <Link key={item.title} href={item.link} className={`${cardClass} w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]`}>
+                <div className="mb-4 h-[200px] overflow-hidden rounded-xl border border-zinc-700/50 bg-zinc-950">
+                  <CardVideo src={item.video} poster={item.image} />
+                </div>
+                <h3 className="mb-3 text-[22px] font-extrabold uppercase leading-none tracking-wider">{item.title}</h3>
+                <p className="mb-4 flex-1 text-[14.5px] font-light leading-[1.65] text-zinc-400">{item.description}</p>
+                <div className="font-mono text-[11px] font-semibold uppercase tracking-widest text-white/50 group-hover:text-white">
+                  Explore Sector →
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
