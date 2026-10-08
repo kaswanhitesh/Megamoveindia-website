@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useHeaderFooter } from "./HeaderFooterContext";
 
 // Pinned hero background plus the "Welcome to Mega Move India" title.
 // The title fades in on load (CSS) and fades out over the first ~40% of a
-// screen of scrolling. Content after the hero scrolls over the pinned image.
+// screen of scrolling; the header fades with it while the menu button stays.
+// Content after the hero scrolls over the pinned image.
 export default function HomeHero() {
   const titleRef = useRef<HTMLDivElement>(null);
+  const { setHeaderOpacity } = useHeaderFooter();
 
   useEffect(() => {
     let frame = 0;
@@ -17,6 +20,7 @@ export default function HomeHero() {
       const opacity = Math.max(0, 1 - window.scrollY / (window.innerHeight * 0.4));
       el.style.opacity = String(opacity);
       el.style.visibility = opacity === 0 ? "hidden" : "visible";
+      setHeaderOpacity(opacity);
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update);
@@ -28,8 +32,9 @@ export default function HomeHero() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
       cancelAnimationFrame(frame);
+      setHeaderOpacity(1);
     };
-  }, []);
+  }, [setHeaderOpacity]);
 
   return (
     <>
