@@ -4,11 +4,13 @@ import { useEffect, useRef } from "react";
 import { useHeaderFooter } from "./HeaderFooterContext";
 
 // Pinned hero background plus the "Welcome to Mega Move India" title.
-// The title fades in on load (CSS) and fades out over the first ~40% of a
-// screen of scrolling; the header fades with it while the menu button stays.
-// Content after the hero scrolls over the pinned image.
+// The title fades in on load (CSS). It stays fully visible until the top of
+// the legacy card (#legacy-card) reaches the bottom of the title, then fades
+// out as the card slides over it. The header fades with it; the menu button
+// stays. Content after the hero scrolls over the pinned image.
 export default function HomeHero() {
   const titleRef = useRef<HTMLDivElement>(null);
+  const titleTextRef = useRef<HTMLDivElement>(null);
   const { setHeaderOpacity } = useHeaderFooter();
 
   useEffect(() => {
@@ -16,8 +18,12 @@ export default function HomeHero() {
     const update = () => {
       frame = 0;
       const el = titleRef.current;
-      if (!el) return;
-      const opacity = Math.max(0, 1 - window.scrollY / (window.innerHeight * 0.4));
+      const text = titleTextRef.current;
+      const card = document.getElementById("legacy-card");
+      if (!el || !text || !card) return;
+      const { top, bottom } = text.getBoundingClientRect();
+      const cardTop = card.getBoundingClientRect().top;
+      const opacity = Math.min(1, Math.max(0, (cardTop - top) / (bottom - top)));
       el.style.opacity = String(opacity);
       el.style.visibility = opacity === 0 ? "hidden" : "visible";
       setHeaderOpacity(opacity);
@@ -48,7 +54,7 @@ export default function HomeHero() {
         ref={titleRef}
         className="pointer-events-none fixed inset-0 z-[5] flex flex-col items-center justify-center px-4 pt-[90px] text-center"
       >
-        <div className="hero-fade-in">
+        <div ref={titleTextRef} className="hero-fade-in">
           <div className="mb-3 text-[clamp(0.9rem,2vw,1.3rem)] font-light uppercase tracking-[0.3em] text-white/85">
             Welcome to
           </div>

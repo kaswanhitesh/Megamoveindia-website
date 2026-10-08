@@ -105,6 +105,7 @@ export default function Home() {
       {/* Legacy & Mission */}
       <section className="relative z-10 flex min-h-screen items-center px-4">
         <Link
+          id="legacy-card"
           href="/history"
           className="mx-auto block w-full max-w-[820px] rounded-2xl border border-zinc-700/50 bg-zinc-900/60 p-6 backdrop-blur-xl text-center no-underline hover:border-zinc-600 lg:p-12"
         >
