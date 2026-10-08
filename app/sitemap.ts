@@ -21,7 +21,7 @@ function findRoutes(dir: string, route = ""): string[] {
 
 function priority(route: string): number {
   if (route === "/") return 1;
-  if (route.startsWith("/services/") || route === "/contact/") return 0.9;
+  if (route.startsWith("/services/") || route === "/contact/" || route === "/odc-transport/") return 0.9;
   if (route.startsWith("/industries/") || route.startsWith("/case-studies/")) return 0.8;
   return 0.6;
 }

@@ -192,8 +192,12 @@ export default function Home() {
             HAVE HEAVY OR OVERSIZED CARGO TO MOVE?
           </h2>
           <p className="mx-auto mb-10 max-w-2xl text-[1.05rem] font-light leading-[1.7] text-zinc-400">
-            Share your cargo dimensions, weight and route. Our project team will come back with a transport plan and
-            quotation.
+            From{" "}
+            <Link href="/odc-transport/" className="text-zinc-200 underline">
+              ODC transport
+            </Link>{" "}
+            to project forwarding, share your cargo dimensions, weight and route. Our project team will come back with
+            a transport plan and quotation.
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link

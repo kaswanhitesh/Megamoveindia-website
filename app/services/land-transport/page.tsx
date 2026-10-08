@@ -101,6 +101,11 @@ export default function LandTransport() {
           we execute complex cargo transportation projects safely and
           efficiently throughout India.
         </p>
+        <p className="text-center mt-6">
+          <Link href="/odc-transport/" className="text-[#173f74] underline text-sm lg:text-lg">
+            Learn more about our ODC transport services →
+          </Link>
+        </p>
       </section>
 
       {/* SERVICES */}
