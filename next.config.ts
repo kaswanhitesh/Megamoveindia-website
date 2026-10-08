@@ -1,67 +1,16 @@
 import type { NextConfig } from "next";
 
+// Static export for Hostinger shared hosting (Apache, no Node.js runtime).
+// Cache headers live in public/.htaccess since next.config headers() is
+// not applied to static exports.
 const nextConfig: NextConfig = {
-  output: "standalone",
+  output: "export",
+  trailingSlash: true,
+  images: {
+    unoptimized: true,
+  },
   turbopack: {
     root: process.cwd(),
-  },
-  async headers() {
-    return [
-      {
-        source: "/frames/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-      {
-        source: "/images/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-      {
-        source: "/documents/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-      {
-        source: "/mega-move-logo.svg",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-      {
-        source: "/favicon.ico",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-      {
-        source: "/:path*.svg",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-    ];
   },
 };
 
