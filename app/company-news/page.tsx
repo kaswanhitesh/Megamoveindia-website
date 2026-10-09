@@ -57,8 +57,8 @@ export default function CompanyNews() {
   },
 ];
 
-  // Newest first, so new posts land in the right place automatically
-  news.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+  // Oldest to newest, so new posts land in the right place automatically
+  news.sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
 
   return (
     <main>
