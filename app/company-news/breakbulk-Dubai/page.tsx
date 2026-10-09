@@ -1,4 +1,5 @@
 import { pageMetadata } from "@/app/lib/seo";
+import StaticGallery from "@/app/components/StaticGallery";
 
 export const metadata = pageMetadata({
   path: "/company-news/breakbulk-Dubai/",
@@ -72,8 +73,20 @@ export default function BreakbulkDubaiPage() {
           </p>
         </div>
 
-        {/* BACK TO NEWS BUTTON */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
+      </article>
+
+      <StaticGallery
+        images={[
+          "/images/Companynews/Breakbulkdubai2025/breakbulk2026_01.webp",
+          "/images/Companynews/Breakbulkdubai2025/breakbulk2026_02.webp",
+        ]}
+        altPrefix="Mega Move India at Breakbulk Middle East 2026, Dubai"
+        title="Event Gallery"
+        columns={2}
+      />
+
+      <div className="max-w-4xl mx-auto px-6 pb-16">
+        <div className="pt-8 border-t border-gray-200">
           <a
             href="/company-news"
             className="inline-block text-[#173f74] hover:text-[#0f2f58] font-bold text-sm lg:text-base transition-colors"
@@ -81,7 +94,7 @@ export default function BreakbulkDubaiPage() {
             ← Back to Company News
           </a>
         </div>
-      </article>
+      </div>
     </main>
   );
 }
