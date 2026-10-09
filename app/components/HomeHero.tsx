@@ -5,14 +5,13 @@ import { useHeaderFooter } from "./HeaderFooterContext";
 
 // One photo from each case study, cross-fading in a loop (see .hero-slide in globals.css).
 const SLIDES = [
-  "defence-bmp",
-  "machinery-import",
-  "factory-relocation",
-  "heat-condenser",
-  "heat-exchangers",
-  "chemical-tanks",
-  "xray-systems",
-  "eot-crane",
+  { name: "heat-exchangers" },
+  // Wide panorama: keep the lead truck on the left in frame
+  { name: "chemical-tanks", position: "25% center" },
+  { name: "heat-condenser" },
+  { name: "defence-bmp" },
+  { name: "xray-systems" },
+  { name: "eot-crane" },
 ];
 const SLIDE_SECONDS = 6;
 
@@ -59,7 +58,7 @@ export default function HomeHero() {
     <>
       {/* Background stays put while the legacy card scrolls over it */}
       <div className="fixed inset-0 z-0" aria-hidden="true">
-        {SLIDES.map((name, i) => (
+        {SLIDES.map(({ name, position }, i) => (
           <img
             key={name}
             src={`/images/hero-slides/${name}.webp`}
@@ -73,11 +72,12 @@ export default function HomeHero() {
               {
                 "--slide-cycle": `${SLIDES.length * SLIDE_SECONDS}s`,
                 "--slide-delay": `${i * SLIDE_SECONDS - 1.5}s`,
+                objectPosition: position,
               } as CSSProperties
             }
           />
         ))}
-        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
       <div

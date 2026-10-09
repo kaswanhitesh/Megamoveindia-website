@@ -315,8 +315,8 @@ body {
 }
 
 /* Exception to NO MOTION: homepage hero cross-fades through one photo per project.
-   Cycle length and per-slide delay come from CSS variables set by HomeHero (8 slides x 6s). Each slide
-   fades in over 1/40 of the cycle, holds for its 1/8 share, and fades out while the
+   Cycle length and per-slide delay come from CSS variables set by HomeHero (6 slides x 6s). Each slide
+   fades in quickly, holds for its 1/6 share of the cycle, and fades out while the
    next one fades in. */
 .hero-slide {
   opacity: 0;
@@ -332,13 +332,13 @@ body {
   0% {
     opacity: 0;
   }
-  3% {
+  4% {
     opacity: 1;
   }
-  12.5% {
+  16.7% {
     opacity: 1;
   }
-  15.5% {
+  20.7% {
     opacity: 0;
   }
   100% {
