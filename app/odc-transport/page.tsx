@@ -100,7 +100,7 @@ const faqs = [
   },
   {
     q: "Where do you provide ODC transport?",
-    a: "Across India, including port-to-site moves for imports and site-to-port moves for exports. We have offices in Mumbai (Maharashtra), Vapi (Gujarat) and Hisar (Haryana).",
+    a: "Across India, including port-to-site moves for imports and site-to-port moves for exports. We have offices in Mumbai (Maharashtra), Vapi (Gujarat), Hisar (Haryana) and Chennai (Tamil Nadu).",
   },
 ];
 
@@ -266,8 +266,8 @@ export default function OdcTransportPage() {
         <h2 className="text-2xl lg:text-[36px] font-light text-[#173f74] mb-6">ODC Transport Across India</h2>
         <p className="text-sm lg:text-lg text-gray-600 leading-7 lg:leading-8">
           We run ODC moves nationwide, including port-to-site transport from JNPT, Chennai and other ports,
-          from our offices in <strong>Mumbai</strong> (Sakinaka, Andheri East), <strong>Vapi, Gujarat</strong> and{" "}
-          <strong>Hisar, Haryana</strong>. For heavy lift work beyond road transport, see our{" "}
+          from our offices in <strong>Mumbai</strong> (Sakinaka, Andheri East), <strong>Vapi, Gujarat</strong>,{" "}
+          <strong>Hisar, Haryana</strong> and <strong>Chennai, Tamil Nadu</strong>. For heavy lift work beyond road transport, see our{" "}
           <Link href="/services/land-transport/" className="text-[#173f74] underline">land transport</Link>,{" "}
           <Link href="/services/transport-engineering/" className="text-[#173f74] underline">transport engineering</Link> and{" "}
           <Link href="/services/project-forwarding/" className="text-[#173f74] underline">project forwarding</Link> services.

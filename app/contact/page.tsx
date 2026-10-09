@@ -33,6 +33,13 @@ export default function ContactUs() {
       email: "hsr@megamoveindia.com",
       phone: "+91 9867099970",
     },
+    {
+      city: "Chennai",
+      address:
+        "No. 58/39, Wavoo Mansion, 5th Floor, Rajaji Salai, Chennai, TN-600001, India.",
+      email: "chennai@megamoveindia.com",
+      phone: "+91 9150088848",
+    },
   ];
 
   return (
@@ -63,7 +70,7 @@ export default function ContactUs() {
         </h2>
 
         <div className="max-w-7xl mx-auto px-4 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-10 text-center">
             {offices.map((office, index) => (
               <div key={index} className="flex flex-col h-full">
                 <h3 className="text-[28px] lg:text-[34px] font-bold text-black mb-6 lg:mb-8">
@@ -74,7 +81,7 @@ export default function ContactUs() {
                   {office.address}
                 </p>
 
-                <div className="mt-4 lg:mt-auto">
+                <div className="mt-4 lg:mt-auto text-sm">
                   <p className="mt-4 text-center">
                     <strong>Email:</strong>{" "}
                     <a href={`mailto:${office.email}`} className="hover:underline">

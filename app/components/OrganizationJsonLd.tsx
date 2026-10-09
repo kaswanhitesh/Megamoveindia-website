@@ -47,6 +47,19 @@ const organization = {
         addressCountry: "IN",
       },
     },
+    {
+      "@type": "Place",
+      name: "Chennai office",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "No. 58/39, Wavoo Mansion, 5th Floor, Rajaji Salai",
+        addressLocality: "Chennai",
+        addressRegion: "Tamil Nadu",
+        postalCode: "600001",
+        addressCountry: "IN",
+      },
+      telephone: "+91-9150088848",
+    },
   ],
   contactPoint: [
     {
