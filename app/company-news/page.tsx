@@ -10,7 +10,7 @@ export default function CompanyNews() {
   {
     image: "/images/Companynews/bauma2026/bauma2026_card.webp",
     title: "Mega Move India at bauma CONEXPO INDIA 2026",
-    date: "Oct 9, 2026",
+    date: "Sep 15, 2026",
     excerpt:
       "Meeting our clients SANY India, XCMG, Dingli and more in Greater Noida.",
     link: "/company-news/bauma-conexpo-india-2026",

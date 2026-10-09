@@ -40,7 +40,7 @@ const structuredData = [
       "The Mega Move India team visited bauma CONEXPO INDIA 2026 at the India Expo Centre, Greater Noida, and met clients SANY India, XCMG, Century Cranes, Dingli, Dozco (Shantui) and SDLG.",
     url: PAGE_URL,
     mainEntityOfPage: PAGE_URL,
-    datePublished: "2026-10-09",
+    datePublished: "2026-09-15",
     image: [
       `${SITE_URL}/images/Companynews/bauma2026/bauma2026_share.jpg`,
       `${SITE_URL}/images/Companynews/bauma2026/bauma2026_hero.webp`,
@@ -122,7 +122,7 @@ export default function BaumaConexpoIndia2026Page() {
 
       {/* ARTICLE */}
       <article className="max-w-4xl mx-auto px-6 py-12 lg:py-16">
-        <div className="text-sm text-gray-500 mb-4">Posted on October 9, 2026</div>
+        <div className="text-sm text-gray-500 mb-4">Posted on September 15, 2026</div>
         <h2 className="text-3xl lg:text-4xl font-bold text-[#173f74] mb-6">
           Meeting Our Equipment Manufacturer Clients at bauma CONEXPO INDIA
         </h2>
