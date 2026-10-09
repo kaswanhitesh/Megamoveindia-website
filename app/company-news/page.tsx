@@ -8,12 +8,12 @@ export const metadata = pageMetadata({
 export default function CompanyNews() {
   const news = [
   {
-    image: "/images/Companynews/IICS/IICS_Newscardimage.webp",
-    title: "Mega Move India at IICS 2025 Exhibition",
-    date: "Dec 3, 2025",
+    image: "/images/Companynews/Breakbulkdubai2025/IMG_0980.webp",
+    title: "Mega Move India at BreakBulk Dubai 2026",
+    date: "Feb 4, 2026",
     excerpt:
-      "Meet our team and explore our project logistics and heavy haulage capabilities.",
-    link: "/company-news/IICS",
+      "Networking at Breakbulk Event Dubai.",
+    link: "/company-news/breakbulk-Dubai",
   },
   {
     image: "/images/Companynews/IMG_0982.webp",
@@ -24,12 +24,12 @@ export default function CompanyNews() {
     link: "https://megamovealliance.com/mega-move-india-executes-break-bulk-shipment-from-bangalore-to-brazil/",
   },
   {
-    image: "/images/Companynews/Breakbulkdubai2025/IMG_0980.webp",
-    title: "Mega Move India at BreakBulk Dubai 2026",
-    date: "Feb 4, 2026",
+    image: "/images/Companynews/IICS/IICS_Newscardimage.webp",
+    title: "Mega Move India at IICS 2025 Exhibition",
+    date: "Dec 3, 2025",
     excerpt:
-      "Networking at Breakbulk Event Dubai.",
-    link: "/company-news/breakbulk-Dubai",
+      "Meet our team and explore our project logistics and heavy haulage capabilities.",
+    link: "/company-news/IICS",
   },
   {
     image: "/images/Companynews/IMG_0983.webp",
@@ -64,12 +64,16 @@ export default function CompanyNews() {
       {/* NEWS SLIDER */}
 
       <section className="py-10 lg:py-16 overflow-hidden bg-[#f7f7f7]">
-        <div className="news-marquee overflow-x-auto pb-4 px-4 lg:px-8">
-          <div className="news-marquee-content">
-            {news.map((item, index) => (
+        {/* Cards scroll right to left in a seamless loop: the list is rendered four times and
+            the track moves by half (two copies, wider than any screen), see .news-track in globals.css. */}
+        <div className="news-marquee pb-4">
+          <div className="news-marquee-content news-track">
+            {[0, 1, 2, 3].map((copy) => news.map((item) => (
               <a
-                key={index}
+                key={`${copy}-${item.link}`}
                 href={item.link}
+                aria-hidden={copy > 0 ? true : undefined}
+                tabIndex={copy > 0 ? -1 : undefined}
                 className="
                 block
                 bg-white
@@ -84,7 +88,8 @@ export default function CompanyNews() {
 >
                 <img
                   src={item.image}
-                  alt={item.title}
+                  alt={copy === 0 ? item.title : ""}
+                  loading="lazy"
                   className="
                     w-full
                     h-[180px]
@@ -107,7 +112,7 @@ export default function CompanyNews() {
                   </p>
                 </div>
               </a>
-            ))}
+            )))}
           </div>
         </div>
       </section>

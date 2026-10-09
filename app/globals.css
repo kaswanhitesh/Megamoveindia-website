@@ -280,3 +280,36 @@ body {
     display: none;
   }
 }
+
+/* Exception to NO MOTION: Company News cards scroll right to left */
+.news-track {
+  animation: news-scroll 45s linear infinite !important;
+}
+
+.news-marquee:hover .news-track,
+.news-marquee:focus-within .news-track {
+  animation-play-state: paused !important;
+}
+
+@keyframes news-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-track {
+    animation: none !important;
+  }
+
+  .news-marquee {
+    overflow-x: auto;
+  }
+
+  .news-track > [aria-hidden] {
+    display: none;
+  }
+}
