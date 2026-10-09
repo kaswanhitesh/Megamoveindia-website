@@ -8,6 +8,14 @@ export const metadata = pageMetadata({
 export default function CompanyNews() {
   const news = [
   {
+    image: "/images/Companynews/windergy2026/windergy2026_card.webp",
+    title: "Mega Move India at Windergy India 2026",
+    date: "Oct 7, 2026",
+    excerpt:
+      "Meeting the wind energy industry in Chennai.",
+    link: "/company-news/windergy-india-2026",
+  },
+  {
     image: "/images/Companynews/iew2026/iew2026_card.webp",
     title: "Mega Move India at India Energy Week 2026",
     date: "Jan 27, 2026",

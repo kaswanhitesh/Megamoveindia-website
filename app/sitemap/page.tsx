@@ -67,6 +67,7 @@ export default function Sitemap() {
         { label: "News Feed", href: "/company-news" },
         { label: "bauma CONEXPO INDIA 2026", href: "/company-news/bauma-conexpo-india-2026" },
         { label: "India Energy Week 2026", href: "/company-news/india-energy-week-2026" },
+        { label: "Windergy India 2026", href: "/company-news/windergy-india-2026" },
         { label: "Fleet Expansion Announcements", href: "/company-news/fleet-expansion" },
         { label: "IICS Exhibition", href: "/company-news/IICS" },
         { label: "Breakbulk Dubai Participation", href: "/company-news/breakbulk-Dubai" },
