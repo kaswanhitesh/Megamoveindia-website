@@ -26,6 +26,7 @@ const CASE = {
   heatExchangers: { label: "2 x 100MT Heat Exchangers to IOCL Panipat", href: "/case-studies/Project-5/" },
   chemicalTanks: { label: "Chemical Storage Tanks Export", href: "/case-studies/Project-6/" },
   eotCrane: { label: "35M EOT Crane Export", href: "/case-studies/Project-8/" },
+  xraySystems: { label: "Used X-Ray Systems for ONGC Barmer", href: "/case-studies/Project-7/" },
 };
 
 export const INDUSTRIES: Record<string, Industry> = {
@@ -75,7 +76,7 @@ export const INDUSTRIES: Record<string, Industry> = {
       "We deliver precise logistics for the energy sector, including offshore drilling rigs, refinery reactors, heat exchangers, and heavy pipelines.",
     image: "/images/industries/industry_oil_gas.webp",
     services: [SERVICE.landTransport, SERVICE.projectForwarding, SERVICE.oceanFreight, SERVICE.transportEngineering],
-    caseStudies: [CASE.heatExchangers, CASE.chemicalTanks, CASE.heatCondenser],
+    caseStudies: [CASE.heatExchangers, CASE.xraySystems, CASE.chemicalTanks],
   },
   "power-energy": {
     slug: "power-energy",

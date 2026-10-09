@@ -7,8 +7,8 @@ import Link from 'next/link';
 
 export const metadata = pageMetadata({
   path: "/case-studies/Project-7/",
-  title: "Critical X-Ray Systems to Nyoma, Ladakh | Mega Move India",
-  description: "Project logistics for the transportation of critical X-ray systems from Delhi Air Cargo to Nyoma, Ladakh, handled end to end by Mega Move India.",
+  title: "Used X-Ray Systems Import from Germany for ONGC Barmer | Mega Move India",
+  description: "DAP import of used X-ray systems from Germany, delivered by Mega Move India to ONGC in Barmer, Rajasthan.",
 });
 
 
@@ -20,7 +20,7 @@ export default function XRaySystemsImportProject() {
       <div className="fixed inset-0 w-full h-full z-[-10] pointer-events-none">
         <Image
           src="/images/Casestudies/Project-7/Project7_Gallery2.webp"
-          alt="CRITICAL X-RAY SYSTEMS Background"
+          alt="Used X-ray systems on trailers for ONGC Barmer"
           fill
           priority
           className="object-cover"
@@ -38,7 +38,11 @@ export default function XRaySystemsImportProject() {
             Project Overview
           </h2>
           <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-            Mega Move India successfully executed a strategic National Defence logistics project involving the transportation of critical defence equipment from the manufacturing facility to Nyoma, Ladakh, near the India–China border. Selected from four approved vendors, Mega Move India was awarded the government contract based on its proven expertise in heavy-haul and over-dimensional cargo (ODC) transportation. The project required meticulous planning, route surveys, permit management, escort coordination, and specialized transportation solutions. Covering approximately 3,700 kilometers, the mission was completed within an exceptional timeline of 21 days, establishing a national benchmark for the fastest delivery of defence ODC cargo over such a distance.
+            Mega Move India handled the import of used X-ray systems from Germany for ONGC at Barmer, Rajasthan. The
+            shipment moved on DAP (Delivered at Place) terms, so Mega Move India was responsible for getting the machines
+            from Germany all the way to the named delivery point in Barmer. That covered international freight, the inland
+            move and final delivery to ONGC. As used, sensitive inspection equipment, the systems needed careful handling
+            at every transfer point along the way.
           </p>
         </div>
       </section>
@@ -49,77 +53,53 @@ export default function XRaySystemsImportProject() {
           <h2 className="text-3xl lg:text-5xl font-light text-zinc-900 text-center mb-6 lg:mb-8">
             Project Details
           </h2>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 lg:gap-y-12 gap-x-4 lg:gap-x-10 max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-y-8 lg:gap-y-12 gap-x-4 lg:gap-x-10 max-w-5xl mx-auto">
+            <div className="text-center">
+              <h3 className="font-bold text-[16px] lg:text-[22px] text-zinc-900 mb-3">
+                Client
+              </h3>
+              <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
+                ONGC (Oil and Natural Gas Corporation)
+              </p>
+            </div>
             <div className="text-center">
               <h3 className="font-bold text-[16px] lg:text-[22px] text-zinc-900 mb-3">
                 Industry Sector
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Defence Logistics & Military Transportation
+                Oil & Gas
               </p>
             </div>
-
             <div className="text-center">
               <h3 className="font-bold text-[16px] lg:text-[22px] text-zinc-900 mb-3">
                 Cargo Description
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                BMP-II Armoured Vehicles & Defence Equipment
+                Used X-Ray Systems
               </p>
             </div>
-
             <div className="text-center">
               <h3 className="font-bold text-[16px] lg:text-[22px] text-zinc-900 mb-3">
                 Origin & Destination
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Manufacturing Facility, India → Nyoma, Ladakh
+                Germany → ONGC, Barmer, Rajasthan
               </p>
             </div>
-
             <div className="text-center">
               <h3 className="font-bold text-[16px] lg:text-[22px] text-zinc-900 mb-3">
-                Distance Covered
+                Incoterm
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                3,700 KM
+                DAP (Delivered at Place), Barmer
               </p>
             </div>
-
             <div className="text-center">
               <h3 className="font-bold text-[16px] lg:text-[22px] text-zinc-900 mb-3">
                 Project Scope
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Project Logistics, ODC Transportation, Route Survey, Permits &
-                Escorts
-              </p>
-            </div>
-
-            <div className="text-center">
-              <h3 className="font-bold text-[16px] lg:text-[22px] text-zinc-900 mb-3">
-                Equipment Deployed
-              </h3>
-              <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Hydraulic Modular Trailers, Prime Movers & Escort Vehicles
-              </p>
-            </div>
-
-            <div className="text-center">
-              <h3 className="font-bold text-[16px] lg:text-[22px] text-zinc-900 mb-3">
-                Transit Time
-              </h3>
-              <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                21 Days
-              </p>
-            </div>
-
-            <div className="text-center">
-              <h3 className="font-bold text-[16px] lg:text-[22px] text-zinc-900 mb-3">
-                Key Achievement
-              </h3>
-              <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                National Benchmark for Fastest Defence ODC Delivery
+                International Freight, Inland Transport & Delivery to Site
               </p>
             </div>
           </div>
@@ -138,7 +118,11 @@ export default function XRaySystemsImportProject() {
               Challenges & Solutions
             </h2>
             <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-              The project presented extraordinary operational challenges, including the transportation of critical defence cargo through remote high-altitude terrain with limited road infrastructure en route to Nyoma, Ladakh. Amid heightened security sensitivities along strategic border regions, convoy safety remained paramount. Mega Move India&rsquo;s Managing Director personally accompanied the movement alongside Indian Army escort vehicles, ensuring continuous coordination and risk management. Despite harsh weather, low oxygen levels, difficult terrain, and complex convoy logistics involving multiple heavy-haul vehicles, the team successfully maintained operational integrity and achieved timely, safe delivery through meticulous planning, military coordination, and disciplined execution.
+              Under DAP terms the responsibility for the cargo stays with the shipper until it reaches the named place, so
+              any delay or damage on the way to Barmer was ours to prevent. Used machines arrive without original factory
+              packing, so each unit had to be secured for sea and road transit as it was. Barmer sits in the desert of
+              western Rajasthan, far from the main ports, which made the inland leg long. Our team planned each handover
+              from Germany to India and onward to site, so the systems moved without being left waiting between legs.
             </p>
           </section>
 
@@ -148,7 +132,8 @@ export default function XRaySystemsImportProject() {
               Project Outcome
             </h2>
             <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-              Despite the extreme operating conditions and logistical complexities, the project was completed successfully within the planned 21-day timeline. During transit, one of the heavy-haul vehicles experienced a mechanical breakdown in a remote high-altitude region. Through close coordination with the Indian Army, the BMP-II armoured vehicle was safely transferred to an Army transport platform and secured at a military facility in Kargil, ensuring zero risk to the equipment. Following repairs, Mega Move India reloaded the cargo and completed the final delivery to Nyoma, Ladakh, without incident, reinforcing its capability in executing mission-critical defence logistics under demanding conditions.
+              The X-ray systems were delivered to ONGC in Barmer under the agreed DAP terms. The client received the equipment
+              at site through a single point of contact for the whole move, from pickup in Germany to delivery in Rajasthan.
             </p>
           </section>
 

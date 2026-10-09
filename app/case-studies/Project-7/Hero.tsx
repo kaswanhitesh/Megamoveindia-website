@@ -23,7 +23,7 @@ const Hero = () => {
         </h1>
         <div className="w-20 h-px bg-white/60 mx-auto mb-6" />
         <p className="text-white text-lg lg:text-2xl tracking-[2px] font-light select-none">
-          Delhi Air Cargo → Nyoma, Ladakh
+          Germany → ONGC, Barmer
         </p>
       </div>
     </section>

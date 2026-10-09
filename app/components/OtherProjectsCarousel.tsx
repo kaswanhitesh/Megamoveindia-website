@@ -9,9 +9,10 @@ interface Project {
   title: string;
   image: string;
   badge: string;
-  weight: string;
+  // Optional: left out where the figure isn't confirmed
+  weight?: string;
   location: string;
-  duration: string;
+  duration?: string;
 }
 
 const ALL_PROJECTS: Project[] = [
@@ -73,10 +74,8 @@ const ALL_PROJECTS: Project[] = [
     slug: 'Project-7',
     title: 'Critical X-Ray Systems',
     image: '/images/Casestudies/Project-7/Project7_Gallery3.webp',
-    badge: 'DEFENCE',
-    weight: '45 MT',
-    location: 'Delhi → Ladakh',
-    duration: '14 Days',
+    badge: 'OIL & GAS',
+    location: 'Germany → Barmer',
   },
   {
     slug: 'Project-8',
@@ -216,6 +215,7 @@ export default function OtherProjectsCarousel({ excludeSlug }: OtherProjectsCaro
                   {/* Metadata Row with Elevated Readability & Baseline Alignment */}
                   <div className="flex items-center justify-between text-sm text-gray-600 font-medium w-full border-t pt-5 border-gray-100/80">
                     {/* Weight */}
+                    {project.weight && (
                     <div className="flex items-center gap-1.5 shrink-0">
                       <svg
                         className="w-[18px] h-[18px] text-zinc-900 shrink-0"
@@ -232,6 +232,7 @@ export default function OtherProjectsCarousel({ excludeSlug }: OtherProjectsCaro
                       </svg>
                       <span className="shrink-0">{project.weight}</span>
                     </div>
+                    )}
 
                     {/* Location */}
                     <div className="flex items-center gap-1.5 min-w-0 px-2 max-w-[42%] justify-center">
@@ -251,6 +252,7 @@ export default function OtherProjectsCarousel({ excludeSlug }: OtherProjectsCaro
                     </div>
 
                     {/* Duration */}
+                    {project.duration && (
                     <div className="flex items-center gap-1.5 shrink-0">
                       <svg
                         className="w-[18px] h-[18px] text-zinc-900 shrink-0"
@@ -268,6 +270,7 @@ export default function OtherProjectsCarousel({ excludeSlug }: OtherProjectsCaro
                       </svg>
                       <span className="shrink-0">{project.duration}</span>
                     </div>
+                    )}
                   </div>
                 </div>
               </Link>
