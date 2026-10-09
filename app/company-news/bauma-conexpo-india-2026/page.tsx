@@ -1,12 +1,12 @@
-import { pageMetadata } from "@/app/lib/seo";
+import { pageMetadata, SITE_URL } from "@/app/lib/seo";
 import StaticGallery from "@/app/components/StaticGallery";
 
 export const metadata = pageMetadata({
   path: "/company-news/bauma-conexpo-india-2026/",
-  title: "Mega Move India at bauma CONEXPO INDIA 2026 | Company News",
+  title: "bauma CONEXPO INDIA 2026 Highlights: Mega Move India at Greater Noida",
   description:
-    "The Mega Move India team visited bauma CONEXPO INDIA 2026 in Greater Noida, meeting clients SANY India, XCMG, Century Cranes, Dingli, Dozco (Shantui) and SDLG.",
-  image: "/images/Companynews/bauma2026/bauma2026_hero.webp",
+    "bauma CONEXPO INDIA 2026, 15–18 Sept at India Expo Centre, Greater Noida: Mega Move India met SANY, XCMG, Century Cranes, Dingli, Dozco and SDLG on construction machinery logistics. Photos inside.",
+  image: "/images/Companynews/bauma2026/bauma2026_share.jpg",
 });
 
 const IMAGES = Array.from(
@@ -14,11 +14,91 @@ const IMAGES = Array.from(
   (_, i) => `/images/Companynews/bauma2026/bauma2026_${String(i + 1).padStart(2, "0")}.webp`,
 );
 
+const PAGE_URL = `${SITE_URL}/company-news/bauma-conexpo-india-2026/`;
+
+const FAQS = [
+  {
+    q: "When and where was bauma CONEXPO INDIA 2026 held?",
+    a: "bauma CONEXPO INDIA 2026 was held from 15 to 18 September 2026 at the India Expo Centre & Mart, Greater Noida (Delhi NCR), India.",
+  },
+  {
+    q: "Which companies did Mega Move India meet at bauma CONEXPO INDIA 2026?",
+    a: "Our team met our clients SANY India, XCMG, Century Cranes, Dingli, Dozco (Shantui) and SDLG at their stands.",
+  },
+  {
+    q: "Can Mega Move India transport construction and mining machinery?",
+    a: "Yes. We move excavators, wheel loaders, cranes, aerial work platforms and other heavy or over-dimensional machinery by road across India, from factory or port to project site, and handle export shipments overseas.",
+  },
+];
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: "Mega Move India at bauma CONEXPO INDIA 2026",
+    description:
+      "The Mega Move India team visited bauma CONEXPO INDIA 2026 at the India Expo Centre, Greater Noida, and met clients SANY India, XCMG, Century Cranes, Dingli, Dozco (Shantui) and SDLG.",
+    url: PAGE_URL,
+    mainEntityOfPage: PAGE_URL,
+    datePublished: "2026-10-09",
+    image: [
+      `${SITE_URL}/images/Companynews/bauma2026/bauma2026_share.jpg`,
+      `${SITE_URL}/images/Companynews/bauma2026/bauma2026_hero.webp`,
+    ],
+    author: { "@type": "Organization", name: "Mega Move India Private Limited", url: SITE_URL },
+    publisher: {
+      "@type": "Organization",
+      name: "Mega Move India Private Limited",
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/icon.png` },
+    },
+    about: {
+      "@type": "Event",
+      name: "bauma CONEXPO INDIA 2026",
+      startDate: "2026-09-15",
+      endDate: "2026-09-18",
+      eventStatus: "https://schema.org/EventScheduled",
+      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+      location: {
+        "@type": "Place",
+        name: "India Expo Centre & Mart",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Greater Noida",
+          addressRegion: "Uttar Pradesh",
+          addressCountry: "IN",
+        },
+      },
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Company News", item: `${SITE_URL}/company-news/` },
+      { "@type": "ListItem", position: 3, name: "bauma CONEXPO INDIA 2026", item: PAGE_URL },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQS.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+
 const CLIENTS = ["SANY India", "XCMG", "Century Cranes", "Dingli", "Dozco (Shantui)", "SDLG"];
 
 export default function BaumaConexpoIndia2026Page() {
   return (
     <main className="bg-[#f7f7f7] min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
+      />
       {/* HERO */}
       <section className="relative h-[320px] lg:h-[520px] overflow-hidden">
         <img
@@ -97,6 +177,38 @@ export default function BaumaConexpoIndia2026Page() {
           </p>
         </div>
       </article>
+
+      {/* EQUIPMENT LOGISTICS + FAQ */}
+      <section className="bg-white py-12 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-2xl lg:text-3xl font-bold text-[#173f74] mb-4">
+            Construction Equipment Logistics, After bauma
+          </h2>
+          <p className="text-gray-600 leading-8 text-[15px] lg:text-[17px] mb-10">
+            The machines on show at bauma CONEXPO INDIA, from excavators and wheel loaders to cranes and aerial work
+            platforms, all have to reach a project site. Mega Move India plans and executes those moves: low-bed and
+            hydraulic axle trailers for heavy and{" "}
+            <a href="/odc-transport/" className="text-[#173f74] underline">
+              over-dimensional (ODC) cargo
+            </a>
+            , route surveys and permits, port-to-site deliveries for imported equipment, and{" "}
+            <a href="/services/project-forwarding/" className="text-[#173f74] underline">
+              export shipments
+            </a>{" "}
+            for manufacturers sending machines overseas.
+          </p>
+
+          <h2 className="text-2xl lg:text-3xl font-bold text-[#173f74] mb-6">bauma CONEXPO INDIA 2026: FAQs</h2>
+          <div className="space-y-6">
+            {FAQS.map((f) => (
+              <div key={f.q} className="border-l-4 border-[#173f74] pl-5">
+                <h3 className="font-semibold text-zinc-900 mb-2">{f.q}</h3>
+                <p className="text-gray-600 leading-7">{f.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <StaticGallery images={IMAGES} altPrefix="Mega Move India at bauma CONEXPO INDIA 2026" title="Event Gallery" />
 
