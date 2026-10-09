@@ -313,3 +313,45 @@ body {
     display: none;
   }
 }
+
+/* Exception to NO MOTION: homepage hero cross-fades through one photo per project.
+   Cycle length and per-slide delay come from CSS variables set by HomeHero (8 slides x 6s). Each slide
+   fades in over 1/40 of the cycle, holds for its 1/8 share, and fades out while the
+   next one fades in. */
+.hero-slide {
+  opacity: 0;
+  animation-name: hero-slide !important;
+  animation-duration: var(--slide-cycle) !important;
+  animation-delay: var(--slide-delay) !important;
+  animation-timing-function: ease-in-out !important;
+  animation-iteration-count: infinite !important;
+  animation-fill-mode: both !important;
+}
+
+@keyframes hero-slide {
+  0% {
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  12.5% {
+    opacity: 1;
+  }
+  15.5% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide {
+    animation: none !important;
+  }
+
+  .hero-slide:first-child {
+    opacity: 1;
+  }
+}

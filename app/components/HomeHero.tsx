@@ -1,9 +1,22 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type CSSProperties } from "react";
 import { useHeaderFooter } from "./HeaderFooterContext";
 
-// Pinned hero background plus the "Welcome to Mega Move India" title.
+// One photo from each case study, cross-fading in a loop (see .hero-slide in globals.css).
+const SLIDES = [
+  "defence-bmp",
+  "machinery-import",
+  "factory-relocation",
+  "heat-condenser",
+  "heat-exchangers",
+  "chemical-tanks",
+  "xray-systems",
+  "eot-crane",
+];
+const SLIDE_SECONDS = 6;
+
+// Pinned hero slideshow plus the "Welcome to Mega Move India" title.
 // The title fades in on load (CSS). It stays fully visible until the top of
 // the legacy card (#legacy-card) reaches the bottom of the title, then fades
 // out as the card slides over it. The header fades with it; the menu button
@@ -46,7 +59,24 @@ export default function HomeHero() {
     <>
       {/* Background stays put while the legacy card scrolls over it */}
       <div className="fixed inset-0 z-0" aria-hidden="true">
-        <img src="/images/home-hero.webp" alt="" className="h-full w-full object-cover" />
+        {SLIDES.map((name, i) => (
+          <img
+            key={name}
+            src={`/images/hero-slides/${name}.webp`}
+            alt=""
+            fetchPriority={i === 0 ? "high" : "low"}
+            className="hero-slide absolute inset-0 h-full w-full object-cover"
+            // Passed as CSS variables because the site-wide no-motion rule uses !important,
+            // which plain inline animation styles cannot override.
+            // First slide starts already visible; the rest follow every SLIDE_SECONDS.
+            style={
+              {
+                "--slide-cycle": `${SLIDES.length * SLIDE_SECONDS}s`,
+                "--slide-delay": `${i * SLIDE_SECONDS - 1.5}s`,
+              } as CSSProperties
+            }
+          />
+        ))}
         <div className="absolute inset-0 bg-black/30" />
       </div>
 
