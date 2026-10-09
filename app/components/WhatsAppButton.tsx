@@ -4,7 +4,7 @@ import { FaWhatsapp } from "react-icons/fa";
 export default function WhatsAppButton() {
   return (
     <a
-      href="https://wa.me/919321499970"
+      href="https://wa.me/919321399970"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with Mega Move India on WhatsApp"

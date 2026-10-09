@@ -13,7 +13,7 @@ const organization = {
   description:
     "Project logistics, heavy haulage, ODC transportation, freight forwarding and equipment rentals across India and worldwide.",
   email: "info@megamoveindia.com",
-  telephone: "+91-9321499970",
+  telephone: "+91-9321399970",
   address: {
     "@type": "PostalAddress",
     streetAddress: "A-wing, Office No 905, Pranik Chambers, Sakivihar Road, Sakinaka, Andheri East",
@@ -52,7 +52,7 @@ const organization = {
     {
       "@type": "ContactPoint",
       contactType: "sales",
-      telephone: "+91-9321499970",
+      telephone: "+91-9321399970",
       email: "info@megamoveindia.com",
       areaServed: "Worldwide",
       availableLanguage: ["English", "Hindi"],

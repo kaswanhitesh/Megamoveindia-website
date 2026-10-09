@@ -17,7 +17,7 @@ export default function ContactUs() {
       address:
         "A-wing, Office No 905, Pranik Chambers, Sakivihar Road, Sakinaka, Andheri East, Mumbai, MH-400072, India.",
       email: "info@megamoveindia.com",
-      phone: "+91 9321499970",
+      phone: "+91 9321399970",
     },
     {
       city: "Gujarat",
@@ -158,7 +158,7 @@ export default function ContactUs() {
             </a>
 
             <a
-              href="https://wa.me/919321499970"
+              href="https://wa.me/919321399970"
               aria-label="WhatsApp"
               target="_blank"
               rel="noopener noreferrer"

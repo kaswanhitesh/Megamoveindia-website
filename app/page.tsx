@@ -209,8 +209,8 @@ export default function Home() {
             >
               Request a Quote
             </Link>
-            <a href="tel:+919321499970" className="px-6 py-4 text-lg text-zinc-300 no-underline hover:text-white">
-              or call +91 93214 99970
+            <a href="tel:+919321399970" className="px-6 py-4 text-lg text-zinc-300 no-underline hover:text-white">
+              or call +91 93213 99970
             </a>
           </div>
         </section>
