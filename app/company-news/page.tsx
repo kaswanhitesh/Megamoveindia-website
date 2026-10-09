@@ -8,6 +8,14 @@ export const metadata = pageMetadata({
 export default function CompanyNews() {
   const news = [
   {
+    image: "/images/Companynews/iew2026/iew2026_card.webp",
+    title: "Mega Move India at India Energy Week 2026",
+    date: "Jan 27, 2026",
+    excerpt:
+      "Meeting India's oil, gas and energy industry in Goa.",
+    link: "/company-news/india-energy-week-2026",
+  },
+  {
     image: "/images/Companynews/bauma2026/bauma2026_card.webp",
     title: "Mega Move India at bauma CONEXPO INDIA 2026",
     date: "Sep 15, 2026",
@@ -48,6 +56,9 @@ export default function CompanyNews() {
     link: "/company-news/fleet-expansion",
   },
 ];
+
+  // Newest first, so new posts land in the right place automatically
+  news.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 
   return (
     <main>
