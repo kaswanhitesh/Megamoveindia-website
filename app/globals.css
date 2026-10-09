@@ -249,3 +249,34 @@ body {
     animation: none !important;
   }
 }
+
+/* Exception to NO MOTION: "Our Networks" logo strip on the homepage scrolls right to left */
+.networks-track {
+  animation: networks-scroll 35s linear infinite !important;
+}
+
+.networks-marquee:hover .networks-track {
+  animation-play-state: paused !important;
+}
+
+@keyframes networks-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .networks-track {
+    animation: none !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: auto;
+  }
+
+  .networks-track li[aria-hidden] {
+    display: none;
+  }
+}
