@@ -75,7 +75,9 @@ const ALL_PROJECTS: Project[] = [
     title: 'Critical X-Ray Systems',
     image: '/images/Casestudies/Project-7/Project7_Gallery3.webp',
     badge: 'OIL & GAS',
+    weight: '6 × 42 MT',
     location: 'Germany → Barmer',
+    duration: '49 Days',
   },
   {
     slug: 'Project-8',

@@ -7,8 +7,8 @@ import Link from 'next/link';
 
 export const metadata = pageMetadata({
   path: "/case-studies/Project-7/",
-  title: "Used X-Ray Systems Import from Germany for ONGC Barmer | Mega Move India",
-  description: "DAP import of used X-ray systems from Germany, delivered by Mega Move India to ONGC in Barmer, Rajasthan.",
+  title: "6 x 42 MT X-Ray Systems from Germany to ONGC Barmer | Mega Move India",
+  description: "DAP import of six used 42 MT X-ray systems from Germany via Mumbai Port, with customs clearance and heavy-haul delivery to ONGC Barmer in 49 days.",
 });
 
 
@@ -38,11 +38,11 @@ export default function XRaySystemsImportProject() {
             Project Overview
           </h2>
           <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-            Mega Move India handled the import of used X-ray systems from Germany for ONGC at Barmer, Rajasthan. The
-            shipment moved on DAP (Delivered at Place) terms, so Mega Move India was responsible for getting the machines
-            from Germany all the way to the named delivery point in Barmer. That covered international freight, the inland
-            move and final delivery to ONGC. As used, sensitive inspection equipment, the systems needed careful handling
-            at every transfer point along the way.
+            Mega Move India handled the import of six used X-ray systems from Germany for ONGC at Barmer, Rajasthan. Each
+            machine weighed 42 tonnes, making 252 tonnes in all. The shipment moved on DAP (Delivered at Place) terms
+            through Mumbai Port, so Mega Move India was responsible for the cargo from Germany all the way to the named
+            delivery point in Barmer: ocean freight, import customs clearance at Mumbai, the heavy inland move and final
+            delivery to ONGC. The project was completed door to door in 49 days.
           </p>
         </div>
       </section>
@@ -75,7 +75,15 @@ export default function XRaySystemsImportProject() {
                 Cargo Description
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Used X-Ray Systems
+                6 Used X-Ray Systems
+              </p>
+            </div>
+            <div className="text-center">
+              <h3 className="font-bold text-[16px] lg:text-[22px] text-zinc-900 mb-3">
+                Cargo Weight
+              </h3>
+              <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
+                42 MT per machine (252 MT total)
               </p>
             </div>
             <div className="text-center">
@@ -88,6 +96,14 @@ export default function XRaySystemsImportProject() {
             </div>
             <div className="text-center">
               <h3 className="font-bold text-[16px] lg:text-[22px] text-zinc-900 mb-3">
+                Port of Entry
+              </h3>
+              <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
+                Mumbai Port
+              </p>
+            </div>
+            <div className="text-center">
+              <h3 className="font-bold text-[16px] lg:text-[22px] text-zinc-900 mb-3">
                 Incoterm
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
@@ -96,10 +112,18 @@ export default function XRaySystemsImportProject() {
             </div>
             <div className="text-center">
               <h3 className="font-bold text-[16px] lg:text-[22px] text-zinc-900 mb-3">
+                Transit Time
+              </h3>
+              <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
+                49 Days
+              </p>
+            </div>
+            <div className="text-center">
+              <h3 className="font-bold text-[16px] lg:text-[22px] text-zinc-900 mb-3">
                 Project Scope
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                International Freight, Inland Transport & Delivery to Site
+                Ocean Freight, Customs Clearance, Inland Heavy Transport & Delivery
               </p>
             </div>
           </div>
@@ -119,10 +143,11 @@ export default function XRaySystemsImportProject() {
             </h2>
             <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
               Under DAP terms the responsibility for the cargo stays with the shipper until it reaches the named place, so
-              any delay or damage on the way to Barmer was ours to prevent. Used machines arrive without original factory
-              packing, so each unit had to be secured for sea and road transit as it was. Barmer sits in the desert of
-              western Rajasthan, far from the main ports, which made the inland leg long. Our team planned each handover
-              from Germany to India and onward to site, so the systems moved without being left waiting between legs.
+              any delay or damage on the way to Barmer was ours to prevent. Six 42-tonne machines needed heavy-duty trailers
+              and careful lashing. As used equipment they came without original factory packing, so each unit had to be
+              secured for sea and road transit as it was. After clearing import customs at Mumbai Port, the convoy had a long
+              inland haul to Barmer in the desert of western Rajasthan. Our team planned every handover, from Germany to
+              Mumbai and onward to site, so the machines never sat waiting between legs.
             </p>
           </section>
 
@@ -132,8 +157,9 @@ export default function XRaySystemsImportProject() {
               Project Outcome
             </h2>
             <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-              The X-ray systems were delivered to ONGC in Barmer under the agreed DAP terms. The client received the equipment
-              at site through a single point of contact for the whole move, from pickup in Germany to delivery in Rajasthan.
+              All six X-ray systems, 252 tonnes in total, were delivered safely to ONGC in Barmer within 49 days under the
+              agreed DAP terms. ONGC dealt with a single point of contact for the whole move: pickup in Germany, ocean
+              freight, customs clearance at Mumbai Port and heavy-haul delivery to site in Rajasthan.
             </p>
           </section>
 
