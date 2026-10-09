@@ -5,10 +5,11 @@ import { useState } from 'react';
 interface StaticGalleryProps {
   images: string[];
   altPrefix: string;
+  title?: string;
 }
 
 // Plain image grid with a click-to-enlarge lightbox. No scroll or motion effects.
-export default function StaticGallery({ images, altPrefix }: StaticGalleryProps) {
+export default function StaticGallery({ images, altPrefix, title = 'Project Gallery' }: StaticGalleryProps) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const prev = () =>
@@ -20,7 +21,7 @@ export default function StaticGallery({ images, altPrefix }: StaticGalleryProps)
       <section className="relative z-20 bg-[#f7f7f7] py-12 lg:py-16">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <h2 className="text-3xl lg:text-5xl font-light text-zinc-900 text-center mb-8 lg:mb-12">
-            Project Gallery
+            {title}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
             {images.map((image, index) => (

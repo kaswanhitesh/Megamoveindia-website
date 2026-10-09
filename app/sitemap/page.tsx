@@ -65,6 +65,7 @@ export default function Sitemap() {
       title: "Company News",
       links: [
         { label: "News Feed", href: "/company-news" },
+        { label: "bauma CONEXPO INDIA 2026", href: "/company-news/bauma-conexpo-india-2026" },
         { label: "Fleet Expansion Announcements", href: "/company-news/fleet-expansion" },
         { label: "IICS Exhibition", href: "/company-news/IICS" },
         { label: "Breakbulk Dubai Participation", href: "/company-news/breakbulk-Dubai" },
