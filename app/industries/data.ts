@@ -26,6 +26,7 @@ const CASE = {
   heatExchangers: { label: "2 x 100MT Heat Exchangers to IOCL Panipat", href: "/case-studies/Project-5/" },
   chemicalTanks: { label: "Chemical Storage Tanks Export", href: "/case-studies/Project-6/" },
   eotCrane: { label: "35M EOT Crane Export", href: "/case-studies/Project-8/" },
+  flatRackExport: { label: "Machinery Export on 8 x 20' Flat Racks to Europe", href: "/case-studies/Project-9/" },
   xraySystems: { label: "Used X-Ray Systems for ONGC Barmer", href: "/case-studies/Project-7/" },
 };
 
@@ -40,7 +41,7 @@ export const INDUSTRIES: Record<string, Industry> = {
       "We specialize in end-to-end factory relocations, heavy haulage for massive industrial reactors, and precise installation services for critical manufacturing assembly lines.",
     image: "/images/industries/industry_industrial_plants.webp",
     services: [SERVICE.factoryRelocation, SERVICE.landTransport, SERVICE.transportEngineering, SERVICE.projectForwarding],
-    caseStudies: [CASE.factoryRelocation, CASE.machineryImport, CASE.eotCrane],
+    caseStudies: [CASE.flatRackExport, CASE.factoryRelocation, CASE.eotCrane],
   },
   infrastructure: {
     slug: "infrastructure",

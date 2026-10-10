@@ -65,6 +65,13 @@ export default function CaseStudies() {
   title: "EOT Crane Shipment",
   image: "/images/Casestudies/Project-8/Project8_Gallery1.webp",
 },
+
+{
+  slug: "Project-9",
+  category: "MACHINERY EXPORTS",
+  title: "Machinery on 8 Flat Racks",
+  image: "/images/Casestudies/Project-9/Project9_Gallery2.webp",
+},
 ];
   
   const networks = [

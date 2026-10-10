@@ -59,6 +59,7 @@ export default function Sitemap() {
         { label: "Chemical Storage Tanks", href: "/case-studies/Project-6" },
         { label: "X-Ray Systems", href: "/case-studies/Project-7" },
         { label: "EOT Crane Shipment", href: "/case-studies/Project-8" },
+        { label: "Machinery Export on 8 Flat Racks", href: "/case-studies/Project-9" },
       ],
     },
     {

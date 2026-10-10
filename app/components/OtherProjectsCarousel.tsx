@@ -88,6 +88,14 @@ const ALL_PROJECTS: Project[] = [
     location: 'India',
     duration: '8 Days',
   },
+  {
+    slug: 'Project-9',
+    title: 'Machinery Export on 8 Flat Racks',
+    image: '/images/Casestudies/Project-9/Project9_Gallery2.webp',
+    badge: 'EXPORT',
+    weight: '8 × 20ft FR',
+    location: 'JNPT → Europe',
+  },
 ];
 
 interface OtherProjectsCarouselProps {
