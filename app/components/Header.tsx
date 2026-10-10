@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useHeaderFooter } from "./HeaderFooterContext";
 
@@ -23,6 +23,44 @@ export default function Header() {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = overflow;
     };
+  }, [drawerOpen]);
+
+  // Menu background video. It is fetched quietly once the page has loaded
+  // (unless the visitor has data saver on), so it is already buffered and
+  // plays the moment the menu opens. Phones get the lighter 720p file.
+  const menuVideo = useRef<HTMLVideoElement>(null);
+  const loadMenuVideo = () => {
+    const v = menuVideo.current;
+    if (!v || v.getAttribute("src")) return;
+    v.src = window.matchMedia("(max-width: 767px)").matches
+      ? "/images/menu/menu-bg-720.mp4"
+      : "/images/menu/menu-bg.mp4";
+    v.preload = "auto";
+    v.load();
+  };
+
+  useEffect(() => {
+    const conn = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    if (conn?.saveData) return;
+    let timer: ReturnType<typeof setTimeout>;
+    const start = () => (timer = setTimeout(loadMenuVideo, 1200));
+    if (document.readyState === "complete") start();
+    else window.addEventListener("load", start, { once: true });
+    return () => {
+      window.removeEventListener("load", start);
+      clearTimeout(timer);
+    };
+  }, []);
+
+  useEffect(() => {
+    const v = menuVideo.current;
+    if (!v) return;
+    if (drawerOpen) {
+      loadMenuVideo();
+      v.play().catch(() => {});
+    } else {
+      v.pause();
+    }
   }, [drawerOpen]);
 
   const close = () => setDrawerOpen(false);
@@ -87,6 +125,18 @@ export default function Header() {
           drawerOpen ? "menu-overlay-open visible" : "invisible"
         }`}
       >
+        <video
+          ref={menuVideo}
+          muted
+          loop
+          playsInline
+          preload="none"
+          poster="/images/menu/menu-bg-poster.webp"
+          aria-hidden="true"
+          className="pointer-events-none fixed inset-0 h-full w-full object-cover"
+        />
+        {/* Dark tint so the white menu text stays readable on every frame */}
+        <div aria-hidden="true" className="pointer-events-none fixed inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/45" />
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 opacity-[0.06] [background-image:linear-gradient(rgba(255,255,255,1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,1)_1px,transparent_1px)] [background-size:56px_56px]"
