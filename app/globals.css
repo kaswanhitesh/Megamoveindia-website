@@ -680,3 +680,164 @@ main h2.reveal-in {
     display: none;
   }
 }
+
+/* ---------- Our History: cinematic film (HistoryFilm.tsx) ---------- */
+.film-grain {
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  animation: film-grain 0.8s steps(4) infinite !important;
+}
+@keyframes film-grain {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-3%, 2%); }
+  50% { transform: translate(2%, -3%); }
+  75% { transform: translate(-2%, -1%); }
+  100% { transform: translate(0, 0); }
+}
+
+.film-vignette {
+  background: radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+/* Cinema letterbox bars slide in when a scene is on screen */
+.film-letterbox::before,
+.film-letterbox::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 0;
+  background: #000;
+  z-index: 5;
+}
+.film-letterbox::before { top: 0; }
+.film-letterbox::after { bottom: 0; }
+.is-active .film-letterbox::before,
+.is-active .film-letterbox::after {
+  animation: film-bars 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) forwards !important;
+}
+@keyframes film-bars {
+  to { height: 7vh; }
+}
+
+/* Opening title sequence */
+.film .film-title-1,
+.film .film-title-2,
+.film .film-title-3,
+.film .film-title-4 {
+  opacity: 0;
+  animation: film-title 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) forwards !important;
+}
+.film .film-title-1 { animation-delay: 0.4s !important; }
+.film .film-title-2 {
+  animation-name: film-title-big !important;
+  animation-duration: 2.4s !important;
+  animation-delay: 1.3s !important;
+}
+.film .film-title-3 { animation-delay: 2.9s !important; }
+.film .film-title-4 { animation-delay: 3.8s !important; }
+@keyframes film-title {
+  from { opacity: 0; transform: translateY(16px); filter: blur(8px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+@keyframes film-title-big {
+  from { opacity: 0; letter-spacing: 0.5em; filter: blur(14px); }
+  to { opacity: 1; letter-spacing: 0.12em; filter: none; }
+}
+.film-scroll-cue {
+  transform-origin: top;
+  animation: film-cue 2s ease-in-out infinite !important;
+}
+@keyframes film-cue {
+  0% { transform: scaleY(0); opacity: 1; }
+  60% { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(1); opacity: 0; }
+}
+
+/* Slow camera push on each scene */
+.film-kenburns { transform: scale(1.14); }
+.is-active .film-kenburns {
+  animation: film-push 16s cubic-bezier(0.25, 0.1, 0.25, 1) forwards !important;
+}
+.is-active .film-kenburns-alt {
+  animation-name: film-pull !important;
+}
+@keyframes film-push {
+  from { transform: scale(1.14) translate(1.5%, 1%); }
+  to { transform: scale(1.02) translate(0, 0); }
+}
+@keyframes film-pull {
+  from { transform: scale(1.02) translate(-1%, 0); }
+  to { transform: scale(1.14) translate(1%, -1%); }
+}
+
+/* Giant outlined year drifting in behind the text */
+.film-year {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.16);
+  opacity: 0;
+}
+.is-active .film-year {
+  animation: film-year 2.4s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s forwards !important;
+}
+@keyframes film-year {
+  from { opacity: 0; transform: translateX(8vw); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Text reveals, staggered; only hidden once JS is running */
+.film-js .film-reveal { opacity: 0; }
+.is-active .film-reveal {
+  animation: film-title 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) forwards !important;
+}
+.is-active .film-d1 { animation-delay: 0.3s !important; }
+.is-active .film-d2 { animation-delay: 0.65s !important; }
+.is-active .film-d3 { animation-delay: 1s !important; }
+
+/* Rolling end credits */
+.film-credits-window {
+  -webkit-mask-image: linear-gradient(transparent, #000 18%, #000 82%, transparent);
+  mask-image: linear-gradient(transparent, #000 18%, #000 82%, transparent);
+}
+.film-credits-roll { transform: translateY(56vh); }
+.is-active .film-credits-roll {
+  animation: film-credits 42s linear infinite !important;
+}
+.film-credits-window:hover .film-credits-roll {
+  animation-play-state: paused !important;
+}
+@keyframes film-credits {
+  from { transform: translateY(56vh); }
+  to { transform: translateY(-100%); }
+}
+
+.film-reel-dot span {
+  transition: width 0.4s ease, background-color 0.4s ease !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .film-grain,
+  .film-letterbox::before,
+  .film-letterbox::after,
+  .film .film-title-1,
+  .film .film-title-2,
+  .film .film-title-3,
+  .film .film-title-4,
+  .film-scroll-cue,
+  .film-kenburns,
+  .film-year,
+  .film-reveal,
+  .film-credits-roll {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  .film-grain { opacity: 0 !important; }
+  .film-credits-window {
+    height: auto !important;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
