@@ -94,6 +94,29 @@ const services: Service[] = [
   },
 ];
 
+// Page sections, in order. Each lists tile titles from `services` above.
+const sections = [
+  {
+    id: "logistics",
+    title: "Logistics",
+    intro: "Heavy and over-dimensional cargo moved by road, with our own fleet and engineering team.",
+    tiles: [
+      "Land Transport",
+      "ODC Transport",
+      "In-House Equipment",
+      "Transport Engineering",
+      "Factory Relocation",
+      "Rentals & Warehousing",
+    ],
+  },
+  {
+    id: "shipping",
+    title: "Shipping",
+    intro: "Cargo moved by air and sea, with customs, port handling and routing through to delivery.",
+    tiles: ["Air Freight", "Ocean Freight", "Project Forwarding", "Transshipment", "Logistics & Supply Chain"],
+  },
+];
+
 export default function ServicesPage() {
   return (
     <div className="bg-black text-white">
@@ -108,29 +131,37 @@ export default function ServicesPage() {
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-5 lg:gap-6" data-no-reveal>
-          {services.map((service) => (
-            <Link
-              key={service.link}
-              href={service.link}
-              className="group relative block aspect-[4/3] w-full overflow-hidden rounded-lg bg-zinc-900 no-underline sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-16px)]"
-            >
-              {service.video ? (
-                <CardVideo src={service.video} poster={service.image} />
-              ) : (
-                <img src={service.image} alt="" loading="lazy" className="h-full w-full object-cover" />
-              )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-5 text-left lg:p-6">
-                <h2 className="flex items-center justify-between gap-3 text-lg font-semibold uppercase tracking-wide text-white lg:text-xl">
-                  {service.title}
-                  <span aria-hidden="true" className="shrink-0 text-white/80 group-hover:text-white">→</span>
-                </h2>
-                <p className="mt-1.5 line-clamp-2 text-sm font-light leading-snug text-zinc-300">{service.description}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
+        {sections.map((section) => (
+          <div key={section.id} id={section.id} className="mb-16 scroll-mt-28 last:mb-0 lg:mb-20">
+            <div className="mb-8 border-l-4 border-[#c41e1e] pl-4 lg:mb-10">
+              <h2 className="text-2xl font-semibold uppercase tracking-[0.06em] text-white lg:text-3xl">{section.title}</h2>
+              <p className="mt-2 text-sm font-light text-zinc-400 lg:text-base">{section.intro}</p>
+            </div>
+            <div className="flex flex-wrap justify-center gap-5 lg:gap-6" data-no-reveal>
+              {section.tiles.map((title) => services.find((s) => s.title === title)!).map((service) => (
+                <Link
+                  key={service.link}
+                  href={service.link}
+                  className="group relative block aspect-[4/3] w-full overflow-hidden rounded-lg bg-zinc-900 no-underline sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-16px)]"
+                >
+                  {service.video ? (
+                    <CardVideo src={service.video} poster={service.image} />
+                  ) : (
+                    <img src={service.image} alt="" loading="lazy" className="h-full w-full object-cover" />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-5 text-left lg:p-6">
+                    <h3 className="flex items-center justify-between gap-3 text-lg font-semibold uppercase tracking-wide text-white lg:text-xl">
+                      {service.title}
+                      <span aria-hidden="true" className="shrink-0 text-white/80 group-hover:text-white">→</span>
+                    </h3>
+                    <p className="mt-1.5 line-clamp-2 text-sm font-light leading-snug text-zinc-300">{service.description}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        ))}
       </section>
     </div>
   );
