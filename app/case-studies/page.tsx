@@ -115,13 +115,11 @@ export default function CaseStudies() {
 ];
 
   const customers = [
-    "ADANI",
-    "TATA",
-    "JSW",
-    "ABB",
-    "SIEMENS",
-    "L&T",
-    "RELIANCE",
+    { name: "Reliance Industries Limited", logo: "/images/Customers/reliance.webp" },
+    { name: "Royal IHC", logo: "/images/Customers/royal-ihc.webp" },
+    { name: "Zeeco", logo: "/images/Customers/zeeco.webp" },
+    { name: "Transformers & Rectifiers (India) Ltd", logo: "/images/Customers/transformers-rectifiers.webp" },
+    { name: "Jasmino", logo: "/images/Customers/jasmino.webp" },
   ];
 
   return (
@@ -248,29 +246,18 @@ export default function CaseStudies() {
 
           <div>
             <div className="flex flex-wrap justify-center gap-4 lg:gap-6">
-              {customers.map((customer, i) => (
+              {customers.map((customer) => (
                 <div
-                  key={i}
-                  className="
-                    w-[140px]
-                    lg:w-[220px]
-                    h-[80px]
-                    lg:h-[120px]
-                    bg-white
-                    rounded-xl
-                    flex
-                    items-center
-                    justify-center
-                    shadow-sm
-                    text-lg
-                    lg:text-3xl
-                    font-bold
-                    text-gray-600
-                    grayscale
-                    hover:grayscale-0
-                  "
+                  key={customer.name}
+                  className="flex h-[90px] w-[150px] items-center justify-center rounded-xl bg-white p-4 shadow-sm lg:h-[120px] lg:w-[220px] lg:p-6"
                 >
-                  {customer}
+                  <img
+                    src={customer.logo}
+                    alt={customer.name}
+                    title={customer.name}
+                    loading="lazy"
+                    className="max-h-full max-w-full object-contain"
+                  />
                 </div>
               ))}
             </div>
