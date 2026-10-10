@@ -10,7 +10,6 @@ export default function Header() {
   const isHome = pathname === "/";
   const { headerOpacity } = useHeaderFooter();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
   const [menuHovered, setMenuHovered] = useState(false);
 
   return (
@@ -93,105 +92,14 @@ export default function Header() {
             Home
           </Link>
           
-          <div className="border-b border-white/5">
-            <button
-              onClick={() => setServicesOpen(!servicesOpen)}
-              className="w-full flex items-center justify-between py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300 font-sans"
-            >
-              <span>Services</span>
-              <span className={`transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`}>▼</span>
-            </button>
-            
-            {/* Services Sub-links */}
-            <div
-              className={`overflow-hidden transition-all duration-500 bg-gray-900/50 ${
-                servicesOpen ? "max-h-[500px]" : "max-h-0"
-              }`}
-            >
-              <div className="py-2 text-[15px]">
-                <Link
-                  href="/services/air-freight"
-                  prefetch={false}
-                  onClick={() => setDrawerOpen(false)}
-                  className="block py-3 px-10 lg:px-16 hover:text-white text-gray-400 hover:bg-white/5 transition-colors"
-                >
-                  Air Freight
-                </Link>
-                <Link
-                  href="/services/ocean-freight"
-                  prefetch={false}
-                  onClick={() => setDrawerOpen(false)}
-                  className="block py-3 px-10 lg:px-16 hover:text-white text-gray-400 hover:bg-white/5 transition-colors"
-                >
-                  Ocean Freight
-                </Link>
-                <Link
-                  href="/services/land-transport"
-                  prefetch={false}
-                  onClick={() => setDrawerOpen(false)}
-                  className="block py-3 px-10 lg:px-16 hover:text-white text-gray-400 hover:bg-white/5 transition-colors"
-                >
-                  Land Transport
-                </Link>
-                <Link
-                  href="/odc-transport"
-                  prefetch={false}
-                  onClick={() => setDrawerOpen(false)}
-                  className="block py-3 px-10 lg:px-16 hover:text-white text-gray-400 hover:bg-white/5 transition-colors"
-                >
-                  ODC Transport
-                </Link>
-                <Link
-                  href="/services/rentals-warehousing"
-                  prefetch={false}
-                  onClick={() => setDrawerOpen(false)}
-                  className="block py-3 px-10 lg:px-16 hover:text-white text-gray-400 hover:bg-white/5 transition-colors"
-                >
-                  Rentals &amp; Warehousing
-                </Link>
-                <Link
-                  href="/services/factory-relocation"
-                  prefetch={false}
-                  onClick={() => setDrawerOpen(false)}
-                  className="block py-3 px-10 lg:px-16 hover:text-white text-gray-400 hover:bg-white/5 transition-colors"
-                >
-                  Factory Relocation
-                </Link>
-                <Link
-                  href="/services/project-forwarding"
-                  prefetch={false}
-                  onClick={() => setDrawerOpen(false)}
-                  className="block py-3 px-10 lg:px-16 hover:text-white text-gray-400 hover:bg-white/5 transition-colors"
-                >
-                  Project Forwarding
-                </Link>
-                <Link
-                  href="/services/transport-engineering"
-                  prefetch={false}
-                  onClick={() => setDrawerOpen(false)}
-                  className="block py-3 px-10 lg:px-16 hover:text-white text-gray-400 hover:bg-white/5 transition-colors"
-                >
-                  Transport Engineering
-                </Link>
-                <Link
-                  href="/services/logistics-supply-chain"
-                  prefetch={false}
-                  onClick={() => setDrawerOpen(false)}
-                  className="block py-3 px-10 lg:px-16 hover:text-white text-gray-400 hover:bg-white/5 transition-colors"
-                >
-                  Logistics &amp; Supply Chain
-                </Link>
-                <Link
-                  href="/services/transshipment"
-                  prefetch={false}
-                  onClick={() => setDrawerOpen(false)}
-                  className="block py-3 px-10 lg:px-16 hover:text-white text-gray-400 hover:bg-white/5 transition-colors"
-                >
-                  Transshipment
-                </Link>
-              </div>
-            </div>
-          </div>
+          <Link
+            href="/services/"
+            prefetch={false}
+            onClick={() => setDrawerOpen(false)}
+            className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300 border-b border-white/5 font-sans"
+          >
+            Services
+          </Link>
 
           <Link
             href="/case-studies"

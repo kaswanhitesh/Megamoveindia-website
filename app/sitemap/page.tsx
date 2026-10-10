@@ -24,6 +24,7 @@ export default function Sitemap() {
     {
       title: "Our Services",
       links: [
+        { label: "All Services", href: "/services" },
         { label: "Air Freight", href: "/services/air-freight" },
         { label: "Ocean Freight", href: "/services/ocean-freight" },
         { label: "Land Transport", href: "/services/land-transport" },
