@@ -10,7 +10,7 @@ export interface Industry {
 }
 
 const SERVICE = {
-  landTransport: { label: "ODC & Heavy Lift Transportation", href: "/services/land-transport/" },
+  landTransport: { label: "ODC & Heavy Lift Transportation", href: "/odc-transport/" },
   transportEngineering: { label: "Transport Engineering & Route Surveys", href: "/services/transport-engineering/" },
   projectForwarding: { label: "Project Forwarding & Breakbulk", href: "/services/project-forwarding/" },
   oceanFreight: { label: "Ocean Freight", href: "/services/ocean-freight/" },

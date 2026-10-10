@@ -268,7 +268,6 @@ export default function OdcTransportPage() {
           We run ODC moves nationwide, including port-to-site transport from JNPT, Chennai and other ports,
           from our offices in <strong>Mumbai</strong> (Sakinaka, Andheri East), <strong>Vapi, Gujarat</strong>,{" "}
           <strong>Hisar, Haryana</strong> and <strong>Chennai, Tamil Nadu</strong>. For heavy lift work beyond road transport, see our{" "}
-          <Link href="/services/land-transport/" className="text-[#173f74] underline">land transport</Link>,{" "}
           <Link href="/services/transport-engineering/" className="text-[#173f74] underline">transport engineering</Link> and{" "}
           <Link href="/services/project-forwarding/" className="text-[#173f74] underline">project forwarding</Link> services.
         </p>

@@ -6,7 +6,7 @@ export const metadata = pageMetadata({
   path: "/services/",
   title: "Our Services | Project Logistics, ODC Transport & Freight Forwarding | Mega Move India",
   description:
-    "All Mega Move India services in one place: air and ocean freight, land transport, ODC transport, in-house equipment, project forwarding, transport engineering, factory relocation, rentals, supply chain and transshipment.",
+    "All Mega Move India services in one place: air and ocean freight, ODC and heavy haul transport, in-house equipment, project forwarding, transport engineering, factory relocation, rentals, supply chain and transshipment.",
 });
 
 type Service = {
@@ -33,18 +33,11 @@ const services: Service[] = [
     video: "/images/OceanFreightOptimizedV2.mp4",
   },
   {
-    title: "Land Transport",
-    description: "Road haulage of heavy and project cargo across India, from port or factory to site.",
-    link: "/services/land-transport/",
-    image: "/images/LandTransportCardHeroImage.webp",
-    video: "/images/Land_transport.mp4",
-  },
-  {
     title: "ODC Transport",
     description: "Over-dimensional cargo moved end to end: route survey, permits, escorts and our own ODC fleet.",
     link: "/odc-transport/",
-    image: "/images/industries/industry_power_energy.webp",
-    video: "/images/oil2.mp4",
+    image: "/images/LandTransportCardHeroImage.webp",
+    video: "/images/Land_transport.mp4",
   },
   {
     title: "In-House Equipment",
@@ -101,7 +94,6 @@ const sections = [
     title: "Logistics",
     intro: "Cargo moved, lifted and handled on land, with our own fleet and engineering team.",
     tiles: [
-      "Land Transport",
       "ODC Transport",
       "In-House Equipment",
       "Transport Engineering",

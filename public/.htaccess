@@ -16,6 +16,8 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 RewriteRule ^industries/industrial/?$ /industries/industrial-plants/ [R=301,L]
 RewriteRule ^industries/metals-mining/?$ /industries/metal-mining/ [R=301,L]
 RewriteRule ^company-profile/?$ /company-profile.pdf [R=301,L]
+# Land Transport merged into ODC Transport
+RewriteRule ^services/land-transport/?$ /odc-transport/ [R=301,L]
 
 # Sitemaps from the previous WordPress site
 RewriteRule ^(sitemap_index|page-sitemap|post-sitemap|category-sitemap|wp-sitemap)\.xml$ /sitemap.xml [R=301,L]

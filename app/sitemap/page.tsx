@@ -27,7 +27,6 @@ export default function Sitemap() {
         { label: "All Services", href: "/services" },
         { label: "Air Freight", href: "/services/air-freight" },
         { label: "Ocean Freight", href: "/services/ocean-freight" },
-        { label: "Land Transport", href: "/services/land-transport" },
         { label: "ODC Transport", href: "/odc-transport" },
         { label: "Rentals & Warehousing", href: "/services/rentals-warehousing" },
         { label: "Factory Relocation", href: "/services/factory-relocation" },
