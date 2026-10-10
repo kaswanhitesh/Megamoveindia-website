@@ -2,6 +2,7 @@ import { pageMetadata } from "@/app/lib/seo";
 import Gallery from "./Gallery";
 import Image from "next/image";
 
+import PageGlow from "@/app/components/PageGlow";
 export const metadata = pageMetadata({
   path: "/company-news/IICS/",
   title: "India International Cargo Show | Mega Move India",
@@ -10,7 +11,8 @@ export const metadata = pageMetadata({
 
 export default function IICSPage() {
   return (
-    <main className="bg-white">
+    <main className="isolate relative bg-white">
+      <PageGlow />
 
       {/* Hero */}
 

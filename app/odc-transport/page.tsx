@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { pageMetadata, SITE_URL } from "@/app/lib/seo";
 
+import PageGlow from "@/app/components/PageGlow";
 export const metadata = pageMetadata({
   path: "/odc-transport/",
   title: "ODC Transport Services in India | Over Dimensional Cargo | Mega Move India",
@@ -135,7 +136,8 @@ const structuredData = [
 
 export default function OdcTransportPage() {
   return (
-    <main className="bg-[#f7f7f7]">
+    <main className="isolate relative bg-[#f7f7f7]">
+      <PageGlow />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}

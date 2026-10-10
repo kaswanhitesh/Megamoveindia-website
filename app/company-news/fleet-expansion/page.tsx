@@ -1,5 +1,6 @@
 import { pageMetadata } from "@/app/lib/seo";
 
+import PageGlow from "@/app/components/PageGlow";
 export const metadata = pageMetadata({
   path: "/company-news/fleet-expansion/",
   title: "Equipment Fleet Expansion | Company News | Mega Move India",
@@ -8,7 +9,8 @@ export const metadata = pageMetadata({
 
 export default function FleetExpansionPage() {
   return (
-    <main className="bg-[#f7f7f7] min-h-screen">
+    <main className="isolate relative bg-[#f7f7f7] min-h-screen">
+      <PageGlow />
       {/* HERO SECTION */}
       <section className="relative h-[280px] lg:h-[450px] overflow-hidden">
         <img

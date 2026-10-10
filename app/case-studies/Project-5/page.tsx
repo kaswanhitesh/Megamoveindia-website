@@ -5,6 +5,7 @@ import OtherProjectsCarousel from '@/app/components/OtherProjectsCarousel';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import PageGlow from "@/app/components/PageGlow";
 export const metadata = pageMetadata({
   path: "/case-studies/Project-5/",
   title: "2 x 100MT Heat Exchangers to IOCL Panipat | Mega Move India",
@@ -15,7 +16,8 @@ export const metadata = pageMetadata({
 
 export default function HeatExchangerTransportationProject() {
   return (
-    <div className="relative w-full bg-transparent overflow-x-clip">
+    <div className="isolate relative w-full bg-transparent overflow-x-clip">
+      <PageGlow />
       {/* Fixed Background Image */}
       <div className="fixed inset-0 w-full h-full z-[-10] pointer-events-none">
         <Image

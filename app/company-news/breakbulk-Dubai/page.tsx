@@ -1,6 +1,7 @@
 import { pageMetadata } from "@/app/lib/seo";
 import StaticGallery from "@/app/components/StaticGallery";
 
+import PageGlow from "@/app/components/PageGlow";
 export const metadata = pageMetadata({
   path: "/company-news/breakbulk-Dubai/",
   title: "Mega Move India at Breakbulk Middle East Dubai 2026 | Company News",
@@ -9,7 +10,8 @@ export const metadata = pageMetadata({
 
 export default function BreakbulkDubaiPage() {
   return (
-    <main className="bg-[#f7f7f7] min-h-screen">
+    <main className="isolate relative bg-[#f7f7f7] min-h-screen">
+      <PageGlow />
       {/* HERO SECTION */}
       <section className="relative h-[280px] lg:h-[450px] overflow-hidden">
         <img

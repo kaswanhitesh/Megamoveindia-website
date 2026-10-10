@@ -1,6 +1,7 @@
 import { pageMetadata } from "@/app/lib/seo";
 import Link from "next/link";
 
+import PageGlow from "@/app/components/PageGlow";
 export const metadata = pageMetadata({
   path: "/case-studies/",
   title: "Case Studies | Project Cargo & Heavy Lift Projects | Mega Move India",
@@ -124,7 +125,8 @@ export default function CaseStudies() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#f7f7f7] overflow-hidden">
+    <main className="isolate relative min-h-screen bg-[#f7f7f7] overflow-hidden">
+      <PageGlow />
       <div className="max-w-7xl mx-auto px-4 lg:px-16 py-10 lg:py-16">
         <h1 className="text-center text-[34px] lg:text-[52px] font-light text-gray-900">
           OUR SUCCESS STORIES

@@ -1,6 +1,7 @@
 import { pageMetadata } from "@/app/lib/seo";
 import Link from "next/link";
 
+import PageGlow from "@/app/components/PageGlow";
 export const metadata = pageMetadata({
   path: "/sitemap/",
   title: "Site Map | Mega Move India",
@@ -86,7 +87,8 @@ export default function Sitemap() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#f7f7f7] text-[#1f2937]">
+    <main className="isolate relative min-h-screen bg-[#f7f7f7] text-[#1f2937]">
+      <PageGlow />
       <section className="max-w-7xl mx-auto px-6 lg:px-16 py-20 lg:py-28">
         <div className="border-b border-gray-300 pb-8 mb-12">
           <h1 className="text-[34px] lg:text-[52px] font-light text-gray-900 tracking-wide">

@@ -1,4 +1,5 @@
 import { pageMetadata } from "@/app/lib/seo";
+import PageGlow from "@/app/components/PageGlow";
 export const metadata = pageMetadata({
   path: "/company-news/",
   title: "Company News & Events | Mega Move India",
@@ -69,7 +70,8 @@ export default function CompanyNews() {
   news.sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
 
   return (
-    <main>
+    <main className="relative isolate">
+      <PageGlow />
       {/* HERO */}
 
       <section className="relative h-[280px] lg:h-[500px]">

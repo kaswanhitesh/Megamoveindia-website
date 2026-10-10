@@ -1,6 +1,7 @@
 import { pageMetadata } from "@/app/lib/seo";
 import type { ReactNode } from "react";
 
+import PageGlow from "@/app/components/PageGlow";
 export const metadata = pageMetadata({
   path: "/privacy-policy/",
   title: "Privacy Policy | Mega Move India",
@@ -223,7 +224,8 @@ const sections: { id: string; title: string; body: ReactNode }[] = [
 
 export default function PrivacyPolicy() {
   return (
-    <div className="bg-[#eef1f5]">
+    <div className="isolate relative bg-[#eef1f5]">
+      <PageGlow />
       {/* Hero band */}
       <section className="relative overflow-hidden bg-[#0f2a4d] pt-[90px] text-white">
         <div

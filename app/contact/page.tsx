@@ -2,6 +2,7 @@ import { pageMetadata } from "@/app/lib/seo";
 import { FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import EnquiryForm from "./EnquiryForm";
 
+import PageGlow from "@/app/components/PageGlow";
 export const metadata = pageMetadata({
   path: "/contact/",
   title: "Contact Mega Move India | Project Logistics & Freight Forwarding",
@@ -43,7 +44,8 @@ export default function ContactUs() {
   ];
 
   return (
-    <main className="bg-[#f7f7f7]">
+    <main className="isolate relative bg-[#f7f7f7]">
+      <PageGlow />
       {/* HERO IMAGE */}
 
       <section className="relative h-[280px] lg:h-[500px]">

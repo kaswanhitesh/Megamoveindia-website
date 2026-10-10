@@ -1,6 +1,7 @@
 import { pageMetadata, SITE_URL } from "@/app/lib/seo";
 import StaticGallery from "@/app/components/StaticGallery";
 
+import PageGlow from "@/app/components/PageGlow";
 export const metadata = pageMetadata({
   path: "/company-news/windergy-india-2026/",
   title: "Windergy India 2026 Highlights: Mega Move India in Chennai",
@@ -68,7 +69,8 @@ const structuredData = [
 
 export default function WindergyIndia2026Page() {
   return (
-    <main className="bg-[#f7f7f7] min-h-screen">
+    <main className="isolate relative bg-[#f7f7f7] min-h-screen">
+      <PageGlow />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}

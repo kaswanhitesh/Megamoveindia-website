@@ -1,6 +1,7 @@
 import { pageMetadata } from "@/app/lib/seo";
 import HistoryClient from "./HistoryClient";
 
+import PageGlow from "@/app/components/PageGlow";
 export const metadata = pageMetadata({
   path: "/history/",
   title: "Our History | Mega Move India",
@@ -9,7 +10,8 @@ export const metadata = pageMetadata({
 
 export default function HistoryPage() {
   return (
-    <main className="bg-zinc-950 min-h-screen text-zinc-100 font-sans selection:bg-white/10 selection:text-white">
+    <main className="isolate relative bg-zinc-950 min-h-screen text-zinc-100 font-sans selection:bg-white/10 selection:text-white">
+      <PageGlow />
       {/* Inject custom styling to dynamically transform the global header and footer to match the dark premium branding */}
       <style dangerouslySetInnerHTML={{ __html: `
         body { background-color: #09090b !important; }

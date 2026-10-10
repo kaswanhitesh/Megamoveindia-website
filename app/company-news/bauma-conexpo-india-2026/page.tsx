@@ -1,6 +1,7 @@
 import { pageMetadata, SITE_URL } from "@/app/lib/seo";
 import StaticGallery from "@/app/components/StaticGallery";
 
+import PageGlow from "@/app/components/PageGlow";
 export const metadata = pageMetadata({
   path: "/company-news/bauma-conexpo-india-2026/",
   title: "bauma CONEXPO INDIA 2026 Highlights: Mega Move India at Greater Noida",
@@ -94,7 +95,8 @@ const CLIENTS = ["SANY India", "XCMG", "Century Cranes", "Dingli", "Dozco (Shant
 
 export default function BaumaConexpoIndia2026Page() {
   return (
-    <main className="bg-[#f7f7f7] min-h-screen">
+    <main className="isolate relative bg-[#f7f7f7] min-h-screen">
+      <PageGlow />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}

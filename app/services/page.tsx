@@ -2,6 +2,7 @@ import Link from "next/link";
 import { pageMetadata } from "@/app/lib/seo";
 import CardVideo from "@/app/components/CardVideo";
 
+import PageGlow from "@/app/components/PageGlow";
 export const metadata = pageMetadata({
   path: "/services/",
   title: "Our Services | Project Logistics, ODC Transport & Freight Forwarding | Mega Move India",
@@ -111,7 +112,8 @@ const sections = [
 
 export default function ServicesPage() {
   return (
-    <div className="bg-black text-white">
+    <div className="isolate relative bg-black text-white">
+      <PageGlow />
       <section className="mx-auto max-w-7xl px-6 pb-20 pt-[150px] lg:px-16 lg:pb-28 lg:pt-[170px]">
         <div className="mb-14 text-center">
           <h1 className="mb-4 text-[2rem] font-light uppercase leading-[1.1] tracking-[0.04em] text-zinc-100 lg:text-[3.5rem]">

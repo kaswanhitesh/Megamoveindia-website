@@ -1,4 +1,5 @@
 import { pageMetadata } from "@/app/lib/seo";
+import PageGlow from "@/app/components/PageGlow";
 export const metadata = pageMetadata({
   path: "/services/transshipment/",
   title: "Transshipment Services | Global Cargo Routing & Hub Operations | Mega Move India",
@@ -32,7 +33,8 @@ export default function Transshipment() {
     },
   ];
   return (
-    <main className="bg-[#f7f7f7]">
+    <main className="isolate relative bg-[#f7f7f7]">
+      <PageGlow />
       {/* HERO */}
       <section className="relative h-[320px] md:h-[400px] lg:h-[500px] overflow-hidden">
         <img

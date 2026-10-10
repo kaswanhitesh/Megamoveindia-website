@@ -1,4 +1,5 @@
 import { pageMetadata } from "@/app/lib/seo";
+import PageGlow from "@/app/components/PageGlow";
 export const metadata = pageMetadata({
   path: "/equipment/",
   title: "In-House Equipment Fleet | Hydraulic Axles & Lowbed Trailers | Mega Move India",
@@ -19,7 +20,8 @@ export default function Equipment() {
   ];
 
   return (
-    <main className="bg-[#f7f7f7]">
+    <main className="isolate relative bg-[#f7f7f7]">
+      <PageGlow />
 
       {/* HERO IMAGE */}
 

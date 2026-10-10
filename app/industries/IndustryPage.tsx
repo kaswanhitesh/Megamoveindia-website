@@ -1,9 +1,11 @@
 import Link from "next/link";
 import type { Industry } from "./data";
 
+import PageGlow from "@/app/components/PageGlow";
 export default function IndustryPage({ industry }: { industry: Industry }) {
   return (
-    <main className="bg-[#f7f7f7]">
+    <main className="isolate relative bg-[#f7f7f7]">
+      <PageGlow />
       <section className="relative h-[280px] lg:h-[500px]">
         <img src={industry.image} alt={`${industry.name} logistics`} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/45" />

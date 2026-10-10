@@ -1,5 +1,6 @@
 import { pageMetadata } from "@/app/lib/seo";
 
+import PageGlow from "@/app/components/PageGlow";
 export const metadata = pageMetadata({
   path: "/terms-and-conditions/",
   title: "Terms & Conditions | Mega Move India",
@@ -8,7 +9,8 @@ export const metadata = pageMetadata({
 
 export default function TermsAndConditions() {
   return (
-    <main className="bg-[#f7f7f7] min-h-screen">
+    <main className="isolate relative bg-[#f7f7f7] min-h-screen">
+      <PageGlow />
 
       <section className="max-w-5xl mx-auto px-10 py-24">
 
