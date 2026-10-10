@@ -3,8 +3,8 @@ import HistoryFilm from "./HistoryFilm";
 
 export const metadata = pageMetadata({
   path: "/history/",
-  title: "Our History | Mega Move India",
-  description: "Explore the legacy and milestone achievements of Mega Move India Private Limited, from our origins in heavy haulage in 2005 to full-scale global logistics integration in 2025 and beyond.",
+  title: "Our History: The Satbir Richpal Kaswan Story | Mega Move India",
+  description: "The story of Satbir Richpal Kaswan: a 16-year-old TATA 407 driver from Haryana in 1986 who moved to Mumbai, founded Priya Roadlines in 1992, and whose legacy lives on as Mega Move India.",
 });
 
 export default function HistoryPage() {
