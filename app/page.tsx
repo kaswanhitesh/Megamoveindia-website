@@ -3,6 +3,7 @@ import Link from "next/link";
 import HomeHero from "./components/HomeHero";
 import NetworksMarquee from "./components/NetworksMarquee";
 import OfficeMap from "./components/OfficeMap";
+import PageGlow from "./components/PageGlow";
 
 export const metadata = pageMetadata({
   path: "/",
@@ -137,13 +138,8 @@ export default function Home() {
 
       {/* Opaque from here down, so it covers the pinned image as it scrolls up */}
       <div className="relative z-10 bg-black">
-        {/* Slow-drifting colour glows behind the glass cards (see .card-glow in globals.css) */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-          <div className="card-glow card-glow-1" />
-          <div className="card-glow card-glow-2" />
-          <div className="card-glow card-glow-3" />
-          <div className="card-glow card-glow-4" />
-        </div>
+        {/* Grey drifting glows and floating triangles, as on every page */}
+        <PageGlow />
 
         {/* Core Portfolios */}
         <section className="relative mx-auto max-w-7xl px-6 py-16 text-center lg:px-16 lg:py-24">
