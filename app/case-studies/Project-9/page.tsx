@@ -7,8 +7,8 @@ import Link from 'next/link';
 
 export const metadata = pageMetadata({
   path: "/case-studies/Project-9/",
-  title: "Machinery Import on 8 x 20' Flat Racks, Europe to JNPT | Mega Move India",
-  description: "Import of new industrial machinery on eight 20ft flat rack containers from Europe to JNPT: ocean freight, import customs clearance and delivery to site on Mega Move India's own vehicles.",
+  title: "Tata Power Machinery Import: 8 x 32 MT Flat Racks, Hamburg to Bangalore | Mega Move India",
+  description: "Eight 32 MT packages of new machinery for Tata Power, shipped on 20ft flat racks from Hamburg to JNPT, cleared and delivered to Bangalore on our own vehicles in 42 days.",
   image: "/images/Casestudies/Project-9/Project9_HeroImage.webp",
 });
 
@@ -21,7 +21,7 @@ export default function FlatRackMachineryImportProject() {
       <div className="fixed inset-0 w-full h-full z-[-10] pointer-events-none">
         <Image
           src="/images/Casestudies/Project-9/Project9_HeroImage.webp"
-          alt="Imported crated machinery loaded on a trailer at the port"
+          alt="32 MT crated machinery for Tata Power loaded on a trailer at JNPT"
           fill
           priority
           className="object-cover"
@@ -39,11 +39,12 @@ export default function FlatRackMachineryImportProject() {
             Project Overview
           </h2>
           <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-            Mega Move India handled the import of new industrial machinery from Europe to India for one of our most valued
-            clients. The crated machines arrived at JNPT on eight 20ft flat rack containers. We took charge from ex-works
-            handling and ocean freight through import customs clearance at JNPT, then lashed and chocked each crate onto
-            our own specialised vehicles and delivered them to the client&rsquo;s site. One team managed the whole chain,
-            from the supplier in Europe to the factory floor in India.
+            Mega Move India handled the import of new industrial machinery for <strong>Tata Power</strong>, from Hamburg,
+            Germany to Bangalore, India. The consignment was eight crated packages of 32 tonnes each, 256 tonnes in all,
+            shipped on eight 20ft flat rack containers. We took charge from ex-works handling and ocean freight out of
+            Hamburg, through import customs clearance at JNPT, to lashing and chocking each crate onto our own specialised
+            vehicles for the road move to Bangalore. The whole project was completed in 42 days, with one team managing
+            every step from the supplier in Germany to the client&rsquo;s site.
           </p>
         </div>
       </section>
@@ -57,10 +58,18 @@ export default function FlatRackMachineryImportProject() {
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-y-8 lg:gap-y-12 gap-x-4 lg:gap-x-10 max-w-5xl mx-auto">
             <div className="text-center">
               <h3 className="font-bold text-[16px] lg:text-[22px] text-zinc-900 mb-3">
+                Client
+              </h3>
+              <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
+                Tata Power
+              </p>
+            </div>
+            <div className="text-center">
+              <h3 className="font-bold text-[16px] lg:text-[22px] text-zinc-900 mb-3">
                 Industry Sector
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Industrial Machinery Manufacturing
+                Power & Energy
               </p>
             </div>
             <div className="text-center">
@@ -68,7 +77,23 @@ export default function FlatRackMachineryImportProject() {
                 Cargo Description
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                New Industrial Machinery (crated)
+                New Industrial Machinery (8 crated packages)
+              </p>
+            </div>
+            <div className="text-center">
+              <h3 className="font-bold text-[16px] lg:text-[22px] text-zinc-900 mb-3">
+                Cargo Weight
+              </h3>
+              <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
+                32 MT per package (256 MT total)
+              </p>
+            </div>
+            <div className="text-center">
+              <h3 className="font-bold text-[16px] lg:text-[22px] text-zinc-900 mb-3">
+                Route
+              </h3>
+              <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
+                Hamburg → JNPT → Bangalore
               </p>
             </div>
             <div className="text-center">
@@ -81,18 +106,18 @@ export default function FlatRackMachineryImportProject() {
             </div>
             <div className="text-center">
               <h3 className="font-bold text-[16px] lg:text-[22px] text-zinc-900 mb-3">
-                Origin & Destination
-              </h3>
-              <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Europe → JNPT, India
-              </p>
-            </div>
-            <div className="text-center">
-              <h3 className="font-bold text-[16px] lg:text-[22px] text-zinc-900 mb-3">
                 Port of Discharge
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
                 JNPT (Nhava Sheva)
+              </p>
+            </div>
+            <div className="text-center">
+              <h3 className="font-bold text-[16px] lg:text-[22px] text-zinc-900 mb-3">
+                Project Duration
+              </h3>
+              <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
+                42 Days
               </p>
             </div>
             <div className="text-center">
@@ -119,12 +144,12 @@ export default function FlatRackMachineryImportProject() {
               Challenges & Solutions
             </h2>
             <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-              The crated machines were taller and wider than a standard container allows, so they had to travel on flat
-              racks, exposed to weather and sea motion all the way from Europe. At JNPT all eight units had to be cleared
-              through import customs together and moved out of the port quickly to avoid storage charges. Each crate then
-              had to be transferred from its flat rack to a trailer, lashed and chocked again, and driven to site as an
-              oversized load. Using our own vehicles and handling clearance and lashing in-house kept every step under our
-              direct control.
+              Each 32-tonne crate was taller and wider than a standard container allows, so the machines travelled on
+              flat racks, exposed to weather and sea motion all the way from Hamburg. At JNPT all eight packages had to be
+              cleared through import customs together and moved out of the port quickly to avoid storage charges. Each crate
+              was then transferred from its flat rack to a trailer, lashed and chocked again, and driven around 1,000 km to
+              Bangalore as an oversized load, with routes planned around bridges, ghats and city entry restrictions. Using
+              our own vehicles and handling clearance and lashing in-house kept every step under our direct control.
             </p>
           </section>
 
@@ -134,10 +159,10 @@ export default function FlatRackMachineryImportProject() {
               Project Outcome
             </h2>
             <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-              All eight crates were cleared at JNPT and delivered to the client&rsquo;s site without damage or delay. The
-              client had one point of contact from ex-works handling in Europe to final delivery in India, and the project
-              shows how Mega Move India combines ocean freight, customs clearance and in-house ODC transport for machinery
-              imports.
+              All eight packages, 256 tonnes in total, reached Tata Power&rsquo;s site in Bangalore without damage, and the
+              full project from Hamburg to site was completed in 42 days. Tata Power had one point of contact throughout,
+              and the project shows how Mega Move India combines ocean freight, customs clearance and in-house ODC transport
+              for power-sector machinery imports.
             </p>
           </section>
 

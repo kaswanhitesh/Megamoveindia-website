@@ -90,11 +90,12 @@ const ALL_PROJECTS: Project[] = [
   },
   {
     slug: 'Project-9',
-    title: 'Machinery Import on 8 Flat Racks',
+    title: 'Tata Power Machinery Import',
     image: '/images/Casestudies/Project-9/Project9_Gallery2.webp',
-    badge: 'IMPORT',
-    weight: '8 × 20ft FR',
-    location: 'Europe → JNPT',
+    badge: 'POWER',
+    weight: '8 × 32 MT',
+    location: 'Hamburg → Bangalore',
+    duration: '42 Days',
   },
 ];
 

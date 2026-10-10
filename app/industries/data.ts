@@ -26,7 +26,7 @@ const CASE = {
   heatExchangers: { label: "2 x 100MT Heat Exchangers to IOCL Panipat", href: "/case-studies/Project-5/" },
   chemicalTanks: { label: "Chemical Storage Tanks Export", href: "/case-studies/Project-6/" },
   eotCrane: { label: "35M EOT Crane Export", href: "/case-studies/Project-8/" },
-  flatRackImport: { label: "Machinery Import on 8 x 20' Flat Racks from Europe", href: "/case-studies/Project-9/" },
+  flatRackImport: { label: "8 x 32 MT Machinery Import for Tata Power", href: "/case-studies/Project-9/" },
   xraySystems: { label: "Used X-Ray Systems for ONGC Barmer", href: "/case-studies/Project-7/" },
 };
 
@@ -89,7 +89,7 @@ export const INDUSTRIES: Record<string, Industry> = {
       "We engineer transport configurations for the power grid, including massive wind turbine blades, generator stators, heat exchangers, and heavy nuclear power components.",
     image: "/images/industries/industry_power_energy.webp",
     services: [SERVICE.landTransport, SERVICE.transportEngineering, SERVICE.projectForwarding, SERVICE.oceanFreight],
-    caseStudies: [CASE.heatCondenser],
+    caseStudies: [CASE.flatRackImport, CASE.heatCondenser],
   },
   "rental-warehousing": {
     slug: "rental-warehousing",

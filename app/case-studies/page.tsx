@@ -68,8 +68,8 @@ export default function CaseStudies() {
 
 {
   slug: "Project-9",
-  category: "MACHINERY IMPORTS",
-  title: "Machinery on 8 Flat Racks",
+  category: "POWER SECTOR IMPORTS",
+  title: "8 x 32 MT Machinery Import",
   image: "/images/Casestudies/Project-9/Project9_Gallery2.webp",
 },
 ];
