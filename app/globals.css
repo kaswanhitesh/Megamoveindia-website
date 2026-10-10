@@ -555,3 +555,42 @@ main h2.reveal-in {
     opacity: 1;
   }
 }
+
+/* Exception to NO MOTION: full-screen menu fades in, content slides up, badge turns slowly */
+.menu-overlay-open {
+  animation: menu-fade-in 0.35s ease-out both !important;
+}
+
+.menu-overlay-open .menu-stagger > * {
+  animation: menu-rise-in 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both !important;
+}
+
+.menu-overlay-open .menu-stagger > *:nth-child(2) { animation-delay: 0.08s !important; }
+.menu-overlay-open .menu-stagger > *:nth-child(3) { animation-delay: 0.16s !important; }
+.menu-overlay-open .menu-stagger > *:nth-child(4) { animation-delay: 0.24s !important; }
+
+.menu-badge-spin {
+  animation: menu-badge-spin 22s linear infinite !important;
+}
+
+@keyframes menu-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes menu-rise-in {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes menu-badge-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-overlay-open,
+  .menu-overlay-open .menu-stagger > *,
+  .menu-badge-spin {
+    animation: none !important;
+  }
+}

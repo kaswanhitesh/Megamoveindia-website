@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useHeaderFooter } from "./HeaderFooterContext";
 
@@ -11,6 +11,21 @@ export default function Header() {
   const { headerOpacity } = useHeaderFooter();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [menuHovered, setMenuHovered] = useState(false);
+
+  // Full-screen menu: lock page scroll while open, close on Escape
+  useEffect(() => {
+    if (!drawerOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setDrawerOpen(false);
+    document.addEventListener("keydown", onKey);
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = overflow;
+    };
+  }, [drawerOpen]);
+
+  const close = () => setDrawerOpen(false);
 
   return (
     <>
@@ -48,6 +63,7 @@ export default function Header() {
       {/* Fixed Hamburger Button (Independent of Header Opacity) */}
       <button
         onClick={() => setDrawerOpen(true)}
+        aria-label="Open menu"
         onMouseEnter={() => setMenuHovered(true)}
         onMouseLeave={() => setMenuHovered(false)}
         className="fixed top-0 right-6 lg:right-16 z-[110] h-[90px] flex items-center justify-center cursor-pointer text-3xl pointer-events-auto"
@@ -61,94 +77,130 @@ export default function Header() {
         ☰
       </button>
 
-      {/* Sidebar Drawer */}
-      {/* Backdrop */}
+      {/* Full-screen menu */}
       <div
-        onClick={() => setDrawerOpen(false)}
-        className={`fixed inset-0 bg-black/30 z-[200] transition-opacity duration-500 ${
-          drawerOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
-      />
-
-      {/* Drawer Panel */}
-      <div
-        className={`fixed top-0 right-0 h-full w-full sm:w-[420px] bg-zinc-950/80 backdrop-blur-xl text-white z-[300] overflow-y-auto transition-transform duration-500 ease-out border-l border-white/10 shadow-2xl ${
-          drawerOpen ? "translate-x-0" : "translate-x-full"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Site menu"
+        aria-hidden={!drawerOpen}
+        className={`menu-overlay fixed inset-0 z-[300] overflow-y-auto bg-[#0f2a4d] text-white ${
+          drawerOpen ? "menu-overlay-open visible" : "invisible"
         }`}
       >
-        <button
-          onClick={() => setDrawerOpen(false)}
-          className="absolute top-8 right-8 text-3xl cursor-pointer hover:rotate-90 hover:opacity-70 transition-all duration-300"
-        >
-          ✕
-        </button>
-        <div className="text-lg text-gray-200 pt-20">
-          <Link
-            href="/"
-            prefetch={false}
-            onClick={() => setDrawerOpen(false)}
-            className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300 border-b border-white/5 font-sans"
-          >
-            Home
-          </Link>
-          
-          <Link
-            href="/services/"
-            prefetch={false}
-            onClick={() => setDrawerOpen(false)}
-            className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300 border-b border-white/5 font-sans"
-          >
-            Services
-          </Link>
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 opacity-[0.06] [background-image:linear-gradient(rgba(255,255,255,1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,1)_1px,transparent_1px)] [background-size:56px_56px]"
+        />
 
-          <Link
-            href="/case-studies"
-            prefetch={false}
-            onClick={() => setDrawerOpen(false)}
-            className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300 border-b border-white/5 font-sans"
-          >
-            Case Studies
-          </Link>
-          <Link
-            href="/equipment"
-            prefetch={false}
-            onClick={() => setDrawerOpen(false)}
-            className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300 border-b border-white/5 font-sans"
-          >
-            In-House Equipments
-          </Link>
-          <Link
-            href="/company-news"
-            prefetch={false}
-            onClick={() => setDrawerOpen(false)}
-            className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300 border-b border-white/5 font-sans"
-          >
-            Company News
-          </Link>
-          <Link
-            href="/history"
-            prefetch={false}
-            onClick={() => setDrawerOpen(false)}
-            className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300 border-b border-white/5 font-sans"
-          >
-            Our History
-          </Link>
-          <Link
-            href="/careers"
-            prefetch={false}
-            onClick={() => setDrawerOpen(false)}
-            className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300 border-b border-white/5 font-sans"
-          >
-            Careers
-          </Link>
-          <Link
-            href="/contact"
-            prefetch={false}
-            onClick={() => setDrawerOpen(false)}
-            className="block py-5 px-6 lg:px-12 hover:bg-white hover:text-gray-700 transition-all duration-300 border-b border-white/5 font-sans"
-          >
-            Contact Us
-          </Link>
+        <div className="relative mx-auto flex min-h-full max-w-7xl flex-col px-6 pb-12 pt-6 lg:px-16 lg:pt-10">
+          {/* Top bar */}
+          <div className="flex items-center justify-between">
+            <Link href="/" prefetch={false} onClick={close} className="flex items-center gap-4" aria-label="Mega Move India home">
+              <img src="/mega-move-logo.svg" alt="" width={90} height={45} className="brightness-0 invert" />
+              <span className="hidden text-xs font-semibold uppercase leading-tight tracking-[0.2em] text-white/70 sm:block">
+                Moving the Immovable
+                <br />
+                Delivering the Impossible
+              </span>
+            </Link>
+            <button
+              onClick={close}
+              aria-label="Close menu"
+              className="flex h-12 w-12 items-center justify-center text-4xl font-light leading-none hover:text-[#ff5a5a]"
+            >
+              ✕
+            </button>
+          </div>
+
+          {/* Main block */}
+          <div className="flex flex-1 flex-col justify-center gap-12 py-12 lg:flex-row lg:items-end lg:justify-between">
+            <div className="menu-stagger">
+              <h2 className="text-[clamp(2.6rem,7vw,5.5rem)] font-black uppercase italic leading-[0.95] tracking-tight" data-no-reveal>
+                Explore our
+                <br />
+                expertise
+              </h2>
+              <p className="mt-6 max-w-xl text-[clamp(1.2rem,2.6vw,2rem)] font-bold uppercase italic leading-[1.15] text-white/85">
+                Moving the immovable for India&rsquo;s biggest projects.
+              </p>
+
+              <div className="mt-10 flex flex-wrap gap-4">
+                <Link
+                  href="/services/"
+                  prefetch={false}
+                  onClick={close}
+                  className="border-2 border-white px-7 py-3 text-lg font-semibold hover:border-[#c41e1e] hover:bg-[#c41e1e]"
+                >
+                  Services
+                </Link>
+                <Link
+                  href="/case-studies/"
+                  prefetch={false}
+                  onClick={close}
+                  className="border-2 border-white px-7 py-3 text-lg font-semibold hover:border-[#c41e1e] hover:bg-[#c41e1e]"
+                >
+                  Case Studies
+                </Link>
+                <Link
+                  href="/contact/"
+                  prefetch={false}
+                  onClick={close}
+                  className="border-2 border-[#c41e1e] bg-[#c41e1e] px-7 py-3 text-lg font-semibold hover:bg-[#a51919]"
+                >
+                  Request a Quote
+                </Link>
+              </div>
+
+              <nav aria-label="More pages" className="mt-12 flex flex-wrap gap-x-8 gap-y-4 text-lg text-white/85">
+                {[
+                  ["Home", "/"],
+                  ["ODC Transport", "/odc-transport/"],
+                  ["In-House Equipment", "/equipment/"],
+                  ["Company News", "/company-news/"],
+                  ["Our History", "/history/"],
+                  ["Careers", "/careers/"],
+                  ["Contact", "/contact/"],
+                ].map(([label, href]) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    prefetch={false}
+                    onClick={close}
+                    className={`border-b-2 pb-1 hover:border-[#c41e1e] hover:text-white ${
+                      pathname === href || pathname + "/" === href ? "border-[#c41e1e] text-white" : "border-transparent"
+                    }`}
+                  >
+                    {label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+
+            {/* Rotating badge */}
+            <div className="hidden shrink-0 self-end md:block" aria-hidden="true">
+              <div className="relative h-56 w-56 lg:h-64 lg:w-64">
+                <svg viewBox="0 0 200 200" className="menu-badge-spin absolute inset-0 h-full w-full">
+                  <defs>
+                    <path id="menu-badge-circle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" />
+                  </defs>
+                  <text className="fill-white text-[13.5px] font-bold uppercase tracking-[0.32em]">
+                    <textPath href="#menu-badge-circle">Mega Move India • Your cargo. Our commitment. •</textPath>
+                  </text>
+                </svg>
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-[1.35rem] font-black uppercase italic leading-[1.05]">
+                  <span>Project</span>
+                  <span>Logistics</span>
+                  <span className="text-[#ff5a5a]">ODC</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap gap-x-8 gap-y-2 border-t border-white/15 pt-6 text-sm text-white/60">
+            <a href="tel:+919321399970" className="hover:text-white">+91 93213 99970</a>
+            <a href="mailto:info@megamoveindia.com" className="hover:text-white">info@megamoveindia.com</a>
+            <span>Mumbai · Vapi · Hisar · Chennai</span>
+          </div>
         </div>
       </div>
     </>
