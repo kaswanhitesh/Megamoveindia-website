@@ -116,9 +116,13 @@ export default function CaseStudies() {
 
   const customers = [
     { name: "Reliance Industries Limited", logo: "/images/Customers/reliance.webp" },
+    { name: "Tata Power", logo: "/images/Customers/tata-power.webp" },
+    { name: "Siemens Energy", logo: "/images/Customers/siemens-energy.webp" },
+    { name: "L&T Heavy Engineering", logo: "/images/Customers/lt-heavy-engineering.webp" },
     { name: "Royal IHC", logo: "/images/Customers/royal-ihc.webp" },
     { name: "Zeeco", logo: "/images/Customers/zeeco.webp" },
     { name: "Transformers & Rectifiers (India) Ltd", logo: "/images/Customers/transformers-rectifiers.webp" },
+    { name: "TMC", logo: "/images/Customers/tmc.webp" },
     { name: "Jasmino", logo: "/images/Customers/jasmino.webp" },
   ];
 
