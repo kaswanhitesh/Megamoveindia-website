@@ -119,10 +119,15 @@ export default function CaseStudies() {
     { name: "Tata Power", logo: "/images/Customers/tata-power.webp" },
     { name: "Siemens Energy", logo: "/images/Customers/siemens-energy.webp" },
     { name: "L&T Heavy Engineering", logo: "/images/Customers/lt-heavy-engineering.webp" },
+    { name: "Uttar Pradesh Metro Rail Corporation (UPMRC)", logo: "/images/Customers/upmrc.webp" },
+    { name: "Polycab", logo: "/images/Customers/polycab.webp" },
+    { name: "TBEA", logo: "/images/Customers/tbea.webp" },
     { name: "Royal IHC", logo: "/images/Customers/royal-ihc.webp" },
     { name: "Zeeco", logo: "/images/Customers/zeeco.webp" },
     { name: "Transformers & Rectifiers (India) Ltd", logo: "/images/Customers/transformers-rectifiers.webp" },
     { name: "TMC", logo: "/images/Customers/tmc.webp" },
+    { name: "Cheema Boilers Limited (CBL)", logo: "/images/Customers/cbl.webp" },
+    { name: "Maxima", logo: "/images/Customers/maxima.webp" },
     { name: "Jasmino", logo: "/images/Customers/jasmino.webp" },
   ];
 
