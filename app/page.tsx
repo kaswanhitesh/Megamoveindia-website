@@ -2,6 +2,7 @@ import { pageMetadata } from "@/app/lib/seo";
 import Link from "next/link";
 import HomeHero from "./components/HomeHero";
 import NetworksMarquee from "./components/NetworksMarquee";
+import OfficeMap from "./components/OfficeMap";
 
 export const metadata = pageMetadata({
   path: "/",
@@ -188,6 +189,7 @@ export default function Home() {
         </section>
 
         <NetworksMarquee />
+        <OfficeMap />
 
         {/* Call to action */}
         <section className="border-t border-zinc-800 px-6 py-16 text-center lg:py-24">

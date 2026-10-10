@@ -386,3 +386,28 @@ body {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
+/* Exception to NO MOTION: soft pulse on office markers in the homepage map */
+.office-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: office-pulse 2.4s ease-out infinite !important;
+}
+
+@keyframes office-pulse {
+  from {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .office-pulse {
+    animation: none !important;
+    opacity: 0;
+  }
+}
