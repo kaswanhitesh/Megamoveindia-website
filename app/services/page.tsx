@@ -48,7 +48,7 @@ const services: Service[] = [
   },
   {
     title: "In-House Equipment",
-    description: "Our own fleet: 40 hydraulic axle lines, heavy-duty pullers, lowbed and flatbed trailers, manlifts and lashing gear.",
+    description: "Our own fleet: 40 hydraulic axle lines, heavy-duty pullers, lowbed and flatbed trailers.",
     link: "/equipment/",
     image: "/images/Casestudies/Project-10/Project10_Gallery3.webp",
   },
@@ -96,42 +96,37 @@ const services: Service[] = [
 
 export default function ServicesPage() {
   return (
-    <div className="relative bg-black text-white">
-      {/* Slow-drifting colour glows behind the glass cards, as on the homepage */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="card-glow card-glow-1" />
-        <div className="card-glow card-glow-2" />
-        <div className="card-glow card-glow-3" />
-        <div className="card-glow card-glow-4" />
-      </div>
+    <div className="bg-black text-white">
+      <section className="mx-auto max-w-7xl px-6 pb-20 pt-[150px] lg:px-16 lg:pb-28 lg:pt-[170px]">
+        <div className="mb-14 text-center">
+          <h1 className="mb-4 text-[2rem] font-light uppercase leading-[1.1] tracking-[0.04em] text-zinc-100 lg:text-[3.5rem]">
+            Our Services
+          </h1>
+          <p className="mx-auto max-w-2xl text-sm font-light leading-relaxed text-zinc-400 lg:text-base">
+            Integrated project logistics across air, sea and road, from route engineering to final delivery. Choose a
+            service to see how we work.
+          </p>
+        </div>
 
-      <section className="relative mx-auto max-w-7xl px-6 pb-20 pt-[150px] text-center lg:px-16 lg:pb-28 lg:pt-[170px]">
-        <h1 className="mb-4 text-[2rem] font-light uppercase leading-[1.1] tracking-[0.04em] text-zinc-100 lg:text-[3.5rem]">
-          Our Services
-        </h1>
-        <p className="mx-auto mb-12 max-w-2xl text-sm font-light leading-relaxed text-zinc-400 lg:text-base">
-          Integrated project logistics across air, sea and road, from route engineering to final delivery. Choose a
-          service to see how we work.
-        </p>
-
-        <div className="flex flex-wrap justify-center gap-6" data-no-reveal>
+        <div className="flex flex-wrap justify-center gap-5 lg:gap-6" data-no-reveal>
           {services.map((service) => (
             <Link
               key={service.link}
               href={service.link}
-              className="glass-card group flex w-full flex-col rounded-2xl p-4 text-center no-underline sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] lg:p-5"
+              className="group relative block aspect-[4/3] w-full overflow-hidden rounded-lg bg-zinc-900 no-underline sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-16px)]"
             >
-              <div className="mb-4 h-[200px] overflow-hidden rounded-xl border border-zinc-200 bg-zinc-950">
-                {service.video ? (
-                  <CardVideo src={service.video} poster={service.image} />
-                ) : (
-                  <img src={service.image} alt="" loading="lazy" className="h-full w-full object-cover" />
-                )}
-              </div>
-              <h2 className="mb-3 text-lg font-medium uppercase tracking-wide text-zinc-900">{service.title}</h2>
-              <p className="mb-4 flex-1 text-sm font-light leading-relaxed text-zinc-600">{service.description}</p>
-              <div className="border-t border-zinc-200 pt-4 font-mono text-xs uppercase tracking-widest text-zinc-800 group-hover:text-black">
-                Explore Service →
+              {service.video ? (
+                <CardVideo src={service.video} poster={service.image} />
+              ) : (
+                <img src={service.image} alt="" loading="lazy" className="h-full w-full object-cover" />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-5 text-left lg:p-6">
+                <h2 className="flex items-center justify-between gap-3 text-lg font-semibold uppercase tracking-wide text-white lg:text-xl">
+                  {service.title}
+                  <span aria-hidden="true" className="shrink-0 text-white/80 group-hover:text-white">→</span>
+                </h2>
+                <p className="mt-1.5 line-clamp-2 text-sm font-light leading-snug text-zinc-300">{service.description}</p>
               </div>
             </Link>
           ))}
