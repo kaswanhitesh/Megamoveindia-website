@@ -84,7 +84,7 @@ export default function HomeHero() {
         ref={titleRef}
         className="pointer-events-none fixed inset-0 z-[5] flex flex-col items-center justify-center px-4 pt-[90px] text-center"
       >
-        <div ref={titleTextRef} className="hero-fade-in">
+        <div ref={titleTextRef} className="hero-fade-in" data-no-reveal>
           <div className="mb-3 text-[clamp(0.9rem,2vw,1.3rem)] font-light uppercase tracking-[0.3em] text-white/85">
             Welcome to
           </div>

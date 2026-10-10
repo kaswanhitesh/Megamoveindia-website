@@ -492,3 +492,66 @@ body {
     animation: none !important;
   }
 }
+
+/* ==========================================
+   Heading motion (exception to NO MOTION)
+   h1: rises in and settles its letter-spacing on page load (CSS only, no flash).
+   h2: hidden below the fold, then rises in when scrolled into view
+       (classes added by components/HeadingReveal.tsx).
+========================================== */
+main h1 {
+  animation: heading-title-in 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.1s both !important;
+}
+
+[data-no-reveal] h1,
+footer h1 {
+  animation: none !important;
+}
+
+main h2.reveal {
+  opacity: 0;
+}
+
+main h2.reveal-in {
+  animation: heading-rise-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both !important;
+}
+
+@keyframes heading-title-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(8px);
+    letter-spacing: 0.35em;
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+@keyframes heading-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+    filter: blur(6px);
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+    clip-path: inset(0 0 -20% 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main h1,
+  main h2.reveal-in {
+    animation: none !important;
+  }
+
+  main h2.reveal {
+    opacity: 1;
+  }
+}

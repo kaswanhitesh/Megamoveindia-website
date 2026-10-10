@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import Header from "./components/Header";
+import HeadingReveal from "./components/HeadingReveal";
 import Footer from "./components/Footer";
 import OrganizationJsonLd from "./components/OrganizationJsonLd";
 import WhatsAppButton from "./components/WhatsAppButton";
@@ -46,6 +47,7 @@ export default function RootLayout({
             <Footer />
           </main>
           <WhatsAppButton />
+          <HeadingReveal />
           <OrganizationJsonLd />
         </HeaderFooterProvider>
       </body>
