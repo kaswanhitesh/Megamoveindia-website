@@ -2,6 +2,7 @@ import { pageMetadata } from "@/app/lib/seo";
 import Link from "next/link";
 import HomeHero from "./components/HomeHero";
 import NetworksMarquee from "./components/NetworksMarquee";
+import CustomersMarquee from "./components/CustomersMarquee";
 import OfficeMap from "./components/OfficeMap";
 import PageGlow from "./components/PageGlow";
 
@@ -164,6 +165,8 @@ export default function Home() {
             ))}
           </div>
         </section>
+
+        <CustomersMarquee />
 
         {/* Industries We Serve */}
         <section className="relative mx-auto max-w-7xl px-6 pb-20 pt-8 text-center lg:px-16 lg:pb-28">

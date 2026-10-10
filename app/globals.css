@@ -646,3 +646,37 @@ main h2.reveal-in {
     animation: none !important;
   }
 }
+
+/* Homepage customer logos: two rows scrolling right to left (CustomersMarquee) */
+.customers-track {
+  animation: customers-scroll 45s linear infinite !important;
+}
+
+.customers-track-2 {
+  animation-duration: 52s !important;
+}
+
+.customers-marquee:hover .customers-track {
+  animation-play-state: paused !important;
+}
+
+@keyframes customers-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .customers-track {
+    animation: none !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: auto;
+  }
+  .customers-track li[aria-hidden] {
+    display: none;
+  }
+}

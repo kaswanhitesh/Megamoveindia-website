@@ -2,6 +2,7 @@ import { pageMetadata } from "@/app/lib/seo";
 import Link from "next/link";
 
 import PageGlow from "@/app/components/PageGlow";
+import { customers } from "@/app/lib/customers";
 export const metadata = pageMetadata({
   path: "/case-studies/",
   title: "Case Studies | Project Cargo & Heavy Lift Projects | Mega Move India",
@@ -114,24 +115,6 @@ export default function CaseStudies() {
 },
 ];
 
-  const customers = [
-    { name: "Reliance Industries Limited", logo: "/images/Customers/reliance.webp" },
-    { name: "Tata Power", logo: "/images/Customers/tata-power.webp" },
-    { name: "Siemens Energy", logo: "/images/Customers/siemens-energy.webp" },
-    { name: "L&T Heavy Engineering", logo: "/images/Customers/lt-heavy-engineering.webp" },
-    { name: "Uttar Pradesh Metro Rail Corporation (UPMRC)", logo: "/images/Customers/upmrc.webp" },
-    { name: "Polycab", logo: "/images/Customers/polycab.webp" },
-    { name: "TBEA", logo: "/images/Customers/tbea.webp" },
-    { name: "Royal IHC", logo: "/images/Customers/royal-ihc.webp" },
-    { name: "Zeeco", logo: "/images/Customers/zeeco.webp" },
-    { name: "Transformers & Rectifiers (India) Ltd", logo: "/images/Customers/transformers-rectifiers.webp" },
-    { name: "TMC", logo: "/images/Customers/tmc.webp" },
-    { name: "Cheema Boilers Limited (CBL)", logo: "/images/Customers/cbl.webp" },
-    { name: "Maxima", logo: "/images/Customers/maxima.webp" },
-    { name: "Onshore Group of Companies", logo: "/images/Customers/onshore.webp" },
-    { name: "Vaaman Engineers", logo: "/images/Customers/vaaman.webp" },
-    { name: "Jasmino", logo: "/images/Customers/jasmino.webp" },
-  ];
 
   return (
     <main className="isolate relative min-h-screen bg-[#f7f7f7] overflow-hidden">
