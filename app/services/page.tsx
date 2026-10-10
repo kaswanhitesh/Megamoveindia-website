@@ -27,14 +27,14 @@ const services: Service[] = [
   },
   {
     title: "Ocean Freight",
-    description: "FCL, LCL, breakbulk and project cargo shipping through strategic carrier partnerships worldwide.",
+    description: "FCL, LCL and breakbulk shipping worldwide through our carrier partnerships.",
     link: "/services/ocean-freight/",
     image: "/images/OceanfreightHeroCardImage.webp",
     video: "/images/OceanFreightOptimizedV2.mp4",
   },
   {
     title: "Land Transport",
-    description: "Heavy haulage across India on hydraulic axle trailers, low-beds and specialised vehicles.",
+    description: "Road haulage of heavy and project cargo across India, from port or factory to site.",
     link: "/services/land-transport/",
     image: "/images/LandTransportCardHeroImage.webp",
     video: "/images/Land_transport.mp4",
@@ -75,7 +75,7 @@ const services: Service[] = [
   },
   {
     title: "Rentals & Warehousing",
-    description: "Truck-mounted manlifts, aerial work platforms, warehousing and loading or unloading support.",
+    description: "Truck-mounted manlifts, aerial work platforms, warehousing and on-site cargo handling.",
     link: "/services/rentals-warehousing/",
     image: "/images/RentalsCardHeroImage.webp",
     video: "/images/Rental_Warehouse_Final.mp4",
@@ -88,7 +88,7 @@ const services: Service[] = [
   },
   {
     title: "Transshipment",
-    description: "Cargo routing through hub ports, breakbulk and container transfers, and multimodal connections.",
+    description: "Cargo routed through hub ports and transferred onward by sea or road to its destination.",
     link: "/services/transshipment/",
     image: "/images/Casestudies/Project-2/Project2_Galleryheroimage.webp",
   },
@@ -99,7 +99,7 @@ const sections = [
   {
     id: "logistics",
     title: "Logistics",
-    intro: "Heavy and over-dimensional cargo moved by road, with our own fleet and engineering team.",
+    intro: "Cargo moved, lifted and handled on land, with our own fleet and engineering team.",
     tiles: [
       "Land Transport",
       "ODC Transport",
