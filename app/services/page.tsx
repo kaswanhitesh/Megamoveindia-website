@@ -115,7 +115,7 @@ export default function ServicesPage() {
       {/* Faint line-art logistics doodles behind the tiles */}
       <div
         aria-hidden="true"
-        className="doodle-drift pointer-events-none absolute inset-0 opacity-[0.08]"
+        className="doodle-drift pointer-events-none absolute inset-0 opacity-[0.16]"
         style={{ backgroundImage: "url(/images/logistics-doodle.svg)", backgroundSize: "420px" }}
       />
       <section className="relative mx-auto max-w-7xl px-6 pb-20 pt-[150px] lg:px-16 lg:pb-28 lg:pt-[170px]">
