@@ -137,8 +137,16 @@ export default function Home() {
 
       {/* Opaque from here down, so it covers the pinned image as it scrolls up */}
       <div className="relative z-10 bg-black">
+        {/* Slow-drifting colour glows behind the glass cards (see .card-glow in globals.css) */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+          <div className="card-glow card-glow-1" />
+          <div className="card-glow card-glow-2" />
+          <div className="card-glow card-glow-3" />
+          <div className="card-glow card-glow-4" />
+        </div>
+
         {/* Core Portfolios */}
-        <section className="mx-auto max-w-7xl px-6 py-16 text-center lg:px-16 lg:py-24">
+        <section className="relative mx-auto max-w-7xl px-6 py-16 text-center lg:px-16 lg:py-24">
           <h2 className="mb-4 text-[1.75rem] font-light leading-[1.1] tracking-[0.02em] text-zinc-100 lg:text-[3.5rem]">
             CORE PORTFOLIOS
           </h2>
@@ -162,7 +170,7 @@ export default function Home() {
         </section>
 
         {/* Industries We Serve */}
-        <section className="mx-auto max-w-7xl px-6 pb-20 pt-8 text-center lg:px-16 lg:pb-28">
+        <section className="relative mx-auto max-w-7xl px-6 pb-20 pt-8 text-center lg:px-16 lg:pb-28">
           <h2 className="mb-6 text-[1.75rem] font-extrabold uppercase leading-[1.2] tracking-[0.02em] lg:text-[2.25rem]">
             INDUSTRIES WE SERVE
           </h2>
@@ -192,7 +200,7 @@ export default function Home() {
         <OfficeMap />
 
         {/* Call to action */}
-        <section className="border-t border-zinc-800 px-6 py-16 text-center lg:py-24">
+        <section className="relative border-t border-zinc-800 px-6 py-16 text-center lg:py-24">
           <h2 className="mb-4 text-[1.75rem] font-light leading-[1.2] tracking-[0.02em] text-zinc-100 lg:text-[2.75rem]">
             HAVE HEAVY OR OVERSIZED CARGO TO MOVE?
           </h2>
