@@ -8,5 +8,5 @@ const IMAGES = [
 ];
 
 export default function Gallery() {
-  return <StaticGallery images={IMAGES} altPrefix="Machinery export on 20ft flat rack containers from JNPT" />;
+  return <StaticGallery images={IMAGES} altPrefix="Machinery import on 20ft flat rack containers at JNPT" />;
 }

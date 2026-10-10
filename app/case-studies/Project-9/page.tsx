@@ -7,21 +7,21 @@ import Link from 'next/link';
 
 export const metadata = pageMetadata({
   path: "/case-studies/Project-9/",
-  title: "Machinery Export on 8 x 20' Flat Racks, JNPT to Europe | Mega Move India",
-  description: "Export of new industrial machinery on eight 20ft flat rack containers from JNPT to Europe: ex-works pickup, in-house transport, customs clearance, lashing and ocean freight by Mega Move India.",
+  title: "Machinery Import on 8 x 20' Flat Racks, Europe to JNPT | Mega Move India",
+  description: "Import of new industrial machinery on eight 20ft flat rack containers from Europe to JNPT: ocean freight, import customs clearance and delivery to site on Mega Move India's own vehicles.",
   image: "/images/Casestudies/Project-9/Project9_HeroImage.webp",
 });
 
 
 
-export default function FlatRackMachineryExportProject() {
+export default function FlatRackMachineryImportProject() {
   return (
     <div className="relative w-full bg-transparent overflow-x-clip">
       {/* Fixed Background Image */}
       <div className="fixed inset-0 w-full h-full z-[-10] pointer-events-none">
         <Image
           src="/images/Casestudies/Project-9/Project9_HeroImage.webp"
-          alt="Crated machinery on a trailer at the port for flat rack export"
+          alt="Imported crated machinery loaded on a trailer at the port"
           fill
           priority
           className="object-cover"
@@ -39,10 +39,11 @@ export default function FlatRackMachineryExportProject() {
             Project Overview
           </h2>
           <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-            Mega Move India handled the export of new industrial machinery from India to Europe for one of our most
-            valued clients. The machines were crated, collected ex-works, moved to JNPT on our own specialised vehicles,
-            cleared through export customs, lashed and chocked onto eight 20ft flat rack containers, and shipped by sea to
-            Europe. One team managed the whole chain, from the factory gate to the vessel.
+            Mega Move India handled the import of new industrial machinery from Europe to India for one of our most valued
+            clients. The crated machines arrived at JNPT on eight 20ft flat rack containers. We took charge from ex-works
+            handling and ocean freight through import customs clearance at JNPT, then lashed and chocked each crate onto
+            our own specialised vehicles and delivered them to the client&rsquo;s site. One team managed the whole chain,
+            from the supplier in Europe to the factory floor in India.
           </p>
         </div>
       </section>
@@ -83,12 +84,12 @@ export default function FlatRackMachineryExportProject() {
                 Origin & Destination
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                JNPT, India → Europe
+                Europe → JNPT, India
               </p>
             </div>
             <div className="text-center">
               <h3 className="font-bold text-[16px] lg:text-[22px] text-zinc-900 mb-3">
-                Port of Loading
+                Port of Discharge
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
                 JNPT (Nhava Sheva)
@@ -99,7 +100,7 @@ export default function FlatRackMachineryExportProject() {
                 Project Scope
               </h3>
               <p className="text-gray-600 text-sm lg:text-base leading-6 lg:leading-7">
-                Ex-Works Handling, Inland Transport, Customs Clearance, Lashing & Choking, Ocean Freight
+                Ex-Works Handling, Ocean Freight, Import Customs Clearance, Lashing & Choking, Delivery on Own Vehicles
               </p>
             </div>
           </div>
@@ -118,11 +119,11 @@ export default function FlatRackMachineryExportProject() {
               Challenges & Solutions
             </h2>
             <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-              The crated machines were taller and wider than a standard container allows, so they could not travel in
-              closed boxes. Flat racks solved that, but each crate had to be placed, lashed and chocked to hold firm through
-              road transport, port handling and a long sea voyage to Europe. With eight units moving together, pickups,
-              customs filing and port gate-in had to run to one schedule so the full set made the same vessel. We used our
-              own vehicles for the road leg and handled clearance and lashing in-house, which kept every step under our
+              The crated machines were taller and wider than a standard container allows, so they had to travel on flat
+              racks, exposed to weather and sea motion all the way from Europe. At JNPT all eight units had to be cleared
+              through import customs together and moved out of the port quickly to avoid storage charges. Each crate then
+              had to be transferred from its flat rack to a trailer, lashed and chocked again, and driven to site as an
+              oversized load. Using our own vehicles and handling clearance and lashing in-house kept every step under our
               direct control.
             </p>
           </section>
@@ -133,9 +134,10 @@ export default function FlatRackMachineryExportProject() {
               Project Outcome
             </h2>
             <p className="max-w-6xl mx-auto text-center text-base lg:text-lg text-gray-700 leading-8 lg:leading-10">
-              All eight flat racks were loaded, secured and shipped from JNPT to Europe without damage or delay. The client
-              had one point of contact from ex-works pickup to ocean freight, and the project shows how Mega Move India
-              combines in-house transport with ODC, breakbulk and flat rack export logistics.
+              All eight crates were cleared at JNPT and delivered to the client&rsquo;s site without damage or delay. The
+              client had one point of contact from ex-works handling in Europe to final delivery in India, and the project
+              shows how Mega Move India combines ocean freight, customs clearance and in-house ODC transport for machinery
+              imports.
             </p>
           </section>
 

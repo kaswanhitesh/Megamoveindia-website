@@ -19,11 +19,11 @@ const Hero = () => {
         className="text-center px-4"
       >
         <h1 className="text-white text-4xl lg:text-7xl font-light tracking-[6px] mb-6 leading-tight select-none uppercase">
-          MACHINERY EXPORT ON 8 FLAT RACKS
+          MACHINERY IMPORT ON 8 FLAT RACKS
         </h1>
         <div className="w-20 h-px bg-white/60 mx-auto mb-6" />
         <p className="text-white text-lg lg:text-2xl tracking-[2px] font-light select-none">
-          JNPT, India → Europe
+          Europe → JNPT, India
         </p>
       </div>
     </section>

@@ -90,11 +90,11 @@ const ALL_PROJECTS: Project[] = [
   },
   {
     slug: 'Project-9',
-    title: 'Machinery Export on 8 Flat Racks',
+    title: 'Machinery Import on 8 Flat Racks',
     image: '/images/Casestudies/Project-9/Project9_Gallery2.webp',
-    badge: 'EXPORT',
+    badge: 'IMPORT',
     weight: '8 × 20ft FR',
-    location: 'JNPT → Europe',
+    location: 'Europe → JNPT',
   },
 ];
 
