@@ -83,7 +83,7 @@ export default function Header() {
         aria-modal="true"
         aria-label="Site menu"
         aria-hidden={!drawerOpen}
-        className={`menu-overlay fixed inset-0 z-[300] overflow-y-auto bg-[#0f2a4d] text-white ${
+        className={`menu-overlay fixed inset-0 z-[300] overflow-y-auto bg-black text-white ${
           drawerOpen ? "menu-overlay-open visible" : "invisible"
         }`}
       >
