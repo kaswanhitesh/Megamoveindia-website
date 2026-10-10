@@ -128,6 +128,8 @@ export default function CaseStudies() {
     { name: "TMC", logo: "/images/Customers/tmc.webp" },
     { name: "Cheema Boilers Limited (CBL)", logo: "/images/Customers/cbl.webp" },
     { name: "Maxima", logo: "/images/Customers/maxima.webp" },
+    { name: "Onshore Group of Companies", logo: "/images/Customers/onshore.webp" },
+    { name: "Vaaman Engineers", logo: "/images/Customers/vaaman.webp" },
     { name: "Jasmino", logo: "/images/Customers/jasmino.webp" },
   ];
 
@@ -254,11 +256,11 @@ export default function CaseStudies() {
           </h2>
 
           <div>
-            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-6 lg:gap-x-14">
+            <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-10 gap-y-10 lg:gap-x-20 lg:gap-y-16">
               {customers.map((customer) => (
                 <div
                   key={customer.name}
-                  className="flex h-[70px] w-[140px] items-center justify-center lg:h-[100px] lg:w-[200px]"
+                  className="flex h-[60px] w-[130px] items-center justify-center lg:h-[85px] lg:w-[180px]"
                 >
                   <img
                     src={customer.logo}
