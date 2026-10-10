@@ -102,7 +102,7 @@ function CardVideo({ src, poster }: { src: string; poster: string }) {
 }
 
 const cardClass =
-  "group flex flex-col rounded-2xl border border-white bg-white p-4 lg:p-5 no-underline shadow-[0_10px_30px_rgba(0,0,0,0.35)] hover:shadow-[0_14px_40px_rgba(255,255,255,0.12)]";
+  "glass-card group flex flex-col rounded-2xl p-4 lg:p-5 no-underline";
 
 export default function Home() {
   return (
@@ -148,12 +148,12 @@ export default function Home() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((service) => (
               <Link key={service.title} href={service.link} className={cardClass}>
-                <div className="mb-4 h-[180px] overflow-hidden rounded-xl bg-zinc-200">
+                <div className="mb-4 h-[180px] overflow-hidden rounded-xl border border-zinc-200 bg-zinc-950">
                   <CardVideo src={service.video} poster={service.image} />
                 </div>
-                <h3 className="mb-3 text-lg font-semibold tracking-wide text-zinc-900">{service.title}</h3>
-                <p className="mb-4 flex-1 text-sm leading-relaxed text-zinc-600">{service.description}</p>
-                <div className="border-t border-zinc-200 pt-4 font-mono text-xs font-semibold uppercase tracking-widest text-[#173f74] group-hover:text-[#c41e1e]">
+                <h3 className="mb-3 text-lg font-medium tracking-wide text-zinc-900">{service.title}</h3>
+                <p className="mb-4 flex-1 text-sm font-light leading-relaxed text-zinc-600">{service.description}</p>
+                <div className="border-t border-zinc-200 pt-4 font-mono text-xs uppercase tracking-widest text-zinc-800 group-hover:text-black">
                   Explore Services →
                 </div>
               </Link>
@@ -175,12 +175,12 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-6">
             {industries.map((item) => (
               <Link key={item.title} href={item.link} className={`${cardClass} w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]`}>
-                <div className="mb-4 h-[200px] overflow-hidden rounded-xl bg-zinc-200">
+                <div className="mb-4 h-[200px] overflow-hidden rounded-xl border border-zinc-200 bg-zinc-950">
                   <CardVideo src={item.video} poster={item.image} />
                 </div>
                 <h3 className="mb-3 text-[22px] font-extrabold uppercase leading-none tracking-wider text-zinc-900">{item.title}</h3>
-                <p className="mb-4 flex-1 text-[14.5px] leading-[1.65] text-zinc-600">{item.description}</p>
-                <div className="border-t border-zinc-200 pt-4 font-mono text-[11px] font-semibold uppercase tracking-widest text-[#173f74] group-hover:text-[#c41e1e]">
+                <p className="mb-4 flex-1 text-[14.5px] font-light leading-[1.65] text-zinc-600">{item.description}</p>
+                <div className="font-mono text-[11px] font-semibold uppercase tracking-widest text-zinc-500 group-hover:text-black">
                   Explore Sector →
                 </div>
               </Link>
