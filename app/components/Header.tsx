@@ -154,8 +154,6 @@ export default function Header() {
               <nav aria-label="More pages" className="mt-12 flex flex-wrap gap-x-8 gap-y-4 text-lg text-white/85">
                 {[
                   ["Home", "/"],
-                  ["ODC Transport", "/odc-transport/"],
-                  ["In-House Equipment", "/equipment/"],
                   ["Company News", "/company-news/"],
                   ["Our History", "/history/"],
                   ["Careers", "/careers/"],
