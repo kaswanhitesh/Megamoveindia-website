@@ -111,8 +111,14 @@ const sections = [
 
 export default function ServicesPage() {
   return (
-    <div className="bg-black text-white">
-      <section className="mx-auto max-w-7xl px-6 pb-20 pt-[150px] lg:px-16 lg:pb-28 lg:pt-[170px]">
+    <div className="relative bg-black text-white">
+      {/* Faint line-art logistics doodles behind the tiles */}
+      <div
+        aria-hidden="true"
+        className="doodle-drift pointer-events-none absolute inset-0 opacity-[0.08]"
+        style={{ backgroundImage: "url(/images/logistics-doodle.svg)", backgroundSize: "420px" }}
+      />
+      <section className="relative mx-auto max-w-7xl px-6 pb-20 pt-[150px] lg:px-16 lg:pb-28 lg:pt-[170px]">
         <div className="mb-14 text-center">
           <h1 className="mb-4 text-[2rem] font-light uppercase leading-[1.1] tracking-[0.04em] text-zinc-100 lg:text-[3.5rem]">
             Our Services

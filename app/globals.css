@@ -594,3 +594,20 @@ main h2.reveal-in {
     animation: none !important;
   }
 }
+
+/* Services page: logistics doodles drift slowly on a seamless loop
+   (one 420px tile per cycle, so the wrap is invisible) */
+.doodle-drift {
+  animation: doodle-drift 45s linear infinite !important;
+}
+
+@keyframes doodle-drift {
+  from { background-position: 0 0; }
+  to { background-position: 420px -420px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .doodle-drift {
+    animation: none !important;
+  }
+}
