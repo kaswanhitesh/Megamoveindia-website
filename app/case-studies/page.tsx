@@ -245,11 +245,11 @@ export default function CaseStudies() {
           </h2>
 
           <div>
-            <div className="flex flex-wrap justify-center gap-4 lg:gap-6">
+            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-6 lg:gap-x-14">
               {customers.map((customer) => (
                 <div
                   key={customer.name}
-                  className="flex h-[90px] w-[150px] items-center justify-center rounded-xl bg-white p-4 shadow-sm lg:h-[120px] lg:w-[220px] lg:p-6"
+                  className="flex h-[70px] w-[140px] items-center justify-center lg:h-[100px] lg:w-[200px]"
                 >
                   <img
                     src={customer.logo}
