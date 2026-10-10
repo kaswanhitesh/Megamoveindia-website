@@ -72,6 +72,13 @@ export default function CaseStudies() {
   title: "8 x 32 MT Machinery Import",
   image: "/images/Casestudies/Project-9/Project9_Gallery2.webp",
 },
+
+{
+  slug: "Project-10",
+  category: "INFRASTRUCTURE / METRO",
+  title: "Kanpur Metro TBM Transport",
+  image: "/images/Casestudies/Project-10/Project10_Gallery3.webp",
+},
 ];
   
   const networks = [

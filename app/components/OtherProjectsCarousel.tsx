@@ -97,6 +97,14 @@ const ALL_PROJECTS: Project[] = [
     location: 'Hamburg → Bangalore',
     duration: '42 Days',
   },
+  {
+    slug: 'Project-10',
+    title: 'Kanpur Metro TBM Transport',
+    image: '/images/Casestudies/Project-10/Project10_Gallery3.webp',
+    badge: 'METRO',
+    weight: '400 MT',
+    location: 'Kandla → Kanpur',
+  },
 ];
 
 interface OtherProjectsCarouselProps {

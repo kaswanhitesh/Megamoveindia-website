@@ -27,6 +27,7 @@ const CASE = {
   chemicalTanks: { label: "Chemical Storage Tanks Export", href: "/case-studies/Project-6/" },
   eotCrane: { label: "35M EOT Crane Export", href: "/case-studies/Project-8/" },
   flatRackImport: { label: "8 x 32 MT Machinery Import for Tata Power", href: "/case-studies/Project-9/" },
+  kanpurMetroTbm: { label: "2 Tunnel Boring Machines for Kanpur Metro", href: "/case-studies/Project-10/" },
   xraySystems: { label: "Used X-Ray Systems for ONGC Barmer", href: "/case-studies/Project-7/" },
 };
 
@@ -53,7 +54,7 @@ export const INDUSTRIES: Record<string, Industry> = {
       "We provide comprehensive logistics and transport engineering solutions for major infrastructure projects, bridge constructions, highway developments, and pre-cast concrete transports.",
     image: "/images/industries/industry_infrastructure.webp",
     services: [SERVICE.landTransport, SERVICE.transportEngineering, SERVICE.projectForwarding, SERVICE.rentals],
-    caseStudies: [],
+    caseStudies: [CASE.kanpurMetroTbm],
   },
   "metal-mining": {
     slug: "metal-mining",

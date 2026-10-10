@@ -60,6 +60,7 @@ export default function Sitemap() {
         { label: "X-Ray Systems", href: "/case-studies/Project-7" },
         { label: "EOT Crane Shipment", href: "/case-studies/Project-8" },
         { label: "Tata Power Machinery Import", href: "/case-studies/Project-9" },
+        { label: "Kanpur Metro TBM Transport", href: "/case-studies/Project-10" },
       ],
     },
     {
