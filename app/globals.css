@@ -594,3 +594,55 @@ main h2.reveal-in {
     animation: none !important;
   }
 }
+
+/* Inner pages (PageGlow): the homepage glows in greys, plus floating
+   triangles. Positions and drift come from .card-glow-N / glow-drift-*. */
+.grey-glow-1 {
+  top: 2%;
+  left: -12%;
+  background: radial-gradient(circle, rgba(212, 212, 216, 0.55) 0%, rgba(212, 212, 216, 0) 65%);
+  animation: glow-drift-a 26s ease-in-out infinite alternate !important;
+}
+
+.grey-glow-2 {
+  top: 18%;
+  right: -15%;
+  background: radial-gradient(circle, rgba(113, 113, 122, 0.4) 0%, rgba(113, 113, 122, 0) 65%);
+  animation: glow-drift-b 32s ease-in-out infinite alternate !important;
+}
+
+.grey-glow-3 {
+  top: 48%;
+  left: 20%;
+  background: radial-gradient(circle, rgba(63, 63, 70, 0.35) 0%, rgba(63, 63, 70, 0) 65%);
+  animation: glow-drift-c 28s ease-in-out infinite alternate !important;
+}
+
+.grey-glow-4 {
+  bottom: 0;
+  right: 5%;
+  background: radial-gradient(circle, rgba(161, 161, 170, 0.4) 0%, rgba(161, 161, 170, 0) 65%);
+  animation: glow-drift-a 34s ease-in-out infinite alternate-reverse !important;
+}
+
+.bg-tri {
+  position: absolute;
+  color: rgba(113, 113, 122, 0.28);
+  will-change: transform;
+  animation: tri-float var(--tri-dur, 30s) ease-in-out var(--tri-delay, 0s) infinite !important;
+}
+
+@keyframes tri-float {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(60px, -40px) rotate(90deg); }
+  50% { transform: translate(10px, -90px) rotate(180deg); }
+  75% { transform: translate(-60px, -35px) rotate(270deg); }
+  100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grey-glow,
+  .bg-tri {
+    animation: none !important;
+  }
+}
