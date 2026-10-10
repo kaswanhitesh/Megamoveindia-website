@@ -3,8 +3,8 @@ import HistoryFilm from "./HistoryFilm";
 
 export const metadata = pageMetadata({
   path: "/history/",
-  title: "Our History: The Satbir Richpal Kaswan Story | Mega Move India",
-  description: "The story of Satbir Richpal Kaswan: a 16-year-old TATA 407 driver from Haryana in 1986 who moved to Mumbai, founded Priya Roadlines in 1992, and whose legacy lives on as Mega Move India.",
+  title: "Our History | From One Truck in 1986 to Mega Move India",
+  description: "How Mega Move India grew from a single TATA 407 in Haryana in 1986 to Priya Roadlines in 1992 and today's heavy-haulage and project logistics company, with 40 hydraulic axle lines and offices across India.",
 });
 
 export default function HistoryPage() {

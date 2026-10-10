@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 
-// "Our History": the story of Mr. Satbir Richpal Kaswan, told as a short scroll film.
-// Each full-screen scene switches on (.is-active) as it scrolls into view, which starts its
-// sliding lines, backdrop motion and, for video scenes, playback. Styles: .film-* in globals.css.
-// With reduced motion everything is shown still.
+// "Our History": how the company grew from one truck in 1986 to Mega Move India, told as a
+// short scroll film. Each full-screen scene switches on (.is-active) as it scrolls into view,
+// which starts its sliding lines, backdrop motion, counters and, for video scenes, playback.
+// Styles: .film-* in globals.css. With reduced motion everything is shown still.
 
 type Line = { text: ReactNode; big?: boolean; accent?: boolean };
 
@@ -34,28 +34,46 @@ function Lines({ lines, start = 0 }: { lines: Line[]; start?: number }) {
 const chapters = [
   { id: "opening", label: "▶" },
   { id: "y1986", label: "1986" },
-  { id: "y1988", label: "1988" },
   { id: "y1990", label: "1990" },
   { id: "y1992", label: "1992" },
-  { id: "growth", label: "2012" },
+  { id: "y2012", label: "2012" },
+  { id: "y2018", label: "2018" },
   { id: "y2025", label: "2025" },
-  { id: "legacy", label: "Today" },
+  { id: "today", label: "Today" },
 ];
 
-const growth = [
+type PhotoScene = { id: string; year: string; title: string; text: string; image: string; video?: string };
+
+const photoScenes: PhotoScene[] = [
   {
+    id: "y2012",
     year: "2012",
-    title: "The fleet grows",
-    text: "Multi-axle hydraulic trailers and heavy pullers join the fleet. The driver from Haryana now moves cargo for India's power and infrastructure projects.",
+    title: "Heavier cargo, bigger fleet",
+    text: "Multi-axle hydraulic trailers and heavy pullers join the fleet, and the company moves into power and infrastructure project cargo.",
     image: "/images/LandTransportCardHeroImage.webp",
   },
   {
+    id: "y2018",
     year: "2018",
     title: "Beyond the highway",
-    text: "Partnerships with international freight forwarders take the work to the ports and across the sea.",
+    text: "Partnerships with international freight forwarders add port clearance and multimodal project transport, by sea as well as by road.",
     image: "/images/OceanfreightHeroCardImage.webp",
     video: "/images/OceanFreightOptimizedV2.mp4",
   },
+  {
+    id: "y2025",
+    year: "2025",
+    title: "Mega Move India",
+    text: "Priya Roadlines becomes Mega Move India Private Limited: project forwarding, transport engineering, heavy haulage and equipment rental under one name.",
+    image: "/images/hero-slides/heat-exchangers.webp",
+  },
+];
+
+const stats = [
+  { value: 40, label: "Hydraulic axle lines" },
+  { value: 18, label: "Lowbed trailers" },
+  { value: 10, label: "Flatbed trailers" },
+  { value: 4, label: "Offices across India" },
 ];
 
 export default function HistoryFilm() {
@@ -69,6 +87,27 @@ export default function HistoryFilm() {
     el.classList.add("film-js");
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const sections = Array.from(el.querySelectorAll<HTMLElement>("[data-scene]"));
+
+    // Count a number up from 0 once, the first time its scene is shown.
+    const countUp = (section: HTMLElement) => {
+      section.querySelectorAll<HTMLElement>("[data-count]").forEach((n) => {
+        if (n.dataset.done) return;
+        n.dataset.done = "1";
+        const target = Number(n.dataset.count);
+        if (reduce) {
+          n.textContent = String(target);
+          return;
+        }
+        const t0 = performance.now();
+        const tick = (t: number) => {
+          const p = Math.min(1, (t - t0) / 1800);
+          n.textContent = String(Math.round(target * (1 - Math.pow(1 - p, 3))));
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    };
+
     const io = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -77,6 +116,7 @@ export default function HistoryFilm() {
           if (entry.isIntersecting) {
             section.classList.add("is-active");
             if (section.dataset.chapter) setActive(section.dataset.chapter);
+            countUp(section);
             if (!reduce) {
               for (const video of videos) {
                 if (!video.getAttribute("src")) {
@@ -143,20 +183,27 @@ export default function HistoryFilm() {
 
       {/* OPENING */}
       <section id="opening" data-scene data-chapter="opening" className={`${scene} justify-center`}>
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          data-src="/images/Land_transport.mp4"
+          data-src-small="/images/Land_transport_144p.mp4"
+          poster="/images/LandTransportPageHeroImage.webp"
+          muted
+          loop
+          playsInline
+          preload="none"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-black/65" />
         <div className="film-vignette absolute inset-0" />
         <div className="film-letterbox" aria-hidden="true" />
         <div className="relative z-10 px-6 text-center">
-          <p className="film-title-1 text-lg font-light italic text-white/70 lg:text-2xl">
-            This is not the story of a company.
+          <p className="film-title-1 font-mono text-[11px] uppercase tracking-[0.5em] text-white/70 lg:text-xs">
+            Mega Move India presents
           </p>
-          <p className="film-title-3 mt-3 text-lg font-light italic text-white/90 lg:text-2xl">
-            It is the story of one man.
-          </p>
-          <h1 className="film-title-2 mt-10 text-4xl font-black uppercase tracking-[0.08em] lg:text-7xl">
-            Satbir Richpal Kaswan
-          </h1>
-          <p className="film-title-4 mt-5 font-mono text-[11px] uppercase tracking-[0.45em] text-white/55 lg:text-xs">
-            Director · Mega Move India Private Limited
+          <h1 className="film-title-2 mt-6 text-5xl font-black uppercase tracking-[0.12em] lg:text-8xl">Our History</h1>
+          <p className="film-title-3 mt-6 text-base font-light italic text-white/85 lg:text-2xl">
+            From one truck in 1986 to India&rsquo;s heaviest moves.
           </p>
           <button
             onClick={() => jump("y1986")}
@@ -168,7 +215,7 @@ export default function HistoryFilm() {
         </div>
       </section>
 
-      {/* 1986: the boy and the road */}
+      {/* 1986–1988: one truck */}
       <section id="y1986" data-scene data-chapter="y1986" aria-label="1986" className={scene}>
         <div className="film-dusk absolute inset-0" aria-hidden="true" />
         <div className="film-road absolute inset-x-0 bottom-0 h-[26vh]" aria-hidden="true" />
@@ -180,50 +227,29 @@ export default function HistoryFilm() {
           <Lines
             lines={[
               { text: "Haryana, 1986", accent: true },
-              { text: "A village road." },
-              { text: "A boy of just sixteen." },
-              { text: "Behind the wheel of a TATA 407.", big: true },
-              { text: "It wasn't his truck. Not yet." },
+              { text: "It started with one truck.", big: true },
+              { text: "A TATA 407, driven by our founder, Satbir Richpal Kaswan, at just sixteen." },
+              { text: "By 1988, that truck was our own." },
             ]}
           />
         </div>
       </section>
 
-      {/* 1988: the truck becomes his */}
-      <section id="y1988" data-scene data-chapter="y1988" aria-label="1988" className={scene}>
-        <span aria-hidden="true" className="film-year pointer-events-none absolute left-[-3vw] top-[10vh] select-none text-[38vw] font-black leading-none lg:text-[26vw]">
-          407
-        </span>
-        <div className="film-letterbox" aria-hidden="true" />
-        <div className={`${inner} text-right`}>
-          <Lines
-            start={1}
-            lines={[
-              { text: "1988", accent: true },
-              { text: "Two years of long roads and longer nights." },
-              { text: "The truck he drove", big: true },
-              { text: "became the truck he owned.", big: true },
-            ]}
-          />
-        </div>
-      </section>
-
-      {/* 1990: leaving for Mumbai */}
+      {/* 1990: Mumbai */}
       <section id="y1990" data-scene data-chapter="y1990" aria-label="1990" className={scene}>
         <div className="film-city absolute inset-0" aria-hidden="true" />
         <span aria-hidden="true" className="film-year pointer-events-none absolute bottom-[6vh] right-[-4vw] select-none text-[26vw] font-black leading-none lg:text-[17vw]">
           MUMBAI
         </span>
         <div className="film-letterbox" aria-hidden="true" />
-        <div className={inner}>
+        <div className={`${inner} text-right`}>
           <Lines
+            start={1}
             lines={[
               { text: "1990", accent: true },
-              { text: "He made the hardest decision of his life." },
-              { text: "He left home.", big: true },
-              { text: "He left his children behind.", big: true },
-              { text: "And came to Mumbai with one purpose: to build a future for them." },
-              { text: "He bought a Comet and drove it himself, every kilometre, until 1991." },
+              { text: "The business moves", big: true },
+              { text: "to Mumbai.", big: true },
+              { text: "India's commercial capital. A Comet truck, driven on its own routes until 1991." },
             ]}
           />
         </div>
@@ -237,15 +263,15 @@ export default function HistoryFilm() {
           <Lines
             lines={[
               { text: "1992", accent: true },
-              { text: "A TATA 3516 trailer joined the fleet." },
-              { text: "And a name was born." },
+              { text: "A TATA 3516 trailer joins the fleet." },
+              { text: "One truck becomes a transport company." },
             ]}
           />
           <h2 className="film-name mt-10 text-5xl font-black uppercase tracking-[0.06em] lg:text-[6.5rem] lg:leading-none">
             Priya Roadlines
           </h2>
-          <p className="film-line mt-8 text-lg font-light italic text-white/85 lg:text-2xl" style={{ "--i": 5 } as CSSProperties}>
-            Named after his firstborn, Priya.
+          <p className="film-line mt-8 text-lg font-light italic text-white/85 lg:text-2xl" style={{ "--i": 4 } as CSSProperties}>
+            Named after the founder&rsquo;s firstborn, Priya.
           </p>
         </div>
       </section>
@@ -255,7 +281,7 @@ export default function HistoryFilm() {
         <div className="film-ticker-track flex w-max whitespace-nowrap text-3xl font-black uppercase tracking-[0.06em] text-white/15 lg:text-6xl">
           {[0, 1].map((k) => (
             <span key={k} className="flex gap-12 pr-12">
-              {["Haryana", "TATA 407", "Mumbai", "Comet", "TATA 3516", "Priya Roadlines", "Mega Move India"].map((w) => (
+              {["TATA 407", "Comet", "TATA 3516", "Hydraulic axles", "Breakbulk", "Project cargo", "Mega Move India"].map((w) => (
                 <span key={w} className="flex gap-12">
                   <span>{w}</span>
                   <span className="text-[#c41e1e]/60">•</span>
@@ -266,13 +292,13 @@ export default function HistoryFilm() {
         </div>
       </div>
 
-      {/* Growth */}
-      {growth.map((g, i) => (
+      {/* 2012, 2018, 2025 */}
+      {photoScenes.map((g, i) => (
         <section
-          key={g.year}
-          id={i === 0 ? "growth" : undefined}
+          key={g.id}
+          id={g.id}
           data-scene
-          data-chapter="growth"
+          data-chapter={g.id}
           aria-label={g.year}
           className="film-scene relative flex min-h-[100svh] items-end overflow-hidden"
         >
@@ -289,7 +315,12 @@ export default function HistoryFilm() {
               aria-hidden="true"
             />
           ) : (
-            <img src={g.image} alt="" loading="lazy" className="film-kenburns absolute inset-0 h-full w-full object-cover" />
+            <img
+              src={g.image}
+              alt=""
+              loading="lazy"
+              className={`film-kenburns ${i % 2 ? "film-kenburns-alt" : ""} absolute inset-0 h-full w-full object-cover`}
+            />
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/25" />
           <div className="film-vignette absolute inset-0" />
@@ -303,45 +334,36 @@ export default function HistoryFilm() {
         </section>
       ))}
 
-      {/* 2025: Mega Move India */}
-      <section id="y2025" data-scene data-chapter="y2025" aria-label="2025" className="film-scene relative flex min-h-[100svh] items-end overflow-hidden">
-        <img src="/images/hero-slides/heat-exchangers.webp" alt="" loading="lazy" className="film-kenburns absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/25" />
-        <div className="film-vignette absolute inset-0" />
-        <div className="film-letterbox" aria-hidden="true" />
-        <div className={`${inner} pb-[16vh]`}>
-          <Lines
-            lines={[
-              { text: "2025", accent: true },
-              { text: "Priya Roadlines becomes", big: true },
-              { text: "Mega Move India.", big: true },
-              { text: "A new name. The same road. The same promise he made in 1986." },
-            ]}
-          />
-        </div>
-      </section>
-
-      {/* Legacy */}
-      <section id="legacy" data-scene data-chapter="legacy" aria-labelledby="legacy-title" className={`${scene} justify-center text-center`}>
+      {/* TODAY: from one truck to a fleet */}
+      <section id="today" data-scene data-chapter="today" aria-labelledby="today-title" className={`${scene} justify-center text-center`}>
         <img
           src="/images/Casestudies/Project-10/Project10_HeroImage.webp"
           alt=""
           loading="lazy"
           className="absolute inset-0 h-full w-full object-cover opacity-20"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-black" />
-        <div className="relative z-10 mx-auto max-w-4xl px-6">
-          <Lines lines={[{ text: "Every axle we run." }, { text: "Every load we move." }, { text: "Every promise we keep." }]} />
-          <h2 id="legacy-title" className="film-name mt-10 text-4xl font-black uppercase leading-tight tracking-[0.04em] lg:text-7xl">
-            Carries his name.
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/75 to-black" />
+        <div className="relative z-10 mx-auto w-full max-w-5xl px-6">
+          <Lines lines={[{ text: "Today", accent: true }, { text: "From one TATA 407 to" }]} />
+          <ul className="mt-10 grid grid-cols-2 gap-y-10 lg:grid-cols-4">
+            {stats.map((s, i) => (
+              <li key={s.label} className="film-line" style={{ "--i": i + 2 } as CSSProperties}>
+                <span data-count={s.value} className="block text-6xl font-black tabular-nums lg:text-8xl">
+                  {s.value}
+                </span>
+                <span className="mt-2 block font-mono text-[10px] uppercase tracking-[0.3em] text-white/60 lg:text-xs">
+                  {s.label}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <p className="film-line mt-10 font-mono text-[11px] uppercase tracking-[0.35em] text-white/60" style={{ "--i": 6 } as CSSProperties}>
+            Mumbai · Vapi · Hisar · Chennai
+          </p>
+          <h2 id="today-title" className="film-name mt-12 text-3xl font-black uppercase leading-tight tracking-[0.04em] lg:text-6xl">
+            And the road continues.
           </h2>
-          <p className="film-line mt-10 text-xl font-light italic text-white/90 lg:text-3xl" style={{ "--i": 4 } as CSSProperties}>
-            We are only taking his legacy forward.
-          </p>
-          <p className="film-line mt-4 font-mono text-[11px] uppercase tracking-[0.4em] text-white/50" style={{ "--i": 5 } as CSSProperties}>
-            The Kaswan family &amp; the Mega Move India team
-          </p>
-          <div className="film-line mt-14 flex flex-wrap justify-center gap-4" style={{ "--i": 5 } as CSSProperties}>
+          <div className="film-line mt-12 flex flex-wrap justify-center gap-4" style={{ "--i": 6 } as CSSProperties}>
             <Link href="/contact/" prefetch={false} className="bg-[#c41e1e] px-8 py-4 font-bold text-white no-underline hover:bg-[#a51919]">
               Write the next chapter with us
             </Link>
