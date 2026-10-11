@@ -19,7 +19,7 @@ export default function StaticGallery({ images, altPrefix, title = 'Project Gall
 
   return (
     <>
-      <section className="relative z-20 bg-[#f7f7f7] py-12 lg:py-16">
+      <section className="relative z-20 py-12 lg:py-16">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <h2 className="text-3xl lg:text-5xl font-light text-zinc-900 text-center mb-8 lg:mb-12">
             {title}

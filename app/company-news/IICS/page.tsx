@@ -50,7 +50,7 @@ export default function IICSPage() {
 
       {/* Event Details */}
 
-      <section className="bg-[#f7f7f7] py-12 lg:py-20">
+      <section className="bg-[#f7f7f7]/60 py-12 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
 
           <h2 className="text-3xl lg:text-5xl font-light text-[#173f74] text-center mb-8 lg:mb-12">

@@ -179,7 +179,7 @@ export default function OdcTransportPage() {
       </section>
 
       {/* WHAT IS ODC */}
-      <section className="bg-white">
+      <section className="bg-white/60">
         <div className="max-w-5xl mx-auto px-4 lg:px-8 py-12 lg:py-16">
           <h2 className="text-center text-2xl lg:text-[36px] font-light text-[#173f74] mb-6">What Is ODC Cargo?</h2>
           <p className="text-sm lg:text-lg text-gray-600 leading-7 lg:leading-8 text-center">
@@ -213,7 +213,7 @@ export default function OdcTransportPage() {
       </section>
 
       {/* PROCESS */}
-      <section className="bg-white">
+      <section className="bg-white/60">
         <div className="max-w-6xl mx-auto px-4 lg:px-8 py-12 lg:py-16">
           <h2 className="text-center text-2xl lg:text-[36px] font-light text-[#173f74] mb-10">How We Move ODC Cargo</h2>
           <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -249,7 +249,7 @@ export default function OdcTransportPage() {
       </section>
 
       {/* PROJECTS */}
-      <section className="bg-white">
+      <section className="bg-white/60">
         <div className="max-w-6xl mx-auto px-4 lg:px-8 py-12 lg:py-16">
           <h2 className="text-center text-2xl lg:text-[36px] font-light text-[#173f74] mb-8">Recent ODC Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -276,7 +276,7 @@ export default function OdcTransportPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-white">
+      <section className="bg-white/60">
         <div className="max-w-4xl mx-auto px-4 lg:px-8 py-12 lg:py-16">
           <h2 className="text-center text-2xl lg:text-[36px] font-light text-[#173f74] mb-8">ODC Transport FAQs</h2>
           <div className="divide-y divide-gray-200 border-y border-gray-200">

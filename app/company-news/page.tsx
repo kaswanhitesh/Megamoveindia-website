@@ -92,7 +92,7 @@ export default function CompanyNews() {
 
       {/* NEWS SLIDER */}
 
-      <section className="py-10 lg:py-16 overflow-hidden bg-[#f7f7f7]">
+      <section className="py-10 lg:py-16 overflow-hidden">
         {/* Cards scroll right to left in a seamless loop: the list is rendered four times and
             the track moves by half (two copies, wider than any screen), see .news-track in globals.css. */}
         <div className="news-marquee pb-4">

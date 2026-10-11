@@ -181,7 +181,7 @@ export default function BaumaConexpoIndia2026Page() {
       </article>
 
       {/* EQUIPMENT LOGISTICS + FAQ */}
-      <section className="bg-white py-12 lg:py-16">
+      <section className="bg-white/60 py-12 lg:py-16">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-2xl lg:text-3xl font-bold text-[#173f74] mb-4">
             Construction Equipment Logistics, After bauma
