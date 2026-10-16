@@ -1,4 +1,6 @@
 import { pageMetadata } from "@/app/lib/seo";
+import ServiceFaq from "@/app/components/ServiceFaq";
+import { serviceFaqs } from "@/app/lib/serviceFaqs";
 
 import PageGlow from "@/app/components/PageGlow";
 export const metadata = pageMetadata({
@@ -178,6 +180,8 @@ export default function RentalsWarehousing() {
           ))}
         </div>
       </section>
+
+      <ServiceFaq path="/services/rentals-warehousing/" {...serviceFaqs["rentals-warehousing"]} />
 
       {/* CTA */}
       <section className="max-w-7xl mx-auto px-4 lg:px-16 pb-16 lg:pb-24">

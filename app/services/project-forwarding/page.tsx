@@ -1,4 +1,6 @@
 import { pageMetadata } from "@/app/lib/seo";
+import ServiceFaq from "@/app/components/ServiceFaq";
+import { serviceFaqs } from "@/app/lib/serviceFaqs";
 import PageGlow from "@/app/components/PageGlow";
 export const metadata = pageMetadata({
   path: "/services/project-forwarding/",
@@ -211,6 +213,8 @@ export default function ProjectForwarding() {
           ))}
         </div>
       </section>
+
+      <ServiceFaq path="/services/project-forwarding/" {...serviceFaqs["project-forwarding"]} />
 
       {/* CTA */}
       <section className="max-w-7xl mx-auto px-4 lg:px-16 pb-16 lg:pb-24">

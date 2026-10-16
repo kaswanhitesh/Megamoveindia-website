@@ -7,11 +7,31 @@ const organization = {
   name: SITE_NAME,
   legalName: "Mega Move India Private Limited",
   url: SITE_URL,
-  logo: `${SITE_URL}/mega-move-logo.svg`,
+  // Google needs a raster logo of at least 112 px; the SVG is not accepted
+  logo: `${SITE_URL}/icon.png`,
   image: `${SITE_URL}/og-image.jpg`,
   slogan: "Moving The Immovable. Delivering The Impossible.",
   description:
     "Project logistics, heavy haulage, ODC transportation, freight forwarding and equipment rentals across India and worldwide.",
+  knowsAbout: [
+    "Project logistics",
+    "Heavy haulage",
+    "Over dimensional cargo (ODC) transport",
+    "Breakbulk shipping",
+    "Out of gauge cargo",
+    "Freight forwarding",
+    "Ocean freight",
+    "Air freight",
+    "Customs clearance",
+    "Route surveys and transport engineering",
+    "Factory relocation",
+    "Hydraulic axle trailers",
+    "Manlift rental",
+  ],
+  areaServed: [
+    { "@type": "Country", name: "India" },
+    { "@type": "Place", name: "Worldwide" },
+  ],
   email: "info@megamoveindia.com",
   telephone: "+91-9321399970",
   address: {
