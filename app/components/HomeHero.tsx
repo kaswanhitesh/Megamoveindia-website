@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, type CSSProperties } from "react";
 import { useHeaderFooter } from "./HeaderFooterContext";
+import ChromaticWordmark from "./ChromaticWordmark";
 
 // One photo from each case study, cross-fading in a loop (see .hero-slide in globals.css).
 const SLIDES = [
@@ -89,7 +90,7 @@ export default function HomeHero() {
             Welcome to
           </div>
           <h1 className="text-[clamp(2.5rem,7vw,5.5rem)] font-extrabold uppercase leading-[1.1] tracking-[0.05em] text-white [text-shadow:0_2px_40px_rgba(0,0,0,0.6)]">
-            MEGA MOVE INDIA
+            <ChromaticWordmark text="MEGA MOVE INDIA" />
           </h1>
         </div>
       </div>
